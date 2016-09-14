@@ -16,6 +16,8 @@ If you have not yet installed Steno3D for MATLAB, you can
 
 .. code:: matlab
 
+    >> cd Downloads/
+    >> unzip('steno3dmat.zip')
     >> cd steno3dmat
     >> installSteno3D
 
