@@ -47,9 +47,24 @@ function login(varargin)
         'different username or API developer key.\n\n'                  ...
     ];
 
+    % Check if steno3d is on the path and if not, add it
+    loginpath = strsplit(mfilename('fullpath'), filesep);
+    steno3dpath = strjoin(loginpath(1:end-2), filesep);
+    paths = strsplit(path, pathsep);
+    if ispc
+      onPath = any(strcmpi(steno3dpath, paths));
+    else
+      onPath = any(strcmp(steno3dpath, paths));
+    end
+
+    if ~onPath
+        addpath(steno3dpath)
+    end
+
     % Check if already logged in
-    if steno3d.User.currentUser()
-        fprintf(ALREADY_LOGGED_IN, evalin('base', 'steno3d_userdata.Uid'))
+    [loggedIn, user] = steno3d.User.isLoggedIn();
+    if loggedIn
+        fprintf(ALREADY_LOGGED_IN, user.Uid);
         return
     end
 
@@ -134,7 +149,7 @@ function login(varargin)
     loginWith(apikey, endpoint)
 
     % Save new credentials after successful login
-    if steno3d.comms.isLoggedIn()
+    if steno3d.User.isLoggedIn()
         cu = steno3d.User.currentUser();
         fid = fopen(credFile, 'w');
         fprintf(fid, [cu.ApiKey '\n']);

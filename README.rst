@@ -24,9 +24,9 @@ From there, you can `request a developer API key <https://www.steno3d.com/settin
 
 At that point, you can
 
-.. code:: python
+.. code:: matlab
 
-    steno3d.login()
+    >> steno3d.login()
 
 then start uploading your MATLAB figures. Function and API documentation is
 available on `online <https://steno3d.com/docs>`_.

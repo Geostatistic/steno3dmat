@@ -31,16 +31,17 @@ classdef User
         end
     end
     methods (Static)
-        function varargout = currentUser()
-        %CURRENTUSER Checks for current, logged in steno3d user
+        function [loggedIn, user] = isLoggedIn()
+        %ISLOGGEDIN checks if a user is logged in to steno3d
         %
-        %   CURRENTUSER() returns true if a user is logged in and false
+        %   ISLOGGEDIN() returns true if a user is logged in and false
         %   otherwise. Errors if `steno3d_user` exists but contains
         %   something other than user data
         %
-        %   user = CURRENTUSER() returns the currently logged in user or
-        %   errors if no user is logged in
-            
+        %   [LOGGEDIN, USER] = CURRENTUSER() returns true or false
+        %   for LOGGEDIN as descriebed above, and the currently logged
+        %   in USER. If LOGGEDIN is false, USER is 'None'
+        
             try
                 user = evalin('base', 'steno3d_user');
                 loggedIn = true;
@@ -55,18 +56,17 @@ classdef User
                        'user data.\nPlease `clear steno3d_user` '       ...
                        'and `steno3d.login() again.'])
             end
-                
-            if nargout == 0
-                varargout{1} = loggedIn;
-                return
-            end
+        end
+        function user = currentUser()
+        %CURRENTUSER returns the current, logged in steno3d user
+        %
+        %   USER = CURRENTUSER() returns the current steno3d USER or
+        %   errors if no user is logged in
+            
+            [loggedIn, user] = steno3d.User.isLoggedIn();
             if ~loggedIn
                 error('steno3d:userError',                              ...
                       'No user is logged in to steno3d')
-            end
-            if nargout == 1 
-                varargout{1} = user;
-                return
             end
         end
     end
