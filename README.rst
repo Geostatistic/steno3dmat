@@ -17,7 +17,7 @@ If you have not yet installed Steno3D for MATLAB, you can
 .. code:: matlab
 
     >> cd steno3dmat
-    >> install_steno3d
+    >> installSteno3D
 
 You also need to `sign up for a Steno3D account <https://www.steno3d.com/signup>`_.
 From there, you can `request a developer API key <https://www.steno3d.com/settings/developer>`_.
