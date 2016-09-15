@@ -326,7 +326,7 @@ function skipcr = validateSkipCred(skipcr)
 %   false (0)
 
     try
-        if skipcr == 1 || skipcr == 0
+        if islogical(skipcr)
             return
         end
     catch
