@@ -1,20 +1,21 @@
-classdef BaseTrait
-    %BASETRAIT Summary of this class goes here
+classdef Trait
+    %Trait Summary of this class goes here
     %   Detailed explanation goes here
 
     properties
         Value
     end
-    properties (SetAccess = private)
+    properties (SetAccess = protected)
         Name = ''
         Description = ''
         TraitInfo = ''
         Required = false
+        ValidateDefault = true
         DefaultValue
     end
 
     methods
-        function obj = BaseTrait(varargin)
+        function obj = Trait(varargin)
             if rem(nargin, 2) ~= 0
                 error('steno3d:traitError',                             ...
                       ['Traits must be constructed with valid '         ...
@@ -23,7 +24,9 @@ classdef BaseTrait
             for i = 1:2:nargin
                 obj.(varargin{i}) = varargin{i+1};
             end
-            obj.DefaultValue = obj.validate(obj.DefaultValue);
+            if obj.ValidateDefault
+                obj.DefaultValue = obj.validate(obj.DynamicDefault);
+            end
         end
 
         function value = validate(obj, value)
@@ -62,7 +65,11 @@ classdef BaseTrait
         end
 
         function obj = set.DefaultValue(obj, val)
-            obj.DefaultValue = val; % obj.validate(val);
+            obj.DefaultValue = val;
+        end
+
+        function val = DynamicDefault(obj)
+            val = obj.DefaultValue;
         end
 
         function val = get.Value(obj)
@@ -71,7 +78,6 @@ classdef BaseTrait
             else
                 val = obj.Value;
             end
-%             val = obj.validate(val);
         end
 
         function obj = set.Value(obj, val)

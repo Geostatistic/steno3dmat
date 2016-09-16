@@ -49,7 +49,7 @@ classdef User
                 user = 'None';
                 loggedIn = false;
             end
-            if loggedIn && ~isa(user, 'steno3d.User')
+            if loggedIn && ~isa(user, 'steno3d.utils.User')
                 error('steno3d:userError',                              ...
                       ['The variable used to store user data '          ...
                        '(steno3d_user) exists\nbut does''t contain '    ...
@@ -63,7 +63,7 @@ classdef User
         %   USER = CURRENTUSER() returns the current steno3d USER or
         %   errors if no user is logged in
             
-            [loggedIn, user] = steno3d.User.isLoggedIn();
+            [loggedIn, user] = steno3d.utils.User.isLoggedIn();
             if ~loggedIn
                 error('steno3d:userError',                              ...
                       'No user is logged in to steno3d')
