@@ -1,15 +1,15 @@
-classdef Color < steno3d.traits.BaseTrait
+classdef Color < steno3d.traits.Trait
     %UNTITLED Summary of this class goes here
     %   Detailed explanation goes here
 
     methods
         function obj = Color(varargin)
-            args = steno3d.traits.BaseTrait.setTraitDefaults(varargin,  ...
+            args = steno3d.traits.Trait.setTraitDefaults(varargin,  ...
                 'DefaultValue', 'random',                               ...
                 'TraitInfo', ['RGB with values 0-1 or 0-255, hex color '...
                               'e.g. ''#FF0000'', string color name, or '...
                               '''random''']);
-            obj = obj@steno3d.traits.BaseTrait(args{:});
+            obj = obj@steno3d.traits.Trait(args{:});
         end
 
         function val = validate(obj, val)

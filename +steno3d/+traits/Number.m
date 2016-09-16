@@ -1,8 +1,8 @@
-classdef Number < steno3d.traits.BaseTrait
+classdef Number < steno3d.traits.Trait
     %INT Summary of this class goes here
     %   Detailed explanation goes here
 
-    properties (SetAccess = ?steno3d.traits.BaseTrait)
+    properties (SetAccess = ?steno3d.traits.Trait)
         MinValue = -Inf
         MaxValue = Inf
         IsInteger = false
@@ -10,10 +10,10 @@ classdef Number < steno3d.traits.BaseTrait
 
     methods
         function obj = Number(varargin)
-            args = steno3d.traits.BaseTrait.setTraitDefaults(varargin,  ...
+            args = steno3d.traits.Trait.setTraitDefaults(varargin,  ...
                 'DefaultValue', 0,                                      ...
                 'TraitInfo', 'a single number');
-            obj = obj@steno3d.traits.BaseTrait(args{:});
+            obj = obj@steno3d.traits.Trait(args{:});
             if obj.MinValue > obj.MaxValue
                 error('steno3d:traitError',                             ...
                       'MinValue must be less than MaxValue');
