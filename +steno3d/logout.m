@@ -7,9 +7,9 @@ function logout()
 
     fprintf('Logging out of steno3d...\n')
 
-    if steno3d.User.isLoggedIn()
+    if steno3d.utils.User.isLoggedIn()
         steno3d.utils.get('signout');
-        user = steno3d.User.currentUser();
+        user = steno3d.utils.User.currentUser();
         fprintf('Goodbye, @%s\n', user.Uid);
         evalin('base', 'clear steno3d_user');
     end

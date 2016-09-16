@@ -62,7 +62,7 @@ function login(varargin)
     end
 
     % Check if already logged in
-    [loggedIn, user] = steno3d.User.isLoggedIn();
+    [loggedIn, user] = steno3d.utils.User.isLoggedIn();
     if loggedIn
         fprintf(ALREADY_LOGGED_IN, user.Uid);
         return
@@ -149,8 +149,8 @@ function login(varargin)
     loginWith(apikey, endpoint)
 
     % Save new credentials after successful login
-    if steno3d.User.isLoggedIn()
-        cu = steno3d.User.currentUser();
+    if steno3d.utils.User.isLoggedIn()
+        cu = steno3d.utils.User.currentUser();
         fid = fopen(credFile, 'w');
         fprintf(fid, [cu.ApiKey '\n']);
         for i=1:length(apikeys)
@@ -248,7 +248,7 @@ function loginWith(apikey, endpoint)
         steno3d.logout()
         return
     end
-    user = steno3d.User(apikey, endpoint, resp);
+    user = steno3d.utils.User(apikey, endpoint, resp);
     fprintf('Welcome to Steno3D! You are logged in as @%s\n', user.Uid)
     assignin('base', 'steno3d_user', user)
 end

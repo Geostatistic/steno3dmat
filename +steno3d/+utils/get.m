@@ -5,10 +5,10 @@ function resp = get(url)
 %   required headers. Returns web response or errors if no user is logged
 %   in.
 
-    if ~steno3d.User.isLoggedIn()
+    if ~steno3d.utils.User.isLoggedIn()
         error('steno3d:notLoggedIn', 'Please `steno3d.login()`')
     end
-    user = steno3d.User.currentUser();
+    user = steno3d.utils.User.currentUser();
     resp = webread([user.Endpoint url],                                 ...
                    'sshKey', user.ApiKey,                               ...
                    'client', ['steno3dmat:' steno3d.utils.version()]);
