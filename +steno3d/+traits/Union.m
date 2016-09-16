@@ -49,7 +49,7 @@ classdef Union < steno3d.traits.Trait
                 end
                 if ~isa(val{i}.Type, 'function_handle')
                     error('steno3d:hasTraitsError',                     ...
-                          'Trait Types must be trait constructor handles');
+                          'Trait types must be trait constructor handles');
                 end
                 fields = fieldnames(val{i});
                 argin = {};
@@ -75,8 +75,7 @@ classdef Union < steno3d.traits.Trait
         end
 
         function val = DynamicDefault(obj)
-            firstType = obj.TraitTypes{1};
-            val = firstType.DynamicDefault;
+            val = obj.TraitTypes{1}.DynamicDefault;
         end
     end
 end
