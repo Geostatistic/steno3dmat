@@ -34,13 +34,29 @@ classdef HasTraits < dynamicprops
                       ['All elements of `Traits` property must '        ...
                        'have fields:\nName, Type, Description'])
             end
+            if length(tr(:)) ~= 1
+                error('steno3d:hasTraitsError',                         ...
+                      ['''%s'' Trait struct must be size 1. Please '    ...
+                       'ensure if you have a cell array inside a Trait '...
+                       'struct, it is nested in a size 1 cell array.'], ...
+                       tr(1).Name);
+            end
+            if ~ischar(tr.Name)
+                error('steno3d:hasTraitsError',                         ...
+                      'Trait Names must be strings');
+            end
+            if ~isa(tr.Type, 'function_handle')
+                error('steno3d:hasTraitsError',                         ...
+                      'Trait Types must be trait constructor handles');
+            end
             prefix = 'Trait__';
-            hiddenName = [prefix tr.Name];
-            if strcmp(tr.Name(1:min(end, length(prefix))), prefix)
+            name = tr.Name;
+            hiddenName = [prefix name];
+            if strcmp(name(1:min(end, length(prefix))), prefix)
                 error('steno3d:hasTraitsError',                         ...
                       ['Starting a trait name with ''%s'' may cause a ' ...
                        'name conflict; please rename %s'],              ...
-                       prefix, tr.Name)
+                       prefix, name)
             end
             fields = fieldnames(tr);
             argin = {};
@@ -53,9 +69,14 @@ classdef HasTraits < dynamicprops
                 argin{end+1} = tr.(f);
             end
 
-            metaProp = addprop(obj, tr.Name);
+            metaProp = addprop(obj, name);
             metaTrait = addprop(obj, hiddenName);
             obj.(hiddenName) = tr.Type(argin{:});
+            if ~isa(obj.(hiddenName), 'steno3d.traits.Trait')
+                error('steno3d:hasTraitsError',                         ...
+                      ['All types defined in `Traits` must be '         ...
+                       'subclasses of steno3d.traits.Trait']);
+            end
             metaProp.SetMethod = @setTrait;
             metaProp.GetMethod = @getTrait;
             metaTrait.Hidden = true;
