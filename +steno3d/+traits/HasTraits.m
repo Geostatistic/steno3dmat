@@ -10,6 +10,16 @@ classdef HasTraits < dynamicprops
                 % Additional fields may be available depending on the trait
     end
 
+
+    properties (Constant, Access = private)
+        TRAIT_PREFIX = 'TR_';
+    end
+
+    properties (Hidden, Access = private)
+        TR__val = false
+    end
+
+
     methods
         function obj = HasTraits()
             if ~iscell(obj.Traits)
@@ -18,6 +28,48 @@ classdef HasTraits < dynamicprops
             end
             for i = 1:length(obj.Traits)
                 setupTrait(obj, obj.Traits{i});
+            end
+        end
+
+        function valid = crossValidate(obj)
+            valid = true;
+        end
+
+    end
+
+    methods (Sealed)
+
+        function validate(obj)
+            validating = [obj.TRAIT_PREFIX '_val'];
+            if obj.(validating)
+                return
+            end
+            ME = [];
+            obj.(validating) = true;
+            try
+                for i = 1:length(obj.Traits)
+                    value = obj.(obj.Traits{i}.Name);
+                    trait = obj.([obj.TRAIT_PREFIX obj.Traits{i}.Name]);
+                    if isempty(value) && trait.Required
+                        error('steno3d:traitError',                     ...
+                              'Required trait ''%s'' not set', trait.Name);
+                    end
+                    if ~isempty(value)
+                        trait.validate(value);
+                        for j = 1:length(value)
+                            v = value(j);
+                            if isa(v, 'steno3d.traits.HasTraits')
+                                v.validate();
+                            end
+                        end
+                    end
+                end
+                obj.crossValidate();
+            catch ME
+            end
+            obj.(validating) = false;
+            if ~isempty(ME)
+                rethrow(ME);
             end
         end
     end
@@ -49,14 +101,14 @@ classdef HasTraits < dynamicprops
                 error('steno3d:hasTraitsError',                         ...
                       'Trait Types must be trait constructor handles');
             end
-            prefix = 'Trait__';
             name = tr.Name;
-            hiddenName = [prefix name];
-            if strcmp(name(1:min(end, length(prefix))), prefix)
+            hiddenName = [obj.TRAIT_PREFIX name];
+            if strcmp(name(1:min(end, length(obj.TRAIT_PREFIX))),       ...
+                      obj.TRAIT_PREFIX)
                 error('steno3d:hasTraitsError',                         ...
                       ['Starting a trait name with ''%s'' may cause a ' ...
                        'name conflict; please rename %s'],              ...
-                       prefix, name)
+                       obj.TRAIT_PREFIX, name)
             end
             fields = fieldnames(tr);
             argin = {};

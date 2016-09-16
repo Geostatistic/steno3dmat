@@ -21,6 +21,9 @@ classdef Instance < steno3d.traits.Trait
         end
 
         function val = validate(obj, val)
+            if isempty(val) && ~obj.Required
+                return
+            end
             klassInfo = functions(obj.Klass);
             if ~isa(val, klassInfo.function)
                 error('steno3d:traitError',                             ...
