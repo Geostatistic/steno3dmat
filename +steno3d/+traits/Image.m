@@ -1,11 +1,11 @@
 classdef Image < steno3d.traits.Trait
-    %BOOL Summary of this class goes here
-    %   Detailed explanation goes here
+%IMAGE Summary of this class goes here
+%   Detailed explanation goes here
 
     methods
         function obj = Image(varargin)
-            args = steno3d.traits.Trait.setTraitDefaults(varargin,  ...
-                'ValidateDefault', false,                                   ...
+            args = steno3d.traits.Trait.setTraitDefaults(varargin,      ...
+                'ValidateDefault', false,                               ...
                 'TraitInfo', 'a PNG image file or valid PNG matrix');
             obj = obj@steno3d.traits.Trait(args{:});
         end

@@ -1,6 +1,6 @@
 classdef Number < steno3d.traits.Trait
-    %INT Summary of this class goes here
-    %   Detailed explanation goes here
+%NUMBER Summary of this class goes here
+%   Detailed explanation goes here
 
     properties (SetAccess = ?steno3d.traits.Trait)
         MinValue = -Inf
@@ -10,7 +10,7 @@ classdef Number < steno3d.traits.Trait
 
     methods
         function obj = Number(varargin)
-            args = steno3d.traits.Trait.setTraitDefaults(varargin,  ...
+            args = steno3d.traits.Trait.setTraitDefaults(varargin,      ...
                 'DefaultValue', 0,                                      ...
                 'TraitInfo', 'a single number');
             obj = obj@steno3d.traits.Trait(args{:});

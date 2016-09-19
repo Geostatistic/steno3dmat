@@ -1,13 +1,13 @@
 classdef Trait
-    %Trait Summary of this class goes here
-    %   Detailed explanation goes here
+%TRAIT Summary of this class goes here
+%   Detailed explanation goes here
 
     properties
         Value
     end
     properties (SetAccess = protected)
         Name = ''
-        Description = ''
+        Doc = ''
         TraitInfo = ''
         Required = false
         ValidateDefault = true
@@ -40,12 +40,12 @@ classdef Trait
             obj.Name = val;
         end
 
-        function obj = set.Description(obj, val)
+        function obj = set.Doc(obj, val)
             if ~ischar(val)
                 error('steno3d:traitError',                             ...
-                      'Trait property `Description` must be a string');
+                      'Trait property `Doc` must be a string');
             end
-            obj.Description = val;
+            obj.Doc = val;
         end
 
         function obj = set.TraitInfo(obj, val)

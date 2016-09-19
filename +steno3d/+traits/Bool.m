@@ -1,10 +1,10 @@
 classdef Bool < steno3d.traits.Trait
-    %BOOL Summary of this class goes here
-    %   Detailed explanation goes here
+%BOOL Summary of this class goes here
+%   Detailed explanation goes here
 
     methods
         function obj = Bool(varargin)
-            args = steno3d.traits.Trait.setTraitDefaults(varargin,  ...
+            args = steno3d.traits.Trait.setTraitDefaults(varargin,      ...
                 'DefaultValue', true,                                   ...
                 'TraitInfo', 'true or false');
             obj = obj@steno3d.traits.Trait(args{:});

@@ -1,6 +1,6 @@
 classdef Union < steno3d.traits.Trait
-    %BOOL Summary of this class goes here
-    %   Detailed explanation goes here
+%UNION Summary of this class goes here
+%   Detailed explanation goes here
 
     properties (Access = ?steno3d.traits.Trait)
         TraitTypes
@@ -8,7 +8,7 @@ classdef Union < steno3d.traits.Trait
 
     methods
         function obj = Union(varargin)
-            args = steno3d.traits.Trait.setTraitDefaults(varargin,  ...
+            args = steno3d.traits.Trait.setTraitDefaults(varargin,      ...
                 'TraitInfo', 'union of multiple types of traits');
             obj = obj@steno3d.traits.Trait(args{:});
             if isempty(obj.TraitTypes)

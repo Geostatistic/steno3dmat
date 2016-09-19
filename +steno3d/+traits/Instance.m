@@ -1,6 +1,8 @@
 classdef Instance < steno3d.traits.Trait
-    %BOOL Summary of this class goes here
-    %   Detailed explanation goes here
+%INSTANCE Summary of this class goes here
+%   Detailed explanation goes here
+%
+% self instances can be defined with eval(@HasTraitsClass)
 
     properties (SetAccess = ?steno3d.traits.Trait)
         Initialize = true
@@ -10,7 +12,7 @@ classdef Instance < steno3d.traits.Trait
 
     methods
         function obj = Instance(varargin)
-            args = steno3d.traits.Trait.setTraitDefaults(varargin,  ...
+            args = steno3d.traits.Trait.setTraitDefaults(varargin,      ...
                 'Args', {},                                             ...
                 'TraitInfo', 'an instance');
             obj = obj@steno3d.traits.Trait(args{:});

@@ -1,6 +1,6 @@
 classdef Repeated < steno3d.traits.Trait
-    %BOOL Summary of this class goes here
-    %   Detailed explanation goes here
+%REPEATED Summary of this class goes here
+%   Detailed explanation goes here
 
     properties (Access = ?steno3d.traits.Trait)
         TraitType
@@ -8,7 +8,7 @@ classdef Repeated < steno3d.traits.Trait
 
     methods
         function obj = Repeated(varargin)
-            args = steno3d.traits.Trait.setTraitDefaults(varargin,  ...
+            args = steno3d.traits.Trait.setTraitDefaults(varargin,      ...
                 'TraitInfo', 'muliple values of a certain type of trait');
             obj = obj@steno3d.traits.Trait(args{:});
             if isempty(obj.TraitType)

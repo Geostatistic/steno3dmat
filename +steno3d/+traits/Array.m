@@ -1,6 +1,6 @@
 classdef Array < steno3d.traits.Trait
-    %UNTITLED Summary of this class goes here
-    %   Detailed explanation goes here
+%ARRAY Summary of this class goes here
+%   Detailed explanation goes here
 
     properties (SetAccess = ?steno3d.traits.Trait)
         Shape = {'*'}
@@ -65,7 +65,7 @@ classdef Array < steno3d.traits.Trait
                 error('steno3d:traitError', '%s must be all integers',  ...
                       obj.Name);
             end
-            shp = shape(val);
+            shp = size(val);
             if length(shp) ~= length(obj.Shape)
                 error('steno3d:traitError',                             ...
                       '%s must have %d dimensions', obj.Name,           ...

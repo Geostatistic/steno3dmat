@@ -1,6 +1,6 @@
 classdef String < steno3d.traits.Trait
-    %BOOL Summary of this class goes here
-    %   Detailed explanation goes here
+%STRING Summary of this class goes here
+%   Detailed explanation goes here
 
     properties (Access = ?steno3d.traits.Trait)
         Choices = struct()
