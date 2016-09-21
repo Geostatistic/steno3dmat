@@ -40,9 +40,6 @@ classdef Instance < steno3d.traits.Trait
                       'Trait property `Initialize` must be true or false');
             end
             obj.Initialize = val;
-            if ~val
-                obj.ValidateDefault = false;
-            end
         end
 
         function obj = set.Class(obj, val)

@@ -382,19 +382,17 @@ function versionOk = isVersionOk(endpoint)
     '>> steno3d.upgrade()\n\n'                                          ...
     ];
 
-    identNoConn = 'MATLAB:webservices:UnknownHost';
-    ident400 = 'MATLAB:webservices:HTTP400StatusCodeError';
-    ident405 = 'MATLAB:webservices:HTTP405StatusCodeError';
     versionOk = true;
     try
         resp = webwrite([endpoint 'api/client/steno3dmat'],             ...
                         'version', steno3d.utils.version());
     catch ME
-        if strcmp(ME.identifier, identNoConn)
+        if strcmp(ME.identifier, 'MATLAB:webservices:UnknownHost')
             notConnectedError();
             versionOk = false;
         end
-        if strcmp(ME.identifier, ident400)
+        if strcmp(ME.identifier,                                        ...
+                  'MATLAB:webservices:HTTP400StatusCodeError')
             versplit = strsplit(steno3d.utils.version(), '.');
             if strfind(versplit(3), 'b')
                 fprintf(BETA_TEST);

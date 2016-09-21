@@ -25,7 +25,7 @@ classdef String < steno3d.traits.Trait
                 if obj.Lowercase
                     val = lower(val);
                 else
-                    val = upper(val);
+                    val = val;
                 end
                 return
             end
@@ -34,7 +34,7 @@ classdef String < steno3d.traits.Trait
                     if obj.Lowercase
                         val = lower(fields{i});
                     else
-                        val = upper(fields{i});
+                        val = fields{i};
                     end
                     return
                 end
@@ -42,7 +42,7 @@ classdef String < steno3d.traits.Trait
             if obj.Lowercase
                 choicestr = strjoin(lower(fields), ''', ''');
             else
-                choicestr = strjoin(upper(fields), ''', ''');
+                choicestr = strjoin(fields, ''', ''');
             end
             error('steno3d:traitError', '%s must be one of: ''%s''',...
                   obj.Name, choicestr);
