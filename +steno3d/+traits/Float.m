@@ -1,5 +1,5 @@
-classdef Number < steno3d.traits.Trait
-%NUMBER Summary of this class goes here
+classdef Float < steno3d.traits.Trait
+%FLOAT Summary of this class goes here
 %   Detailed explanation goes here
 
     properties (SetAccess = ?steno3d.traits.Trait)
@@ -9,7 +9,7 @@ classdef Number < steno3d.traits.Trait
     end
 
     methods
-        function obj = Number(varargin)
+        function obj = Float(varargin)
             args = steno3d.traits.Trait.setTraitDefaults(varargin,      ...
                 'DefaultValue', 0,                                      ...
                 'TraitInfo', 'a single number');
