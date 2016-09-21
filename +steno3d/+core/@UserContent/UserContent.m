@@ -15,11 +15,16 @@ classdef UserContent < steno3d.traits.HasTraits
                 'Type', @steno3d.traits.String,                         ...
                 'Doc', 'Content description',                           ...
                 'DefaultValue', '',                                     ...
-                'Required', true                                        ...
+                'Required', false                                       ...
             )                                                           ...
         }
     end
-
+    
+    properties (Hidden, Access = private)
+        TR__upload = false
+        TR__longuid = ''
+    end
+    
     methods
     end
 
@@ -32,6 +37,38 @@ classdef UserContent < steno3d.traits.HasTraits
 
         function mapi = modelAPILocation(obj)
             mapi = ['resource/' obj.ResourceClass];
+        end
+        
+        function uploadContent(obj, tabLevel)
+            uploading = [obj.TRAIT_PREFIX '_upload'];
+            if obj.(uploading)
+                return
+            end
+            ME = [];
+            try
+                fprintf([tabLevel 'Uploading' obj.resourceClass ': '    ...
+                         obj.Title '\n'])
+                obj.(uploading) = true;
+                obj.validate()
+                obj.uploadChildren(tabLevel)
+                args = obj.uploadArgs();
+                steno3d.utils.post(['api/' obj.modelAPILocation()],     ...
+                                   args{:})
+            fprintf([tabLevel '... Complete'])
+            catch ME
+            end
+            obj.(uploading) = false;
+            if ~isempty(ME)
+                rethrow(ME);
+            end
+        end
+        
+        function uploadChildren(obj, tabLevel)
+            
+        end
+        
+        function args = uploadArgs(obj)
+            
         end
 
 
