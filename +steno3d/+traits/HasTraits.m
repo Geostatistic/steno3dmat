@@ -10,13 +10,16 @@ classdef HasTraits < dynamicprops
         % Additional fields may be available depending on the trait
     end
 
-
     properties (Constant, Hidden)
         TRAIT_PREFIX = 'TR_';
     end
 
     properties (Hidden, Access = private)
         TR__val = false
+    end
+    
+    properties (Hidden, SetAccess = private)
+        TR__traits = {}
     end
 
 
@@ -59,9 +62,10 @@ classdef HasTraits < dynamicprops
             ME = [];
             obj.(validating) = true;
             try
-                for i = 1:length(obj.Traits)
-                    value = obj.(obj.Traits{i}.Name);
-                    trait = obj.([obj.TRAIT_PREFIX obj.Traits{i}.Name]);
+                traitNames = obj.([obj.TRAIT_PREFIX '_traits']);
+                for i = 1:length(traitNames)
+                    value = obj.(traitNames{i});
+                    trait = obj.([obj.TRAIT_PREFIX traitNames{i}]);
                     if isempty(value) && trait.Required
                         error('steno3d:traitError',                     ...
                               'Required trait ''%s'' not set', trait.Name);
@@ -143,6 +147,7 @@ classdef HasTraits < dynamicprops
             metaProp.SetMethod = @setTrait;
             metaProp.GetMethod = @getTrait;
             metaTrait.Hidden = true;
+            obj.([obj.TRAIT_PREFIX '_traits']){end+1} = name;
 
             function setTrait(obj, val)
                 obj.(hiddenName).Value = val;
