@@ -6,7 +6,7 @@ classdef Instance < steno3d.traits.Trait
 
     properties (SetAccess = ?steno3d.traits.Trait)
         Initialize = true
-        Klass
+        Class
         Args
     end
 
@@ -16,9 +16,9 @@ classdef Instance < steno3d.traits.Trait
                 'Args', {},                                             ...
                 'TraitInfo', 'an instance');
             obj = obj@steno3d.traits.Trait(args{:});
-            if isempty(obj.Klass)
+            if isempty(obj.Class)
                 error('steno3d:traitError',                             ...
-                      'Instance traits must specify a Klass')
+                      'Instance traits must specify a Class')
             end
         end
 
@@ -26,11 +26,11 @@ classdef Instance < steno3d.traits.Trait
             if isempty(val) && ~obj.Required
                 return
             end
-            klassInfo = functions(obj.Klass);
-            if ~isa(val, klassInfo.function)
+            classInfo = functions(obj.Class);
+            if ~isa(val, classInfo.function)
                 error('steno3d:traitError',                             ...
                       '%s must be an instance of %s',                   ...
-                      obj.Name, klassInfo.function)
+                      obj.Name, classInfo.function)
             end
         end
 
@@ -45,20 +45,20 @@ classdef Instance < steno3d.traits.Trait
             end
         end
 
-        function obj = set.Klass(obj, val)
+        function obj = set.Class(obj, val)
             if ~isa(val, 'function_handle')
                 error('steno3d:traitError',                             ...
-                      ['Trait property `Klass` must be class '          ...
+                      ['Trait property `Class` must be class '          ...
                        'constructor function handle']);
             end
-            obj.Klass = val;
+            obj.Class = val;
         end
 
         function obj = set.Args(obj, val)
             if ~iscell(val)
                 error('steno3d:traitError',                             ...
                       ['Trait property `Args` must be a cell array of ' ...
-                       'Klass constructor arguments.']);
+                       'Class constructor arguments.']);
             end
             obj.Args = val;
         end
@@ -66,7 +66,7 @@ classdef Instance < steno3d.traits.Trait
 
         function val = DynamicDefault(obj)
             if obj.Initialize
-                val = obj.Klass(obj.Args{:});
+                val = obj.Class(obj.Args{:});
             else
                 val = obj.DefaultValue;
             end
