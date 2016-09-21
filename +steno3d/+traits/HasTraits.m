@@ -11,7 +11,7 @@ classdef HasTraits < dynamicprops
     end
 
 
-    properties (Constant, Access = private)
+    properties (Constant, Hidden)
         TRAIT_PREFIX = 'TR_';
     end
 
@@ -43,7 +43,7 @@ classdef HasTraits < dynamicprops
             end
         end
 
-        function valid = crossValidate(obj)
+        function valid = validator(obj)
             valid = true;
         end
 
@@ -76,7 +76,7 @@ classdef HasTraits < dynamicprops
                         end
                     end
                 end
-                obj.crossValidate();
+                obj.validator();
             catch ME
             end
             obj.(validating) = false;
