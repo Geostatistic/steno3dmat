@@ -22,21 +22,28 @@ classdef UserContent < steno3d.traits.HasTraits
     
     properties (Hidden, Access = private)
         TR__upload = false
-        TR__longuid = ''
+    end
+    
+    properties (Hidden)
+        TR__uid = []
     end
     
     methods
+        
+        function obj = UserContent(varargin)
+            obj = obj@steno3d.traits.HasTraits(varargin{:});
+        end
     end
 
     methods (Hidden)
         function rc = resourceClass(obj)
             mc = metaclass(obj);
             rcfull = strsplit(mc.Name, '.');
-            rc = rcfull{end};
+            rc = lower(rcfull{end});
         end
 
         function mapi = modelAPILocation(obj)
-            mapi = ['resource/' obj.ResourceClass];
+            mapi = ['resource/' obj.resourceClass];
         end
         
         function uploadContent(obj, tabLevel)
@@ -46,15 +53,19 @@ classdef UserContent < steno3d.traits.HasTraits
             end
             ME = [];
             try
-                fprintf([tabLevel 'Uploading' obj.resourceClass ': '    ...
-                         obj.Title '\n'])
+                fprintf([tabLevel 'Uploading ' obj.resourceClass ': '    ...
+                         obj.Title '\n']);
                 obj.(uploading) = true;
-                obj.validate()
-                obj.uploadChildren(tabLevel)
+                obj.validate();
+                obj.uploadChildren([tabLevel '    ']);
                 args = obj.uploadArgs();
-                steno3d.utils.post(['api/' obj.modelAPILocation()],     ...
-                                   args{:})
-            fprintf([tabLevel '... Complete'])
+                resp = steno3d.utils.post(                              ...
+                    ['api/' obj.modelAPILocation()], args{:}            ...
+                );
+            
+                obj.TR__uid = resp.longUid;
+                
+                fprintf([tabLevel '... Complete\n']);
             catch ME
             end
             obj.(uploading) = false;
@@ -68,7 +79,11 @@ classdef UserContent < steno3d.traits.HasTraits
         end
         
         function args = uploadArgs(obj)
-            
+            args = {'title', obj.Title, 'description', obj.Description};
+            opts = obj.findprop('Opts');
+            if length(opts) == 1
+                args = [args, {'meta', obj.Opts.toJSON()}];
+            end
         end
 
 
