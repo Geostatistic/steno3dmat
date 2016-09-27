@@ -77,6 +77,10 @@ classdef String < steno3d.traits.Trait
             end
             obj.Choices = val;
         end
+        
+        function output = serialize(obj)
+            output = obj.Value;
+        end
 
     end
 end

@@ -27,11 +27,23 @@ classdef Instance < steno3d.traits.Trait
                 return
             end
             classInfo = functions(obj.Class);
-            if ~isa(val, classInfo.function)
-                error('steno3d:traitError',                             ...
-                      '%s must be an instance of %s',                   ...
-                      obj.Name, classInfo.function)
+            if isa(val, classInfo.function)
+                return
             end
+            try
+                val = obj.Class(val);
+                return
+            catch
+            end
+            try
+                val = obj.Class(val{:});
+                return
+            catch
+            end
+            error('steno3d:traitError',                                 ...
+                  ['%s must be an instance of %s (or valid arguments '  ...
+                   'to construct that class)'],                         ...
+                  obj.Name, classInfo.function);
         end
 
         function obj = set.Initialize(obj, val)

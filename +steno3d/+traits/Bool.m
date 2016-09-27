@@ -16,6 +16,14 @@ classdef Bool < steno3d.traits.Trait
                       obj.Name, obj.TraitInfo)
             end
         end
+        
+        function output = serialize(obj)
+            if obj.Value
+                output = 'True';
+            else
+                output = 'False';
+            end
+        end
     end
 end
 

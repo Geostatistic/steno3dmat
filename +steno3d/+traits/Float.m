@@ -59,6 +59,10 @@ classdef Float < steno3d.traits.Trait
                       obj.Name)
             end
         end
+        
+        function output = serialize(obj)
+            output = num2str(obj.Value);
+        end
     end
 end
 

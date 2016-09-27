@@ -17,14 +17,14 @@ classdef HasTraits < dynamicprops
     properties (Hidden, Access = private)
         TR__val = false
     end
-    
+
     properties (Hidden, SetAccess = private)
         TR__traits = {}
     end
 
 
     methods
-        function obj = HasTraits()
+        function obj = HasTraits(varargin)
             mc = metaclass(obj);
             pl = mc.PropertyList;
             for i = 1:length(pl)
@@ -43,6 +43,23 @@ classdef HasTraits < dynamicprops
                 for j = 1:length(traits)
                     setupTrait(obj, traits{j});
                 end
+            end
+
+            if length(varargin) == 1
+                varargin = varargin{1};
+            end
+            if rem(length(varargin), 2) ~= 0
+                error('steno3d:hasTraitsError',                         ...
+                      ['Input to HasTraits class must be property/value'...
+                       ' pairs']);
+            end
+            for i = 1:2:length(varargin)
+                if ~ischar(varargin{i})
+                    error('steno3d:hasTraitsError',                     ...
+                          ['Input property names for property/value '   ...
+                           'pairs must be strings']);
+                end
+                obj.(varargin{i}) = varargin{i+1};
             end
         end
 
@@ -66,7 +83,7 @@ classdef HasTraits < dynamicprops
                 for i = 1:length(traitNames)
                     value = obj.(traitNames{i});
                     trait = obj.([obj.TRAIT_PREFIX traitNames{i}]);
-                    if isempty(value) && trait.Required
+                    if trait.Required && isempty(value)
                         error('steno3d:traitError',                     ...
                               'Required trait ''%s'' not set', trait.Name);
                     end

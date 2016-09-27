@@ -83,29 +83,33 @@ classdef Array < steno3d.traits.Trait
             end
         end
 
-        function fileInfo = serialize(obj)
+        function output = serialize(obj)
             obj.validate(obj.Value);
+            if length(obj.Shape) > 2
+                error('steno3d:traitError',                             ...
+                      'Cannot serialize arrays > 2 dimensions');
+            end
+            val = obj.Value';
+            val = val(:);
             if obj.Serial
                 tmpFile = [tempname '.dat'];
-                fid = fopen(tmpFile, 'w');
+                fid = fopen(tmpFile, 'w+', 'l');
                 if strcmp(obj.DataType, 'int')
-                    fwrite(fid, obj.Value, 'int32', 'l');
+                    fwrite(fid, val, 'int32', 'l');
                     dtype = '<i4';
                 else
-                    fwrite(fid, obj.Value, 'float32', 'l');
+                    fwrite(fid, val, 'float32', 'l');
                     dtype = '<f4';
                 end
                 fseek(fid, 0, -1);
-                fileInfo = struct('FileID', fid, 'DType', dtype);
+                d = fread(fid, Inf, '*uint8');
+                fclose(fid);
+                
+                output = struct('FileID', d, 'DType', dtype);
             else
-                fileInfo = num2str(obj.Value);
+                csvlist = num2str(val, '%g, ');
+                output = ['[' csvlist(1:end-1) ']'];
             end
-
         end
-
-
-
-
     end
-
 end

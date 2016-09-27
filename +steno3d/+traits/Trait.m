@@ -84,6 +84,14 @@ classdef Trait
             val = obj.validate(val);
             obj.Value = val;
         end
+        
+        function output = serialize(obj)
+            mc = metaclass(obj);
+            error('steno3d:traitError',                                 ...
+                  'Cannot serialize trait %s of type %s',               ...
+                  mc.Name, obj.Name)
+            output = '';
+        end
     end
 
     methods (Static)

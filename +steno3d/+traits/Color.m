@@ -52,6 +52,11 @@ classdef Color < steno3d.traits.Trait
                       obj.Name, obj.TraitInfo);
             end
         end
+        
+        function output = serialize(obj)
+            csvlist = num2str(obj.Value, '%u, ');
+            output = ['[' csvlist(1:end-1) ']'];
+        end
     end
 
     properties (Constant, Access = private)

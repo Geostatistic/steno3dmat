@@ -24,5 +24,20 @@ classdef Image < steno3d.traits.Trait
             error('steno3d:traitError', '%s must be %s',                ...
                   obj.Name, obj.TraitInfo)
         end
+        
+        function output = serialize(obj)
+            obj.validate(obj.Value)
+            try
+                im = imread(obj.Value, 'png');
+            catch
+                im = obj.Value;
+            end
+            fname = [tempfile '.png'];
+            imwrite(im, fname, 'png');
+            fid = fopen(fname, 'r');
+            d = fread(fid);
+            output = struct('FileID', d, 'DType', 'png');
+        end
+            
     end
 end

@@ -18,12 +18,25 @@ classdef Repeated < steno3d.traits.Trait
         end
 
         function val = validate(obj, val)
-            if ~iscell(val)
-                val = {val};
+
+            try
+                val = obj.TraitType.validate(val);
+                return
+            catch
             end
+            if isempty(val)
+                val = [];
+                return
+            end
+                
             for i = 1:length(val)
-                val{i} = obj.TraitType.validate(val{i});
+                if iscell(val)
+                    temp_val(i) = obj.TraitType.validate(val{i});
+                else
+                    temp_val(i) = obj.TraitType.validate(val(i));
+                end
             end
+            val = temp_val;
         end
 
         function obj = set.TraitType(obj, val)
@@ -51,6 +64,9 @@ classdef Repeated < steno3d.traits.Trait
                 argin{end+1} = f;
                 argin{end+1} = val.(f);
             end
+            argin = steno3d.traits.Trait.setTraitDefaults(              ...
+                argin, 'Name', obj.Name                                 ...
+            );
             traitInstance = val.Type(argin{:});
 
             if ~isa(traitInstance, 'steno3d.traits.Trait')
