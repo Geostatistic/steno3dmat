@@ -54,6 +54,27 @@ classdef Mesh2DGrid < steno3d.core.UserContent
     end
 
     methods
+        function obj = Mesh2DGrid(varargin)
+            obj = obj@steno3d.core.UserContent(varargin{:});
+        end
+    end
+    
+    methods (Hidden)
+        function args = uploadArgs(obj)
+            
+            args = {'tensors', ['{"h1": "' obj.TR_H1.serialize()        ...
+                                '", "h2": "' obj.TR_H2.serialize()      ...
+                                '"}'],                                  ...
+                    'OUV', ['{"O": "' obj.TR_O.serialize()              ...
+                            '", "U": "' obj.TR_U.serialize()            ...
+                            '", "V": "' obj.TR_V.serialize() '"}']};
+            
+            zStruct = obj.TR_Z.serialize();
+            args = [args, {'array', zStruct.FileID,                     ...
+                           'arrayType', zStruct.DType}];
+                       
+            args = [args, uploadArgs@steno3d.core.UserContent(obj)];
+        end
     end
 
 end

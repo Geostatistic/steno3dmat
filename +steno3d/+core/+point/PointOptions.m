@@ -1,4 +1,4 @@
-classdef PointOptions < steno3d.traits.HasTraits
+classdef PointOptions < steno3d.core.Options
 %POINTOPTIONS Summary of this class goes here
 %   Detailed explanation goes here
 
@@ -15,13 +15,17 @@ classdef PointOptions < steno3d.traits.HasTraits
                 'Doc', 'Point opacity',                                 ...
                 'MinValue', 0,                                          ...
                 'MaxValue', 1,                                          ...
-                'Required', false                                       ...
+                'Required', false,                                      ...
+                'DefaultValue', 1                                       ...
             )                                                           ...
 
         }
     end
 
     methods
+        function obj = PointOptions(varargin)
+            obj = obj@steno3d.core.Options(varargin{:});
+        end
     end
 
 end

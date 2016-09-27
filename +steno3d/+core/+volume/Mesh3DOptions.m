@@ -1,4 +1,4 @@
-classdef Mesh3DOptions < steno3d.traits.HasTraits
+classdef Mesh3DOptions < steno3d.core.Options
 %MESH3DOPTIONS Summary of this class goes here
 %   Detailed explanation goes here
 
@@ -15,6 +15,10 @@ classdef Mesh3DOptions < steno3d.traits.HasTraits
     end
 
     methods
+        
+        function obj = Mesh3DOptions(varargin)
+            obj = obj@steno3d.core.Options(varargin{:});
+        end
     end
 
 end

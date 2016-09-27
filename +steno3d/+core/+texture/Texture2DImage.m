@@ -30,6 +30,34 @@ classdef Texture2DImage < steno3d.core.UserContent
     end
 
     methods
+        
+        function obj = Texture2DImage(varargin)
+            obj = obj@steno3d.core.UserContent(varargin{:});
+        end
+    end
+    
+    methods (Hidden)
+        
+        function rc = resourceClass(obj)
+            rc = 'image';
+        end
+
+        function mapi = modelAPILocation(obj)
+            mapi = ['resource/texture2d/' obj.resourceClass];
+        end
+        
+        function args = uploadArgs(obj)
+            
+            args = {'OUV', ['{"O": "' obj.TR_O.serialize()              ...
+                            '", "U": "' obj.TR_U.serialize()            ...
+                            '", "V": "' obj.TR_V.serialize() '"}']};
+            
+            imStruct = obj.TR_Image.serialize();
+            args = [args, {'image', imStruct.FileID,                     ...
+                           'imageType', imStruct.DType}];
+                       
+            args = [args, uploadArgs@steno3d.core.UserContent(obj)];
+        end
     end
 
 end

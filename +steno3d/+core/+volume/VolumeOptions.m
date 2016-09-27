@@ -1,4 +1,4 @@
-classdef VolumeOptions < steno3d.traits.HasTraits
+classdef VolumeOptions < steno3d.core.Options
 %VOLUMEOPTIONS Summary of this class goes here
 %   Detailed explanation goes here
 
@@ -15,13 +15,18 @@ classdef VolumeOptions < steno3d.traits.HasTraits
                 'Doc', 'Volume opacity',                                ...
                 'MinValue', 0,                                          ...
                 'MaxValue', 1,                                          ...
-                'Required', false                                       ...
+                'Required', false,                                      ...
+                'DefaultValue', 1                                       ...
             )                                                           ...
 
         }
     end
 
     methods
+        
+        function obj = VolumeOptions(varargin)
+            obj = obj@steno3d.core.Options(varargin{:});
+        end
     end
 
 end

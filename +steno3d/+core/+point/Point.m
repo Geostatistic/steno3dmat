@@ -41,6 +41,9 @@ classdef Point < steno3d.core.CompositeResource
     end
 
     methods
+        function obj = Point(varargin)
+            obj = obj@steno3d.core.CompositeResource(varargin{:});
+        end
     end
 
 end

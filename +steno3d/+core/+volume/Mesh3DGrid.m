@@ -42,6 +42,26 @@ classdef Mesh3DGrid < steno3d.core.UserContent
     end
 
     methods
+        function obj = Mesh3DGrid(varargin)
+            obj = obj@steno3d.core.UserContent(varargin{:});
+        end
+    end
+    
+    methods (Hidden)
+        function args = uploadArgs(obj)
+            
+            args = {'tensors', ['{"h1": "' obj.TR_H1.serialize()        ...
+                                '", "h2": "' obj.TR_H2.serialize()      ...
+                                '", "h3": "' obj.TR_H3.serialize()      ...
+                                '"}'],                                  ...
+                    'OUVZ', ['{"O": "' obj.TR_x0.serialize()            ...
+                             '", "U": "[' num2str(sum(obj.H1)) ', 0, 0]'...
+                             '", "V": "[0, ' num2str(sum(obj.H2)) ', 0]'...
+                             '", "Z": "[0, 0, ' num2str(sum(obj.H3)) ']'...
+                             '"}']};
+                         
+            args = [args, uploadArgs@steno3d.core.UserContent(obj)];
+        end
     end
 
 end

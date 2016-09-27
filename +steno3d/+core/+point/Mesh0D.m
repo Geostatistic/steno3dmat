@@ -23,6 +23,21 @@ classdef Mesh0D < steno3d.core.UserContent
     end
 
     methods
+        function obj = Mesh0D(varargin)
+            obj = obj@steno3d.core.UserContent(varargin{:});
+        end
+    end
+
+    methods (Hidden)
+        function args = uploadArgs(obj)
+
+            vStruct = obj.TR_Vertices.serialize();
+            args = {'vertices', vStruct.FileID,                         ...
+                    'verticesType', vStruct.DType};
+
+            args = [args, uploadArgs@steno3d.core.UserContent(obj)];
+        end
+
     end
 
 end

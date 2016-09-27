@@ -1,4 +1,4 @@
-classdef SurfaceOptions < steno3d.traits.HasTraits
+classdef SurfaceOptions < steno3d.core.Options
 %SURFACEOPTIONS Summary of this class goes here
 %   Detailed explanation goes here
 
@@ -15,13 +15,18 @@ classdef SurfaceOptions < steno3d.traits.HasTraits
                 'Doc', 'Surface opacity',                               ...
                 'MinValue', 0,                                          ...
                 'MaxValue', 1,                                          ...
-                'Required', false                                       ...
+                'Required', false,                                      ...
+                'DefaultValue', 1                                       ...
             )                                                           ...
 
         }
     end
 
     methods
+        
+        function obj = SurfaceOptions(varargin)
+            obj = obj@steno3d.core.Options(varargin{:});
+        end
     end
 
 end

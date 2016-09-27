@@ -24,6 +24,9 @@ classdef VolumeBinder < steno3d.traits.HasTraits
     end
 
     methods
+        function obj = VolumeBinder(varargin)
+            obj = obj@steno3d.traits.HasTraits(varargin{:});
+        end
     end
 
 end

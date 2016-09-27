@@ -28,6 +28,14 @@ classdef DataArray < steno3d.core.UserContent
     end
 
     methods
+        function obj = DataArray(varargin)
+            if rem(nargin, 2) == 1 && isnumeric(varargin{1})
+                varargin = [{'Array'} varargin];
+            end
+            obj = obj@steno3d.core.UserContent(varargin{:});
+        end
+        
+        
     end
 
     methods (Hidden)
@@ -36,7 +44,17 @@ classdef DataArray < steno3d.core.UserContent
         end
 
         function mapi = modelAPILocation(obj)
-            mapi = ['resource/' obj.ResourceClass];
+            mapi = ['resource/data/' obj.resourceClass];
+        end
+        
+        function args = uploadArgs(obj)
+            
+            args = {'order', obj.Order};
+            arrayStruct = obj.TR_Array.serialize();
+            args = [args, {'array', arrayStruct.FileID,                 ...
+                           'arrayType', arrayStruct.DType}];
+                       
+            args = [args, uploadArgs@steno3d.core.UserContent(obj)];
         end
     end
 

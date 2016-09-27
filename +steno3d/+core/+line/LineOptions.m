@@ -1,4 +1,4 @@
-classdef LineOptions < steno3d.traits.HasTraits
+classdef LineOptions < steno3d.core.Options
 %LINEOPTIONS Summary of this class goes here
 %   Detailed explanation goes here
 
@@ -15,13 +15,17 @@ classdef LineOptions < steno3d.traits.HasTraits
                 'Doc', 'Line opacity',                                  ...
                 'MinValue', 0,                                          ...
                 'MaxValue', 1,                                          ...
-                'Required', false                                       ...
+                'Required', false,                                      ...
+                'DefaultValue', 1                                       ...
             )                                                           ...
 
         }
     end
 
     methods
+        function obj = LineOptions(varargin)
+            obj = obj@steno3d.core.Options(varargin{:});
+        end
     end
 
 end

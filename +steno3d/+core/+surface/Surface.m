@@ -47,6 +47,9 @@ classdef Surface < steno3d.core.CompositeResource
     end
 
     methods
+        function obj = Surface(varargin)
+            obj = obj@steno3d.core.CompositeResource(varargin{:});
+        end
     end
 
 end

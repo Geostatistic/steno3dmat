@@ -24,6 +24,9 @@ classdef PointBinder < steno3d.traits.HasTraits
     end
 
     methods
+        function obj = PointBinder(varargin)
+            obj = obj@steno3d.traits.HasTraits(varargin{:});
+        end
     end
 
 end

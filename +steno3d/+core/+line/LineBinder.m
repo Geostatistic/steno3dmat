@@ -26,6 +26,9 @@ classdef LineBinder < steno3d.traits.HasTraits
     end
 
     methods
+        function obj = LineBinder(varargin)
+            obj = obj@steno3d.traits.HasTraits(varargin{:});
+        end
     end
 
 end
