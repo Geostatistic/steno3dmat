@@ -19,12 +19,12 @@ classdef CompositeResource < steno3d.core.UserContent
             end
             if length(obj.findprop('Data')) == 1
                 for i = 1:length(obj.Data)
-                    obj.Data(i).Data.uploadContent(tabLevel)
+                    obj.Data{i}.Data.uploadContent(tabLevel)
                 end
             end
             if length(obj.findprop('Textures')) == 1
                 for i = 1:length(obj.Textures)
-                    obj.Textures(i).uploadContent(tabLevel)
+                    obj.Textures{i}.uploadContent(tabLevel)
                 end
             end
         end
@@ -35,7 +35,7 @@ classdef CompositeResource < steno3d.core.UserContent
             data = '';
             for i = 1:length(obj.Data)
                 data = [data '{"location": "' obj.Data{i}.Location      ...
-                        '", "uid": "' obj.Data(i).Data.PR__uid ...
+                        '", "uid": "' obj.Data{i}.Data.PR__uid ...
                         '"},'];
             end
             args = [args, {'data', ['[' data(1:end-1) ']']}];
@@ -44,7 +44,7 @@ classdef CompositeResource < steno3d.core.UserContent
                 tex = '';
                 for i = 1:length(obj.Textures)
                     tex = [tex '{"uid": "'                              ...
-                           obj.Textures(i).PR__uid '"},'];
+                           obj.Textures{i}.PR__uid '"},'];
                 end
                 args = [args, {'textures', ['[' tex(1:end-1) ']']}];
             end

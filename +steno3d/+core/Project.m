@@ -47,7 +47,7 @@ classdef Project < steno3d.core.UserContent
 
         function uploadChildren(obj, tabLevel)
             for i = 1:length(obj.Resources)
-                obj.Resources(i).uploadContent(tabLevel)
+                obj.Resources{i}.uploadContent(tabLevel)
             end
         end
 
@@ -56,7 +56,7 @@ classdef Project < steno3d.core.UserContent
 
             res = '';
             for i = 1:length(obj.Resources)
-                res = [obj.Resources(i).PR__uid ','];
+                res = [obj.Resources{i}.PR__uid ','];
             end
             args = [args, {'resourceUids', res(1:end-1)}];
 

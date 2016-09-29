@@ -18,22 +18,22 @@ classdef Repeated < props.Prop
         end
 
         function val = validate(obj, val)
-
+            
+            if isempty(val)
+                val = {};
+                return
+            end
             try
-                val = obj.PropType.validate(val);
+                val = {obj.PropType.validate(val)};
                 return
             catch
-            end
-            if isempty(val)
-                val = [];
-                return
             end
 
             for i = 1:length(val)
                 if iscell(val)
-                    temp_val(i) = obj.PropType.validate(val{i});
+                    temp_val{i} = obj.PropType.validate(val{i});
                 else
-                    temp_val(i) = obj.PropType.validate(val(i));
+                    temp_val{i} = obj.PropType.validate(val(i));
                 end
             end
             val = temp_val;
