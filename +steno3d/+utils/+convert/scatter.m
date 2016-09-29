@@ -5,7 +5,7 @@ function res = scatter(sh)
         error('steno3d:convertError', ['steno3d.covnert.scatter '       ...
               'requires graphics input of type "scatter"']);
     end
-    
+
     res = {};
     xdata = sh.XData;
     ydata = sh.YData;
@@ -15,7 +15,7 @@ function res = scatter(sh)
         zdata = sh.ZData;
     end
     vertices = [xdata; ydata; zdata]';
-    
+
     cdata = sh.CData;
     if length(cdata) == 3 && length(xdata) ~= 3
         color = cdata;
@@ -25,21 +25,21 @@ function res = scatter(sh)
     else
         color = 'random';
     end
-        
+
     if ~strcmp(sh.Marker, 'none')
-        pt = steno3d.core.Point(                                         ...
+        pt = steno3d.core.Point(                                        ...
                 'Title', sh.DisplayName,                                ...
                 'Mesh', steno3d.core.Mesh0D(                            ...
                     'Vertices', vertices                                ...
                 ),                                                      ...
-                'Opts', {'Color', color}                                 ...
+                'Opts', {'Color', color}                                ...
             );
         if ~isempty(cdata)
             pt.Data = {'Data', cdata};
         end
         res = [res {pt}];
     end
-        
+
 
 end
 

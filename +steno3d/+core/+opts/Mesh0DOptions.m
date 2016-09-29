@@ -3,7 +3,7 @@ classdef Mesh0DOptions < steno3d.core.opts.Options
 %   Detailed explanation goes here
 
     properties (Hidden, SetAccess = immutable)
-        M0DOptProps = {                                                ...
+        M0DOptProps = {                                                 ...
         }
     end
 

@@ -17,8 +17,8 @@ classdef Prop
     methods
         function obj = Prop(varargin)
             if rem(nargin, 2) ~= 0
-                error('steno3d:propError',                             ...
-                      ['Props must be constructed with valid '         ...
+                error('steno3d:propError',                              ...
+                      ['Props must be constructed with valid '          ...
                        '''PropertyName'', Value pairs'])
             end
             for i = 1:2:nargin
@@ -34,7 +34,7 @@ classdef Prop
 
         function obj = set.Name(obj, val)
             if ~ischar(val)
-                error('steno3d:propError',                             ...
+                error('steno3d:propError',                              ...
                       'Prop property `Name` must be a string');
             end
             obj.Name = val;
@@ -42,7 +42,7 @@ classdef Prop
 
         function obj = set.Doc(obj, val)
             if ~ischar(val)
-                error('steno3d:propError',                             ...
+                error('steno3d:propError',                              ...
                       'Prop property `Doc` must be a string');
             end
             obj.Doc = val;
@@ -50,7 +50,7 @@ classdef Prop
 
         function obj = set.PropInfo(obj, val)
             if ~ischar(val)
-                error('steno3d:propError',                             ...
+                error('steno3d:propError',                              ...
                       'Prop property `PropInfo` must be a string');
             end
             obj.PropInfo = val;
@@ -58,7 +58,7 @@ classdef Prop
 
         function obj = set.Required(obj, val)
             if ~islogical(val) || length(val(:)) ~= 1
-                error('steno3d:propError',                             ...
+                error('steno3d:propError',                              ...
                       'Prop property `Required` must be true or false');
             end
             obj.Required = val;
@@ -87,8 +87,8 @@ classdef Prop
 
         function output = serialize(obj)
             mc = metaclass(obj);
-            error('steno3d:propError',                                 ...
-                  'Cannot serialize prop %s of type %s',               ...
+            error('steno3d:propError',                                  ...
+                  'Cannot serialize prop %s of type %s',                ...
                   mc.Name, obj.Name)
             output = '';
         end
@@ -97,8 +97,8 @@ classdef Prop
     methods (Static)
         function args = setPropDefaults(args, varargin)
             if rem(nargin, 2) ~= 1
-                error('steno3d:propError',                             ...
-                      ['setPropDefaults requires the input arguments ' ...
+                error('steno3d:propError',                              ...
+                      ['setPropDefaults requires the input arguments '  ...
                        'and additional default parameter, value pairs']);
             end
             for i = 1:2:nargin-1

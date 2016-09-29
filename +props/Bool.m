@@ -4,7 +4,7 @@ classdef Bool < props.Prop
 
     methods
         function obj = Bool(varargin)
-            args = props.Prop.setPropDefaults(varargin,      ...
+            args = props.Prop.setPropDefaults(varargin,                 ...
                 'DefaultValue', true,                                   ...
                 'PropInfo', 'true or false');
             obj = obj@props.Prop(args{:});
@@ -12,7 +12,7 @@ classdef Bool < props.Prop
 
         function val = validate(obj, val)
             if ~islogical(val) || length(val(:)) ~= 1
-                error('steno3d:propError', '%s must be %s',            ...
+                error('steno3d:propError', '%s must be %s',             ...
                       obj.Name, obj.PropInfo)
             end
         end

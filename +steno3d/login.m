@@ -31,7 +31,7 @@ function login(varargin)
 %                           saved (default: false)
 %
 %   Example:
-%   >> STENO3D.LOGIN('username//12345678-xxxx-yyyy-zzzz-SOMEDEVELKEY', ...
+%   >> STENO3D.LOGIN('username//12345678-xxxx-yyyy-zzzz-SOMEDEVELKEY',  ...
 %                    'CredentialsFile', './cred')
 
     PRODUCTION_BASE_URL = 'https://steno3d.com/';

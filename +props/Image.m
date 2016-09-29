@@ -4,7 +4,7 @@ classdef Image < props.Prop
 
     methods
         function obj = Image(varargin)
-            args = props.Prop.setPropDefaults(varargin,      ...
+            args = props.Prop.setPropDefaults(varargin,                 ...
                 'ValidateDefault', false,                               ...
                 'PropInfo', 'a PNG image file or valid PNG matrix');
             obj = obj@props.Prop(args{:});
@@ -21,7 +21,7 @@ classdef Image < props.Prop
                 return
             catch
             end
-            error('steno3d:propError', '%s must be %s',                ...
+            error('steno3d:propError', '%s must be %s',                 ...
                   obj.Name, obj.PropInfo)
         end
 

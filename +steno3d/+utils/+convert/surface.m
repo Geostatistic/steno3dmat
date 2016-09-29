@@ -5,32 +5,32 @@ function res = surface(sh)
         error('steno3d:convertError', ['steno3d.covnert.surface '       ...
               'requires graphics input of type "surface"']);
     end
-    
+
     res = {};
     xd = sh.XData;
     yd = sh.YData;
     zd = sh.ZData;
     cd = sh.CData;
-    
+
     if ndims(cd) == 3
         cd = mean(cd, 3);
     end
-    
+
     uxd = unique(xd, 'rows');
     uyd = unique(yd', 'rows');
     if size(uxd, 1) == 1 && size(uyd, 1) == 1
         xd = uxd;
         yd = uyd;
     end
-    
+
     if length(xd) == length(xd(:)) && length(yd) == length(yd(:))
 %         zdtranspose = zd';
-        
+
         mesh = steno3d.core.Mesh2DGrid(                                 ...
-            'H1', diff(xd(:)),                                             ...
-        	'H2', diff(yd(:)),                                             ...
+            'H1', diff(xd(:)),                                          ...
+        	'H2', diff(yd(:)),                                          ...
             'O', [xd(1) yd(1) 0],                                       ...
-            'Z', zd(:)                                                     ...
+            'Z', zd(:)                                                  ...
         );
         if strcmp(sh.FaceColor, 'flat')
             cdsurf = cd(1:end-1, 1:end-1);
@@ -72,19 +72,19 @@ function res = surface(sh)
             cdsurf = cd;
             location = 'N';
         end
-            
+
     end
-    
+
     if strcmp(sh.EdgeColor, 'none')
         mesh.Opts.Wireframe = false;
     end
-    
+
     if any(strcmp(sh.FaceColor, {'flat', 'interp', 'none', 'texturemap'}))
         color = 'random';
     else
         color = sh.FaceColor;
     end
-    
+
     if any(strcmp(sh.FaceAlpha, {'flat', 'interp', 'texturemap'}))
         alpha = 1;
     else
@@ -106,10 +106,10 @@ function res = surface(sh)
             )...
         }];
     end
-    
-    
-    
-    
+
+
+
+
     if strcmp(sh.MarkerFaceColor, 'none')
         mcol = sh.MarkerEdgeColor;
     else
@@ -125,14 +125,14 @@ function res = surface(sh)
                 'Mesh', steno3d.core.Mesh0D(                            ...
                     'Vertices', vertices                                ...
                 ),                                                      ...
-                'Data', {'Data', cd},                                ...
+                'Data', {'Data', cd},                                   ...
                 'Opts', {'Color', mcol}                                 ...
             )                                                           ...
         }];
     end
-    
-    
-        
+
+
+
 
 end
 
