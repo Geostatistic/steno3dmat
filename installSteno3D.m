@@ -16,6 +16,14 @@ function installSteno3D(varargin)
 % Basic check of structure?
 
     narginchk(0, 1);
+    
+    installpath = strsplit(mfilename('fullpath'), filesep);
+    installfolder = strjoin(installpath(1:end-1), filesep);
+    if ~strcmp(pwd, installfolder)
+        error('steno3d:installError',                                   ...
+              'Please install from within the unzipped steno3dmat folder');
+    end
+    
     if nargin == 1
         targetdir = varargin{1};
         if ~ischar(targetdir)
@@ -44,16 +52,16 @@ function installSteno3D(varargin)
         error('steno3d:installError',                                   ...
               ['%s\nSteno3D MATLAB client source folder already '       ...
                'exists.\nIf you are looking to update steno3d, please ' ...
-               'use\n>> steno3d.upgrade()\nOtherwise, please delete '   ...
-               'this folder and install again.'], targetdir)
+               'use\n    >> steno3d.upgrade()\nOtherwise, please '      ...
+               'delete the folder and install again.'], targetdir)
     else
         mkdir(targetdir)
     end
 
     fprintf('Copying files to install location:\n%s\n', targetdir)
-    movefile('uninstallSteno3D.m', targetdir)
-    movefile('+steno3d', targetdir)
-    movefile('LICENSE', targetdir)
+    copyfile('uninstallSteno3D.m', targetdir)
+    copyfile('+steno3d', targetdir)
+    copyfile('LICENSE', targetdir)
 
     fprintf('Adding steno3d to current MATLAB path...\n')
     addpath(targetdir)
@@ -64,17 +72,19 @@ function installSteno3D(varargin)
     addpath(targetdir)
     savepath
     path(savedPath)
+    
+    remove = input('Remove installation source folder? (yes/[no]): ', 's');
+    if strcmp(remove, 'yes')
+        fprintf('Removing installation folder:\n%s...\n\n', installfolder);
+    end
 
-    fprintf('Removing temporary installation folder...\n\n')
-    installpath = strsplit(mfilename('fullpath'), filesep);
-    installfolder = strjoin(installpath(1:end-1), filesep);
+    fprintf(['Installation complete! To get started with steno3d:\n'    ...
+             '    >> help steno3d\n']);
 
-    fprintf(['Installation complete! To get started with steno3d:\n'     ...
-             '>> help steno3d\n']);
-
-    cd ..
-
-    rmdir(installfolder, 's')
+    if strcmp(remove, 'yes')
+        cd ..
+        rmdir(installfolder, 's');
+    end
 end
 
 function home = homedir()
