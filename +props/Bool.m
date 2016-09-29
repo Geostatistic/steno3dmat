@@ -19,9 +19,9 @@ classdef Bool < props.Prop
 
         function output = serialize(obj)
             if obj.Value
-                output = 'True';
+                output = 'true';
             else
-                output = 'False';
+                output = 'false';
             end
         end
     end

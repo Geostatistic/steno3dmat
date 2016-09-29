@@ -79,7 +79,7 @@ classdef String < props.Prop
         end
 
         function output = serialize(obj)
-            output = obj.Value;
+            output = ['"' obj.Value '"'];
         end
 
     end

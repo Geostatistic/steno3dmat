@@ -61,7 +61,7 @@ classdef Array < props.Prop
                 error('steno3d:propError', '%s must be %s',            ...
                       obj.Name, obj.PropInfo);
             end
-            if strcmp(obj.DataType, 'int') && ~all(val == round(val))
+            if strcmp(obj.DataType, 'int') && ~all(val(:) == round(val(:)))
                 error('steno3d:propError', '%s must be all integers',  ...
                       obj.Name);
             end
@@ -90,7 +90,7 @@ classdef Array < props.Prop
                       'Cannot serialize arrays > 2 dimensions');
             end
             val = obj.Value';
-            val = val(:);
+            val = val(:)';
             if obj.Serial
                 tmpFile = [tempname '.dat'];
                 fid = fopen(tmpFile, 'w+', 'l');
