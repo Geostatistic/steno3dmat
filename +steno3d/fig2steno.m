@@ -1,8 +1,14 @@
-function [proj, fail] = fig2steno(gh, tabLevel)
+function [proj, fail] = fig2steno(gh, public, combine, tabLevel)
 %FIG2STENO Summary of this function goes here
 %   Detailed explanation goes here
-
-    if nargin == 1
+    
+    if nargin < 2
+        public = false;
+    end
+    if nargin < 3
+        combine = false;
+    end
+    if nargin < 4
         tabLevel = '';
     end
 
@@ -29,9 +35,31 @@ function [proj, fail] = fig2steno(gh, tabLevel)
         fprintf([num2str(length(axes)) ' set(s) of axes discovered.\n']);
              
         for i = 1:length(axes)
-            [p, f] = steno3d.fig2steno(axes(i), [tabLevel '    ']);
+            [p, f] = steno3d.fig2steno(axes(i), public, false,          ...
+                                       [tabLevel '    ']);
             fail = fail + f;
             proj = [proj p];
+        end
+        
+        if combine && length(proj) > 1
+            fprintf([tabLevel 'Combining all axes into one project.\n'])
+            combProj = steno3d.core.Project(                            ...
+                'Title', 'Untitled MATLAB Project',                     ...
+                'Public', public                                        ...
+            );
+            for i = 1:length(proj)
+                if ~strcmp(proj(i).Title, 'Untitled MATLAB Project')
+                    combProj.Description = [combProj.Description        ...
+                                            proj(i).Description ', '];
+                end
+                combProj.Resources = [combProj.Resources                ...
+                                      proj(i).Resources];
+            end
+            if ~isempty(combProj.Description)
+                combProj.Description = ['Includes: '                    ...
+                                        combProj.Description(1:end-2)];
+            end
+            proj = combProj;
         end
         
         fprintf([tabLevel '... Figure conversion complete!\n']);
@@ -58,7 +86,7 @@ function [proj, fail] = fig2steno(gh, tabLevel)
             title = 'Untitled MATLAB Project';
         end
         
-        proj = steno3d.core.Project('Title', title);
+        proj = steno3d.core.Project('Title', title, 'Public', public);
         
         for i = 1:length(gh.Children)
             [res, f] = steno3d.utils.convert.toStenoRes(gh.Children(i), ...
@@ -79,6 +107,7 @@ function [proj, fail] = fig2steno(gh, tabLevel)
         [res, fail] = steno3d.utils.convert.toStenoRes(gh, '    ');
         if ~isempty(res) 
             proj = steno3d.core.Project('Title', 'MATLAB Graphic',      ...
+                                        'Public', 'public',             ...
                                         'Resources', res);
         else
             proj = [];
