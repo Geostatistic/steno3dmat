@@ -9,8 +9,11 @@ function resp = get(url)
         error('steno3d:notLoggedIn', 'Please `steno3d.login()`')
     end
     user = steno3d.utils.User.currentUser();
-    resp = webread([user.Endpoint url],                                 ...
-                   'sshKey', user.ApiKey,                               ...
-                   'client', ['steno3dmat:' steno3d.utils.version()]);
+    resp_string = urlread([user.Endpoint url], 'get',                         ...
+                   {'sshKey', user.ApiKey,                               ...
+                   'client', ['steno3dmat:' steno3d.utils.version()]});
+    if nargout == 1
+        resp = steno3d.utils.json2struct(resp_string);
+    end
 end
 
