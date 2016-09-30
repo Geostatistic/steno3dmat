@@ -60,13 +60,16 @@ function installSteno3D(varargin)
 
     fprintf('Copying files to install location:\n%s\n', targetdir)
     copyfile('uninstallSteno3D.m', targetdir)
-    copyfile('+steno3d', targetdir)
     copyfile('LICENSE', targetdir)
-
+    steno3ddir = [targetdir filesep '+steno3d'];
+    copyfile('+steno3d', steno3ddir)
+    propsdir = [targetdir filesep '+props'];
+    copyfile('+props', propsdir)
+    
     fprintf('Adding steno3d to current MATLAB path...\n')
     addpath(targetdir)
 
-    fprintf('Adding steno3d to default MATLAB path...\n')
+    fprintf('Adding steno3d to default MATLAB path...\n\n')
     savedPath = path;
     path(pathdef)
     addpath(targetdir)
@@ -75,11 +78,11 @@ function installSteno3D(varargin)
     
     remove = input('Remove installation source folder? (yes/[no]): ', 's');
     if strcmp(remove, 'yes')
-        fprintf('Removing installation folder:\n%s...\n\n', installfolder);
+        fprintf('Removing installation folder:\n%s...\n', installfolder);
     end
 
-    fprintf(['Installation complete! To get started with steno3d:\n'    ...
-             '    >> help steno3d\n']);
+    fprintf(['\nInstallation complete! To get started with steno3d:\n'  ...
+             '    >> help steno3d\n\n']);
 
     if strcmp(remove, 'yes')
         cd ..
