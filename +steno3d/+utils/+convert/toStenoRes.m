@@ -24,8 +24,15 @@ function [res, fail] = toStenoRes(gh, tabLevel)
             res = steno3d.utils.convert.scatter(gh);
         case 'surface'
             res = steno3d.utils.convert.surface(gh);
-                
-                
+        case 'patch'
+            res = steno3d.utils.convert.patch(gh);
+        case 'hggroup'
+            for i = 1:length(gh.Children)
+                [r, f] = steno3d.utils.convert.toStenoRes(gh.Children(i), tabLevel + '    ');
+                res = [res r];
+                fail = fail + f;
+            end
+            
         otherwise
             fprintf([tabLevel '... Unsupported graphics type.\n'])
             fail = 1;
