@@ -99,7 +99,7 @@ end
 %    end
 
 % Read the data from the connection.
-try
+% try
     inputStream = urlConnection.getInputStream;
     byteArrayOutputStream = java.io.ByteArrayOutputStream;
     % This StreamCopier is unsupported and may change at any time.
@@ -108,10 +108,10 @@ try
     inputStream.close;
     byteArrayOutputStream.close;
     output = native2unicode(typecast(byteArrayOutputStream.toByteArray','uint8'),'UTF-8');
-catch
-    if catchErrors, return
-    else error('MATLAB:urlreadpost:ConnectionFailed','Error downloading URL. Your network connection may be down or your proxy settings improperly configured.');
-    end
-end
+% catch
+%     if catchErrors, return
+%     else error('MATLAB:urlreadpost:ConnectionFailed','Error downloading URL. Your network connection may be down or your proxy settings improperly configured.');
+%     end
+% end
 
 status = 1;

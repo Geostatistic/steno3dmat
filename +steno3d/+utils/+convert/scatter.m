@@ -2,7 +2,7 @@ function res = scatter(sh)
 %SCATTER Summary of this function goes here
 %   Detailed explanation goes here
     if ~isgraphics(sh) || ~strcmp(sh.Type, 'scatter')
-        error('steno3d:convertError', ['steno3d.covnert.scatter '       ...
+        error('steno3d:convertError', ['steno3d.utils.covnert.scatter '       ...
               'requires graphics input of type "scatter"']);
     end
 
