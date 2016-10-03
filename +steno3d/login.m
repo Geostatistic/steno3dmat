@@ -86,12 +86,12 @@ function login(varargin)
                   ['Login parameter names must be strings. For more '   ...
                    'info:\n>> help steno3d.login']);
         end
-        switch kwargs{i}
-            case VALID_PARAMS{1}
+        switch lower(kwargs{i})
+            case lower(VALID_PARAMS{1})
                 endpoint = validateEndpoint(kwargs{i+1});
-            case VALID_PARAMS{2}
+            case lower(VALID_PARAMS{2})
                 credFile = validateCredFile(kwargs{i+1});
-            case VALID_PARAMS{3}
+            case lower(VALID_PARAMS{3})
                 skipCred = validateSkipCred(kwargs{i+1});
             otherwise
                 error('steno3d:badLoginParam',                          ...
