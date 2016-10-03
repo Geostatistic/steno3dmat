@@ -6,6 +6,7 @@ classdef Array < props.Prop
         Shape = {'*'}
         Serial = false
         DataType = 'float'
+        IndexArray = false
     end
 
     methods
@@ -45,6 +46,14 @@ classdef Array < props.Prop
                       'Array property `Serial` must be true or false');
             end
             obj.Serial = val;
+        end
+        
+        function obj = set.IndexArray(obj, val)
+            if ~islogical(val) || length(val(:)) ~= 1
+                error('steno3d:propError',                              ...
+                      'Array property `IndexArray` must be true or false');
+            end
+            obj.IndexArray = val;
         end
 
         function obj = set.DataType(obj, val)
@@ -91,6 +100,9 @@ classdef Array < props.Prop
             end
             val = obj.Value';
             val = val(:)';
+            if obj.IndexArray
+                val = val-1;
+            end
             if obj.Serial
                 tmpFile = [tempname '.dat'];
                 fid = fopen(tmpFile, 'w+', 'l');
@@ -110,6 +122,11 @@ classdef Array < props.Prop
                 csvlist = num2str(val, '%g, ');
                 output = ['[' csvlist(1:end-1) ']'];
             end
+        end
+        
+        function n = nbytes(obj)
+            obj.validate(obj.Value);
+            n = length(obj.Value(:))*8;
         end
     end
 end

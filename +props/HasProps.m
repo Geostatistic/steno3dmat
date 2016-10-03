@@ -62,6 +62,9 @@ classdef HasProps < dynamicprops
                 obj.(varargin{i}) = varargin{i+1};
             end
         end
+    end
+    
+    methods (Hidden)
 
         function valid = validator(obj)
             valid = true;
@@ -89,10 +92,14 @@ classdef HasProps < dynamicprops
                     end
                     if ~isempty(value)
                         prop.validate(value);
-                        for j = 1:length(value)
-                            v = value(j);
-                            if isa(v, 'props.HasProps')
-                                v.validate();
+                        if isa(value, 'props.HasProps')
+                            value.validate()
+                        elseif iscell(value)
+                            for j = 1:length(value)
+                                v = value{j};
+                                if isa(v, 'props.HasProps')
+                                    v.validate();
+                                end
                             end
                         end
                     end

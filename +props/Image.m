@@ -32,12 +32,26 @@ classdef Image < props.Prop
             catch
                 im = obj.Value;
             end
-            fname = [tempfile '.png'];
+            fname = [tempname '.png'];
             imwrite(im, fname, 'png');
             fid = fopen(fname, 'r');
             d = fread(fid);
             output = struct('FileID', d, 'DType', 'png');
         end
+        
+        function n = nbytes(obj)
+            obj.validate(obj.Value)
+            try
+                im = imread(obj.Value, 'png');
+            catch
+                im = obj.Value;
+            end
+            fname = [tempname '.png'];
+            imwrite(im, fname, 'png');
+            fdir = dir(fname);
+            n = fdir.bytes;
+        end
+            
 
     end
 end
