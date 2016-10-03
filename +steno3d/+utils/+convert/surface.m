@@ -1,8 +1,8 @@
-function res = surface(sh)
+function res = surface(sh, tabLevel)
 %SCATTER Summary of this function goes here
 %   Detailed explanation goes here
     if ~isgraphics(sh) || ~strcmp(sh.Type, 'surface')
-        error('steno3d:convertError', ['steno3d.utils.covnert.surface '       ...
+        error('steno3d:convertError', ['steno3d.utils.convert.surface ' ...
               'requires graphics input of type "surface"']);
     end
 
@@ -11,7 +11,12 @@ function res = surface(sh)
     yd = sh.YData;
     zd = sh.ZData;
     cd = sh.CData;
-
+    
+    if isempty(cd)
+        hascd = false;
+    else
+        hascd = true;
+    end
     if ndims(cd) == 3
         cd = mean(cd, 3);
     end
@@ -31,10 +36,10 @@ function res = surface(sh)
             'O', [xd(1) yd(1) 0],                                       ...
             'Z', zd(:)                                                  ...
         );
-        if strcmp(sh.FaceColor, 'flat')
+        if strcmp(sh.FaceColor, 'flat') && hascd
             cdsurf = cd(1:end-1, 1:end-1);
             location = 'CC';
-        else
+        elseif hascd
             cdsurf = cd;
             location = 'N';
         end
@@ -52,41 +57,44 @@ function res = surface(sh)
             for j = 1:shp(1)-1
                 
                 ind = ind+1;
-                triangles(ind, :) = [(i-1)*shp(1)+j-1,                  ...
-                                     (i-1)*shp(1)+j,                    ...
-                                     i*shp(1)+j-1];
-                ind = ind+1;
                 triangles(ind, :) = [(i-1)*shp(1)+j,                    ...
-                                     i*shp(1)+j,                        ...
-                                     i*shp(1)+j-1];
+                                     (i-1)*shp(1)+j+1,                  ...
+                                     i*shp(1)+j];
+                ind = ind+1;
+                triangles(ind, :) = [(i-1)*shp(1)+j+1,                  ...
+                                     i*shp(1)+j+1,                      ...
+                                     i*shp(1)+j];
             end
         end
         
-        % Remove nans for now
+        % Remove nans for now?
         keep = ~sum(isnan(vertices), 2);
-        
-        dontkeepind = find(~keep)-1;
         keeptris = true(size(triangles, 1), 1);
-        for i = 1:length(dontkeepind)
-            keeptris = keeptris & ~sum(triangles == dontkeepind(i), 2);
+        
+        removeNans = false;
+        
+        if removeNans
+            dontkeepind = find(~keep)-1;
+            for i = 1:length(dontkeepind)
+                keeptris = keeptris & ~sum(triangles == dontkeepind(i), 2);
+            end
+            triangles = triangles(keeptris, :);
         end
-        triangles = triangles(keeptris, :);
         
         mesh = steno3d.core.Mesh2D(                                     ...
             'Vertices', vertices,                                       ...
             'Triangles', triangles                                      ...
         );
     
-        if strcmp(sh.FaceColor, 'flat')
+        if strcmp(sh.FaceColor, 'flat') && hascd
             cdsurf = cd(1:end-1, 1:end-1);
             cdsurf = cdsurf(ceil(.5:.5:end));
             cdsurf = cdsurf(keeptris);
             location = 'CC';
-        else
+        elseif hascd
             cdsurf = cd;
             location = 'N';
         end
-
     end
 
     if strcmp(sh.EdgeColor, 'none')
@@ -109,16 +117,20 @@ function res = surface(sh)
             steno3d.core.Surface(                                       ...
                 'Title', sh.DisplayName,                                ...
                 'Mesh', mesh,                                           ...
-                'Data', {                                               ...
-                    'Location', location,                               ...
-                    'Data', cdsurf(:)                                   ...
-                },                                                      ...
                 'Opts', {                                               ...
                     'Color', color,                                     ...
                     'Opacity', alpha                                    ...
                 }                                                       ...
             )                                                           ...
         }];
+        if hascd
+            res{end}.Data = {                                               ...
+                    'Location', location,                               ...
+                    'Data', cdsurf(:)                                   ...
+                };
+            
+        end
+                
     end
 
 
@@ -139,10 +151,15 @@ function res = surface(sh)
                 'Mesh', steno3d.core.Mesh0D(                            ...
                     'Vertices', vertices(keep, :)                       ...
                 ),                                                      ...
-                'Data', {'Data', cd},                                   ...
                 'Opts', {'Color', mcol}                                 ...
             )                                                           ...
         }];
+        if hascd
+            res{end}.Data = {                                               ...
+                    'Data', cd                                  ...
+                };
+            
+        end
     end
 
 
