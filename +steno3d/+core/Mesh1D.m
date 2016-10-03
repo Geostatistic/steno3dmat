@@ -18,6 +18,7 @@ classdef Mesh1D < steno3d.core.UserContent
                 'Shape', {{'*', 2}},                                    ...
                 'DataType', 'int',                                      ...
                 'Serial', true,                                         ...
+                'IndexArray', true,                                     ...
                 'Required', true                                        ...
             ), struct(                                                  ...
                 'Name', 'Opts',                                         ...
@@ -34,9 +35,41 @@ classdef Mesh1D < steno3d.core.UserContent
         function obj = Mesh1D(varargin)
             obj = obj@steno3d.core.UserContent(varargin{:});
         end
+        
+        function n = nN(obj)
+            n = length(obj.Vertices);
+        end
+        function n = nC(obj)
+            n = length(obj.Segments);
+        end
+        function n = nbytes(obj)
+            n = length(obj.Vertices(:))*8 + length(obj.Segments(:))*8;
+        end
     end
 
     methods (Hidden)
+        
+        function validator(obj)
+            if min(obj.Segments(:)) < 1 ||                              ...
+                    max(obj.Segments(:)) > size(obj.Vertices, 1)
+                error('steno3d:validationError',                        ...
+                      ['Segments must be integers between 1 and '       ...
+                       num2str(size(obj.Vertices, 1))                   ...
+                       ' (length of vertices)'])
+            end
+            if steno3d.utils.User.isLoggedIn()
+                user = steno3d.utils.User.currentUser();
+                sz = max([obj.([obj.PROP_PREFIX 'Vertices']).nbytes     ...
+                          obj.([obj.PROP_PREFIX 'Segments']).nbytes]);
+                if sz > user.FileSizeLimit
+                    error('steno3d:validationError',                    ...
+                          ['File size ' num2str(sz) ' bytes exceeds '   ...
+                           'file limit of ' num2str(user.FileSizeLimit) ...
+                           ' bytes']);
+                end
+            end
+        end
+        
         function args = uploadArgs(obj)
 
             vStruct = obj.PR_Vertices.serialize();

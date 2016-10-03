@@ -45,9 +45,37 @@ classdef Mesh3DGrid < steno3d.core.UserContent
         function obj = Mesh3DGrid(varargin)
             obj = obj@steno3d.core.UserContent(varargin{:});
         end
+        
+        function n = nN(obj)
+            n = (length(obj.H1) + 1) * (length(obj.H2) + 1) *           ...
+                (length(obj.H3) + 1);
+        end
+        
+        function n = nC(obj)
+            n = length(obj.H1) * length(obj.H2) * length(obj.H3);
+        end
+        function n = nbytes(obj)
+            n = length(obj.H1)*8 + length(obj.H2)*8 + length(obj.H3)*8;
+        end
     end
 
     methods (Hidden)
+        
+        function validator(obj)
+            if steno3d.utils.User.isLoggedIn()
+                user = steno3d.utils.User.currentUser();
+                sz = max([obj.([obj.PROP_PREFIX 'H1']).nbytes           ...
+                          obj.([obj.PROP_PREFIX 'H2']).nbytes           ...
+                          obj.([obj.PROP_PREFIX 'H3']).nbytes]);
+                if sz > user.FileSizeLimit
+                    error('steno3d:validationError',                    ...
+                          ['File size ' num2str(sz) ' bytes exceeds '   ...
+                           'file limit of ' num2str(user.FileSizeLimit) ...
+                           ' bytes']);
+                end
+            end
+        end
+        
         function args = uploadArgs(obj)
 
             args = {'tensors', ['{"h1": ' obj.PR_H1.serialize()         ...
