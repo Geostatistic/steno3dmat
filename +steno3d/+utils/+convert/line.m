@@ -1,11 +1,11 @@
 function res = line(lh, tabLevel)
-%LINE Summary of this function goes here
-%   Detailed explanation goes here
+%LINE Matlab line to steno3d Line conversion
+
     if ~isgraphics(lh) || ~strcmp(lh.Type, 'line')
         error('steno3d:convertError', ['steno3d.utils.convert.line requires ' ...
               'graphics input of type "line"']);
     end
-    
+
     res = {};
     xdata = lh.XData;
     ydata = lh.YData;
@@ -16,13 +16,13 @@ function res = line(lh, tabLevel)
     end
     vertices = [xdata(:) ydata(:) zdata(:)];
     segments = [0:length(xdata)-2;1:length(xdata)-1]';
-    
+
     % Remove nans for now
     keep = ~sum(isnan(vertices), 2);
     keep = keep(1:end-1) & keep(2:end);
     segments = segments(keep, :);
-    
-    
+
+
     if ~strcmp(lh.LineStyle, 'none') && ~strcmp(lh.Color, 'none')
         res = [res {                                                    ...
             steno3d.core.Line(                                          ...
@@ -35,7 +35,7 @@ function res = line(lh, tabLevel)
             )                                                           ...
         }];
     end
-    
+
     if strcmp(lh.MarkerFaceColor, 'none')
         mcol = lh.MarkerEdgeColor;
     else
@@ -55,7 +55,7 @@ function res = line(lh, tabLevel)
             )                                                           ...
         }];
     end
-        
+
 
 end
 
