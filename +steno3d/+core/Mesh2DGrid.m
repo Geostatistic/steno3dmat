@@ -1,6 +1,5 @@
 classdef Mesh2DGrid < steno3d.core.UserContent
-%MESH2DGRID Summary of this class goes here
-%   Detailed explanation goes here
+%MESH2DGRID Mesh for steno3d Surface
 
     properties (Hidden, SetAccess = immutable)
         M2DProps = {                                                    ...

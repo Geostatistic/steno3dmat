@@ -1,12 +1,13 @@
-function [ s, json ] = json2struct( json )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+function [s, json] = json2struct(json)
+%JSON2STRUCT Converts json strings to matlab structs
+%
+% This is used to parse the output of urlread. It is limited to only the
+% functionality required by steno3d.
 
     if strcmp(json(1:2), '{}')
         s = struct();
         json = json(3:end);
         return
-
     elseif strcmp(json(1:2), '{"')
         s = struct();
         json = json(2:end);
@@ -15,7 +16,6 @@ function [ s, json ] = json2struct( json )
         json = json(2:end);
         while true
             [subs, rem] = steno3d.utils.json2struct(json);
-            
             s{end+1} = subs;
             json = rem;
             if strcmp(json(1), ']')

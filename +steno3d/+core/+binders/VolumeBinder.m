@@ -1,6 +1,6 @@
 classdef VolumeBinder < props.HasProps
-%VOLUMEBINDER Summary of this class goes here
-%   Detailed explanation goes here
+%VOLUMEBINDER Object to add data to steno3d Volume
+
 
     properties (Hidden, SetAccess = immutable)
         VBinderProps = {                                                ...

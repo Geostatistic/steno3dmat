@@ -1,17 +1,18 @@
 function proj = convert(gh, varargin)
-%FIG2STENO Summary of this function goes here
-%   Detailed explanation goes here
-
-% combineaxes
-% combine resources
-% tablevel
-
-% ['\nIf you would like to see additional support please' ...
-%                 '\nsubmit an issue on <a href="matlab: web('            ...
-%                 '''https://github.com/3ptscience/steno3dmat/issues'','  ...
-%                 '''-browser'')">github</a> or consider <a href="matlab:'...
-%                 ' web(''https://github.com/3ptscience/steno3dmat'','    ...
-%                 '''-browser'')">contributing</a>.\n']
+%CONVERT Converts MATLAB figure or axes into a steno3d project
+%
+% ...or attempts to.
+%   
+% Avalable parameters:
+%       CombineAxes
+%       CombineResources
+%       TabLevel
+%
+% If you would like to see additional support please submit an issue on
+% <a href="matlab: web('https://github.com/3ptscience/steno3dmat/issues',
+% '-browser')">github</a> or consider <a href="matlab: web(
+% 'https://github.com/3ptscience/steno3dmat',
+% '-browser')">contributing</a>.
             
             
     narginchk(1, 7)

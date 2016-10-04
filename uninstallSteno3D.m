@@ -1,5 +1,5 @@
-function uninstallSteno3D(varargin)
-%UNINSTALLSTENO3D remove steno3d from the MATLAB environment
+function uninstallSteno3D()
+%UNINSTALLSTENO3D Remove steno3d from the MATLAB environment
 %
 %   UNINSTALLSTENO3D() removes steno3d from the MATLAB path and prompts to
 %   delete steno3d files

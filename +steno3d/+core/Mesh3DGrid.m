@@ -1,6 +1,5 @@
 classdef Mesh3DGrid < steno3d.core.UserContent
-%MESH3DGRID Summary of this class goes here
-%   Detailed explanation goes here
+%MESH3DGRID Mesh for steno3d Volume
 
     properties (Hidden, SetAccess = immutable)
         M3DProps = {                                                    ...

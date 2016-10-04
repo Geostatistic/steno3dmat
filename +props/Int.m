@@ -1,6 +1,5 @@
 classdef Int < props.Float
-%INT Summary of this class goes here
-%   Detailed explanation goes here
+%INT Integer property
 
     methods
         function obj = Int(varargin)

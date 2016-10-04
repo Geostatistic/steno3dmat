@@ -1,6 +1,5 @@
 classdef Point < steno3d.core.CompositeResource
-%POINT Summary of this class goes here
-%   Detailed explanation goes here
+%POINT Steno3D Point composite resource
 
     properties (Hidden, SetAccess = immutable)
         PointProps = {                                                  ...

@@ -1,6 +1,6 @@
 function success = testSteno3D()
-%TESTSTENO3D Summary of this function goes here
-%   Detailed explanation goes here
+%TESTSTENO3D Test suite for steno3d
+
     success = true;
 
 

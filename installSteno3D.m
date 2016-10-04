@@ -13,7 +13,6 @@ function installSteno3D(varargin)
 %
 %   >> installSteno3D([matlabroot filesep 'toolbox'])
 
-% Basic check of structure?
 
     if verLessThan('matlab', 'R2014b')
         error('steno3d:installError', ['Steno3D requires MATLAB '       ...
@@ -24,9 +23,6 @@ function installSteno3D(varargin)
     end
     
     narginchk(0, 1);
-    
-    
-    
     
     installpath = strsplit(mfilename('fullpath'), filesep);
     installfolder = strjoin(installpath(1:end-1), filesep);

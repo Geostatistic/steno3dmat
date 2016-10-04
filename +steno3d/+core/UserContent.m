@@ -1,6 +1,5 @@
 classdef UserContent < props.HasProps
-%USERCONTENT Summary of this class goes here
-%   Detailed explanation goes here
+%USERCONTENT Base class for all Steno3D content that can be uploaded
 
     properties (Hidden, SetAccess = immutable)
         UCProps = {                                                     ...

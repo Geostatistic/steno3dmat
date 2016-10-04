@@ -1,6 +1,6 @@
 classdef PointBinder < props.HasProps
-%POINTBINDER Summary of this class goes here
-%   Detailed explanation goes here
+%POINTBINDER Object to add data to steno3d Point
+
 
     properties (Hidden, SetAccess = immutable)
         PBinderProps = {                                                ...

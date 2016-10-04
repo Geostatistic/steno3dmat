@@ -1,6 +1,6 @@
 function proj = figure(fh, combineAxes, combineRes, tabLevel)
-%FIG2STENO Summary of this function goes here
-%   Detailed explanation goes here
+%FIGURE Matlab figure to steno3d project conversion
+
     if ~isgraphics(fh) || ~strcmp(fh.Type, 'figure')
         error('steno3d:convertError', ['steno3d.utils.convert.figure '  ...
               'requires graphics input of type "figure"']);

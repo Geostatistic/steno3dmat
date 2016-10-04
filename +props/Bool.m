@@ -1,6 +1,5 @@
 classdef Bool < props.Prop
-%BOOL Summary of this class goes here
-%   Detailed explanation goes here
+%BOOL Boolean property
 
     methods
         function obj = Bool(varargin)

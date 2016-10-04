@@ -1,6 +1,5 @@
 classdef String < props.Prop
-%STRING Summary of this class goes here
-%   Detailed explanation goes here
+%STRING String property
 
     properties (Access = ?props.Prop)
         Choices = struct()

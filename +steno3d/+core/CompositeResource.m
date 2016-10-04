@@ -1,6 +1,5 @@
 classdef CompositeResource < steno3d.core.UserContent
-%COMPOSITERESOURCE Summary of this class goes here
-%   Detailed explanation goes here
+%COMPOSITERESOURCE Base class for steno3d resources (Point, Line, etc.)
 
     properties
     end

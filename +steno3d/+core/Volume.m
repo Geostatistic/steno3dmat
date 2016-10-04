@@ -1,6 +1,5 @@
 classdef Volume < steno3d.core.CompositeResource
-%VOLUME Summary of this class goes here
-%   Detailed explanation goes here
+%VOLUME Steno3D Volume composite resource
 
     properties (Hidden, SetAccess = immutable)
         VolumeProps = {                                                 ...

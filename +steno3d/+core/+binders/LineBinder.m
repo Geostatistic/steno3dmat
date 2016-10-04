@@ -1,6 +1,5 @@
 classdef LineBinder < props.HasProps
-%LINEBINDER Summary of this class goes here
-%   Detailed explanation goes here
+%LINEBINDER Object to add data to steno3d Line
 
     properties (Hidden, SetAccess = immutable)
         LBinderProps = {                                                ...

@@ -1,6 +1,5 @@
 classdef Color < props.Prop
-%COLOR Summary of this class goes here
-%   Detailed explanation goes here
+%COLOR RGB, Hex, or string color property
 
     methods
         function obj = Color(varargin)

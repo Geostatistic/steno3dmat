@@ -1,6 +1,5 @@
 classdef Image < props.Prop
-%IMAGE Summary of this class goes here
-%   Detailed explanation goes here
+%IMAGE PNG image property
 
     methods
         function obj = Image(varargin)

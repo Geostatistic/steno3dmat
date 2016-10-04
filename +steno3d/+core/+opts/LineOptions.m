@@ -1,6 +1,5 @@
 classdef LineOptions < steno3d.core.opts.Options
-%LINEOPTIONS Summary of this class goes here
-%   Detailed explanation goes here
+%LINEOPTIONS Options applicable to steno3d Line
 
     properties (Hidden, SetAccess = immutable)
         LOptProps = {                                                   ...

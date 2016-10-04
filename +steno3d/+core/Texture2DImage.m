@@ -1,6 +1,5 @@
 classdef Texture2DImage < steno3d.core.UserContent
-%TEXTURE2DIMAGE Summary of this class goes here
-%   Detailed explanation goes here
+%TEXTURE2DIMAGE Steno3D object to hold images and spatial mapping
 
     properties (Hidden, SetAccess = immutable)
         TextureProps = {                                                ...

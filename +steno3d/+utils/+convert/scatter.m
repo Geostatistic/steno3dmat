@@ -1,6 +1,6 @@
 function res = scatter(sh, tabLevel)
-%SCATTER Summary of this function goes here
-%   Detailed explanation goes here
+%SCATTER Matlab scatter to steno3d Point conversion
+
     if ~isgraphics(sh) || ~strcmp(sh.Type, 'scatter')
         error('steno3d:convertError', ['steno3d.utils.convert.scatter ' ...
               'requires graphics input of type "scatter"']);

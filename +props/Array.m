@@ -1,6 +1,5 @@
 classdef Array < props.Prop
-%ARRAY Summary of this class goes here
-%   Detailed explanation goes here
+%ARRAY Multi-dimensional float or int array property
 
     properties (SetAccess = ?props.Prop)
         Shape = {'*'}

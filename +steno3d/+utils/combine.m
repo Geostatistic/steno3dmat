@@ -1,6 +1,5 @@
 function proj = combine(proj)
-%COMBINE Summary of this function goes here
-%   Detailed explanation goes here
+%COMBINE Combine a list of steno3d projects into one
 
     if isempty(proj) || ~isa(proj(1), 'steno3d.core.Project')
         error('steno3d:convertError', ['steno3d.utils.combine requires '...

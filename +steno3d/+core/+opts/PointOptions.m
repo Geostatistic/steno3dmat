@@ -1,6 +1,5 @@
 classdef PointOptions < steno3d.core.opts.Options
-%POINTOPTIONS Summary of this class goes here
-%   Detailed explanation goes here
+%POINTOPTIONS Options applicable to steno3d Point
 
     properties (Hidden, SetAccess = immutable)
         POptProps = {                                                   ...
@@ -18,7 +17,6 @@ classdef PointOptions < steno3d.core.opts.Options
                 'Required', false,                                      ...
                 'DefaultValue', 1                                       ...
             )                                                           ...
-
         }
     end
 

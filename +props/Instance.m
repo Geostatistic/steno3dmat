@@ -1,8 +1,8 @@
 classdef Instance < props.Prop
-%INSTANCE Summary of this class goes here
-%   Detailed explanation goes here
+%INSTANCE Property that must be an instance of a given class
 %
-% self instances can be defined with eval(@HasPropsClass)
+% Note: If a HasProps class must contain an instance of itself, this
+%       circular pointing can be achieved with Class = eval(@HasPropsClass)
 
     properties (SetAccess = ?props.Prop)
         Initialize = true

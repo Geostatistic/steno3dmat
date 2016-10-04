@@ -1,6 +1,5 @@
 classdef Union < props.Prop
-%UNION Summary of this class goes here
-%   Detailed explanation goes here
+%UNION Property that may be one of several different types of properties
 
     properties (Access = ?props.Prop)
         PropTypes

@@ -1,6 +1,5 @@
 classdef Float < props.Prop
-%FLOAT Summary of this class goes here
-%   Detailed explanation goes here
+%FLOAT Float property
 
     properties (SetAccess = ?props.Prop)
         MinValue = -Inf

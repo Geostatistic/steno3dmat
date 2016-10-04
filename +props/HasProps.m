@@ -1,6 +1,5 @@
 classdef HasProps < dynamicprops
-%HASPROPS Summary of this class goes here
-%   Detailed explanation goes here
+%HASPROPS Class with dynamically created, declarative properties
 
     properties (Hidden, SetAccess = immutable)
         % Cell array of structs with required fields:

@@ -1,18 +1,5 @@
 function upgradeSteno3D()
-%INSTALLSTENO3D add steno3d to the MATLAB environment
-%
-%   INSTALLSTENO3D() copies steno3dmat to '~/.steno3d_client/` and adds
-%   it to the default MATLAB path
-%   INSTALLSTENO3D(FOLDER) copies steno3dmat to FOLDER and adds it to the
-%   default MATLAB path
-%
-%   The default install location for 'steno3dmat/' is '~/.steno3d_client/'
-%   corresponding to the default location for other saved steno3d files.
-%   However, you may wish to save it to the standard MATLAB toolbox
-%   location. To do so, use:
-%
-%   >> installSteno3D([matlabroot filesep 'toolbox'])
-
+%UPGRADESTENO3D Download and install the latest version of Steno3D
 
     narginchk(0, 0);
     

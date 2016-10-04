@@ -1,6 +1,5 @@
 classdef Options < props.HasProps
-%OPTIONS Summary of this class goes here
-%   Detailed explanation goes here
+%OPTIONS Base class for steno3d options
 
     properties
     end

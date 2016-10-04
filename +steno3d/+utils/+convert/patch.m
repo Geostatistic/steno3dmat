@@ -1,6 +1,6 @@
 function res = patch(ph, tabLevel)
-%PATCH Summary of this function goes here
-%   Detailed explanation goes here
+%PATCH Matlab patch to steno3d surface
+
     if ~isgraphics(ph) || ~strcmp(ph.Type, 'patch')
         error('steno3d:convertError', ['steno3d.utils.convert.patch '   ...
               'requires graphics input of type "patch"']);
@@ -38,7 +38,7 @@ function res = patch(ph, tabLevel)
         cd = mean(cd, 2);
     end
     
-    if strcmp(ph.FaceColor, 'flat') && size(cd, 1) == size(vert, 1) && hascd
+    if strcmp(ph.FaceColor,'flat') && size(cd, 1) == size(vert, 1) && hascd
         cd = cd(faces(:, 1));
     end
     if size(cd, 1) == size(faces, 1) && size(faces, 2) > 3 && hascd
@@ -78,10 +78,6 @@ function res = patch(ph, tabLevel)
     else
         alpha = ph.FaceAlpha;
     end
-    
-%     if size(unique(cd), 1) == 1
-%         hascd = false;
-%     end
     
     if ~strcmp(ph.EdgeColor, 'none') || ~strcmp(ph.FaceColor, 'none')
         if size(faces, 2) == 3
@@ -151,8 +147,8 @@ function res = patch(ph, tabLevel)
             steno3d.core.Point(                                         ...
                 'Title', ph.DisplayName,                                ...
                 'Mesh', steno3d.core.Mesh0D(                            ...
-                    'Vertices', vert                       ...
-                ),                                            ...
+                    'Vertices', vert                                    ...
+                ),                                                      ...
                 'Opts', {'Color', mcol}                                 ...
             )                                                           ...
         }];

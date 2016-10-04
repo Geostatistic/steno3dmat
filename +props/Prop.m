@@ -1,6 +1,5 @@
 classdef Prop
-%PROP Summary of this class goes here
-%   Detailed explanation goes here
+%PROP Base property to use with HasProps
 
     properties
         Value

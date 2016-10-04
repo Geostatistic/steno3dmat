@@ -1,6 +1,5 @@
 classdef Mesh2DOptions < steno3d.core.opts.Options
-%MESH2DOPTIONS Summary of this class goes here
-%   Detailed explanation goes here
+%MESH2DOPTIONS Options applicable for steno3d Mesh2D or Mesh2DGrid
 
     properties (Hidden, SetAccess = immutable)
         M2DOptProps = {                                                 ...

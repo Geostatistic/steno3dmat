@@ -1,6 +1,5 @@
 classdef SurfaceOptions < steno3d.core.opts.Options
-%SURFACEOPTIONS Summary of this class goes here
-%   Detailed explanation goes here
+%SURFACEOPTIONS Options applicable to steno3d Surface
 
     properties (Hidden, SetAccess = immutable)
         SOptProps = {                                                   ...

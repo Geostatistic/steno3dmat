@@ -1,6 +1,6 @@
 function proj = axes(ah, combineRes, tabLevel)
-%FIG2STENO Summary of this function goes here
-%   Detailed explanation goes here
+%AXES Matlab axes to steno3d project conversion
+
     if ~isgraphics(ah) || ~strcmp(ah.Type, 'axes')
         error('steno3d:convertError', ['steno3d.utils.convert.axes '    ...
               'requires graphics input of type "axes"']);

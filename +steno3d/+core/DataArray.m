@@ -1,6 +1,5 @@
 classdef DataArray < steno3d.core.UserContent
-%DATAARRAY Summary of this class goes here
-%   Detailed explanation goes here
+%DATAARRAY Steno3D object to hold data array, ordering, title, etc.
 
     properties (Hidden, SetAccess = immutable)
         DataArrayProps = {                                              ...
@@ -34,8 +33,6 @@ classdef DataArray < steno3d.core.UserContent
             end
             obj = obj@steno3d.core.UserContent(varargin{:});
         end
-
-
     end
 
     methods (Hidden)

@@ -1,6 +1,5 @@
 classdef SurfaceBinder < props.HasProps
-%SURFACEBINDER Summary of this class goes here
-%   Detailed explanation goes here
+%SURFACEBINDER Object to add data to steno3d Surface
 
     properties (Hidden, SetAccess = immutable)
         SBidnerProps = {                                                ...

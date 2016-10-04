@@ -1,6 +1,5 @@
 classdef Surface < steno3d.core.CompositeResource
-%SURFACE Summary of this class goes here
-%   Detailed explanation goes here
+%SURFACE Steno3d Surface composite resource
 
     properties (Hidden, SetAccess = immutable)
         SurfaceProps = {                                                ...

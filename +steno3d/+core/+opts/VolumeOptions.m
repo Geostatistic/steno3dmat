@@ -1,6 +1,5 @@
 classdef VolumeOptions < steno3d.core.opts.Options
-%VOLUMEOPTIONS Summary of this class goes here
-%   Detailed explanation goes here
+%VOLUMEOPTIONS Options applicable to steno3d Volume
 
     properties (Hidden, SetAccess = immutable)
         VOptProps = {                                                   ...
@@ -18,7 +17,6 @@ classdef VolumeOptions < steno3d.core.opts.Options
                 'Required', false,                                      ...
                 'DefaultValue', 1                                       ...
             )                                                           ...
-
         }
     end
 

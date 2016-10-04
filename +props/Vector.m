@@ -1,6 +1,5 @@
 classdef Vector < props.Array
-%VECTOR Summary of this class goes here
-%   Detailed explanation goes here
+%VECTOR Three-component vector property
 
     methods
         function obj = Vector(varargin)

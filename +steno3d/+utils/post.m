@@ -15,7 +15,9 @@ function resp = post(url, varargin)
         'client', ['steno3dmat:' steno3d.utils.version()]},             ...
         varargin]                                                       ...
     );
-    resp = steno3d.utils.json2struct(resp_string);
+    if nargout == 1
+        resp = steno3d.utils.json2struct(resp_string);
+    end
 end
 
 

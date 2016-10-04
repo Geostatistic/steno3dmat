@@ -1,6 +1,5 @@
 classdef Project < steno3d.core.UserContent
-%PROJECT Summary of this class goes here
-%   Detailed explanation goes here
+%PROJECT Steno3D Project contains composite resources and can be uploaded
 
     properties (Hidden, SetAccess = immutable)
         ProjProps = {                                                   ...

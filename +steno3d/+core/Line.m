@@ -1,6 +1,5 @@
 classdef Line < steno3d.core.CompositeResource
-%LINE Summary of this class goes here
-%   Detailed explanation goes here
+%LINE Steno3D line composite resource
 
     properties (Hidden, SetAccess = immutable)
         LineProps = {                                                   ...

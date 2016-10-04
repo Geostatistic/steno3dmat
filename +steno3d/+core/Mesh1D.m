@@ -1,6 +1,5 @@
 classdef Mesh1D < steno3d.core.UserContent
-%MESH1D Summary of this class goes here
-%   Detailed explanation goes here
+%MESH1D Mesh for steno3d Line
 
     properties (Hidden, SetAccess = immutable)
         M1DProps = {                                                    ...

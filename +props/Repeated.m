@@ -1,6 +1,5 @@
 classdef Repeated < props.Prop
-%REPEATED Summary of this class goes here
-%   Detailed explanation goes here
+%REPEATED Property that is a repeated number of another type of property
 
     properties (Access = ?props.Prop)
         PropType

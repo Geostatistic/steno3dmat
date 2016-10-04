@@ -2,8 +2,9 @@ function resp = get(url, varargin)
 %GET perform a web request to steno3d.com
 %
 %   RESP = GET(URL) get data from the URL endpoint of steno3d.com, passing
-%   required headers. Returns web response or errors if no user is logged
-%   in.
+%   required headers and any additional parameter/value pairs. Returns web
+%   response, converted from json to matlab struct, or errors if no user is
+%   logged in.
 
     if ~steno3d.utils.User.isLoggedIn()
         error('steno3d:notLoggedIn', 'Please `steno3d.login()`')
