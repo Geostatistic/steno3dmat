@@ -1,4 +1,4 @@
-function upgradeSteno3D(beta)
+function upgradeSteno3D()
 %INSTALLSTENO3D add steno3d to the MATLAB environment
 %
 %   INSTALLSTENO3D() copies steno3dmat to '~/.steno3d_client/` and adds
@@ -14,7 +14,7 @@ function upgradeSteno3D(beta)
 %   >> installSteno3D([matlabroot filesep 'toolbox'])
 
 
-    narginchk(0, 1);
+    narginchk(0, 0);
     
     upgradepath = strsplit(mfilename('fullpath'), filesep);
     steno3dfolder = strjoin(upgradepath(1:end-1), filesep);
@@ -34,47 +34,34 @@ function upgradeSteno3D(beta)
     
     upgradefolder = [steno3dfolder 'temp_upgrade_dir' filesep];
     
-    
-    if nargin == 0
-        beta = false;
-    elseif strcmpi(beta, 'beta') || strcmpi(beta, 'pre')
-        beta = true;
-    end 
-    
-    
-    if ~islogical(beta)
-        error('steno3d:upgradeError', 'Invalid input argument');
-    end
-    
     fname = [upgradefolder 'steno3dmat.zip'];
-    if beta
-        try
-            fprintf('Downloading latest beta version... ');
-            urlwrite(['https://raw.githubusercontent.com/3ptscience/'   ...
-                      'steno3dmat/master/releases/steno3dmat.beta.zip'],...
-                     fname);
-        catch
-            fprintf('no beta version found.\n');
-            beta = false;
-        end
-    end
     
-    if ~beta
-        fprintf('Downloading latest stable version...');
-        try
-            urlwrite(['https://raw.githubusercontent.com/3ptscience/'   ...
-                      'steno3dmat/master/releases/steno3dmat.zip'], ...
-                     fname);
-            fprintf('success!\n');
-        catch
-            fprintf(['\nError downloading the latest Steno3D release.\n'...
-                     'For alternative installation instructions please '...
-                     'checkout \nthe <a href="matlab: web(''https://'   ...
-                     'github.com/3ptscience/steno3dmat/master/'','      ...
-                     ' ''-browser'')">github page</a>\n\n'              ...
-                     'Upgrade failed\n']);
-            return
+    fprintf('Downloading latest version...');
+    try
+        resp_str = urlread(['https://api.github.com/repos/3ptscience/'  ...
+                            'steno3dmat/releases/latest']);
+        resp = steno3d.utils.json2struct(resp_str);
+        if ~isempty(resp.assets)
+            for i = 1:length(resp.assets)
+                if strcmp(resp.assets{i}.name, 'steno3dmat.zip')
+                    zipurl = resp.assets{i}.browser_download_url;
+                    break
+                end
+            end
+        else
+            zipurl = resp.zipball_url;
         end
+        urlwrite(zipurl, fname);
+        
+        fprintf('success!\n');
+    catch
+        fprintf(['\nError downloading the latest Steno3D release.\n'...
+                 'For alternative installation instructions please '...
+                 'checkout \nthe <a href="matlab: web(''https://'   ...
+                 'github.com/3ptscience/steno3dmat/master/'','      ...
+                 ' ''-browser'')">github page</a>\n\n'              ...
+                 'Upgrade failed\n']);
+        return
     end
     
     fprintf('Unzipping archive...\n');

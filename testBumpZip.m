@@ -15,12 +15,9 @@ function testBumpZip(codainput)
         return
     end
     
-    fprintf('Stashing old release\n');
+    fprintf('Stashing old release locally\n');
     system(['mv releases/steno3dmat.zip '                              	...
             'releases/steno3dmat.' steno3d.utils.version() '.zip']);
-    system('git add -A');
-    system(['git commit -m "Archive steno3dmat.zip to steno3dmat.'      ...
-            steno3d.utils.version() '.zip"']);
     
     fprintf('Bumping version\n');
     system(['coda ' codainput]);
@@ -38,8 +35,4 @@ function testBumpZip(codainput)
          'steno3dmat/README'});
     cd steno3dmat/
     
-    fprintf('Committing new version\n');
-    system('git add releases/steno3dmat.zip');
-    system(['git commit -m "Release steno3dmat.zip version '            ...
-            steno3d.utils.versio() '"']);
-    
+    fprintf('Add releases/steno3dmat.zip to the release on github\n')
