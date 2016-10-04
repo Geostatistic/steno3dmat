@@ -384,15 +384,14 @@ function versionOk = isVersionOk(endpoint)
 
     versionOk = true;
     try
-        resp = webwrite([endpoint 'api/client/steno3dmat'],             ...
-                        'version', steno3d.utils.version());
+        resp = urlread([endpoint 'api/client/steno3dmat'], 'post',      ...
+                        {'version', steno3d.utils.version()});
     catch ME
-        if strcmp(ME.identifier, 'MATLAB:webservices:UnknownHost')
+        if strcmp(ME.identifier, 'MATLAB:urlread:PostFailed')
             notConnectedError();
             versionOk = false;
-        end
-        if strcmp(ME.identifier,                                        ...
-                  'MATLAB:webservices:HTTP400StatusCodeError')
+        elseif strcmp(ME.identifier,                                    ...
+                  'MATLAB:urlread:ConnectionFailed')
             versplit = strsplit(steno3d.utils.version(), '.');
             if strfind(versplit(3), 'b')
                 fprintf(BETA_TEST);
@@ -401,6 +400,9 @@ function versionOk = isVersionOk(endpoint)
                         ['Your version: ' steno3d.utils.version()],     ...
                         'Error: Invalid version string');
             end
+        else
+            fprintf(['Unrecognized error when communicating with the '   ...
+                     'server. Attempting to continue...\n'])
         end
         return
     end
