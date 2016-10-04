@@ -15,7 +15,18 @@ function installSteno3D(varargin)
 
 % Basic check of structure?
 
+    if verLessThan('matlab', 'R2014b')
+        error('steno3d:installError', ['Steno3D requires MATLAB '       ...
+              'Release R2014b or greater.\nIf you do not have access '  ...
+              'to this version, consider trying the\n<a href="matlab: ' ...
+              'web(''https://github.com/3ptscience/steno3dpy/master/'','...
+              ' ''-browser'')">Steno3D client library for Python</a>.');
+    end
+    
     narginchk(0, 1);
+    
+    
+    
     
     installpath = strsplit(mfilename('fullpath'), filesep);
     installfolder = strjoin(installpath(1:end-1), filesep);
