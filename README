@@ -23,7 +23,12 @@ At that point, you can
 then start uploading your MATLAB figures. Function and API documentation is
 available through the MATLAB help browser or online (https://steno3d.com/docs).
 
-If you have any problems please submit an issue (https://github.com/3ptscience/steno3dmat/issues).
+If you run into problems or if you see a new release on github
+(https://github.com/3ptscience/steno3dmat/releases), you can upgrade in MATLAB:
+
+    >> upgradeSteno3D
+
+If your problems persist, please submit an issue (https://github.com/3ptscience/steno3dmat/issues).
 
 Your version of Steno3D is 0.0.0. Detailed release notes are available
 on github (https://github.com/3ptscience/steno3dmat/releases).

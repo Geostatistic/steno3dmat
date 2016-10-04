@@ -1,9 +1,6 @@
 Steno3D
 *******
 
-.. image:: https://travis-ci.org/3ptscience/steno3dmat.svg?branch=master
-    :target: https://travis-ci.org/3ptscience/steno3dmat
-
 .. image:: https://img.shields.io/badge/license-MIT-blue.svg
     :alt: MIT License
     :target: https://github.com/3ptscience/steno3dmat/blob/master/LICENSE
@@ -34,7 +31,14 @@ At that point, you can
 then start uploading your MATLAB figures. Function and API documentation is
 available through the MATLAB help browser or `online <https://steno3d.com/docs>`_.
 
-If you have any problems please submit an `issue <https://github.com/3ptscience/steno3dmat/issues>`_.
+If you run into problems or if you see a new release on `github <https://github.com/3ptscience/steno3dmat/releases>`_,
+you can upgrade in MATLAB:
+
+.. code:: matlab
+
+    >> upgradeSteno3D
+
+If your problems persist, please submit an `issue <https://github.com/3ptscience/steno3dmat/issues>`_.
 
 The latest version of Steno3D is 0.0.0. Detailed release notes are available
 on `github <https://github.com/3ptscience/steno3dmat/releases>`_.
