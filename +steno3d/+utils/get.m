@@ -12,7 +12,7 @@ function resp = get(url, varargin)
     user = steno3d.utils.User.currentUser();
     resp_string = urlread([user.Endpoint url], 'get',                   ...
                    [varargin {'sshKey', user.ApiKey,                    ...
-                   'client', ['steno3dmat:' steno3d.utils.version()]}]);
+                   'client', ['steno3dmat:' steno3d.version()]}]);
     if nargout == 1
         resp = steno3d.utils.json2struct(resp_string);
     end

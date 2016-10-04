@@ -14,7 +14,7 @@ function login(varargin)
 %
 %   Then, you can request a devel key:
 %
-%   <a href="matlab: web('https://steno3d.com/settings/developer', 
+%   <a href="matlab: web('https://steno3d.com/settings/developer',
 %   '-browser')">https://steno3d.com/settings/developer</a>
 %
 %   Unless you choose to 'SkipCredentials', your API key will be saved
@@ -238,7 +238,7 @@ function loginWith(apikey, endpoint)
     try
         resp_str = urlread([endpoint 'api/me'], 'get',                  ...
                            {'sshKey', apikey, 'client',                 ...
-                            ['steno3dmat:' steno3d.utils.version()]});
+                            ['steno3dmat:' steno3d.version()]});
         resp = steno3d.utils.json2struct(resp_str);
     catch ME
         if strcmp(ME.identifier, 'MATLAB:webservices:UnknownHost')
@@ -375,7 +375,7 @@ function versionOk = isVersionOk(endpoint)
     versionOk = true;
     try
         resp_str = urlread([endpoint 'api/client/steno3dmat'], 'post',  ...
-                        {'version', steno3d.utils.version()});
+                        {'version', steno3d.version()});
     catch ME
         if strcmp(ME.identifier, 'MATLAB:urlread:PostFailed')
             notConnectedError();
@@ -383,7 +383,7 @@ function versionOk = isVersionOk(endpoint)
         elseif strcmp(ME.identifier, 'MATLAB:urlread:ConnectionFailed')
 %             fprintf(['Checking your version of steno3dmat with the '    ...
 %                      'server failed.\nYour current version is '         ...
-%                      steno3d.utils.version() '.\n\nIf you get this '    ...
+%                      steno3d.version() '.\n\nIf you get this '    ...
 %                      'message repeatedly, check on <a href="matlab: '   ...
 %                      'web(''https://github.com/3ptscience/steno3dmat/'  ...
 %                      'releases'', ''-browser'')">github</a>\nto see '   ...
