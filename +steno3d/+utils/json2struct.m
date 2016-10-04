@@ -2,15 +2,30 @@ function [ s, json ] = json2struct( json )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
-    s = struct();
     if strcmp(json(1:2), '{}')
+        s = struct();
         json = json(3:end);
         return
 
-    elseif ~strcmp(json(1:2), '{"')
+    elseif strcmp(json(1:2), '{"')
+        s = struct();
+        json = json(2:end);
+    elseif strcmp(json(1:3), '[{"')
+        s = {};
+        json = json(2:end);
+        while true
+            [subs, rem] = steno3d.utils.json2struct(json);
+            
+            s{end+1} = subs;
+            json = rem;
+            if strcmp(json(1), ']')
+                json = json(2:end);
+                return
+            end
+        end
+    else
         error('steno3d:jsonError','Invalid JSON encountered');
     end
-    json = json(2:end);
 
     while true
         if strcmp(json(1:2), ', ')
@@ -23,10 +38,14 @@ function [ s, json ] = json2struct( json )
         ind = strfind(json, '"');
         field = strrep(json(1:ind(1)-1), ':', '_');
         json = json(ind(1)+1:end);
-        if ~strcmp(json(1:2), ': ')
+        
+        if strcmp(json(1:2), ': ')
+            json = json(3:end);
+        elseif strcmp(json(1), ':')
+            json = json(2:end);
+        else
             error('steno3d:jsonError','Invalid JSON encountered');
         end
-        json = json(3:end);
         if strcmp(json(1), '[')
             val = {};
             json = json(2:end);
@@ -51,7 +70,15 @@ function [ s, json ] = json2struct( json )
                     else
                         ind = min(cind(1), bind(1));
                     end
-                    val = [val str2double(json(1:ind(1)-1))];
+                    v = json(1:ind(1)-1);
+                    if strcmpi(v, 'true')
+                        v = true;
+                    elseif strcmpi(v, 'false')
+                        v = false;
+                    else
+                        v = str2double(v);
+                    end
+                    val = [val v];
                     json = json(ind(1):end);
                 end
                 if strcmp(json(1), ']')
@@ -79,7 +106,15 @@ function [ s, json ] = json2struct( json )
             else
                 ind = min(cind(1), bind(1));
             end
-            val = str2double(json(1:ind(1)-1));
+            val = json(1:ind(1)-1);
+            if strcmpi(val, 'true')
+                val = true;
+            elseif strcmpi(val, 'false')
+                val = false;
+            else
+                val = str2double(val);
+            end
+            
             json = json(ind(1):end);
         end
         try
@@ -91,10 +126,12 @@ function [ s, json ] = json2struct( json )
         if strcmp(json(1), '}')
             json = json(2:end);
             break
-        elseif ~strcmp(json(1:3), ', "')
-            error('steno3d:jsonError','Invalid JSON encountered');
-        else
+        elseif strcmp(json(1:3), ', "')
             json = json(3:end);
+        elseif strcmp(json(1:2), ',"')
+            json = json(2:end);
+        else
+            error('steno3d:jsonError','Invalid JSON encountered');
         end
     end
 end
