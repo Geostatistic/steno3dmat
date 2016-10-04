@@ -25,7 +25,7 @@ classdef UserContent < props.HasProps
     end
 
     properties (Hidden)
-        PR__uid = []
+        PR__uid = ''
     end
 
     methods

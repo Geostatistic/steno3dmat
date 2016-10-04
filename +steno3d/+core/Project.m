@@ -60,7 +60,6 @@ classdef Project < steno3d.core.UserContent
                 for i = 1:length(obj.Resources)
                     sz = sz + obj.Resources{i}.nbytes();
                 end
-                user.FigSizeLimit
                 if sz > user.FigSizeLimit
                     error('steno3d:validationError',                    ...
                           ['Project size ' num2str(sz) ' bytes exceeds '...

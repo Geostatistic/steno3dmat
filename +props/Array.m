@@ -125,7 +125,6 @@ classdef Array < props.Prop
         end
         
         function n = nbytes(obj)
-            obj.validate(obj.Value);
             n = length(obj.Value(:))*8;
         end
     end

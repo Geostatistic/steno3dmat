@@ -17,7 +17,7 @@ classdef Image < props.Prop
             catch
             end
             try
-                imwrite(val, [tempfile '.png'], 'png')
+                imwrite(val, [tempname '.png'], 'png');
                 return
             catch
             end
@@ -26,7 +26,7 @@ classdef Image < props.Prop
         end
 
         function output = serialize(obj)
-            obj.validate(obj.Value)
+            obj.validate(obj.Value);
             try
                 im = imread(obj.Value, 'png');
             catch
@@ -35,12 +35,13 @@ classdef Image < props.Prop
             fname = [tempname '.png'];
             imwrite(im, fname, 'png');
             fid = fopen(fname, 'r');
-            d = fread(fid);
+            d = fread(fid, Inf, '*uint8');
+            fclose(fid);
             output = struct('FileID', d, 'DType', 'png');
         end
         
         function n = nbytes(obj)
-            obj.validate(obj.Value)
+            obj.validate(obj.Value);
             try
                 im = imread(obj.Value, 'png');
             catch
