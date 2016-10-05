@@ -1,8 +1,8 @@
-function testBumpZip(codainput)
+function testBumpZip()
 %TESTBUMPZIP Helper function to run tests, bump version, and zip files
 
-    resp = input('Are all changes committed? ([yes]/no)');
-    if ~isempty(resp)
+    resp = input('Are all changes committed? ([yes]/no)', 's');
+    if ~isempty(resp) && ~strcmp(resp, 'yes')
         return
     end
     if ~strcmp([pwd filesep 'testBumpZip'], mfilename('fullpath'))
@@ -10,6 +10,7 @@ function testBumpZip(codainput)
                  'directory\n']);
         return
     end
+    fprintf('Running tests\n');
     success = testSteno3D();
 
     if ~success
@@ -21,8 +22,9 @@ function testBumpZip(codainput)
     system(['mv releases/steno3dmat.zip '                              	...
             'releases/steno3dmat.' steno3d.version() '.zip']);
 
-    fprintf('Bumping version\n');
-    system(['coda ' codainput]);
+    fprintf('Please bump the version then continue\n');
+    pause
+%     system(['coda ' codainput]);
 
     fprintf('Zipping files\n');
     cd ..
