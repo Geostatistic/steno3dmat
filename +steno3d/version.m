@@ -1,5 +1,5 @@
 function ver = version()
-%VERSION returns the current local version of steno3dmat
+%VERSION Current local version of steno3dmat
 %
 %   VER = VERSION() returns local version
 

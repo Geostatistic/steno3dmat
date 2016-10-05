@@ -1,5 +1,5 @@
 function logout()
-% LOGOUT logs user out of current steno3d session
+% LOGOUT Logs user out of current steno3d session
 %
 %   STENO3D.LOGOUT() logs out of developer session on steno3d.com,
 %   deletes current user data, and removes steno3d from the path if it

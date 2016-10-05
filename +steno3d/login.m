@@ -1,5 +1,5 @@
 function login(varargin)
-%LOGIN logs in to steno3d.com with your api developer key
+%LOGIN Logs in to steno3d.com with your api developer key
 %
 %   STENO3D.LOGIN()         attempts to login with saved api key
 %   STENO3D.LOGIN(API_KEY)  attempts to login with API_KEY
