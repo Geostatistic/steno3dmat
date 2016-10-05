@@ -36,9 +36,9 @@ function uninstallSteno3D()
         path(savedPath)
         fprintf('Done\n')
     end
-
-    remove = input(['Delete steno3dmat directory ' steno3dpath '\n'     ...
-                    'and all its contents? (yes/[no]): '], 's');
+    
+    fprintf(['Delete steno3dmat directory ' steno3dpath '\n']);
+    remove = input('and all its contents? (yes/[no]): ', 's');
     if ~strcmp(remove, 'yes')
         fprintf(['Steno3D MATLAB client still available to use from '   ...
                  'the directory:\n%s\n'], steno3dpath)

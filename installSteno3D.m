@@ -79,7 +79,7 @@ function installSteno3D(varargin)
     fprintf('Adding steno3d to current MATLAB path...\n')
     addpath(targetdir)
 
-    fprintf('Adding steno3d to default MATLAB path...\n\n')
+    fprintf('Adding steno3d to default MATLAB path...\n')
     savedPath = path;
     path(pathdef)
     addpath(targetdir)
