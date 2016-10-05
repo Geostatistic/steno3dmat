@@ -35,5 +35,24 @@ classdef Line < steno3d.core.CompositeResource
         end
     end
 
+    methods (Hidden)
+        function plot(obj)
+            if isempty(obj.Data)
+                cdata = {'EdgeColor', obj.Opts.Color/255};
+            elseif strcmp(obj.Data{1}.Location, 'CC')
+                ccarr = obj.Data{1}.Data.Array;
+                narr = ccarr(1)*ones(size(obj.Mesh.Vertices, 1), 1);
+                narr(obj.Mesh.Segments(:, 1)) = ccarr;
+                cdata = {'CData', narr, 'EdgeColor', 'flat'};
+            else
+                cdata = {'CData', obj.Data{1}.Data.Array,               ...
+                         'EdgeColor', 'interp'};
+            end
+
+            patch('Faces', obj.Mesh.Segments,                           ...
+                  'Vertices', obj.Mesh.Vertices,                        ...
+                  cdata{:}, 'EdgeAlpha', obj.Opts.Opacity)
+        end
+    end
 end
 

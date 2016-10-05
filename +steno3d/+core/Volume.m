@@ -36,5 +36,57 @@ classdef Volume < steno3d.core.CompositeResource
         end
     end
 
+    methods (Hidden)
+        function plot(obj)
+            origin = obj.Mesh.O;
+            os = {origin, origin + [0 0 sum(obj.Mesh.H3)],              ...
+                  origin, origin + [0 sum(obj.Mesh.H2) 0],              ...
+                  origin, origin + [sum(obj.Mesh.H1) 0 0]};
+            us = {[1 0 0], [1 0 0], [1 0 0], [1 0 0], [0 1 0], [0 1 0]};
+            vs = {[0 1 0], [0 1 0], [0 0 1], [0 0 1], [0 0 1], [0 0 1]};
+            dat = reshape(obj.Data{1}.Data.Array, length(obj.Mesh.H1),  ...
+                          length(obj.Mesh.H2), length(obj.Mesh.H3));
+            dats = {dat(:, :, 1), dat(:, :, end), dat(:, 1, :),         ...
+                    dat(:, end, :), dat(1, :, :), dat(end, :, :)};
+            h1s = {obj.Mesh.H1, obj.Mesh.H1, obj.Mesh.H1, obj.Mesh.H1,  ...
+                   obj.Mesh.H2, obj.Mesh.H2};
+            h2s = {obj.Mesh.H2, obj.Mesh.H2, obj.Mesh.H3, obj.Mesh.H3,  ...
+                   obj.Mesh.H3, obj.Mesh.H3};
+            for i = 1:6
+                lh1 = length(h1s{i});
+                lh2 = length(h2s{i});
+                h1 = repmat([0 cumsum(h1s{i})], lh2+1, 1)';
+                h2 = repmat([0 cumsum(h2s{i})], lh1+1, 1);
+                u = us{i};
+                v = vs{i};
+                u = u/sqrt(sum(u.^2));
+                v = v/sqrt(sum(v.^2));
+                verts = h1(:)*u + h2(:)*v + ones(size(h1(:)))*os{i};
+
+                f = 1:lh1;
+                f = [f; f+1; f+lh1+2; f+lh1+1]';
+                faces = repmat(f, lh2, 1);
+                offset = (lh1+1)*(0:lh2-1);
+                offset = ones(lh1, 1) * offset;
+                faces = faces + offset(:)*ones(1, 4);
+
+                ccarr = dats{i}(:);
+                narr = ccarr(1)*ones(size(verts, 1), 1);
+                narr(faces(:, 1)) = ccarr;
+                cdata = {'CData', narr, 'FaceColor', 'flat'};
+
+                if obj.Mesh.Opts.Wireframe
+                    ec = [0 0 0];
+                else
+                    ec = 'none';
+                end
+
+                patch('Vertices', verts, 'Faces', faces, cdata{:},      ...
+                      'EdgeColor', ec, 'FaceAlpha', obj.Opts.Opacity);
+                hold on;
+            end
+        end
+    end
+
 end
 

@@ -51,5 +51,57 @@ classdef Surface < steno3d.core.CompositeResource
         end
     end
 
+    methods (Hidden)
+        function plot(obj)
+            if isa(obj.Mesh, 'steno3d.core.Mesh2D')
+                verts = obj.Mesh.Vertices;
+                faces = obj.Mesh.Triangles;
+            else
+                lh1 = length(obj.Mesh.H1);
+                lh2 = length(obj.Mesh.H2);
+                h1 = repmat([0 cumsum(obj.Mesh.H1)], lh2+1, 1)';
+                h2 = repmat([0 cumsum(obj.Mesh.H2)], lh1+1, 1);
+                u = obj.Mesh.U;
+                v = obj.Mesh.V;
+                u = u/sqrt(sum(u.^2));
+                v = v/sqrt(sum(v.^2));
+                verts = h1(:)*u + h2(:)*v + ones(size(h1(:)))*obj.Mesh.O;
+                if ~isempty(obj.Mesh.Z)
+                    z = cross(u, v);
+                    z = z/sqrt(sum(z.^2));
+                    verts = verts + obj.Mesh.Z*z;
+                end
+
+                f = 1:lh1;
+                f = [f; f+1; f+lh1+2; f+lh1+1]';
+                faces = repmat(f, lh2, 1);
+                offset = (lh1+1)*(0:lh2-1);
+                offset = ones(lh1, 1) * offset;
+                faces = faces + offset(:)*ones(1, 4);
+
+            end
+
+            if isempty(obj.Data)
+                cdata = {'FaceColor', obj.Opts.Color/255};
+            elseif strcmp(obj.Data{1}.Location, 'N')
+                cdata = {'CData', obj.Data{1}.Data.Array,               ...
+                         'FaceColor', 'interp'};
+            else
+                ccarr = obj.Data{1}.Data.Array;
+                narr = ccarr(1)*ones(size(verts, 1), 1);
+                narr(faces(:, 1)) = ccarr;
+                cdata = {'CData', narr, 'FaceColor', 'flat'};
+            end
+
+            if obj.Mesh.Opts.Wireframe
+                ec = [0 0 0];
+            else
+                ec = 'none';
+            end
+
+            patch('Vertices', verts, 'Faces', faces, cdata{:},          ...
+                  'EdgeColor', ec, 'FaceAlpha', obj.Opts.Opacity);
+        end
+    end
 end
 

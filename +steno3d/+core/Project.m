@@ -35,9 +35,19 @@ classdef Project < steno3d.core.UserContent
             user = steno3d.utils.User.currentUser();
             uidsplit = strsplit(obj.PR__uid, ':');
             url = strjoin([user.Endpoint 'app/' uidsplit(2)], '');
-            fprintf(['<a href="matlab: '                              ...
+            fprintf(['<a href="matlab: '                                ...
                     'web(''' url ''', ''-browser'')"'...
                     '>View Project</a>'])
+        end
+
+        function fig = plot(obj)
+            obj.validate();
+            fig = figure;
+            axes;
+            hold on;
+            for i = 1:length(obj.Resources)
+                obj.Resources{i}.plot();
+            end
         end
     end
 
@@ -45,7 +55,7 @@ classdef Project < steno3d.core.UserContent
         function mapi = modelAPILocation(obj)
             mapi = 'project/steno3d';
         end
-        
+
         function validator(obj)
             if steno3d.utils.User.isLoggedIn()
                 user = steno3d.utils.User.currentUser();
@@ -88,7 +98,7 @@ classdef Project < steno3d.core.UserContent
 
             args = [args, uploadArgs@steno3d.core.UserContent(obj)];
         end
-        
+
         function quotaCheck(obj, public)
             if public
                 privacy = 'public';
@@ -103,7 +113,7 @@ classdef Project < steno3d.core.UserContent
             if strcmp(resp.quota, 'Unlimited')
                 return
             elseif str2double(resp.count) >= str2double(resp.quota)
-                error('steno3d:quotaException', ... 
+                error('steno3d:quotaException',                         ...
                       ['Uploading this ' pirvacy ' project will put '   ...
                        'you over your quota of ' resp.quota ' ' privacy ...
                        ' project(s). For more projects and space, '     ...
