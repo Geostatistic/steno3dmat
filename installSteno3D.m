@@ -66,7 +66,10 @@ function installSteno3D(varargin)
     end
 
     fprintf('Copying files to install location:\n%s\n', targetdir)
+    copyfile('testSteno3D.m', targetdir)
     copyfile('uninstallSteno3D.m', targetdir)
+    copyfile('upgradeSteno3D.m', targetdir)
+    copyfile('README', targetdir)
     copyfile('LICENSE', targetdir)
     steno3ddir = [targetdir filesep '+steno3d'];
     copyfile('+steno3d', steno3ddir)
