@@ -94,7 +94,7 @@ function upgradeSteno3D()
     remove = input('Delete temporary upgrade files? ([yes]/no)', 's');
     
     if isempty(remove) || strcmp(remove, 'yes')
-        fprintf(['Deleting temporary directory: ' upgradefolder '\n'])
+        fprintf(['Deleting temporary directory:\n' upgradefolder '\n'])
         rmdir(upgradefolder)
     end
     

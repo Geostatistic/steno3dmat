@@ -88,7 +88,7 @@ function installSteno3D(varargin)
     
     remove = input('Remove installation source folder? (yes/[no]): ', 's');
     if strcmp(remove, 'yes')
-        fprintf('Removing installation folder:\n%s...\n', installfolder);
+        fprintf('Removing installation folder:\n%s\n', installfolder);
     end
 
     fprintf(['\nInstallation complete! To get started with steno3d:\n'  ...
