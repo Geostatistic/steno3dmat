@@ -40,5 +40,5 @@ you can upgrade in MATLAB:
 
 If your problems persist, please submit an `issue <https://github.com/3ptscience/steno3dmat/issues>`_.
 
-The latest version of Steno3D is 0.0.0. Detailed release notes are available
+The latest version of Steno3D is 0.0.1. Detailed release notes are available
 on `github <https://github.com/3ptscience/steno3dmat/releases>`_.

@@ -3,5 +3,5 @@ function ver = version()
 %
 %   VER = VERSION() returns local version
 
-    ver = '0.0.0';
+    ver = '0.0.1';
 end
