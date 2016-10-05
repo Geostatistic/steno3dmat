@@ -4,10 +4,11 @@ function upgradeSteno3D()
     narginchk(0, 0);
     
     upgradepath = strsplit(mfilename('fullpath'), filesep);
-    steno3dfolder = strjoin(upgradepath(1:end-1), filesep);
+    steno3dmatfolder = strjoin(upgradepath(1:end-1), filesep);
+    steno3dfolder = strjoin(upgradepath(1:end-2), filesep);
     
-    if isdir([steno3dfolder filesep '+props']) &&                       ...
-            isdir([steno3dfolder filesep '+steno3d'])
+    if isdir([steno3dmatfolder filesep '+props']) &&                       ...
+            isdir([steno3dmatfolder filesep '+steno3d'])
         fprintf('Existing Steno3D installation found.\n');
     else
         fprintf(['Existing Steno3D installation could not be found. \n' ...
@@ -20,7 +21,10 @@ function upgradeSteno3D()
          return
     end
     
-    upgradefolder = [steno3dfolder filesep 'temp_upgrade_dir'];
+    upgradefolder = [steno3dfolder filesep 'steno3dmat_upgrade'];
+    if ~exist(upgradefolder, 'file')
+        mkdir(upgradefolder);
+    end
     
     fname = [upgradefolder filesep 'steno3dmat.zip'];
     
@@ -57,10 +61,10 @@ function upgradeSteno3D()
     
     fprintf('Backing up old files...\n');
     backupfolder = [upgradefolder filesep 'steno3dmat_backup'];
-    copyfile(steno3dfolder, backupfolder)
+    copyfile(steno3dmatfolder, backupfolder)
     
     fprintf('Copying new files...\n');
-    copyfile([upgradefolder filesep 'steno3dmat'], steno3dfolder)
+    copyfile([upgradefolder filesep 'steno3dmat'], steno3dmatfolder)
     
     fprintf('Running test...\n');
     success = false;
@@ -68,12 +72,12 @@ function upgradeSteno3D()
         success = testSteno3D();
     catch ME
         if strcmp(ME.identifier, 'MATLAB:UndefinedFunction')
-            addpath(steno3dfolder);
+            addpath(steno3dmatfolder);
             try
                 success = testSteno3D();
             catch
             end
-            rmpath(steno3dfolder);
+            rmpath(steno3dmatfolder);
         end
     end
     
@@ -82,7 +86,7 @@ function upgradeSteno3D()
         revert = input(['Tests failed... revert to old version? '       ...
                         '([yes]/no)'], 's');
         if isempty(revert) || strcmp(revert, 'yes')
-            copyfile(backupfolder, steno3dfolder);
+            copyfile(backupfolder, steno3dmatfolder);
             fprintf('Upgrade failed. ');
         end
         fprintf(['Please file an issue on '             ...
@@ -96,8 +100,8 @@ function upgradeSteno3D()
     remove = input('Delete temporary upgrade files? ([yes]/no)', 's');
     
     if isempty(remove) || strcmp(remove, 'yes')
-        fprintf(['Deleting temporary directory:\n' upgradefolder '\n'])
-        rmdir(upgradefolder)
+        fprintf('Deleting temporary directory:\n%s\n', upgradefolder);
+        rmdir(upgradefolder, 's');
     end
     
 end
