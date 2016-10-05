@@ -6,7 +6,8 @@ function upgradeSteno3D()
     upgradepath = strsplit(mfilename('fullpath'), filesep);
     steno3dfolder = strjoin(upgradepath(1:end-1), filesep);
     
-    if isdir([steno3dfolder '+props']) && isdir([steno3dfolder '+steno3d'])
+    if isdir([steno3dfolder filesep '+props']) &&                       ...
+            isdir([steno3dfolder filesep '+steno3d'])
         fprintf('Existing Steno3D installation found.');
     else
         fprintf(['Existing Steno3D installation could not be found. \n' ...
@@ -19,9 +20,9 @@ function upgradeSteno3D()
          return
     end
     
-    upgradefolder = [steno3dfolder 'temp_upgrade_dir' filesep];
+    upgradefolder = [steno3dfolder filesep 'temp_upgrade_dir'];
     
-    fname = [upgradefolder 'steno3dmat.zip'];
+    fname = [upgradefolder filesep 'steno3dmat.zip'];
     
     fprintf('Downloading latest version...');
     try
@@ -46,7 +47,7 @@ function upgradeSteno3D()
                  'For alternative installation instructions please '    ...
                  'checkout \nthe <a href="matlab: web(''https://'       ...
                  'github.com/3ptscience/steno3dmat/master/'','          ...
-                 ' ''-browser'')">github page</a>\n\n'                  ...
+                 ' ''-browser'')">github page</a>.\n\n'                 ...
                  'Upgrade failed\n']);
         return
     end
@@ -55,10 +56,11 @@ function upgradeSteno3D()
     unzip(fname, upgradefolder);
     
     fprintf('Backing up old files...\n');
-    copyfile(steno3dfolder, [upgradefolder 'steno3dmat_backup'])
+    backupfolder = [upgradefolder filesep 'steno3dmat_backup'];
+    copyfile(steno3dfolder, backupfolder)
     
     fprintf('Copying new files...\n');
-    copyfile([upgradefolder 'steno3dmat'], steno3dfolder)
+    copyfile([upgradefolder filesep 'steno3dmat'], steno3dfolder)
     
     fprintf('Running test...\n');
     success = false;
@@ -80,7 +82,7 @@ function upgradeSteno3D()
         revert = input(['Tests failed... revert to old version? '       ...
                         '([yes]/no)'], 's');
         if isempty(revert) || strcmp(revert, 'yes')
-            copyfile([upgradefolder 'steno3dmat_backup'], steno3dfolder);
+            copyfile(backupfolder, steno3dfolder);
             fprintf('Upgrade failed. ');
         end
         fprintf(['Please file an issue on '             ...
