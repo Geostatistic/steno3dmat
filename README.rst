@@ -10,7 +10,7 @@ by `3point Science <https://www.3ptscience.com>`_.
 
 If you have not yet installed Steno3D for MATLAB, you can
 `download the zip file <https://github.com/3ptscience/steno3dmat/releases/download/v0.0.1/steno3dmat.zip>`_
-then in MATLAB:
+then in MATLAB (R2014b or greater):
 
 .. code:: matlab
 
