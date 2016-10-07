@@ -57,6 +57,19 @@ classdef Color < props.Prop
             output = ['[' csvlist(1:end-1) ']'];
         end
     end
+    
+    methods (Static)
+        
+        function valid = isValid(val)
+            obj = props.Color('Name', 'Color');
+            try
+                obj.validate(val);
+                valid = true;
+            catch
+                valid = false;
+            end
+        end
+    end
 
     properties (Constant, Access = private)
 
