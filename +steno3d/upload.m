@@ -7,7 +7,7 @@ function upload(fh, public)
     
     projs = steno3d.convert(fh);
     for i=1:length(projs)
-        projs(i).public = public;
+        projs(i).Public = public;
         projs(i).upload();
     end
 
