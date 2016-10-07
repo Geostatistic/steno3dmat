@@ -22,6 +22,10 @@ classdef Project < steno3d.core.UserContent
             )                                                           ...
         }
     end
+    
+    properties (Hidden)
+        PR__ax = []
+    end
 
     methods
         function obj = Project(varargin)
@@ -37,17 +41,56 @@ classdef Project < steno3d.core.UserContent
             url = strjoin([user.Endpoint 'app/' uidsplit(2)], '');
             fprintf(['<a href="matlab: '                                ...
                     'web(''' url ''', ''-browser'')"'...
-                    '>View Project</a>'])
+                    '>View Project</a>\n'])
         end
 
-        function fig = plot(obj)
+        function fig = plot(obj, ax)
             obj.validate();
-            fig = figure;
-            axes;
-            hold on;
-            for i = 1:length(obj.Resources)
-                obj.Resources{i}.plot();
+            if nargin < 2
+                ax = obj.PR__ax;
+                if ~isempty(ax) && isgraphics(ax) && strcmp(ax.Type,'axes')
+                    cla(ax);
+                else
+                    fig = figure;
+                    ax = axes;
+                end
             end
+            obj.PR__ax = ax;
+            hold(ax, 'on');
+            title(ax, obj.Title);
+            legendStr = {};
+            legendHandle = [];
+            for i = 1:length(obj.Resources)
+                obj.Resources{i}.plot(ax);
+                legendHandle(i) = ax.Children(1);
+                t = obj.Resources{i}.Title;
+                if isempty(t)
+                    t = 'Untitled';
+                end
+                dtstr = [num2str(length(obj.Resources{i}.Data))         ...
+                         ' Dataset(s)'];
+                if length(obj.Resources{i}.findprop('Textures')) == 1
+                    dtstr = [dtstr ', '                                 ...
+                             num2str(length(obj.Resources{i}.Textures)) ...
+                             ' Texture(s)'];
+                    for j = 1:length(obj.Resources{i}.Textures)
+                        tex = obj.Resources{i}.Textures{j};
+                        rect = [tex.O;                                  ...
+                                tex.O + tex.U;                          ...
+                                tex.O + tex.U + tex.V;                  ...
+                                tex.O + tex.V;                          ...
+                                tex.O];
+                        plot3(rect(:, 1), rect(:, 2), rect(:, 3), 'k--');
+                    end
+                end
+                
+                mc = metaclass(obj.Resources{i});
+                cls = strsplit(mc.Name, '.');
+                cls = cls{end};
+                legendStr{i} = [t ' (' cls '): ' dtstr];
+                
+            end
+            legend(legendHandle, legendStr{:});
         end
     end
 
