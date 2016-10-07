@@ -20,35 +20,36 @@ function res = surface(sh, tabLevel)
     if ndims(cd) == 3
         cd = mean(cd, 3);
     end
-
-    uxd = unique(xd, 'rows');
-    uyd = unique(yd', 'rows');
-    if size(uxd, 1) == 1 && size(uyd, 1) == 1
-        xd = uxd;
-        yd = uyd;
-    end
-
-    if length(xd) == length(xd(:)) && length(yd) == length(yd(:))
-
-        mesh = steno3d.core.Mesh2DGrid(                                 ...
-            'H1', diff(xd(:)),                                          ...
-        	'H2', diff(yd(:)),                                          ...
-            'O', [xd(1) yd(1) 0],                                       ...
-            'Z', zd(:)                                                  ...
-        );
-        if strcmp(sh.FaceColor, 'flat') && hascd
-            cdsurf = cd(1:end-1, 1:end-1);
-            location = 'CC';
-        elseif hascd
-            cdsurf = cd;
-            location = 'N';
-        end
-        xdrect = xd(:)*ones(1, length(yd));
-        xdrect = xdrect';
-        ydrect = yd(:)*ones(1, length(xd));
-        vertices = [xdrect(:) ydrect(:) zd(:)];
-        keep = ones(length(vertices), 1);
-    else
+    
+%     uxd = unique(xd, 'rows');
+%     uyd = unique(yd', 'rows');
+%     if size(uxd, 1) == 1 && size(uyd, 1) == 1
+%         xd = uxd;
+%         yd = uyd;
+%     end
+% 
+%     if length(xd) == length(xd(:)) && length(yd) == length(yd(:))
+% 
+%         mesh = steno3d.core.Mesh2DGrid(                                 ...
+%             'H1', diff(xd(:)),                                          ...
+%         	  'H2', diff(yd(:)),                                          ...
+%             'O', [xd(1) yd(1) 0],                                       ...
+%             'Z', zd(:)                                                  ...
+%         );
+%     
+%         if strcmp(sh.FaceColor, 'flat') && hascd
+%             cdsurf = cd(1:end-1, 1:end-1);
+%             location = 'CC';
+%         elseif hascd
+%             cdsurf = cd;
+%             location = 'N';
+%         end
+%         xdrect = xd(:)*ones(1, length(yd));
+%         xdrect = xdrect';
+%         ydrect = yd(:)*ones(1, length(xd));
+%         vertices = [xdrect(:) ydrect(:) zd(:)];
+%         keep = ones(length(vertices), 1);
+%     else
         vertices = [xd(:) yd(:) zd(:)];
         shp = size(xd);
         triangles = zeros((shp(1)-1)*(shp(2)-1)*2, 3);
@@ -95,10 +96,10 @@ function res = surface(sh, tabLevel)
             cdsurf = cd;
             location = 'N';
         end
-    end
+%     end
 
-    if strcmp(sh.EdgeColor, 'none')
-        mesh.Opts.Wireframe = false;
+    if ~strcmp(sh.EdgeColor, 'none')
+        mesh.Opts.Wireframe = true;
     end
 
     if any(strcmp(sh.FaceColor, {'flat', 'interp', 'none', 'texturemap'}))

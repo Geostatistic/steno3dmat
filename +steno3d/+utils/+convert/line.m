@@ -15,7 +15,7 @@ function res = line(lh, tabLevel)
         zdata = lh.ZData;
     end
     vertices = [xdata(:) ydata(:) zdata(:)];
-    segments = [0:length(xdata)-2;1:length(xdata)-1]';
+    segments = [1:length(xdata)-1;2:length(xdata)]';
 
     % Remove nans for now
     keep = ~sum(isnan(vertices), 2);
