@@ -37,7 +37,7 @@ classdef Volume < steno3d.core.CompositeResource
     end
 
     methods (Hidden)
-        function plot(obj)
+        function plot(obj, ax)
             origin = obj.Mesh.O;
             os = {origin, origin + [0 0 sum(obj.Mesh.H3)],              ...
                   origin, origin + [0 sum(obj.Mesh.H2) 0],              ...
@@ -55,8 +55,8 @@ classdef Volume < steno3d.core.CompositeResource
             for i = 1:6
                 lh1 = length(h1s{i});
                 lh2 = length(h2s{i});
-                h1 = repmat([0 cumsum(h1s{i})], lh2+1, 1)';
-                h2 = repmat([0 cumsum(h2s{i})], lh1+1, 1);
+                h1 = repmat([0 cumsum(h1s{i})'], lh2+1, 1)';
+                h2 = repmat([0 cumsum(h2s{i})'], lh1+1, 1);
                 u = us{i};
                 v = vs{i};
                 u = u/sqrt(sum(u.^2));
@@ -81,12 +81,11 @@ classdef Volume < steno3d.core.CompositeResource
                     ec = 'none';
                 end
 
-                patch('Vertices', verts, 'Faces', faces, cdata{:},      ...
+                patch(ax, 'Vertices', verts, 'Faces', faces, cdata{:},  ...
                       'EdgeColor', ec, 'FaceAlpha', obj.Opts.Opacity);
                 hold on;
             end
         end
     end
-
 end
 

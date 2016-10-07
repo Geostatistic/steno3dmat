@@ -52,15 +52,15 @@ classdef Surface < steno3d.core.CompositeResource
     end
 
     methods (Hidden)
-        function plot(obj)
+        function plot(obj, ax)
             if isa(obj.Mesh, 'steno3d.core.Mesh2D')
                 verts = obj.Mesh.Vertices;
                 faces = obj.Mesh.Triangles;
             else
                 lh1 = length(obj.Mesh.H1);
                 lh2 = length(obj.Mesh.H2);
-                h1 = repmat([0 cumsum(obj.Mesh.H1)], lh2+1, 1)';
-                h2 = repmat([0 cumsum(obj.Mesh.H2)], lh1+1, 1);
+                h1 = repmat([0 cumsum(obj.Mesh.H1)'], lh2+1, 1)';
+                h2 = repmat([0 cumsum(obj.Mesh.H2)'], lh1+1, 1);
                 u = obj.Mesh.U;
                 v = obj.Mesh.V;
                 u = u/sqrt(sum(u.^2));
@@ -87,10 +87,8 @@ classdef Surface < steno3d.core.CompositeResource
                 cdata = {'CData', obj.Data{1}.Data.Array,               ...
                          'FaceColor', 'interp'};
             else
-                ccarr = obj.Data{1}.Data.Array;
-                narr = ccarr(1)*ones(size(verts, 1), 1);
-                narr(faces(:, 1)) = ccarr;
-                cdata = {'CData', narr, 'FaceColor', 'flat'};
+                cdata = {'CData', obj.Data{1}.Data.Array,               ...
+                         'FaceColor', 'flat'};
             end
 
             if obj.Mesh.Opts.Wireframe
@@ -99,7 +97,7 @@ classdef Surface < steno3d.core.CompositeResource
                 ec = 'none';
             end
 
-            patch('Vertices', verts, 'Faces', faces, cdata{:},          ...
+            patch(ax, 'Vertices', verts, 'Faces', faces, cdata{:},      ...
                   'EdgeColor', ec, 'FaceAlpha', obj.Opts.Opacity);
         end
     end

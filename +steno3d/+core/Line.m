@@ -36,7 +36,7 @@ classdef Line < steno3d.core.CompositeResource
     end
 
     methods (Hidden)
-        function plot(obj)
+        function plot(obj, ax)
             if isempty(obj.Data)
                 cdata = {'EdgeColor', obj.Opts.Color/255};
             elseif strcmp(obj.Data{1}.Location, 'CC')
@@ -49,7 +49,7 @@ classdef Line < steno3d.core.CompositeResource
                          'EdgeColor', 'interp'};
             end
 
-            patch('Faces', obj.Mesh.Segments,                           ...
+            patch(ax, 'Faces', obj.Mesh.Segments,                       ...
                   'Vertices', obj.Mesh.Vertices,                        ...
                   cdata{:}, 'EdgeAlpha', obj.Opts.Opacity)
         end

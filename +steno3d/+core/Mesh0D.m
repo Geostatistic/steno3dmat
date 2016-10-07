@@ -1,4 +1,4 @@
-classdef Mesh0D < steno3d.core.UserContent
+ classdef Mesh0D < steno3d.core.UserContent
 %MESH0D Mesh for steno3d Point
 
     properties (Hidden, SetAccess = immutable)
@@ -27,6 +27,9 @@ classdef Mesh0D < steno3d.core.UserContent
         end
         function n = nN(obj)
             n = size(obj.Vertices, 1);
+        end
+        function n = nC(obj)
+            n = obj.nN();
         end
         function n = nbytes(obj)
             n = length(obj.Vertices(:))*8;
