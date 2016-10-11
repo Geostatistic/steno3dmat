@@ -1,7 +1,21 @@
-function proj = combine(proj)
+function proj = combine(varargin)
 %COMBINE Combine a list of steno3d projects into one
 
-    if isempty(proj) || ~isa(proj(1), 'steno3d.core.Project')
+    narginchk(1, inf);
+    if ischar(varargin{end})
+        tabLevel = varargin{end};
+        varargin = varargin(1:end-1);
+    else
+        tabLevel = '';
+    end
+    try
+        assert(~isempty(varargin));
+        assert(isa(varargin{1}, 'steno3d.core.Project'));
+        proj = varargin{1}(:);
+        for i = 2:length(varargin)
+            proj = [proj; varargin{i}(:)];
+        end
+    catch
         error('steno3d:convertError', ['steno3d.utils.combine requires '...
               'input of type "steno3d.core.Project"']);
     end

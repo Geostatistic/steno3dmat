@@ -34,7 +34,7 @@ function proj = figure(fh, combineAxes, combineRes, tabLevel)
     end
     
     if combineAxes && length(proj) > 1
-        proj = steno3d.utils.combine(proj, tabLevel);
+        proj = steno3d.combine(proj, tabLevel);
         if combineRes
             proj.Resources = steno3d.utils.consolidate(proj.Resources,  ...
                                                        [tabLevel '    ']);
