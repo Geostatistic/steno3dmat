@@ -14,7 +14,7 @@ function success = testSteno3D(raiseError, attemptUpload, testPlot)
     try
         pngfile = [tempname '.png'];
         imwrite([1 2 3; 4 5 6; 7 8 9], pngfile);
-        p = steno3d.core.Project(                                       ...
+        p1 = steno3d.core.Project(                                       ...
             'Title', 'MATLAB Test Project',                             ...
             'Description', 'Just a test',                               ...
             'Public', false                                             ...
@@ -139,19 +139,54 @@ function success = testSteno3D(raiseError, attemptUpload, testPlot)
             'Opts', {'Color', [.2 .2 .5]}                               ...
         );
 
-        p.Resources = {pt, li, s1, s2, vo};
+        p1.Resources = {pt, li, s1, s2, vo};
 
-        p.validate;
+        p1.validate;
         
         if testPlot
-            p.plot;
+            p1.plot;
             p2 = steno3d.convert(gcf);
             close;
+            x = 0:pi/10:4*pi;
+            [p3, myLine] = steno3d.line(                                ...
+                x, cos(x), sin(x), 'k',                                 ...
+                'Random Vert Data', rand(size(x)),                      ...
+                'Random Seg Data', rand(length(x)-1, 1)                 ...
+            );
+            myLine.Title = 'Example Line';
+            myLine.Description = 'Trig functions with random data';
+            p3.Title = 'Project with one Line';
+            p3.Public = false;
+            
+            x = 0:pi/10:4*pi;
+            [p4, myPoints] = STENO3D.SCATTER(                        ...
+                [x(:) cos(x(:)+0.2) sin(x(:))], [0 .5 .5],                  ...
+                'Random Data', rand(size(x))                                ...
+            );
+            myPoints.Title = 'Example Points';
+            myPoints.Description = 'Trig functions with random data';
+            p4.Title = 'Project with one set of Points';
+            p4.Public = false;
+            
+            x = [0 1 0 0]; y = [0 0 1 0]; z = [0 0 0 1];
+            tris = convhull(x, y, z);
+            [p5, mySurface] = STENO3D.TRISURF(                       ...
+                tris, x, y, z, 'r', 'Face Data', rand(4, 1)                 ...
+            );
+            mySurface.Title = 'Triangulated Surface';
+            mySurface.Description = 'Convex hull triangles';
+            p5.Title = 'Project with one Surface';
+            p5.Public = true;
+            steno3d.upload(p5)
         end
         
         if attemptUpload
             steno3d.login;
-            p.upload;
+            p1.upload;
+            p2.upload;
+            p3.upload;
+            steno3d.upload(p4);
+            p5.upload();
         end
 
     catch ME
