@@ -18,7 +18,7 @@ classdef Project < steno3d.core.UserContent
                     'Class', @steno3d.core.CompositeResource,           ...
                     'Initialize', false                                 ...
                 ),                                                      ...
-                'Required', false                                       ...
+                'Required', true                                        ...
             )                                                           ...
         }
     end
@@ -48,13 +48,18 @@ classdef Project < steno3d.core.UserContent
             obj.validate();
             if nargin < 2
                 ax = obj.PR__ax;
-                if ~isempty(ax) && isgraphics(ax) && strcmp(ax.Type,'axes')
+                if ~isempty(ax) && isgraphics(ax) &&                    ...
+                        strcmp(ax.Type,'axes') && ax.UserData == obj
                     cla(ax);
                 else
-                    fig = figure;
+                    fig = figure('NumberTitle', 'off',                  ...
+                                 'Name', 'Steno3D Project');
+                    fig.UserData = obj;
                     ax = axes;
+                    ax.UserData = obj;
                 end
             end
+            
             obj.PR__ax = ax;
             hold(ax, 'on');
             title(ax, obj.Title);
