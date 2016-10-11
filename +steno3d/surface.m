@@ -1,18 +1,31 @@
 function [proj, surf] = surface(varargin)
-%SURFACE Summary of this function goes here
+%SURFACE Create and plot a gridded Steno3D Surface resource
+%   STENO3D.SURFACE(Z) creates a Steno3D project with a Surface grid
+%   resource. Heights are defined by Z, an n x m matrix. Values are plotted
+%   with unit spacing, where x and y values equal 0:n-1 and 0:m-1,
+%   respectively.
 %
-%   proj = STENO3D.SURFACE(Z)
-%   proj = STENO3D.SURFACE(origin, Z)
+%   STENO3D.SURFACE(Origin, Z) creates a Steno3D project with a Surface
+%   resource. Origin is a 1 x 3 vector offset; x and y values correspond to
+%   Origin(1) + (0:n-1) and Origin(2) + (0:m-1), and heights equal to
+%   Z + Origin(3).
 %
-%   proj = STENO3D.SURFACE(x, y)
-%   proj = STENO3D.SURFACE(dir1, ax1, dir2, ax2, origin)
-%   proj = STENO3D.SURFACE(..., Z)
 %
-%   proj = STENO3D.SURFACE(..., color)
-%   proj = STENO3D.SURFACE(..., title1, data1, ..., titleN, dataN)
-%   proj = STENO3D.SURFACE(..., title1, png1, ..., titleN, pngN)
-%   STENO3D.SURFACE(proj, ...)
-%   [proj, surf] = STENO3D.SURFACE(...)
+%   STENO3D.SURFACE(X, Y) creates a Steno3D project with a flat grid
+%   Surface in the horizontal plane with x and y node values corresponding
+%   to vectors X and Y, respectively.
+%
+%   STENO3D.SURFACE(Dir1, Ax1, Dir2, Ax2, Origin)
+%
+%   STENO3D.SURFACE(..., Z)
+%
+%
+%   STENO3D.SURFACE(..., Color)
+%   STENO3D.SURFACE(..., Title1, Data1, ..., TitleN, DataN)
+%   STENO3D.SURFACE(..., Title1, Png1, ..., TitleN, PngN)
+%   STENO3D.SURFACE(Proj, ...)
+%   Proj = STENO3D.SURFACE(...)
+%   [Proj, Surf] = STENO3D.SURFACE(...)
 %
 %   Note - the ordring here differs from MATLAB's builtin surface function.
 %   Here, we follow ordering similar to ndgrid rather than meshgrid
@@ -24,6 +37,14 @@ function [proj, surf] = surface(varargin)
     if isa(varargin{1}, 'steno3d.core.Project')
         proj = varargin{1};
         varargin = varargin(2:end);
+    elseif isgraphics(varargin{1})
+        if isa(varargin{1}.UserData, 'steno3d.core.Project')
+            proj = varargin{1}.UserData;
+            varargin = varargin(2:end);
+        else
+            error('steno3d:surfaceError',                               ...
+                  'No project associated with given graphics handle');
+        end
     else
         proj = steno3d.core.Project;
     end
@@ -56,7 +77,7 @@ function [proj, surf] = surface(varargin)
     if ismatrix(varargin{1}) && all(size(varargin{1}) > 1)
         x = 0:size(varargin{1}, 1)-1;
         y = 0:size(varargin{1}, 2)-1;
-    elseif length(varargin) > 4 &&                                          ...
+    elseif length(varargin) > 4 &&                                      ...
             validDir(varargin{1}) &&  validDir(varargin{3}) &&          ...
             validAx(varargin{2}) && validAx(varargin{4})
         if isempty(varargin{5})
@@ -71,7 +92,6 @@ function [proj, surf] = surface(varargin)
         else
             error('steno3d:surfaceError', 'Invalid origin');
         end
-        'hi'
     elseif length(varargin) > 1 &&                                      ...
             validAx(varargin{1}) && validAx(varargin{2})
         x = varargin{1}; y = varargin{2};

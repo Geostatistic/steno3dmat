@@ -1,13 +1,54 @@
 function [proj, pts] = scatter(varargin)
-%SCATTER Summary of this function goes here
+%SCATTER Create and plot a Steno3D Point resource
+%   STENO3D.SCATTER(XYZ) creates a Steno3D project with a Point resource
+%   defined by n x 3 matrix XYZ.
 %
-%   proj = SCATTER(XYZ)
-%   proj = SCATTER(X, Y, Z)
-%   proj = SCATTER(XYZ, color)
-%   proj = SCATTER(X, Y, Z, color)
-%   proj = SCATTER(..., title1, data1, ..., titleN, dataN)
-%   SCATTER(proj, ...)
-%   [proj, pts] = SCATTER(...)
+%   STENO3D.SCATTER(X, Y, Z) creates a Steno3D project with a Point
+%   resource defined by equal-sized vectors or matrices X, Y, and Z.
+%
+%   STENO3D.SCATTER(..., Color) creates a Point resource of the give color,
+%   where Color is a 1x3 RGB color, hex color string, named color string,
+%   or 'random'.
+%
+%   STENO3D.SCATTER(..., Title1, Data1, ..., TitleN, DataN) adds any number
+%   of titled datasets to the Point resource. Title must be a string and
+%   Data must be an matrix or vector that, when flattened, is length n,
+%   where n is the number of points.
+%
+%   STENO3D.SCATTER(Proj, ...) adds the Point resource to Proj, an existing
+%   Steno3D project. Proj may also be a figure or axes handle that was
+%   cfreated by a Steno3D plotting function
+%
+%   Proj = STENO3D.SCATTER(...) returns Proj, the Steno3D project that
+%   contains the new line resource.
+%
+%   [Proj, Pts] = STENO3D.SCATTER(...) returns Proj, the Steno3D project,
+%   and Pts, the new Point resource.
+%
+%   STENO3D.SCATTER is more similar to the MATLAB builtin function <a
+%   href="matlab: help scatter3">scatter3</a>
+%   than the builtin function <a href="matlab: help scatter"
+%   >scatter</a> since it requres a 3D dataset.
+%   Unlike the builtin functions, STENO3D.SCATTER does not support any
+%   additional property/value pairs. After creating a Point resource with
+%   STENO3D.SCATTER, properties fo the Point object can b edirectly
+%   modified.
+%
+%   Example:
+%       x = 0:pi/10:4*pi;
+%       [myProject, myPoints] = STENO3D.SCATTER(                        ...
+%           [x(:) cos(x(:)+0.2) sin(x(:))], [0 .5 .5],                  ...
+%           'Random Data', rand(size(x))                                ...
+%       );
+%       myPoints.Title = 'Example Points';
+%       myPoints.Description = 'Trig functions with random data';
+%       myProject.Title = 'Project with one set of Points';
+%       myProject.Public = true;
+%       steno3d.upload(myProject);
+%
+%   See also STENO3D.CORE.POINT, STENO3D.UPLOAD, STENO3D.ADDDATA,
+%   STENO3D.ADDIMAGE, STENO3D.CORE.PROJECT
+
 
     if isempty(varargin)
         error('steno3d:scatterError', 'Not enough input arguments');
@@ -16,6 +57,14 @@ function [proj, pts] = scatter(varargin)
     if isa(varargin{1}, 'steno3d.core.Project')
         proj = varargin{1};
         varargin = varargin(2:end);
+    elseif isgraphics(varargin{1})
+        if isa(varargin{1}.UserData, 'steno3d.core.Project')
+            proj = varargin{1}.UserData;
+            varargin = varargin(2:end);
+        else
+            error('steno3d:scatterError',                               ...
+                  'No project associated with given graphics handle');
+        end
     else
         proj = steno3d.core.Project;
     end
@@ -70,11 +119,11 @@ function [proj, pts] = scatter(varargin)
             error('steno3d:scatterError', ['Data must be the same '     ...
                   'length as x/y/z values']);
         end
-        data{end+1} = {'Data', {'Title', varargin{i},                    ...
+        data{end+1} = {'Data', {'Title', varargin{i},                   ...
                                 'Array', varargin{i+1}(:)}};
     end
     
-    pts = steno3d.core.Point(                                          ...
+    pts = steno3d.core.Point(                                           ...
         'Mesh', steno3d.core.Mesh0D(                                    ...
             'Vertices', xyz                                             ...
         ),                                                              ...

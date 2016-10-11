@@ -1,5 +1,5 @@
 function installSteno3D(varargin)
-%INSTALLSTENO3D add steno3d to the MATLAB environment
+%INSTALLSTENO3D Add steno3d to the MATLAB environment
 %
 %   INSTALLSTENO3D() copies steno3dmat to '~/.steno3d_client/` and adds
 %   it to the default MATLAB path
