@@ -170,6 +170,7 @@ classdef HasProps < dynamicprops
             metaProp.SetMethod = @setProp;
             metaProp.GetMethod = @getProp;
             metaHiddenProp.Hidden = true;
+            metaHiddenProp.SetObservable = true;
             obj.([obj.PROP_PREFIX '_props']){end+1} = name;
 
             function setProp(obj, val)
