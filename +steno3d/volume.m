@@ -1,13 +1,67 @@
 function [proj, vol] = volume(varargin)
-%VOLUME Summary of this function goes here
+%VOLUME Create and plot a Steno3D Volume resource
+%   STENO3D.VOLUME(Data) creates a Steno3D Project with a Volume resource
+%   defined by Data, an m x n x p matrix. The Data values are plotted on
+%   cell-centers with unit widths. Cell boundaries are defined by x = 0:m,
+%   y = 0:n, and z = 0:p.
 %
-%   proj = VOLUME(data)
-%   proj = VOLUME(origin, data)
-%   proj = VOLUME(x, y, z, data)
-%   proj = VOLUME(x, y, z, origin, data)
-%   proj = VOLUME(..., title1, data1, ..., titleN, dataN)
-%   VOLUME(proj, ...)
-%   [proj, vol] = VOLUME(...)
+%   STENO3D.VOLUME(Origin, Data) creates a Steno3D Project with a Volume
+%   resource as above, offset by 1 x 3 Origin vector. Cell boundaries are
+%   defined by x = Origin(1) + (0:m), y = Origin(2) + (0:n), and
+%   z = Origin(3) + (0:p).
+%
+%   STENO3D.VOLUME(X, Y, Z, Data) creates a Steno3D Project with a Volume
+%   resource as above. X, Y, and Z are vectors of cell boundaries (with
+%   sizes n x 1, m x 1, and p x 1, respectively) OR of cell widths (with
+%   sizes (n-1) x 1, (m-1) x 1, and (p-1) x 1, respectively). Since the
+%   volume dimensions are given by X, Y, and Z in this case, Data may also
+%   be a m*n*p x 1 vector.
+%
+%   STENO3D.VOLUME(X, Y, Z, Origin, Data) creates a Steno3D Project with a
+%   Volume resource as above, offset by 1 x 3 Origin vector. This is
+%   useful when X, Y, and Z are cell widths.
+%
+%   STENO3D.VOLUME(..., Title1, Data1, ..., TitleN, DataN) adds any number
+%   of titled datasets to the Volume resource. Title must be a string and
+%   Data must be a matrix of size m x n x p (or m*n*p x 1 if X, Y, and Z
+%   are provided). Title/Data pairs may replace the standalone Data
+%   matrices above. (For more details see <a href="matlab:
+%   help steno3d.addData">steno3d.addData</a>)
+%
+%   STENO3D.VOLUME(Proj, ...) adds the Volume resource to Proj, an
+%   existing Steno3D Project. Proj may also be a figure or axes handle that
+%   was created by a Steno3D plotting function.
+%
+%   Proj = STENO3D.VOLUME(...) returns Proj, the Steno3D Project that
+%   contains the new Volume resource.
+%
+%   [Proj, Vol] = STENO3D.VOLUME(...) returns Proj, the Steno3D Project,  
+%   Vol, the new Volume resource.
+%
+%   STENO3D.VOLUME does not have a MATLAB builtin counterpart. When
+%   plotting a Steno3D Volume locally, its boundaries are displayed in a
+%   similar way as <a href="matlab: help slice
+%   ">slice</a>, but when uploaded to steno3d.com, the entire
+%   volume is available for plotting, slicing, and isosurfacing. After
+%   creating a Volume resource with STENO3D.VOLUME, properties of the
+%   Volume object can be directly modified.
+%
+%   Example:
+%       [xvals, yvals, zvals] = ndgrid(1:5, 1:10, 1:20);
+%       [myProject, myVolume] = STENO3D.VOLUME(                         ...
+%           4*ones(5, 1), 2*ones(10, 1), ones(20, 1), [-10 -10 -10],    ...
+%           'X-Values', xvals, 'Y-Values', yvals, 'Z-Values', zvals     ...
+%       );
+%       myVolume.Title = 'Example Volume';
+%       myVolume.Description = 'Volume with x, y, and z data';
+%       myProject.Title = 'Project with one Volume';
+%       myProject.Public = true;
+%       steno3d.upload(myProject);
+%
+%   See also STENO3D.CORE.VOLUME, STENO3D.UPLOAD, STENO3D.ADDDATA,      ...
+%   STENO3D.CORE.PROJECT
+%   
+
 
     if isempty(varargin)
         error('steno3d:volumeError', 'Not enough input arguments');
@@ -33,7 +87,6 @@ function [proj, vol] = volume(varargin)
                 length(z) == length(z(:))
             xyzInput = true;
             varargin = varargin(4:end);
-            
         end
     end
     
@@ -41,13 +94,17 @@ function [proj, vol] = volume(varargin)
         error('steno3d:volumeError', 'Not enough input arguments');
     end
     
-    if ismatrix(varargin{1}) && all(size(varargin{1}) == [1 3])
+    if ismatrix(varargin{1}) && isnumeric(varargin{1}) &&               ...
+            all(size(varargin{1}) == [1 3])
         origin = varargin{1};
         varargin = varargin(2:end);
     end
     
+    if isempty(varargin)
+        error('steno3d:volumeError', 'Not enough input arguments');
+    end
     
-    if length(varargin) == 1
+    if isnumeric(varargin{1})
        varargin = [{''} varargin];
     end
 
