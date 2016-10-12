@@ -1,5 +1,37 @@
 classdef Prop
-%PROP Base property to use with HasProps
+%PROP Basic property with no given type
+%   Used with subclasses of props.HasProps, a PROPS.PROP instance is
+%   created dynamically on class instantiation based on a declarative,
+%   immutable property of the props.HasProps class. For an example of how
+%   to use PROPS.PROP, see <a href="matlab: help props.HasProps
+%   ">props.HasProps</a> or one of the specific property
+%   types listed below.
+%
+%   Properties
+%       Value: The saved value of the PROPS.PROP.
+%
+%       Name: The name used to access the value of PROPS.PROP from the
+%             props.HasProps class.
+%
+%       Doc: A description of the specific PROPS.PROP on a props.HasProps
+%            class.
+%
+%       PropInfo: A description of the PROPS.PROP type.
+%
+%       Required: Whether or not the PROPS.PROP must be given a value for a
+%                 props.HasProps instance to pass validation.
+%
+%       ValidateDefault: Whether or not the DefaultValue must pass
+%                        validation.
+%
+%       DefaultValue: The default value when the PROPS.PROP is accessed
+%                     prior to getting set.
+%
+%   See also PROPS.HASPROPS, PROPS.ARRAY, PROPS.BOOL, PROPS.COLOR,
+%   PROPS.FLOAT, PROPS.IMAGE, PROPS.INSTANCE, PROPS.INT, PROPS.REPEATED,
+%   PROPS.STRING, PROPS.UNION, PROPS.VECTOR
+%
+
 
     properties
         Value
@@ -15,6 +47,8 @@ classdef Prop
 
     methods
         function obj = Prop(varargin)
+            % PROP Construct from property/value paris
+            
             if rem(nargin, 2) ~= 0
                 error('steno3d:propError',                              ...
                       ['Props must be constructed with valid '          ...
@@ -29,6 +63,7 @@ classdef Prop
         end
 
         function value = validate(obj, value)
+            % VALIDATE Check if a value is valid for the given Prop
         end
 
         function obj = set.Name(obj, val)
@@ -85,6 +120,7 @@ classdef Prop
         end
 
         function output = serialize(obj)
+            % SERIALIZE Convert the Prop value to a standard format
             mc = metaclass(obj);
             error('steno3d:propError',                                  ...
                   'Cannot serialize prop %s of type %s',                ...
@@ -95,6 +131,12 @@ classdef Prop
 
     methods (Static)
         function args = setPropDefaults(args, varargin)
+        % SETPROPDEFAULTS Inspect input values and add additional defaults
+        %   ARGS = SETPROPDEFAULTS(ARGS, VARARGIN) takes VARARGIN
+        %   default parameter/value pairs and, if those parameters are not
+        %   set to alternative values in cell array ARGS, appends them to
+        %   ARGS.
+        
             if rem(nargin, 2) ~= 1
                 error('steno3d:propError',                              ...
                       ['setPropDefaults requires the input arguments '  ...
@@ -108,6 +150,5 @@ classdef Prop
             end
         end
     end
-
 end
 

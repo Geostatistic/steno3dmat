@@ -17,12 +17,12 @@
 %       fprintf('MATLAB version is valid.\n');
 %   end">Check your version</a>)
 %
-% steno3d - something
-% props - blah blah
+% steno3d - MATLAB client for Steno3D by 3pt Science
+% props - MATLAB package to build declarative, validated classes
 %
 % Installation, Upgrade, and Testing Scripts:
-%   installSteno3D   - Add steno3d to the MATLAB environment
-%   uninstallSteno3D - Remove steno3d from the MATLAB environment
+%   installSteno3D   - Add Steno3D to the MATLAB environment
+%   uninstallSteno3D - Remove Steno3D from the MATLAB environment
 %   upgradeSteno3D   - Download and install the latest version of Steno3D
 %   testSteno3D      - Test suite for steno3d
 %
