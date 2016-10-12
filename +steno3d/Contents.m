@@ -23,22 +23,22 @@
 %       distribution.
 %
 % Plotting Functions: a MATLAB-esque way to create Steno3D projects
-%   scatter  - Summary of this function goes here
-%   line     - STENO3D.LINE Summary of this function goes here
-%   surface  - Summary of this function goes here
-%   trisurf  - STENO3D.TRISURF Summary of this function goes here
-%   volume   - Summary of this function goes here
+%   scatter  - Create and plot a Steno3D Point resource
+%   line     - Create and plot a Steno3D Line resource
+%   surface  - Create and plot a gridded Steno3D Surface resource
+%   trisurf  - Create and plot a triangulated Steno3D Surface resource
+%   volume   - Create and plot a Steno3D Volume resource
 %
 % Helper Functions: simple functions to manipulate Steno3D projects
-%   addData  - Summary of this function goes here
-%   addImage - Summary of this function goes here
-%   combine  - Combine a list of steno3d projects into one
-%   convert  - Converts MATLAB figure or axes into a steno3d project
+%   addData  - Add a dataset to an existing Steno3d resource
+%   addImage - Add a PNG image to an existing Steno3d resource
+%   combine  - Combine a list of Steno3D Projects into one Project
+%   convert  - Convert MATLAB figure or axes into a Steno3D Project
 %
 % Communicate with steno3d.com:
-%   login    - Logs in to steno3d.com with your api developer key
-%   upload   - Convert Matlab figure or axes to Steno3D project and upload
-%   logout   - Logs user out of current steno3d session
+%   login    - Log in to steno3d.com to allow Steno3D Project uploads
+%   upload   - Upload a figure, axes, or Steno3D Project to steno3d.com
+%   logout   - Log out of current session on steno3d.com
 %
 % Additional Packages
 %   core     - Command-line tools for building Steno3D objects from scratch
