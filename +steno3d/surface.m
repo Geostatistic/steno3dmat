@@ -5,20 +5,20 @@ function [proj, surf] = surface(varargin)
 %   with unit spacing, where x and y values equal 0:m-1 and 0:n-1,
 %   respectively.
 %
-%   STENO3D.SURFACE(Origin, Z) creates a Steno3D Project with a Surface
-%   resource. Origin is a 1 x 3 vector offset; x and y values correspond to
-%   Origin(1) + (0:m-1) and Origin(2) + (0:n-1), and heights equal to
-%   Z + Origin(3).
+%   STENO3D.SURFACE(ORIGIN, Z) creates a Steno3D Project with a Surface
+%   resource. ORIGIN is a 1 x 3 vector offset; x and y values correspond to
+%   ORIGIN(1) + (0:m-1) and ORIGIN(2) + (0:n-1), and heights equal to
+%   Z + ORIGIN(3).
 %
 %
 %   STENO3D.SURFACE(X, Y) creates a Steno3D Project with a flat grid
 %   Surface in the horizontal plane with x and y node values corresponding
 %   to vectors X and Y, respectively.
 %
-%   STENO3D.SURFACE(Dir1, H1, Dir2, H2, Origin) creates a Steno3D Project
+%   STENO3D.SURFACE(DIR1, H1, DIR2, H2, ORIGIN) creates a Steno3D Project
 %   with a flat grid Surface in an arbitrary plane. The plane is defined by
-%   1 x 3 axes vectors, Dir1 and Dir2, node locations along those axes, H1
-%   and H2, and a 1 x 3 Origin vector. Dir1 and Dir2 may also be 'X', 'Y',
+%   1 x 3 axes vectors, DIR1 and DIR2, node locations along those axes, H1
+%   and H2, and a 1 x 3 ORIGIN vector. DIR1 and DIR2 may also be 'X', 'Y',
 %   or 'Z' in addition to 1 x 3 axes. For example, the following all
 %   produce the same result:
 %       STENO3D.SURFACE(0:10, 0:20)
@@ -26,38 +26,38 @@ function [proj, surf] = surface(varargin)
 %       STENO3D.SURFACE('X', 0:10, 'Y', 0:20, [0 0 0])
 %
 %   STENO3D.SURFACE(..., Z) creates a Steno3D Project and Surface grid with
-%   node heights Z, an n x m matrix, where m is the length of X/H1 and n is
-%   the length of Y/H2. Z may also be a length m*n vector.
+%   node heights Z, an n x m matrix, where m is the length of X or H1 and
+%   n is the length of Y or H2. Z may also be a length m*n vector.
 %
 %
-%   STENO3D.SURFACE(..., Color) creates a Surface resource of the given
-%   color, where Color is a 1x3 RGB color, hex color string, named color
+%   STENO3D.SURFACE(..., COLOR) creates a Surface resource of the given
+%   color, where COLOR is a 1x3 RGB color, hex color string, named color
 %   string, or 'random'.
 %
-%   STENO3D.SURFACE(..., Title1, Data1, ..., TitleN, DataN) adds any number
-%   of titled datasets to the Surface resource. Title must be a string and
-%   Data must be a matrix of size m x n or m*n x 1 for node data or a
+%   STENO3D.SURFACE(..., TITLE1, DATA1, ..., TITLEN, DATAN) adds any number
+%   of titled datasets to the Surface resource. TITLE must be a string and
+%   DATA must be a matrix of size m x n or m*n x 1 for node data or a
 %   matrix of size (m-1) x (n-1) or (m-1)*(n-1) x 1 for face data, where n
 %   is the length(X), length(H1), or size(Z, 1) and m is the length(Y),
 %   length(H2), or size(Z, 2). (For more details see <a href="matlab:    
 %   help steno3d.addData">steno3d.addData</a>)
 %
-%   STENO3D.SURFACE(..., Title1, Png1, ..., TitleN, PngN) adds any number
-%   of titled images to the Surface resource. Title must be a string and 
-%   Png must be a png file. The image will be stretched to span the 
+%   STENO3D.SURFACE(..., TITLE1, PNG1, ..., TITLEN, PNGN) adds any number
+%   of titled images to the Surface resource. TITLE must be a string and 
+%   PNG must be a png file. The image will be stretched to span the 
 %   entire grid surface. Any number of datasets and textures may be applied
 %   to an individual Surface. (For more details see <a href="matlab:    
 %   help steno3d.addImage">steno3d.addImage</a>)
 %
-%   STENO3D.SURFACE(Proj, ...) adds the Surface resource to Proj, an
-%   existing Steno3D Project. Proj may also be a figure or axes handle that
-%   was created by a Steno3D plotting function.
+%   STENO3D.SURFACE(PROJECT, ...) adds the Surface resource to PROJECT, an
+%   existing Steno3D Project. PROJECT may also be a figure or axes handle
+%   that was created by a Steno3D plotting function.
 %
-%   Proj = STENO3D.SURFACE(...) returns Proj, the Steno3D Project that
-%   contains the new Surface resource.
+%   PROJECT = STENO3D.SURFACE(...) returns PROJECT, the Steno3D Project
+%   that contains the new Surface resource.
 %
-%   [Proj, Surf] = STENO3D.SURFACE(...) returns Proj, the Steno3D Project,  
-%   Surf, the new Surface resource.
+%   [PROJECT, SURFACE] = STENO3D.SURFACE(...) returns PROJECT, the Steno3D
+%   Project, and SURFACE, the new Surface resource.
 %
 %   An important difference between STENO3D.SURFACE the MATLAB builtin
 %   <a href="matlab: help surface

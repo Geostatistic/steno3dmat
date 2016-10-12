@@ -5,30 +5,30 @@ function [proj, lin] = line(varargin)
 %   size, only one Line resource is created but separate columns are
 %   disconnected.
 %
-%   STENO3D.LINE(Segments, Vertices) creates a Steno3D Project with a Line
-%   resource defined by Segments, n x 2 matrix of vertex indices, and
-%   Vertices, m x 3 matrix of spatial coordinates. 
+%   STENO3D.LINE(SEGMENTS, VERTICES) creates a Steno3D Project with a Line
+%   resource defined by SEGMENTS, n x 2 matrix of vertex indices, and
+%   VERTICES, m x 3 matrix of spatial coordinates. 
 %
-%   STENO3D.LINE(..., Color) creates a Line resource of the given color,
-%   where Color is a 1x3 RGB color, hex color string, named color string,
+%   STENO3D.LINE(..., COLOR) creates a Line resource of the given color,
+%   where COLOR is a 1x3 RGB color, hex color string, named color string,
 %   or 'random'.
 %
-%   STENO3D.LINE(..., Title1, Data1, ..., TitleN, DataN) adds any number of
-%   titled datasets to the Line resource. Title must be a string and Data 
+%   STENO3D.LINE(..., TITLE1, DATA1, ..., TITLEN, DATAN) adds any number of
+%   titled datasets to the Line resource. TITLE must be a string and DATA 
 %   must be an n x 1 or an m x 1 vector, where n is the number of segments
 %   and m is the number of vertices. If m == n, the data location will 
 %   default to segments (to override this see <a href="matlab:    
 %   help steno3d.addData">steno3d.addData</a>).
 %
-%   STENO3D.LINE(Proj, ...) adds the Line resource to Proj, an existing
-%   Steno3D Project. Proj may also be a figure or axes handle that was
-%   created by a Steno3D plotting function.
+%   STENO3D.LINE(PROJECT, ...) adds the Line resource to PROJECT, an
+%   existing Steno3D Project. PROJECT may also be a figure or axes handle
+%   that was created by a Steno3D plotting function.
 %
-%   Proj = STENO3D.LINE(...) returns Proj, the Steno3D Project that
+%   PROJECT = STENO3D.LINE(...) returns PROJECT, the Steno3D Project that
 %   contains the new Line resource.
 %
-%   [Proj, Line] = STENO3D.LINE(...) returns Proj, the Steno3D Project, and
-%   Line, the new Line resource.
+%   [PROJECT, LINE] = STENO3D.LINE(...) returns PROJECT, the Steno3D
+%   Project, and LINE, the new Line resource.
 %
 %   Unlike the MATLAB builtin <a href=
 %   "matlab: help line">line</a> function, STENO3D.LINE requires 3D data

@@ -6,25 +6,25 @@ function [proj, pts] = scatter(varargin)
 %   STENO3D.SCATTER(X, Y, Z) creates a Steno3D Project with a Point
 %   resource defined by equal-sized vectors or matrices X, Y, and Z.
 %
-%   STENO3D.SCATTER(..., Color) creates a Point resource of the give color,
-%   where Color is a 1x3 RGB color, hex color string, named color string,
+%   STENO3D.SCATTER(..., COLOR) creates a Point resource of the give color,
+%   where COLOR is a 1x3 RGB color, hex color string, named color string,
 %   or 'random'.
 %
-%   STENO3D.SCATTER(..., Title1, Data1, ..., TitleN, DataN) adds any number
-%   of titled datasets to the Point resource. Title must be a string and
-%   Data must be an matrix or vector that, when flattened, is length n,
+%   STENO3D.SCATTER(..., TITLE1, DATA1, ..., TITLEN, DATAN) adds any number
+%   of titled datasets to the Point resource. TITLE must be a string and
+%   DATA must be an matrix or vector that, when flattened, is length n,
 %   where n is the number of points. (For more details see <a href="matlab:    
 %   help steno3d.addData">steno3d.addData</a>)
 %
-%   STENO3D.SCATTER(Proj, ...) adds the Point resource to Proj, an existing
-%   Steno3D Project. Proj may also be a figure or axes handle that was
-%   cfreated by a Steno3D plotting function
+%   STENO3D.SCATTER(PROJECT, ...) adds the Point resource to PROJECT, an
+%   existing Steno3D Project. PROJECT may also be a figure or axes handle
+%   that was created by a Steno3D plotting function
 %
-%   Proj = STENO3D.SCATTER(...) returns Proj, the Steno3D Project that
-%   contains the new line resource.
+%   PROJECT = STENO3D.SCATTER(...) returns PROJECT, the Steno3D Project
+%   that contains the new Point resource.
 %
-%   [Proj, Pts] = STENO3D.SCATTER(...) returns Proj, the Steno3D Project,
-%   and Pts, the new Point resource.
+%   [PROJECT, POINTS] = STENO3D.SCATTER(...) returns PROJECT, the Steno3D
+%   Project, and POINTS, the new Point resource.
 %
 %   STENO3D.SCATTER is more similar to the MATLAB builtin function <a
 %   href="matlab: help scatter3">scatter3</a>
@@ -137,4 +137,3 @@ function [proj, pts] = scatter(varargin)
     
     proj.plot();
 end
-

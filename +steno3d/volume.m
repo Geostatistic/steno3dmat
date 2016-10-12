@@ -1,42 +1,42 @@
 function [proj, vol] = volume(varargin)
 %VOLUME Create and plot a Steno3D Volume resource
-%   STENO3D.VOLUME(Data) creates a Steno3D Project with a Volume resource
-%   defined by Data, an m x n x p matrix. The Data values are plotted on
+%   STENO3D.VOLUME(DATA) creates a Steno3D Project with a Volume resource
+%   defined by DATA, an m x n x p matrix. The data values are plotted on
 %   cell-centers with unit widths. Cell boundaries are defined by x = 0:m,
 %   y = 0:n, and z = 0:p.
 %
-%   STENO3D.VOLUME(Origin, Data) creates a Steno3D Project with a Volume
-%   resource as above, offset by 1 x 3 Origin vector. Cell boundaries are
-%   defined by x = Origin(1) + (0:m), y = Origin(2) + (0:n), and
-%   z = Origin(3) + (0:p).
+%   STENO3D.VOLUME(ORIGIN, DATA) creates a Steno3D Project with a Volume
+%   resource as above, offset by 1 x 3 ORIGIN vector. Cell boundaries are
+%   defined by x = ORIGIN(1) + (0:m), y = ORIGIN(2) + (0:n), and
+%   z = ORIGIN(3) + (0:p).
 %
-%   STENO3D.VOLUME(X, Y, Z, Data) creates a Steno3D Project with a Volume
+%   STENO3D.VOLUME(X, Y, Z, DATA) creates a Steno3D Project with a Volume
 %   resource as above. X, Y, and Z are vectors of cell boundaries (with
 %   sizes n x 1, m x 1, and p x 1, respectively) OR of cell widths (with
 %   sizes (n-1) x 1, (m-1) x 1, and (p-1) x 1, respectively). Since the
-%   volume dimensions are given by X, Y, and Z in this case, Data may also
+%   volume dimensions are given by X, Y, and Z in this case, DATA may also
 %   be a m*n*p x 1 vector.
 %
-%   STENO3D.VOLUME(X, Y, Z, Origin, Data) creates a Steno3D Project with a
-%   Volume resource as above, offset by 1 x 3 Origin vector. This is
+%   STENO3D.VOLUME(X, Y, Z, ORIGIN, DATA) creates a Steno3D Project with a
+%   Volume resource as above, offset by 1 x 3 ORIGIN vector. This is
 %   useful when X, Y, and Z are cell widths.
 %
-%   STENO3D.VOLUME(..., Title1, Data1, ..., TitleN, DataN) adds any number
-%   of titled datasets to the Volume resource. Title must be a string and
-%   Data must be a matrix of size m x n x p (or m*n*p x 1 if X, Y, and Z
-%   are provided). Title/Data pairs may replace the standalone Data
+%   STENO3D.VOLUME(..., TITLE1, DATA1, ..., TITLEN, DATAN) adds any number
+%   of titled datasets to the Volume resource. TITLE must be a string and
+%   DATA must be a matrix of size m x n x p (or m*n*p x 1 if X, Y, and Z
+%   are provided). TITLE/DATA pairs may replace the standalone DATA
 %   matrices above. (For more details see <a href="matlab:
 %   help steno3d.addData">steno3d.addData</a>)
 %
-%   STENO3D.VOLUME(Proj, ...) adds the Volume resource to Proj, an
-%   existing Steno3D Project. Proj may also be a figure or axes handle that
-%   was created by a Steno3D plotting function.
+%   STENO3D.VOLUME(PROJECT, ...) adds the Volume resource to PROJECT, an
+%   existing Steno3D Project. PROJECT may also be a figure or axes handle
+%   that was created by a Steno3D plotting function.
 %
-%   Proj = STENO3D.VOLUME(...) returns Proj, the Steno3D Project that
+%   PROJECT = STENO3D.VOLUME(...) returns PROJECT, the Steno3D Project that
 %   contains the new Volume resource.
 %
-%   [Proj, Vol] = STENO3D.VOLUME(...) returns Proj, the Steno3D Project,  
-%   Vol, the new Volume resource.
+%   [PROJECT, VOLUME] = STENO3D.VOLUME(...) returns PROJECT, the Steno3D 
+%   Project, and VOLUME, the new Volume resource.
 %
 %   STENO3D.VOLUME does not have a MATLAB builtin counterpart. When
 %   plotting a Steno3D Volume locally, its boundaries are displayed in a

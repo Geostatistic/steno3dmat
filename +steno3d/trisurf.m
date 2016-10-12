@@ -1,34 +1,34 @@
 function [proj, surf] = trisurf(varargin)
 %TRISURF Create and plot a triangulated Steno3D Surface resource
-%   STENO3D.TRISURF(Triangles, X, Y, Z) creates a Steno3D Project with a
+%   STENO3D.TRISURF(TRIANGLES, X, Y, Z) creates a Steno3D Project with a
 %   Surface resource of triangulated faces. The surface is defined by
-%   Triangles, n x 3 matrix of vertex indices, and X, Y, and Z, equal-sized
+%   TRIANGLES, n x 3 matrix of vertex indices, and X, Y, and Z, equal-sized
 %   vectors of vertex coordinates.
 %
-%   STENO3D.TRISURF(Triangles, Vertices) creates a Steno3D Project with a
-%   Surface resource defined by Trianlgles, n x 3 matrix of vertex indices,
-%   and Vertices, m x 3 matrix of spatial coordinates.
+%   STENO3D.TRISURF(TRIANGLES, VERTICES) creates a Steno3D Project with a
+%   Surface resource defined by TRIANGLES, n x 3 matrix of vertex indices,
+%   and VERTICES, m x 3 matrix of spatial coordinates.
 %
-%   STENO3D.TRISURF(..., Color) creates a Surface resource of the given
-%   color, where Color is a 1x3 RGB color, hex color string, named color
+%   STENO3D.TRISURF(..., COLOR) creates a Surface resource of the given
+%   color, where COLOR is a 1x3 RGB color, hex color string, named color
 %   string, or 'random'.
 %
-%   STENO3D.TRISURF(..., Title1, Data1, ..., TitleN, DataN) adds any number
-%   of titled datasets to the Surface resource. Title must be a string and
-%   Data must be an n x 1 or an m x 1 vector, where n is the number of
+%   STENO3D.TRISURF(..., TITLE1, DATA1, ..., TITLEN, DATAN) adds any number
+%   of titled datasets to the Surface resource. TITLE must be a string and
+%   DATA must be an n x 1 or an m x 1 vector, where n is the number of
 %   triangles and m is the number of vertices. If m == n, the data location
 %   will default to triangles (to override this see <a href="matlab:    
 %   help steno3d.addData">steno3d.addData</a>).
 %
-%   STENO3D.TRISURF(Proj, ...) adds the Surface resource to Proj, an
-%   existing Steno3D Project. Proj may also be a figure or axes handle that
-%   was created by a Steno3D plotting function.
+%   STENO3D.TRISURF(PROJECT, ...) adds the Surface resource to PROJECT, an
+%   existing Steno3D Project. PROJECT may also be a figure or axes handle
+%   that was created by a Steno3D plotting function.
 %
-%   Proj = STENO3D.TRISURF(...) returns Proj, the Steno3D Project that
+%   PROJECT = STENO3D.TRISURF(...) returns PROJECT, the Steno3D Project that
 %   contains the new Surface resource.
 %
-%   [Proj, Surf] = STENO3D.TRISURF(...) returns Proj, the Steno3D Project,  
-%   Surf, the new Surface resource.
+%   [PROJECT, SURFACE] = STENO3D.TRISURF(...) returns PROJECT, the Steno3D
+%   Project, and SURFACE, the new Surface resource.
 %
 %   STENO3D.TRISURF is useful in conjunction with MATLAB triangulation
 %   functions like <a href="matlab: help convhull"
