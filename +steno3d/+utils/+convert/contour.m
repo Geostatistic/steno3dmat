@@ -1,5 +1,5 @@
 function res = contour(ch, tabLevel, flatten)
-%CONTOUR Matlab contour to steno3d Line conversion
+%CONTOUR MATLAB contour to Steno3D Line conversion
 
     if ~isgraphics(ch) || ~strcmp(ch.Type, 'contour')
         error('steno3d:convertError', ['steno3d.utils.convert.contour ' ...
@@ -49,7 +49,5 @@ function res = contour(ch, tabLevel, flatten)
             )                                                           ...
         }];
     end
-
-
 end
 

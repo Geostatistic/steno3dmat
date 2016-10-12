@@ -1,5 +1,5 @@
 function res = image(ih, tabLevel)
-%IMAGE Matlab image to steno3d Surface conversion
+%IMAGE MATLAB image to Steno3D Surface conversion
 
     if ~isgraphics(ih) || ~strcmp(ih.Type, 'image')
         error('steno3d:convertError', ['steno3d.utils.convert.image '   ...
@@ -38,8 +38,6 @@ function res = image(ih, tabLevel)
     else
         alpha = 1;
     end
-    
-   
 
     if strcmp(ih.Visible, 'on')
         res = [res {                                                    ...
@@ -55,7 +53,5 @@ function res = image(ih, tabLevel)
             )                                                           ...
         }];
     end
-
-
 end
 

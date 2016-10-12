@@ -1,9 +1,5 @@
 classdef User
-% USER user object constructed from user query response data
-%
-%   obj = USER(APIKEY, ENDPT, USERDATA) creates USER object with
-%   steno3d.com APIKEY, ENDPT web address, and user-query response
-%   object USERDATA
+% USER Object constructed from user query response data
 
     properties (SetAccess = immutable)
         ApiKey
@@ -20,6 +16,12 @@ classdef User
     end
     methods
         function obj = User(apikey, endpt, userdata)
+        % USER Constructor from user query response data
+        %
+        %   OBJ = USER(APIKEY, ENDPT, USERDATA) creates USER object with
+        %   steno3d.com APIKEY, ENDPT web address, and user-query response
+        %   struct USERDATA.
+        
             obj.ApiKey = apikey;
             obj.Endpoint = endpt;
             obj.Uid = userdata.uid;
@@ -32,15 +34,15 @@ classdef User
     end
     methods (Static)
         function [loggedIn, user] = isLoggedIn()
-        %ISLOGGEDIN checks if a user is logged in to steno3d
+        %ISLOGGEDIN Check if a user is logged in to Steno3D
         %
         %   ISLOGGEDIN() returns true if a user is logged in and false
-        %   otherwise. Errors if `steno3d_user` exists but contains
-        %   something other than user data
+        %   otherwise. Errors if 'steno3d_user' exists as a variable in the
+        %   current worspace but contains something other than user data.
         %
-        %   [LOGGEDIN, USER] = CURRENTUSER() returns true or false
-        %   for LOGGEDIN as descriebed above, and the currently logged
-        %   in USER. If LOGGEDIN is false, USER is 'None'
+        %   [LOGGEDIN, USER] = STENO3D.UTILS.ISLOGGEDIN() returns true or
+        %   false for LOGGEDIN as described above, and the currently
+        %   logged in USER. If LOGGEDIN is false, USER is 'None'.
         
             try
                 user = evalin('base', 'steno3d_user');
@@ -58,10 +60,10 @@ classdef User
             end
         end
         function user = currentUser()
-        %CURRENTUSER returns the current, logged in steno3d user
+        %CURRENTUSER Return the current, logged in Steno3D user
         %
-        %   USER = CURRENTUSER() returns the current steno3d USER or
-        %   errors if no user is logged in
+        %   USER = CURRENTUSER() returns the current Steno3D USER or
+        %   errors if no user is logged in.
             
             [loggedIn, user] = steno3d.utils.User.isLoggedIn();
             if ~loggedIn

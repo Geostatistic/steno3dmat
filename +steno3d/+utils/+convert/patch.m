@@ -1,5 +1,5 @@
 function res = patch(ph, tabLevel)
-%PATCH Matlab patch to steno3d surface
+%PATCH MATLAB patch to Steno3D Surface conversion
 
     if ~isgraphics(ph) || ~strcmp(ph.Type, 'patch')
         error('steno3d:convertError', ['steno3d.utils.convert.patch '   ...
@@ -131,9 +131,6 @@ function res = patch(ph, tabLevel)
         end
     end
 
-
-
-
     if strcmp(ph.MarkerFaceColor, 'none')
         mcol = ph.MarkerEdgeColor;
     else
@@ -153,9 +150,5 @@ function res = patch(ph, tabLevel)
             )                                                           ...
         }];
     end
-
-
-
-
 end
 

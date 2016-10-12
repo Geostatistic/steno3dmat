@@ -1,5 +1,5 @@
 function res = line(lh, tabLevel)
-%LINE Matlab line to steno3d Line conversion
+%LINE MATLAB line to Steno3D Line conversion
 
     if ~isgraphics(lh) || ~strcmp(lh.Type, 'line')
         error('steno3d:convertError', ['steno3d.utils.convert.line requires ' ...
@@ -55,7 +55,5 @@ function res = line(lh, tabLevel)
             )                                                           ...
         }];
     end
-
-
 end
 

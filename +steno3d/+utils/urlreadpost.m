@@ -1,4 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function [output,status] = urlreadpost(urlChar,params)
 %URLREADPOST Returns the contents of a URL POST method as a string.
 %   S = URLREADPOST('URL',PARAMS) passes information to the server as

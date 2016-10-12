@@ -1,5 +1,5 @@
 function res = group(gh, tabLevel)
-%GROUP Matlab graphics group to steno3d resources conversion
+%GROUP MATLAB group to Steno3D Resources conversion
 
     if ~isgraphics(gh) || ~any(strcmp(gh.Type, {'axes', 'hggroup'}))
         error('steno3d:convertError', ['steno3d.utils.convert.axes '    ...
