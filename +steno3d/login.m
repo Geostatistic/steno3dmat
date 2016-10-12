@@ -1,12 +1,37 @@
 function login(varargin)
-%LOGIN Logs in to steno3d.com with your api developer key
+%LOGIN Log in to steno3d.com to allow Steno3D Project uploads
+%   STENO3D.LOGIN() logs in to steno3d.com with the most recently saved API
+%   key and adds steno3d to your MATLAB path if it is not already added.
 %
-%   STENO3D.LOGIN()         attempts to login with saved api key
-%   STENO3D.LOGIN(API_KEY)  attempts to login with API_KEY
+%   STENO3D.LOGIN(APIKEY) logs in to steno3d.com with API key APIKEY
+%   requested by a Steno3D account holder from their <a href=" matlab: 
+%   web('https://steno3d.com/settings/developer', '-browser')
+%   ">profile</a>. APIKEY may
+%   also be a username if the API key associated with that username is
+%   saved.
 %
-%   STENO3D.LOGIN(..., 'Parameter', value)  See below for valid parameters
+%   STENO3D.LOGIN(..., PARAMETER, VALUE) logs in using the given
+%   PARAMETER/VALUE pairs. Avaliable parameters are:
 %
-%   Logging in to steno3d is required to upload plots to steno3d.com. To
+%       Endpoint: string (default: steno3d.com)
+%           The target site URL.
+%       CredentialsFile: string (default: '~/.steno3d_client/credentials')
+%           Path to file with saved API key. If a new API key is provided
+%           and the file does not yet exist, it will be created. Unless the
+%           default path is used, this will have to be provided on every
+%           login.
+%       SkipCredentials: true or false (default: false)
+%           If true, the API key will not be read from the CredentialsFile
+%           nor will it be saved. If false, the API key will be read from
+%           the CredentialsFile, and if a new API key is provided, it will
+%           be saved. Note: Even if SkipCredentials is true, the API key
+%           will be available in the current workspace and will persist in
+%           the MATLAB history. If you feel like your API key has become
+%           compromised you may delete it throuh your online <a href="
+%           matlab: web('https://steno3d.com/settings/developer',
+%           '-browser')">profile</a>.
+%
+%   Logging in to steno3d is required to upload projects to steno3d.com. To
 %   obtain an API developer key, you need a Steno3D account:
 %
 %   <a href="matlab: web('https://steno3d.com/signup', '-browser')"
@@ -18,21 +43,14 @@ function login(varargin)
 %   '-browser')">https://steno3d.com/settings/developer</a>
 %
 %   Unless you choose to 'SkipCredentials', your API key will be saved
-%   locally and read next time you call `steno3d.login()`. You can always
-%   login using a different devel key (or username if the corresponding
-%   devel key is saved in teh credentials file).
-%
-%   Available valid parameter/value pairs include:
-%       'Endpoint'          the target site (default: steno3d.com)
-%       'CredentialsFile'   path to file with saved api key (default:
-%                           '~/.steno3d_client/credentials')
-%       'SkipCredentials'   if true, API_KEY will not be saved to
-%                           'CredentialsFile' and if false, it will be
-%                           saved (default: false)
+%   locally and read next time you call STENO3D.LOGIN().
 %
 %   Example:
-%   >> STENO3D.LOGIN('username//12345678-xxxx-yyyy-zzzz-SOMEDEVELKEY',  ...
-%                    'CredentialsFile', './cred')
+%       STENO3D.LOGIN('username//12345678-xxxx-yyyy-zzzz-SOMEDEVELKEY', ...
+%                     'CredentialsFile', '~/Dropbox/steno3d_cred')
+%
+%   See also STENO3D.LOGOUT, STENO3D.UPLOAD
+%
 
     PRODUCTION_BASE_URL = 'https://steno3d.com/';
     VALID_PARAMS = {'Endpoint', 'CredentialsFile', 'SkipCredentials'};
@@ -46,20 +64,6 @@ function login(varargin)
         'user please `steno3d.logout()`, then login specifying a\n'     ...
         'different username or API developer key.\n\n'                  ...
     ];
-
-    % Check if steno3d is on the path and if not, add it
-    loginpath = strsplit(mfilename('fullpath'), filesep);
-    steno3dpath = strjoin(loginpath(1:end-2), filesep);
-    paths = strsplit(path, pathsep);
-    if ispc
-      onPath = any(strcmpi(steno3dpath, paths));
-    else
-      onPath = any(strcmp(steno3dpath, paths));
-    end
-
-    if ~onPath
-        addpath(steno3dpath)
-    end
 
     % Check if already logged in
     [loggedIn, user] = steno3d.utils.User.isLoggedIn();
@@ -165,10 +169,9 @@ function login(varargin)
 end
 
 function loginWith(apikey, endpoint)
-% LOGINWITH logs in to steno3d.com with specified apikey and endpoint
-%
+% LOGINWITH Logs in to steno3d.com with specified apikey and endpoint
 %   LOGINWITH(APIKEY, ENDPOINT) Attempts to login to ENDPOINT with APIKEY.
-%   If APIKEY is an empty string, the user is prompted for a key
+%   If APIKEY is an empty string, the user is prompted for a key.
 
     APIKEY_PROMPT = 'Steno3D API key: ';
 
@@ -251,12 +254,25 @@ function loginWith(apikey, endpoint)
     end
     user = steno3d.utils.User(apikey, endpoint, resp);
     fprintf('Welcome to Steno3D! You are logged in as @%s\n', user.Uid)
-    assignin('base', 'steno3d_user', user)
+    assignin('base', 'steno3d_user', user);
+    
+    % Check if steno3d is on the path and if not, add it
+    loginpath = strsplit(mfilename('fullpath'), filesep);
+    steno3dpath = strjoin(loginpath(1:end-2), filesep);
+    paths = strsplit(path, pathsep);
+    if ispc
+      onPath = any(strcmpi(steno3dpath, paths));
+    else
+      onPath = any(strcmp(steno3dpath, paths));
+    end
+
+    if ~onPath
+        addpath(steno3dpath)
+    end
 end
 
 function home = homedir()
-%HOMEDIR retreive home directory regardless of platform
-%
+%HOMEDIR Retreive home directory regardless of platform
 %   HOME = HOMEDIR() returns full path to home directory
 
     if ispc
@@ -267,8 +283,7 @@ function home = homedir()
 end
 
 function endpt = validateEndpoint(endpt)
-%VALIDATEENDPOINT ensures the steno3d web endpoint is valid
-%
+%VALIDATEENDPOINT Ensures the Steno3D web endpoint is valid
 %   ENDPT = VALIDATEENDPOINT(ENDPT) checks if ENDPT is a string, starts
 %   with https, and adds a trailing slash if none is found
 
@@ -288,8 +303,7 @@ function endpt = validateEndpoint(endpt)
 end
 
 function crf = validateCredFile(crf)
-%VALIDATECREDFILE ensures the credentials file is valid
-%
+%VALIDATECREDFILE Ensures the credentials file is valid
 %   CRF = VALIDATECREDFILE(CRF) checks if CRF is a string, expands '.' and
 %   '~' to the full path, checks that CRF is in an existing directory and
 %   CRF is not a directory.
@@ -321,10 +335,8 @@ function crf = validateCredFile(crf)
 end
 
 function skipcr = validateSkipCred(skipcr)
-%VALIDATESKIPCRED ensures skip credentials value is a boolean
-%
-%   SKIPCR = VALIDATESKIPCRED(SKIPCR) checks that SKIPCR is true (1) or
-%   false (0)
+%VALIDATESKIPCRED Ensures skip credentials value is a boolean
+%   SKIPCR = VALIDATESKIPCRED(SKIPCR) checks that SKIPCR is true or false
 
     try
         if islogical(skipcr)
@@ -338,8 +350,7 @@ function skipcr = validateSkipCred(skipcr)
 end
 
 function isValid = isKey(key)
-%VALIDATEKEY ensures the develkey is a valid format
-%
+%VALIDATEKEY Ensures the develkey is a valid format
 %   ISVALID = ISKEY(KEY) returns true if KEY is a string, contains '//',
 %   and has 36 characters following the '//'; returns false otherwise.
 
@@ -355,16 +366,13 @@ function isValid = isKey(key)
 end
 
 function versionOk = isVersionOk(endpoint)
-%ISVERSIONOK checks if the current version is up to date
-%
+%ISVERSIONOK Checks if the current version of steno3dmat is up to date
 %   VERSIONOK = ISVERSIONOK(ENDPOINT) queries ENDPOINT for the latest
 %   version of steno3dmat and compares that to the local version of
 %   steno3dmat. Returns false if the latest version of steno3dmat is
 %   a major or minor version ahead of the local version; otherwise returns
-%   true.
-%
-%   User is still notified if their version of steno3dmat is out of date
-%   even if it is valid.
+%   true. The user is still notified if their version of steno3dmat is out
+%   of date even if it is valid.
 
     INVALID_VERSION = ['\n'                                             ...
     'Oh no! Your version of steno3d is out of date.\n'                  ...
@@ -412,7 +420,7 @@ function versionOk = isVersionOk(endpoint)
 end
 
 function notConnectedError()
-% NOTCONNECTEDERROR prints an error if you cannot connect to the server
+% NOTCONNECTEDERROR Prints an error if you cannot connect to the server
 
     NOT_CONNECTED = ['\n'                                               ...
     'Oh no! We could not connect to the Steno3D server. Please ensure\n'...
@@ -424,7 +432,5 @@ function notConnectedError()
     '4) Open an issue https://github.com/3ptscience/steno3dmat/issues\n'...
     '\n'                                                                ...
     ];
-
     fprintf(NOT_CONNECTED)
-
 end

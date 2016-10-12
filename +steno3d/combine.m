@@ -1,5 +1,23 @@
 function proj = combine(varargin)
-%COMBINE Combine a list of steno3d projects into one
+%COMBINE Combine a list of Steno3D Projects into one Project
+%   PROJECT = STENO3D.COMBINE(PROJECTS) takes a list of Steno3D PROJECTS
+%   and combines their resources into one PROJECT
+%
+%   PROJECT = STENO3D.COMBINE(PROJECT1, PROJECT2, ..., PROJECTN) combines
+%   all the input projects into one PROJECT.
+%
+%   Example:
+%       peaks; peaksProj = steno3d.convert(gcf);
+%       sphere; sphereProj = steno3d.convert(gcf);
+%       comboProj = STENO3D.COMBINE(peaksProj, sphereProj);
+%       assert(length(comboProj.Resources) == 2)
+%       comboProj.Title = 'Two surface project';
+%       comboProj.Public = true;
+%       comboProj.upload();
+%
+%   See also STENO3D.CORE.PROJECT, STENO3D.CONVERT
+%
+
 
     narginchk(1, inf);
     if ischar(varargin{end})
