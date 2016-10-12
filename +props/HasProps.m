@@ -1,11 +1,66 @@
 classdef HasProps < dynamicprops
-%HASPROPS Class with dynamically created, declarative properties
+%HASPROPS Class with dynamically created, declarative Props
+%   PROPS.HASPROPS is designed to aid creation of classes by providing a 
+%   declarative interface for creating type-checked, validated and
+%   cross-validated properties.
+%
+%   The props of a PROPS.HASPROPS subclass are declared in an immutable
+%   property that is a cell array of structs. It is recommended but not
+%   required to set this property to 'Hidden' since it is unused after
+%   class instantiated.
+%
+%   The required fields of each struct in this immutable cell array are
+%   'Name' (the name by which the prop value will be accessed), 'Type' (the
+%   type of prop), and 'Doc' (a description of the prop). Optional fields
+%   include 'Required' and 'DefaultValue', and specific types of props may
+%   have additional fields.
+%
+%   Upon instantiation, each struct in the cell array will be converted
+%   into two properties: an accessible property, Name, that is used to get
+%   and set the prop value, and a hidden property, PR_Name, the underlying
+%   instance of props.Prop where the value is actually validated and
+%   stored.
+%
+%   PROPS.HASPROPS classes also have a validate() function. This function
+%   ensures that all props are set correctly and performs any additional
+%   cross-validation defined in the class validator() function.
+%
+%   Hopefully an example will help. First, define the PROPS.HASPROPS
+%   subclass:
+%   ---- CandyJar.m ----
+%   classdef CandyJar < PROPS.HASPROPS
+%   %CANDYJAR Object to describe the contents of a candy jar
+%   
+%   properties (Hidden, SetAccess = immutable)
+%       CandyJarProps = {
+%           struct(
+%               'Name', 'CandyBrand',
+%               'Type', @props.String,
+%               'Doc', 'Brand of candy in the jar',
+%               'Required', false
+%           ), struct(
+%               'Name', 'CurrentAmount',
+%               'Type', @props.Int,
+%               'Doc', 'Number of candy pieces in the jar',
+%               'Required', true
+%           ), struct(
+%               'Name', 'MaximumAmount',
+%               'Type', @props.Int,
+%               'Doc', 'Maximum candy capacity of the jar',
+%               'Required', true
+%           )
+%       }
+%   end
+%
+%
+%
+%   
 
     properties (Hidden, SetAccess = immutable)
         % Cell array of structs with required fields:
         %  Name, Type, Doc
         % Optional fields include:
-        %  Required, Repeated, DefaultValue
+        %  Required, DefaultValue
         % Additional fields may be available depending on the prop
     end
 
