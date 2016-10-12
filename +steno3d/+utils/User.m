@@ -1,5 +1,5 @@
 classdef User
-% USER Object constructed from user query response data
+%USER Object constructed from user query response data
 
     properties (SetAccess = immutable)
         ApiKey
@@ -16,7 +16,7 @@ classdef User
     end
     methods
         function obj = User(apikey, endpt, userdata)
-        % USER Constructor from user query response data
+        %USER Constructor from user query response data
         %
         %   OBJ = USER(APIKEY, ENDPT, USERDATA) creates USER object with
         %   steno3d.com APIKEY, ENDPT web address, and user-query response
