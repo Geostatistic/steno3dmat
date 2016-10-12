@@ -1,17 +1,18 @@
 function installSteno3D(varargin)
-%INSTALLSTENO3D Add steno3d to the MATLAB environment
-%
+%INSTALLSTENO3D Add Steno3D to the MATLAB environment
 %   INSTALLSTENO3D() copies steno3dmat to '~/.steno3d_client/` and adds
-%   it to the default MATLAB path
-%   INSTALLSTENO3D(FOLDER) copies steno3dmat to FOLDER and adds it to the
-%   default MATLAB path
+%   steno3d to the default MATLAB path.
 %
-%   The default install location for 'steno3dmat/' is '~/.steno3d_client/'
-%   corresponding to the default location for other saved steno3d files.
-%   However, you may wish to save it to the standard MATLAB toolbox
-%   location. To do so, use:
+%   INSTALLSTENO3D(FOLDER) copies steno3dmat to FOLDER and adds steno3d to
+%   the default MATLAB path.
 %
-%   >> installSteno3D([matlabroot filesep 'toolbox'])
+%   Steno3D requires MATLAB R2014b or later.
+%
+%   Example:
+%       % To install Steno3D to the standard toolbox location
+%       installSteno3D([matlabroot filesep 'toolbox'])
+%
+%   See also UPGRADESTENO3D, UNINSTALLSTENO3D
 
 
     if verLessThan('matlab', 'R2014b')
@@ -69,6 +70,7 @@ function installSteno3D(varargin)
     copyfile('testSteno3D.m', targetdir)
     copyfile('uninstallSteno3D.m', targetdir)
     copyfile('upgradeSteno3D.m', targetdir)
+    copyfile('installSteno3D.m', targetdir)
     copyfile('README', targetdir)
     copyfile('LICENSE', targetdir)
     steno3ddir = [targetdir filesep '+steno3d'];
@@ -101,8 +103,7 @@ function installSteno3D(varargin)
 end
 
 function home = homedir()
-%HOMEDIR retreive home directory regardless of platform
-%
+%HOMEDIR Retreive home directory regardless of platform
 %   HOME = HOMEDIR() returns full path to home directory
 
     if ispc

@@ -43,13 +43,16 @@ function login(varargin)
 %   '-browser')">https://steno3d.com/settings/developer</a>
 %
 %   Unless you choose to 'SkipCredentials', your API key will be saved
-%   locally and read next time you call STENO3D.LOGIN().
+%   locally and read next time you call STENO3D.LOGIN(). On login, Steno3D
+%   also checks that its version is up to date. If it is not, the user will
+%   be prompted to upgrade; an out of date version may or may not prevent a
+%   successful login.
 %
 %   Example:
 %       STENO3D.LOGIN('username//12345678-xxxx-yyyy-zzzz-SOMEDEVELKEY', ...
 %                     'CredentialsFile', '~/Dropbox/steno3d_cred')
 %
-%   See also STENO3D.LOGOUT, STENO3D.UPLOAD
+%   See also STENO3D.LOGOUT, STENO3D.UPLOAD, UPGRADESTENO3D
 %
 
     PRODUCTION_BASE_URL = 'https://steno3d.com/';
