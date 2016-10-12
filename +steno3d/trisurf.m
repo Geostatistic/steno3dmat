@@ -1,11 +1,11 @@
 function [proj, surf] = trisurf(varargin)
 %TRISURF Create and plot a triangulated Steno3D Surface resource
-%   STENO3D.TRISURF(Triangles, X, Y, Z) creates a Steno3D project with a
+%   STENO3D.TRISURF(Triangles, X, Y, Z) creates a Steno3D Project with a
 %   Surface resource of triangulated faces. The surface is defined by
 %   Triangles, n x 3 matrix of vertex indices, and X, Y, and Z, equal-sized
 %   vectors of vertex coordinates.
 %
-%   STENO3D.TRISURF(Triangles, Vertices) creates a Steno3D project with a
+%   STENO3D.TRISURF(Triangles, Vertices) creates a Steno3D Project with a
 %   Surface resource defined by Trianlgles, n x 3 matrix of vertex indices,
 %   and Vertices, m x 3 matrix of spatial coordinates.
 %
@@ -21,13 +21,13 @@ function [proj, surf] = trisurf(varargin)
 %   help steno3d.addData">steno3d.addData</a>).
 %
 %   STENO3D.TRISURF(Proj, ...) adds the Surface resource to Proj, an
-%   existing Steno3D project. Proj may also be a figure or axes handle that
+%   existing Steno3D Project. Proj may also be a figure or axes handle that
 %   was created by a Steno3D plotting function.
 %
-%   Proj = STENO3D.TRISURF(...) returns Proj, the Steno3D project that
+%   Proj = STENO3D.TRISURF(...) returns Proj, the Steno3D Project that
 %   contains the new Surface resource.
 %
-%   [Proj, Surf] = STENO3D.TRISURF(...) returns Proj, the Steno3D project,  
+%   [Proj, Surf] = STENO3D.TRISURF(...) returns Proj, the Steno3D Project,  
 %   Surf, the new Surface resource.
 %
 %   STENO3D.TRISURF is useful in conjunction with MATLAB triangulation
@@ -54,6 +54,7 @@ function [proj, surf] = trisurf(varargin)
 %   See also STENO3D.CORE.SURFACE, STENO3D.UPLOAD, STENO3D.ADDDATA,
 %   STENO3D.ADDIMAGE, STENO3D.CORE.PROJECT
 %
+
 
     if isempty(varargin)
         error('steno3d:trisurfError', 'Not enough input arguments');

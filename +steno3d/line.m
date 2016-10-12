@@ -1,11 +1,11 @@
 function [proj, lin] = line(varargin)
 %LINE Create and plot a Steno3D Line resource
-%   STENO3D.LINE(X, Y, Z) creates a Steno3D project with a Line resource
+%   STENO3D.LINE(X, Y, Z) creates a Steno3D Project with a Line resource
 %   defined by vectors X, Y, and Z. If X, Y, and Z are matrices of the same
 %   size, only one Line resource is created but separate columns are
 %   disconnected.
 %
-%   STENO3D.LINE(Segments, Vertices) creates a Steno3D project with a Line
+%   STENO3D.LINE(Segments, Vertices) creates a Steno3D Project with a Line
 %   resource defined by Segments, n x 2 matrix of vertex indices, and
 %   Vertices, m x 3 matrix of spatial coordinates. 
 %
@@ -21,13 +21,13 @@ function [proj, lin] = line(varargin)
 %   help steno3d.addData">steno3d.addData</a>).
 %
 %   STENO3D.LINE(Proj, ...) adds the Line resource to Proj, an existing
-%   Steno3D project. Proj may also be a figure or axes handle that was
+%   Steno3D Project. Proj may also be a figure or axes handle that was
 %   created by a Steno3D plotting function.
 %
-%   Proj = STENO3D.LINE(...) returns Proj, the Steno3D project that
+%   Proj = STENO3D.LINE(...) returns Proj, the Steno3D Project that
 %   contains the new Line resource.
 %
-%   [Proj, Line] = STENO3D.LINE(...) returns Proj, the Steno3D project, and
+%   [Proj, Line] = STENO3D.LINE(...) returns Proj, the Steno3D Project, and
 %   Line, the new Line resource.
 %
 %   Unlike the MATLAB builtin <a href=
@@ -52,6 +52,7 @@ function [proj, lin] = line(varargin)
 %   See also STENO3D.CORE.LINE, STENO3D.UPLOAD, STENO3D.ADDDATA,
 %   STENO3D.CORE.PROJECT
 %   
+
 
     if isempty(varargin)
         error('steno3d:lineError', 'Not enough input arguments');

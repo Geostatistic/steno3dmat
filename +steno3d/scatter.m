@@ -1,9 +1,9 @@
 function [proj, pts] = scatter(varargin)
 %SCATTER Create and plot a Steno3D Point resource
-%   STENO3D.SCATTER(XYZ) creates a Steno3D project with a Point resource
+%   STENO3D.SCATTER(XYZ) creates a Steno3D Project with a Point resource
 %   defined by n x 3 matrix XYZ.
 %
-%   STENO3D.SCATTER(X, Y, Z) creates a Steno3D project with a Point
+%   STENO3D.SCATTER(X, Y, Z) creates a Steno3D Project with a Point
 %   resource defined by equal-sized vectors or matrices X, Y, and Z.
 %
 %   STENO3D.SCATTER(..., Color) creates a Point resource of the give color,
@@ -13,16 +13,17 @@ function [proj, pts] = scatter(varargin)
 %   STENO3D.SCATTER(..., Title1, Data1, ..., TitleN, DataN) adds any number
 %   of titled datasets to the Point resource. Title must be a string and
 %   Data must be an matrix or vector that, when flattened, is length n,
-%   where n is the number of points.
+%   where n is the number of points. (For more details see <a href="matlab:    
+%   help steno3d.addData">steno3d.addData</a>)
 %
 %   STENO3D.SCATTER(Proj, ...) adds the Point resource to Proj, an existing
-%   Steno3D project. Proj may also be a figure or axes handle that was
+%   Steno3D Project. Proj may also be a figure or axes handle that was
 %   cfreated by a Steno3D plotting function
 %
-%   Proj = STENO3D.SCATTER(...) returns Proj, the Steno3D project that
+%   Proj = STENO3D.SCATTER(...) returns Proj, the Steno3D Project that
 %   contains the new line resource.
 %
-%   [Proj, Pts] = STENO3D.SCATTER(...) returns Proj, the Steno3D project,
+%   [Proj, Pts] = STENO3D.SCATTER(...) returns Proj, the Steno3D Project,
 %   and Pts, the new Point resource.
 %
 %   STENO3D.SCATTER is more similar to the MATLAB builtin function <a
@@ -48,6 +49,7 @@ function [proj, pts] = scatter(varargin)
 %
 %   See also STENO3D.CORE.POINT, STENO3D.UPLOAD, STENO3D.ADDDATA,
 %   STENO3D.ADDIMAGE, STENO3D.CORE.PROJECT
+%
 
 
     if isempty(varargin)
