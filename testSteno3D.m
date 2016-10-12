@@ -159,9 +159,9 @@ function success = testSteno3D(raiseError, attemptUpload, testPlot)
             p3.Public = false;
             
             x = 0:pi/10:4*pi;
-            [p4, myPoints] = STENO3D.SCATTER(                        ...
-                [x(:) cos(x(:)+0.2) sin(x(:))], [0 .5 .5],                  ...
-                'Random Data', rand(size(x))                                ...
+            [p4, myPoints] = steno3d.scatter(                           ...
+                [x(:) cos(x(:)+0.2) sin(x(:))], [0 .5 .5],             	...
+                'Random Data', rand(size(x))                            ...
             );
             myPoints.Title = 'Example Points';
             myPoints.Description = 'Trig functions with random data';
@@ -170,14 +170,32 @@ function success = testSteno3D(raiseError, attemptUpload, testPlot)
             
             x = [0 1 0 0]; y = [0 0 1 0]; z = [0 0 0 1];
             tris = convhull(x, y, z);
-            [p5, mySurface] = STENO3D.TRISURF(                       ...
-                tris, x, y, z, 'r', 'Face Data', rand(4, 1)                 ...
+            [p5, mySurface] = steno3d.trisurf(                          ...
+                tris, x, y, z, 'r', 'Face Data', rand(4, 1)             ...
             );
             mySurface.Title = 'Triangulated Surface';
             mySurface.Description = 'Convex hull triangles';
             p5.Title = 'Project with one Surface';
             p5.Public = true;
-            steno3d.upload(p5)
+            
+            pngFile = [tempname '.png'];
+            imwrite(imread('ngc6543a.jpg'), pngFile, 'png');
+            [p6, mySurface] = steno3d.surface(                          ...
+                'X', 0:20, 'Z', 0:25, [0 0 -25], rand(21, 26), 'k',     ...
+                'Increasing Numbers', 1:20*25, 'Space Image', pngFile   ...
+            );
+            mySurface.Title = 'Space Image';
+            mySurface.Description = ['Vertical surface with some random'...
+                                     ' bumps and a space image'];
+            p6.Title = 'Project with one Surface';
+            [xvals, yvals, zvals] = ndgrid(1:5, 1:10, 1:20);
+            [p7, myVolume] = steno3d.volume(                            ...
+                4*ones(5, 1), 2*ones(10, 1), ones(20, 1), [-10 -10 -10],...
+                'X-Values', xvals, 'Y-Values', yvals, 'Z-Values', zvals ...
+            );
+            myVolume.Title = 'Example Volume';
+            myVolume.Description = 'Volume with x, y, and z data';
+            p7.Title = 'Project with one Volume';
         end
         
         if attemptUpload
@@ -187,6 +205,8 @@ function success = testSteno3D(raiseError, attemptUpload, testPlot)
             p3.upload;
             steno3d.upload(p4);
             p5.upload();
+            steno3d.upload(p6);
+            steno3d.upload(p7);
         end
 
     catch ME
