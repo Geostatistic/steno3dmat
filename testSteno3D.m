@@ -177,6 +177,9 @@ function success = testSteno3D(raiseError, attemptUpload, testPlot)
             mySurface.Description = 'Convex hull triangles';
             p5.Title = 'Project with one Surface';
             p5.Public = true;
+            steno3d.addData(mySurface, 'Cell Center Data', rand(4, 1));
+            mySurface.Data{end}.Location = 'N';
+            mySurface.Data{end}.Title = 'Node Data';
             
             pngFile = [tempname '.png'];
             imwrite(imread('ngc6543a.jpg'), pngFile, 'png');
@@ -196,6 +199,30 @@ function success = testSteno3D(raiseError, attemptUpload, testPlot)
             myVolume.Title = 'Example Volume';
             myVolume.Description = 'Volume with x, y, and z data';
             p7.Title = 'Project with one Volume';
+            
+            % Generate a png image
+            [x, y, z] = sphere; surf(x, y, z);
+            h = findobj('Type','surface');
+            load earth; hemisphere = [ones(257,125),X,ones(257,125)];
+            set(h,'CData',flipud(hemisphere),'FaceColor','texturemap');
+            colormap(map); axis equal; view([90 0]);
+            fig = gcf; fig.Position = [fig.Position(1:3) fig.Position(3)];
+            ax = gca; ax.Position = [0 0 1 1];
+            tempFile = [tempname '.png'];
+            print(fig, '-dpng', tempFile);
+            % Create a surface
+            verts = [x(:) y(:) z(:)];
+            tris = convhull(x(:), y(:), z(:));
+            [p8, mySurface] = steno3d.trisurf(tris, verts);
+            % Add the image
+            steno3d.addImage(mySurface, tempFile,                       ...
+                             'X', 2, 'Z', 2, [-1 -1 -1], 'Hemisphere');
+                         
+            peaks; peaksProj = steno3d.convert(gcf);
+            sphere; sphereProj = steno3d.convert(gcf);
+            p9 = steno3d.combine(peaksProj, sphereProj);
+            assert(length(p9.Resources) == 2)
+            p9.Title = 'Two surface project';
         end
         
         if attemptUpload
@@ -207,6 +234,8 @@ function success = testSteno3D(raiseError, attemptUpload, testPlot)
             p5.upload();
             steno3d.upload(p6);
             steno3d.upload(p7);
+            p8.upload();
+            p9.upload();
         end
 
     catch ME
