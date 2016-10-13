@@ -39,7 +39,7 @@ classdef Instance < props.Prop
 %                       'Type', @props.Instance,                        ...
 %                       'Doc', 'An auto-created figure property',       ...
 %                       'Class', @matlab.ui.Figure,                     ...
-%                       'Initialize' = true                             ...
+%                       'Initialize', true                              ...
 %                   )                                                   ...
 %               }
 %           end
@@ -124,6 +124,10 @@ classdef Instance < props.Prop
             else
                 val = obj.DefaultValue;
             end
+        end
+        
+        function doc = dynamicDoc(obj)
+            doc = ['Class: ' func2str(obj.Class)];
         end
 
     end

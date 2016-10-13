@@ -127,6 +127,10 @@ classdef Prop
                   mc.Name, obj.Name)
             output = '';
         end
+        
+        function doc = dynamicDoc(obj)
+            doc = '';
+        end
     end
 
     methods (Static)

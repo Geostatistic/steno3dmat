@@ -40,7 +40,7 @@ classdef Union < props.Prop
 %
 
 
-    properties (Access = ?props.Prop)
+    properties (SetAccess = ?props.Prop)
         PropTypes
     end
 
@@ -115,6 +115,17 @@ classdef Union < props.Prop
 
         function val = DynamicDefault(obj)
             val = obj.PropTypes{1}.DynamicDefault;
+        end
+        
+        function doc = dynamicDoc(obj)
+            doc = 'Prop types: ';
+            for i = 1:length(obj.PropTypes)
+                if i > 1
+                    doc = [doc ', '];
+                end
+                mc = metaclass(obj.PropTypes{i});
+                doc = [doc mc.Name];
+            end
         end
     end
 end

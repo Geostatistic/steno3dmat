@@ -33,7 +33,7 @@ classdef Repeated < props.Prop
 %
 
 
-    properties (Access = ?props.Prop)
+    properties (SetAccess = ?props.Prop)
         PropType
     end
 
@@ -110,6 +110,11 @@ classdef Repeated < props.Prop
 
         function val = DynamicDefault(obj)
             val = obj.PropType.DynamicDefault;
+        end
+        
+        function doc = dynamicDoc(obj)
+            mc = metaclass(obj.PropType);
+            doc = ['Prop type: ' mc.Name];
         end
     end
 end

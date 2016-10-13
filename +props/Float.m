@@ -78,6 +78,16 @@ classdef Float < props.Prop
         function output = serialize(obj)
             output = num2str(obj.Value);
         end
+        
+        function doc = dynamicDoc(obj)
+            doc = '';
+            if obj.MinValue ~= -inf
+                doc = [doc 'Minimum: ' num2str(obj.MinValue) ', '];
+            end
+            if obj.MaxValue ~= inf
+                doc = [doc 'Maximum: ' num2str(obj.MaxValue)];
+            end
+        end
     end
 end
 

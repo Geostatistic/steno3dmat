@@ -7,15 +7,15 @@ classdef String < props.Prop
 %   PROPERTIES (in addition to those inherited from props.Prop)
 %       Choices: The available choices for the string property. If choices
 %                is not specified, any string will be considered valid. If
-%                choices is a cell array of strings, only those choices are
-%                valid. Choices may also be a struct with strings as fields
-%                and nested cell array of strings as values. This allows
-%                several different strings (the values) to be coerced into
-%                a single string (the field). Note: The requirement for
-%                nesting the cell array is necessary to subvert MATLAB's
-%                default treatment of cell arrays contained in structs. See
-%                example below for the implementation of each of these
-%                types of Choices.
+%                choices is a nested cell array of strings, only those
+%                choices are valid. Choices may also be a struct with
+%                strings as fields and nested cell array of strings as
+%                values. This allows several different strings (the values)
+%                to be coerced into a single string (the field). Note: The
+%                requirement for nesting the cell array is necessary to
+%                subvert MATLAB's default treatment of cell arrays
+%                contained in structs. See example below for the
+%                implementation of each of these types of Choices.
 %
 %       Lowercase: If true, the input string is coerced to all-lowercase.
 %                  If false and Choices are set, the string is coerced to
@@ -34,13 +34,13 @@ classdef String < props.Prop
 %                   ), struct(                                          ...
 %                       'Name', 'ChoiceString',                         ...
 %                       'Type', @props.String,                          ...
-%                       'Doc', 'This property can only be 'hi' or 'bye',...
-%                       'Choices', {'hi', 'bye'},                       ...
+%                       'Doc', 'This property can only be hi or bye',   ...
+%                       'Choices', {{'hi', 'bye'}},                     ...
 %                       'DefaultValue', 'hi'                            ...
 %                   ), struct(                                          ...
 %                       'Name', 'CoercedChoiceString',                  ...
 %                       'Type', @props.String,                          ...
-%                       'Doc', 'This coerces 'hi' and 'bye' to English, ...
+%                       'Doc', 'This coerces hi and bye to English',    ...
 %                       'Choices', struct(                              ...
 %                           'hi', {{'hola', 'bonjour', 'guten tag'}},   ...
 %                           'bye', {{'adios', 'au revoir',              ...
@@ -57,7 +57,7 @@ classdef String < props.Prop
 %
 
 
-    properties (Access = ?props.Prop)
+    properties (SetAccess = ?props.Prop)
         Choices = struct()
         Lowercase = false
     end
@@ -133,6 +133,15 @@ classdef String < props.Prop
 
         function output = serialize(obj)
             output = ['"' obj.Value '"'];
+        end
+        
+        function doc = dynamicDoc(obj)
+            if isempty(fields(obj.Choices))
+                doc = '';
+            else
+                doc = ['Choices: ' strjoin(fields(obj.Choices), ', ')];
+            end
+            
         end
 
     end
