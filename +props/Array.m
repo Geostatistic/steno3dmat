@@ -4,11 +4,14 @@ classdef Array < props.Prop
 %   class needs a numeric array property.
 %
 %   PROPERTIES (in addition to those inherited from props.Prop)
-%       Shape: A cell array describing the shape of the array where the
-%              n-th entry must correspond to size(array, n). If an entry is
-%              '*', that dimension can be any size.
+%       Shape: A nested cell array describing the shape of the array where
+%              the n-th entry must correspond to size(array, n). If an
+%              entry is '*', that dimension can be any size. Note: The
+%              requirement for nesting the cell array is necessary to
+%              subvert MATLAB's default treatment of cell arrays contained
+%              in structs.
 %              Example:
-%                   If Shape = {1, 3, '*'}, valid array sizes include
+%                   If Shape = {{1, 3, '*'}}, valid array sizes include
 %                   [1, 3, 1], [1, 3, 100], etc. Invalid array sizes
 %                   include [1, 3], [1, 3, 100, 1], [3, 1, 100].
 %       
@@ -31,7 +34,7 @@ classdef Array < props.Prop
 %                       'Name', 'ThreeColumns',                         ...
 %                       'Type', @props.Array,                           ...
 %                       'Doc', 'Three column array, saved as binary',   ...
-%                       'Shape', {'*', 3},                              ...
+%                       'Shape', {{'*', 3}},                            ...
 %                       'Binary', true,                                 ...
 %                       'DataType', 'float'                             ...
 %                   )                                                   ...
@@ -46,7 +49,7 @@ classdef Array < props.Prop
 
 
     properties (SetAccess = ?props.Prop)
-        Shape = {'*', '*'}
+        Shape = {{'*', '*'}}
         Binary = false
         DataType = 'float'
         IndexArray = false
@@ -169,6 +172,22 @@ classdef Array < props.Prop
         
         function n = nbytes(obj)
             n = length(obj.Value(:))*8;
+        end
+        
+        function doc = dynamicDoc(obj)
+            doc = '{';
+            for i = 1:length(obj.Shape)
+                if i > 1
+                    doc = [doc ', '];
+                end
+                if isnumeric(obj.Shape{i})
+                    doc = [doc num2str(obj.Shape{i})];
+                else
+                    doc = [doc obj.Shape{1}];
+                end
+            end
+                        
+            doc = ['Shape: ' doc '}, DataType: ' obj.DataType];
         end
     end
 end
