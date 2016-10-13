@@ -1,10 +1,38 @@
 classdef Float < props.Prop
-%FLOAT Float property
+%FLOAT Float prop
+%   This is a type of props.Prop that can be used when a props.HasProps
+%   class needs a float property.
+%
+%   PROPERTIES (in addition to those inherited from props.Prop)
+%       MinValue: The minimum allowed value for the property. The default
+%                 is -Inf (no minimum).
+%
+%       MaxValue: The maximum allowed value for the property. The default
+%                 is Inf (no maximum).
+%
+%   Example:
+%       ...
+%       class HasFloatProp < props.HasProps
+%           properties (Hidden, SetAccess = immutable)
+%               FloatPropStruct = {                                     ...
+%                   struct(                                             ...
+%                       'Name', 'PositiveFloat',                        ...
+%                       'Type', @props.Float,                           ...
+%                       'Doc', 'A positive number',                     ...
+%                       'MinValue', 0                                   ...
+%                   )                                                   ...
+%               }
+%           end
+%           ...
+%       end
+%
+%   See also props.Prop, props.HasProps, props.Int, props.Array
+%
+
 
     properties (SetAccess = ?props.Prop)
         MinValue = -Inf
         MaxValue = Inf
-        IsInteger = false
     end
 
     methods
@@ -14,14 +42,14 @@ classdef Float < props.Prop
                 'PropInfo', 'a single number');
             obj = obj@props.Prop(args{:});
             if obj.MinValue > obj.MaxValue
-                error('steno3d:propError',                              ...
+                error('props:floatError',                               ...
                       'MinValue must be less than MaxValue');
             end
         end
 
         function obj = set.MinValue(obj, val)
             if ~isnumeric(val) || length(val(:)) ~= 1
-                error('steno3d:propError',                              ...
+                error('props:floatError',                               ...
                       'Prop property `MinValue` must be a number');
             end
             obj.MinValue = val;
@@ -29,33 +57,21 @@ classdef Float < props.Prop
 
         function obj = set.MaxValue(obj, val)
             if ~isnumeric(val) || length(val(:)) ~= 1
-                error('steno3d:propError',                              ...
+                error('props:floatError',                               ...
                       'Prop property `MaxValue` must be a number');
             end
             obj.MaxValue = val;
         end
 
-        function obj = set.IsInteger(obj, val)
-            if ~islogical(val) || length(val(:)) ~= 1
-                error('steno3d:propError',                              ...
-                      'Prop property `IsInteger` must be true or false');
-            end
-            obj.IsInteger = val;
-        end
-
         function val = validate(obj, val)
             if ~isnumeric(val) || length(val(:)) ~= 1
-                error('steno3d:propError', '%s must be %s',             ...
+                error('props:floatError', '%s must be %s',              ...
                       obj.Name, obj.PropInfo)
             end
             if val < obj.MinValue || val > obj.MaxValue
-                error('steno3d:propError',                              ...
+                error('props:floatError',                               ...
                       '%s must be a number between %d and %d',          ...
                       obj.Name, obj.MinValue, obj.MaxValue)
-            end
-            if obj.IsInteger && val ~= round(val)
-                error('steno3d:propError', '%s must be an integer',     ...
-                      obj.Name)
             end
         end
 

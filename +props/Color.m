@@ -1,5 +1,38 @@
 classdef Color < props.Prop
-%COLOR RGB, Hex, or string color property
+%COLOR RGB, Hex, or string color prop
+%   This is a type of props.Prop that can be used when a props.HasProps
+%   class needs a color property. Examples of valid colors include:
+%       - 8-bit RGB colors with values betweeon 0-255 (e.g. [0 128 255])
+%       - MATLAB RGB colors with values between 0-1 (e.g. [0 .5 .5])
+%       - Hex string colors with 6 digits (e.g. '#0080FF')
+%       - Hex string colors with 3 digits (e.g. '#F50')
+%       - MATLAB color letters (e.g. 'y')
+%       - Predefined named colors (e.g. 'papayawhip')
+%       - Random color ('random')
+%   All of these are converted to and stored as their equivalent 8-bit RGB
+%   color.
+%
+%   PROPERTIES - No properties besides those inherited from props.Prop
+%
+%   Example:
+%       ...
+%       class HasColorProp < props.HasProps
+%           properties (Hidden, SetAccess = immutable)
+%               ColorPropStruct = {                                     ...
+%                   struct(                                             ...
+%                       'Name', 'FaceColor',                            ...
+%                       'Type', @props.Color,                           ...
+%                       'Doc', 'Color of the object'                    ...
+%                       'DefaultValue', 'random'                        ...
+%                   )                                                   ...
+%               }
+%           end
+%           ...
+%       end
+%
+%   See also props.Prop, props.HasProps, props.Vector, props.Instance
+%
+
 
     methods
         function obj = Color(varargin)
@@ -26,7 +59,7 @@ classdef Color < props.Prop
                     val = val([1, 1, 2, 2, 3, 3]);
                 end
                 if length(val) ~= 6
-                    error('steno3d:propError', '%s must be %s',         ...
+                    error('props:colorError', '%s must be %s',          ...
                           obj.Name, obj.PropInfo);
                 end
                 try
@@ -34,12 +67,12 @@ classdef Color < props.Prop
                            hex2dec(val(3:4)),                           ...
                            hex2dec(val(5:6))];
                 catch
-                    error('steno3d:propError', '%s must be %s',         ...
+                    error('props:colorError', '%s must be %s',          ...
                           obj.Name, obj.PropInfo);
                 end
             end
             if ~isnumeric(val) || length(val(:)) ~= 3
-                error('steno3d:propError', '%s must be %s',             ...
+                error('props:colorError', '%s must be %s',              ...
                       obj.Name, obj.PropInfo);
             end
             if all(val >= 0 & val <= 1)
@@ -47,7 +80,7 @@ classdef Color < props.Prop
             end
             val = round(val);
             if any(val < 0 | val > 255)
-                error('steno3d:propError', '%s must be %s',             ...
+                error('props:colorError', '%s must be %s',              ...
                       obj.Name, obj.PropInfo);
             end
         end

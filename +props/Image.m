@@ -1,5 +1,31 @@
 classdef Image < props.Prop
-%IMAGE PNG image property
+%IMAGE PNG image prop
+%   This is a type of props.Prop that can be used when a props.HasProps
+%   class needs an image property. Only PNG images are currently supported.
+%   Valid values are either PNG filenames that can be read with <a href="
+%   matlab: help imread">imread</a> or
+%   valid PNG matrices already in MATLAB.
+%
+%   PROPERTIES - No properties besides those inherited from props.Prop
+%
+%   Example:
+%       ...
+%       class HasImageProp < props.HasProps
+%           properties (Hidden, SetAccess = immutable)
+%               ImagePropStruct = {                                     ...
+%                   struct(                                             ...
+%                       'Name', 'SomePicture',                          ...
+%                       'Type', @props.Image,                           ...
+%                       'Doc', 'Some PNG image'                         ...
+%                   )                                                   ...
+%               }
+%           end
+%           ...
+%       end
+%
+%   See also props.Prop, props.HasProps, props.Array, props.Color
+%
+
 
     methods
         function obj = Image(varargin)
@@ -20,7 +46,7 @@ classdef Image < props.Prop
                 return
             catch
             end
-            error('steno3d:propError', '%s must be %s',                 ...
+            error('props:imageError', '%s must be %s',                  ...
                   obj.Name, obj.PropInfo)
         end
 

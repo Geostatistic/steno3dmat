@@ -7,7 +7,7 @@ classdef Prop
 %   ">props.HasProps</a> or one of the specific property
 %   types listed below.
 %
-%   Properties
+%   PROPERTIES
 %       Value: The saved value of the PROPS.PROP.
 %
 %       Name: The name used to access the value of PROPS.PROP from the
@@ -50,7 +50,7 @@ classdef Prop
             % PROP Construct from property/value paris
             
             if rem(nargin, 2) ~= 0
-                error('steno3d:propError',                              ...
+                error('props:propError',                                ...
                       ['Props must be constructed with valid '          ...
                        '''PropertyName'', Value pairs'])
             end
@@ -68,7 +68,7 @@ classdef Prop
 
         function obj = set.Name(obj, val)
             if ~ischar(val)
-                error('steno3d:propError',                              ...
+                error('props:propError',                                ...
                       'Prop property `Name` must be a string');
             end
             obj.Name = val;
@@ -76,7 +76,7 @@ classdef Prop
 
         function obj = set.Doc(obj, val)
             if ~ischar(val)
-                error('steno3d:propError',                              ...
+                error('props:propError',                                ...
                       'Prop property `Doc` must be a string');
             end
             obj.Doc = val;
@@ -84,7 +84,7 @@ classdef Prop
 
         function obj = set.PropInfo(obj, val)
             if ~ischar(val)
-                error('steno3d:propError',                              ...
+                error('props:propError',                                ...
                       'Prop property `PropInfo` must be a string');
             end
             obj.PropInfo = val;
@@ -92,7 +92,7 @@ classdef Prop
 
         function obj = set.Required(obj, val)
             if ~islogical(val) || length(val(:)) ~= 1
-                error('steno3d:propError',                              ...
+                error('props:propError',                                ...
                       'Prop property `Required` must be true or false');
             end
             obj.Required = val;
@@ -122,7 +122,7 @@ classdef Prop
         function output = serialize(obj)
             % SERIALIZE Convert the Prop value to a standard format
             mc = metaclass(obj);
-            error('steno3d:propError',                                  ...
+            error('props:propError',                                    ...
                   'Cannot serialize prop %s of type %s',                ...
                   mc.Name, obj.Name)
             output = '';
@@ -138,7 +138,7 @@ classdef Prop
         %   ARGS.
         
             if rem(nargin, 2) ~= 1
-                error('steno3d:propError',                              ...
+                error('props:propError',                                ...
                       ['setPropDefaults requires the input arguments '  ...
                        'and additional default parameter, value pairs']);
             end
