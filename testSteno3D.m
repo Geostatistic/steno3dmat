@@ -179,7 +179,7 @@ function success = testSteno3D(raiseError, attemptUpload, testPlot)
             p5.Public = true;
             steno3d.addData(mySurface, 'Cell Center Data', rand(4, 1));
             mySurface.Data{end}.Location = 'N';
-            mySurface.Data{end}.Title = 'Node Data';
+            mySurface.Data{end}.Data.Title = 'Node Data';
             
             pngFile = [tempname '.png'];
             imwrite(imread('ngc6543a.jpg'), pngFile, 'png');
@@ -221,7 +221,7 @@ function success = testSteno3D(raiseError, attemptUpload, testPlot)
             peaks; peaksProj = steno3d.convert(gcf);
             sphere; sphereProj = steno3d.convert(gcf);
             p9 = steno3d.combine(peaksProj, sphereProj);
-            assert(length(p9.Resources) == 2)
+            assert(length(p9.Resources) > 1)
             p9.Title = 'Two surface project';
         end
         

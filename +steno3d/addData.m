@@ -22,7 +22,7 @@ function addData(varargin)
 %
 %   and change the title accordingly:
 %
-%       mySurface.Data{end}.Title = 'Node Data';
+%       mySurface.Data{end}.Data.Title = 'Node Data';
 %
 %   See also STENO3D.CORE.DATAARRAY, STENO3D.ADDIMAGE, STENO3D.SCATTER,
 %   STENO3D.LINE, STENO3D.TRISURF, STENO3D.SURFACE, STENO3D.VOLUME

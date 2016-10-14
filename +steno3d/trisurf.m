@@ -59,11 +59,10 @@ function [proj, surf] = trisurf(varargin)
     if isempty(varargin)
         error('steno3d:trisurfError', 'Not enough input arguments');
     end
-    
     if isa(varargin{1}, 'steno3d.core.Project')
         proj = varargin{1};
         varargin = varargin(2:end);
-    elseif isgraphics(varargin{1})
+    elseif length(varargin{1}(:)) == 1 && isgraphics(varargin{1})
         if isa(varargin{1}.UserData, 'steno3d.core.Project')
             proj = varargin{1}.UserData;
             varargin = varargin(2:end);

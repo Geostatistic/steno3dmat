@@ -10,7 +10,7 @@ function proj = combine(varargin)
 %       peaks; peaksProj = steno3d.convert(gcf);
 %       sphere; sphereProj = steno3d.convert(gcf);
 %       comboProj = STENO3D.COMBINE(peaksProj, sphereProj);
-%       assert(length(comboProj.Resources) == 2)
+%       assert(length(comboProj.Resources) > 1)
 %       comboProj.Title = 'Two surface project';
 %       comboProj.Public = true;
 %       comboProj.upload();
