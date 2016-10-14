@@ -58,7 +58,7 @@ function proj = convert(handle, varargin)
     narginchk(1, 7)
     if rem(length(varargin), 2) ~= 0
         error('steno3d:convertError', ...
-              'Incorrect number of inputs. See "help convert"');
+              'Incorrect number of inputs');
     end
     if ~isgraphics(handle)
         error('steno3d:convertError',                                   ...
@@ -74,7 +74,7 @@ function proj = convert(handle, varargin)
     for i = 1:2:length(varargin)
         if ~ischar(varargin{i})
             error('steno3d:convertError',  ...
-                  'Parameter names must be strings. See "help convert"');
+                  'Parameter names must be strings');
         end
         switch lower(varargin{i})
             case 'combineaxes'
@@ -100,7 +100,7 @@ function proj = convert(handle, varargin)
                 end
             otherwise
                 error('steno3d:convertError', ['Unrecognized parameter '...
-                      '"' varargin{i} '" - See "help convert"']);
+                      '"' varargin{i} '"']);
         end
     end
     
