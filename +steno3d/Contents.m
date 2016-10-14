@@ -10,18 +10,6 @@
 % to <a href="matlab: web('https://steno3d.com/','-browser')"
 % >steno3d.com</a>.
 %
-% Note: Steno3D requires MATLAB R2014b or greater (<a href="matlab:
-%   fprintf('Required version: 2014b\n');
-%   fprintf(['Your version: ' version('-release') '\n']);
-%   if verLessThan('matlab', 'R2014b')
-%   	fprintf('Please upgrade to the latest version of MATLAB.\n');
-%   else
-%       fprintf('MATLAB version is valid.\n');
-%   end">Check your version</a>)
-%       and the <a href="matlab: help props"
-%       >props</a> package that comes bundled in the steno3dmat
-%       distribution.
-%
 % Plotting Functions: a MATLAB-esque way to create Steno3D projects
 %   scatter  - Create and plot a Steno3D Point resource
 %   line     - Create and plot a Steno3D Line resource
@@ -41,5 +29,19 @@
 %   logout   - Log out of current session on steno3d.com
 %
 % Additional Packages
+%   examples - Example scripts to demonstrate Steno3D
 %   core     - Command-line tools for building Steno3D objects from scratch
 %   utils    - Supplemental utilities for figure conversion and web comms
+%
+% Note: Steno3D requires MATLAB R2014b or greater (<a href="matlab:
+%   fprintf('Required version: 2014b\n');
+%   fprintf(['Your version: ' version('-release') '\n']);
+%   if verLessThan('matlab', 'R2014b')
+%   	fprintf('Please upgrade to the latest version of MATLAB.\n');
+%   else
+%       fprintf('MATLAB version is valid.\n');
+%   end">Check your version</a>)
+%       and the <a href="matlab: help props"
+%       >props</a> package that comes bundled in the steno3dmat
+%       distribution.
+%
