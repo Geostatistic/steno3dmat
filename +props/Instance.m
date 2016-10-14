@@ -126,8 +126,10 @@ classdef Instance < props.Prop
         end
         
         function doc = dynamicDoc(obj)
+            shortclass = strsplit(func2str(obj.Class), '.');
+            shortclass = shortclass{end};
             doc = ['Class: <a href="matlab: help ' func2str(obj.Class)  ...
-                   '">' func2str(obj.Class) '</a>'];
+                   '">' shortclass '</a>'];
         end
 
     end
