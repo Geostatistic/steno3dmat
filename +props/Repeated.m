@@ -106,7 +106,6 @@ classdef Repeated < props.Prop
             end
             obj.PropType = propInstance;
         end
-
         function val = DynamicDefault(obj)
             val = {};
         end

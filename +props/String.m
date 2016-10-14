@@ -140,9 +140,7 @@ classdef String < props.Prop
             else
                 doc = ['Choices: ' strjoin(fields(obj.Choices), ', ')];
             end
-            
         end
-
     end
 end
 
