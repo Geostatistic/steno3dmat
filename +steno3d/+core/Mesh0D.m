@@ -1,23 +1,55 @@
- classdef Mesh0D < steno3d.core.UserContent
-%MESH0D Mesh for steno3d Point
+classdef Mesh0D < steno3d.core.UserContent
+%MESH0D Mesh for Steno3D Point resources
+%   This mesh provides the geometry for <a href="matlab:
+%   help steno3d.core.Point">Point</a> resources, an n x 3 array of
+%   spatial coordinates where n is the number of points. There are
+%   currently no additional options available for this mesh.
+%
+%   For a demonstration of MESH0D, see the <a href="
+%   matlab: help steno3d.examples.point">EXAMPLES</a>.
+%
+%   MESH0D implements <a href="matlab: help props.HasProps
+%   ">HasProps</a> for dynamic, type-checked <a href="matlab:
+%   help props.Prop">properties</a>
+%
+%   REQUIRED PROPERTIES:
+%       Vertices (<a href="matlab: help props.Array">props.Array</a>)
+%           Spatial coordinates of points
+%           Shape: {*, 3}, DataType: float
+%
+%   OPTIONAL PROPERTIES:
+%       Opts (<a href="matlab: help props.Instance">props.Instance</a>)
+%           Options for the mesh
+%           Class: <a href="matlab: help steno3d.core.opts.Mesh0DOptions
+%           ">Mesh0DOptions</a>
+%
+%       Title (<a href="matlab: help props.String">props.String</a>)
+%           Content title
+%
+%       Description (<a href="matlab: help props.String">props.String</a>)
+%           Content description
+%
+%   See also steno3d.examples.point, steno3d.core.Point,
+%   steno3d.core.opts.Mesh0DOptions
+%
+
 
     properties (Hidden, SetAccess = immutable)
         M0DProps = {                                                    ...
             struct(                                                     ...
                 'Name', 'Vertices',                                     ...
                 'Type', @props.Array,                                   ...
-                'Doc', 'Mesh0D vertices',                               ...
+                'Doc', 'Spatial coordinates of points',                 ...
                 'Shape', {{'*', 3}},                                    ...
                 'Binary', true,                                         ...
                 'Required', true                                        ...
             ), struct(                                                  ...
                 'Name', 'Opts',                                         ...
                 'Type', @props.Instance,                                ...
-                'Doc', 'Mesh0D options',                                ...
+                'Doc', 'Options for the mesh',                          ...
                 'Class', @steno3d.core.opts.Mesh0DOptions,              ...
                 'Required', false                                       ...
             )                                                           ...
-
         }
     end
 
@@ -37,13 +69,12 @@
     end
 
     methods (Hidden)
-        
         function validator(obj)
             if steno3d.utils.User.isLoggedIn()
                 user = steno3d.utils.User.currentUser();
                 sz = obj.([obj.PROP_PREFIX 'Vertices']).nbytes;
                 if sz > user.FileSizeLimit
-                    error('steno3d:validationError',                    ...
+                    error('steno3d:mesh0DError',                        ...
                           ['File size ' num2str(sz) ' bytes exceeds '   ...
                            'file limit of ' num2str(user.FileSizeLimit) ...
                            ' bytes']);
@@ -52,15 +83,11 @@
         end
         
         function args = uploadArgs(obj)
-
             vStruct = obj.PR_Vertices.serialize();
             args = {'vertices', vStruct.FileID,                         ...
                     'verticesType', vStruct.DType};
-
             args = [args, uploadArgs@steno3d.core.UserContent(obj)];
         end
-
     end
-
 end
 

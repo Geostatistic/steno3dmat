@@ -1,18 +1,69 @@
 classdef Line < steno3d.core.CompositeResource
-%LINE Steno3D line composite resource
+%LINE Low-level Steno3D Line resource
+%   Lines are 1D resources. Their geometry is defined by a <a href="
+%   matlab: help steno3d.core.Mesh1D">Mesh1D</a> as
+%   Vertices and connecting Segments. They may have <a href="
+%   matlab: help steno3d.core.DataArray">Data</a> that is either
+%   defined on the vertices (nodes) or the segments (cell-centers). There
+%   are several <a href="matlab: help steno3d.core.opts.LineOptions
+%   ">line options</a> and <a href="matlab:
+%   help steno3d.core.opts.Mesh0DOptions
+%   ">mesh options</a> available for customizing the
+%   appearance.
+%
+%   LINE resources can also be created through a high-level functional
+%   interface with <a href="matlab: help steno3d.line">steno3d.line</a>.
+%
+%   For a demonstration of LINE, see the <a href="
+%   matlab: help steno3d.examples.line">EXAMPLES</a>.
+%
+%   LINE implements <a href="matlab: help props.HasProps
+%   ">HasProps</a> for dynamic, type-checked <a href="
+%   matlab: help props.Prop">properties</a>
+%
+%   REQUIRED PROPERTIES:
+%       Mesh (<a href="matlab: help props.Instance">props.Instance</a>)
+%           Structure of the line resource
+%           Class: <a href="matlab: help steno3d.core.Mesh1D
+%           ">Mesh1D</a>
+%
+%   OPTIONAL PROPERTIES:
+%       Data (<a href="matlab: help props.Repeated">props.Repeated</a>)
+%           Data defined on the line resource
+%           Type: props.Instance (Class: <a href="matlab:
+%           help steno3d.core.binders
+%           ">LineBinder</a>)
+%
+%       Opts (<a href="matlab: help props.Instance">props.Instance</a>)
+%           Options for the line resource
+%           Class: <a href="matlab: help steno3d.core.opts.LineOptions
+%           ">LineOptions</a>
+%
+%       Title (<a href="matlab: help props.String">props.String</a>)
+%           Content title
+%
+%       Description (<a href="matlab: help props.String">props.String</a>)
+%           Content description
+%
+%   See also steno3d.examples.line, steno3d.line, steno3d.core.Mesh1D,
+%   steno3d.core.opts.LineOptions, steno3d.core.opts.Mesh1DOptions,
+%   steno3d.core.binders, steno3d.core.CompositeResource,
+%   steno3d.core.Project
+%
+
 
     properties (Hidden, SetAccess = immutable)
         LineProps = {                                                   ...
             struct(                                                     ...
                 'Name', 'Mesh',                                         ...
                 'Type', @props.Instance,                                ...
-                'Doc', 'Line mesh',                                     ...
+                'Doc', 'Structure of the line resource',                ...
                 'Class', @steno3d.core.Mesh1D,                          ...
                 'Required', true                                        ...
             ), struct(                                                  ...
                 'Name', 'Data',                                         ...
                 'Type', @props.Repeated,                                ...
-                'Doc', 'Line data',                                     ...
+                'Doc', 'Data defined on the line resource',             ...
                 'PropType', struct(                                     ...
                     'Type', @props.Instance,                            ...
                     'Class', @steno3d.core.binders.LineBinder,          ...
@@ -22,7 +73,7 @@ classdef Line < steno3d.core.CompositeResource
             ), struct(                                                  ...
                 'Name', 'Opts',                                         ...
                 'Type', @props.Instance,                                ...
-                'Doc', 'Line Options',                                  ...
+                'Doc', 'Options for the line resource',                 ...
                 'Class', @steno3d.core.opts.LineOptions,                ...
                 'Required', false                                       ...
             )                                                           ...

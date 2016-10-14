@@ -1,25 +1,26 @@
 classdef DataArray < steno3d.core.UserContent
-%DATAARRAY Steno3D object to hold resource Data
+%DATAARRAY Steno3D object to hold resource data
 %   Data is stored as an array. It is bound to a <a href="matlab:
 %   help steno3d.core.CompositeResource">composite resource</a> using a
 %   data <a href=" matlab: help steno3d.core.binders
-%   ">binder</a> cell array (see <a href="matlab:
-%   help steno3d.examples.data">EXAMPLES</a>). The length of the data
-%   array must correspond to the specified mesh geometry location (nodes or
-%   cell centers). For some types of meshes, this is straightforward (e.g.
-%   using <a href="matlab: help steno3d.core.Mesh0D
-%   ">Mesh0D</a>, Data must be equal in length to the Vertices). For
-%   gridded meshes (<a href="matlab: help steno3d.core.Mesh2DGrid
+%   ">binder</a> cell array. The length of the Array must correspond to the
+%   specified mesh geometry location (nodes or cell centers). For some
+%   types of meshes, this is straightforward (e.g. using <a href="
+%   matlab: help steno3d.core.Mesh0D">Mesh0D</a>, the Array
+%   must be equal in length to the Vertices). For gridded meshes
+%   (<a href="matlab: help steno3d.core.Mesh2DGrid
 %   ">Mesh2DGrid</a>, <a href="matlab: help steno3d.core.Mesh3DGrid
-%   ">Mesh3DGrid</a>), the Data must be unwrapped in
-%   the correct order. By default, if you have a data matrix of the correct
-%   shape [X-length, Y-length(, Z-length)], flattening with data(:) gives
-%   the correct order (see <a href="matlab: help steno3d.examples.data
-%   ">EXAMPLES</a>).
+%   ">Mesh3DGrid</a>), the Array must be unwrapped in the correct
+%   order. By default, if you have a matrix of the correct shape
+%   [X-length, Y-length(, Z-length)], flattening with matrix(:) gives the
+%   correct order.
 %
-%   Data can also be added to resources through a high-level functional
-%   interface with <a href="matlab: help
+%   A DATAARRAY can also be added to a resource through a high-level
+%   functional interface with <a href="matlab: help
 %   steno3d.addData">steno3d.addData</a>.
+%
+%   For a demonstration of DATAARRAY, see the <a href="
+%   matlab: help steno3d.examples.data">EXAMPLES</a>.
 %
 %   DATAARRAY implements <a href="matlab: help props.HasProps
 %   ">HasProps</a> for dynamic, type-checked <a href="matlab: help
@@ -27,13 +28,13 @@ classdef DataArray < steno3d.core.UserContent
 %
 %   REQUIRED PROPERTIES:
 %       Array (<a href="matlab: help props.Array">props.Array</a>)
-%           Data corresponding to points on the mesh
+%           Data corresponding to geometry of the mesh
 %           Shape: {*, 1}, DataType: float
 %
 %       Order (<a href="matlab: help props.String">props.String</a>)
 %           Data array order, for data on grid meshes
 %           Choices: c, f
-%           Default: 'f'
+%           Default: 'f' (column-major, default for MATLAB and fortran)
 %
 %   OPTIONAL PROPERTIES:
 %       Title (<a href="matlab: help props.String">props.String</a>)
@@ -44,7 +45,7 @@ classdef DataArray < steno3d.core.UserContent
 %
 %
 %   See also steno3d.examples.data, steno3d.addData, steno3d.core.binders,
-%   steno3d.core.CompositeResource
+%   steno3d.core.CompositeResource, steno3d.core.Texture2DImage
 %
 
 
@@ -53,7 +54,7 @@ classdef DataArray < steno3d.core.UserContent
             struct(                                                     ...
                 'Name', 'Array',                                        ...
                 'Type', @props.Array,                                   ...
-                'Doc', 'Data corresponding to points on the mesh',      ...
+                'Doc', 'Data corresponding to geometry of the mesh',    ...
                 'Shape', {{'*', 1}},                                    ...
                 'Binary', true,                                         ...
                 'Required', true                                        ...
