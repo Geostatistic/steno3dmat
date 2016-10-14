@@ -10,17 +10,22 @@
 % 
 % Base Classes:
 %   Prop     - Basic property with no given type
-%   HasProps - Class with dynamicaly created, declarative Props
+%   HasProps - Class with dynamically created, declarative Props
 %
 % Prop Types:
-%   Array    - Multi-dimensional float or int array property
-%   Bool     - Boolean property
-%   Color    - RGB, Hex, or string color property
-%   Float    - Float property
-%   Image    - PNG image property
-%   Instance - Property that must be an instance of a given class
-%   Int      - Integer property
-%   Repeated - Property that is a repeated number of another type of property
-%   String   - String property
-%   Union    - Property that may be one of several different types of properties
-%   Vector   - Three-component vector property
+%   Array    - Multi-dimensional float or int array prop
+%   Bool     - Boolean prop
+%   Color    - RGB, Hex, or string color prop
+%   Float    - Float prop
+%   Image    - PNG image prop
+%   Instance - Prop that is an instance of a given class
+%   Int      - Integer prop
+%   Repeated - Prop that is a repeated number of another type of prop
+%   String   - String prop
+%   Union    - Prop that may be one of several different types of props
+%   Vector   - Three-component vector prop
+%
+% Additional Packages
+%   examples - Example classes and scripts with Props implementation
+%   utils    - Supplemental utilities for HasProps classes
+%
