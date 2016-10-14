@@ -51,7 +51,7 @@ function url = upload(handle, privacy)
         end
     end
     
-    if ~steno3d.core.User.isLoggedIn()
+    if ~steno3d.utils.User.isLoggedIn()
         error('steno3d:uploadError',                                    ...
               'Please steno3d.login() before uploading');
     end
@@ -74,7 +74,7 @@ function url = upload(handle, privacy)
             projs(i).Public = public;
         end
         projurl = projs(i).upload();
-        if length(proj) > 1
+        if length(projs) > 1
            url{end} = projurl;
         else
             url = projurl;
