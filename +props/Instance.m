@@ -127,7 +127,8 @@ classdef Instance < props.Prop
         end
         
         function doc = dynamicDoc(obj)
-            doc = ['Class: ' func2str(obj.Class)];
+            doc = ['Class: <a href="matlab: help ' func2str(obj.Class)  ...
+                   '">' func2str(obj.Class) '</a>'];
         end
 
     end

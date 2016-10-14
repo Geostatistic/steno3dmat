@@ -118,13 +118,16 @@ classdef Union < props.Prop
         end
         
         function doc = dynamicDoc(obj)
-            doc = 'Prop types: ';
+            doc = 'Types: ';
             for i = 1:length(obj.PropTypes)
                 if i > 1
                     doc = [doc ', '];
                 end
                 mc = metaclass(obj.PropTypes{i});
                 doc = [doc mc.Name];
+                if ~isempty(obj.PropTypes{i}.dynamicDoc)
+                    doc = [doc ' (' obj.PropTypes{i}.dynamicDoc ')'];
+                end
             end
         end
     end

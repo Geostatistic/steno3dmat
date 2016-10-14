@@ -82,9 +82,12 @@ classdef Float < props.Prop
         function doc = dynamicDoc(obj)
             doc = '';
             if obj.MinValue ~= -inf
-                doc = [doc 'Minimum: ' num2str(obj.MinValue) ', '];
+                doc = [doc 'Minimum: ' num2str(obj.MinValue)];
             end
             if obj.MaxValue ~= inf
+                if ~isempty(doc)
+                    doc = [doc ', '];
+                end
                 doc = [doc 'Maximum: ' num2str(obj.MaxValue)];
             end
         end

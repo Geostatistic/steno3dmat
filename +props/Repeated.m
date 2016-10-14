@@ -114,7 +114,10 @@ classdef Repeated < props.Prop
         
         function doc = dynamicDoc(obj)
             mc = metaclass(obj.PropType);
-            doc = ['Prop type: ' mc.Name];
+            doc = ['Type: ' mc.Name];
+            if ~isempty(obj.PropType.dynamicDoc)
+                doc = [doc ' (' obj.PropType.dynamicDoc ')'];
+            end
         end
     end
 end
