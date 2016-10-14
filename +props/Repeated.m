@@ -39,8 +39,7 @@ classdef Repeated < props.Prop
 
     methods
         function obj = Repeated(varargin)
-            args = props.Prop.setPropDefaults(varargin,                 ...
-                'PropInfo', 'muliple values of a certain type of prop');
+            args = props.Prop.setPropDefaults(varargin);
             obj = obj@props.Prop(args{:});
             if isempty(obj.PropType)
                 error('props:repeatedError',                            ...

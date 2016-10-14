@@ -17,8 +17,6 @@ classdef Prop
 %       Doc: A description of the specific PROPS.PROP on a props.HasProps
 %            class.
 %
-%       PropInfo: A description of the PROPS.PROP type.
-%
 %       Required: Whether or not the PROPS.PROP must be given a value for a
 %                 props.HasProps instance to pass validation.
 %
@@ -40,7 +38,6 @@ classdef Prop
     properties (SetAccess = protected)
         Name = ''
         Doc = ''
-        PropInfo = ''
         Required = false
         ValidateDefault = true
         DefaultValue
@@ -81,14 +78,6 @@ classdef Prop
                       'Prop property `Doc` must be a string');
             end
             obj.Doc = val;
-        end
-
-        function obj = set.PropInfo(obj, val)
-            if ~ischar(val)
-                error('props:propError',                                ...
-                      'Prop property `PropInfo` must be a string');
-            end
-            obj.PropInfo = val;
         end
 
         function obj = set.Required(obj, val)

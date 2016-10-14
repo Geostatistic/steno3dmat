@@ -30,8 +30,7 @@ classdef Image < props.Prop
     methods
         function obj = Image(varargin)
             args = props.Prop.setPropDefaults(varargin,                 ...
-                'ValidateDefault', false,                               ...
-                'PropInfo', 'a PNG image file or valid PNG matrix');
+                'ValidateDefault', false);
             obj = obj@props.Prop(args{:});
         end
 
@@ -46,8 +45,8 @@ classdef Image < props.Prop
                 return
             catch
             end
-            error('props:imageError', '%s must be %s',                  ...
-                  obj.Name, obj.PropInfo)
+            error('props:imageError', ['%s must be a PNG image file or '...
+                  'valid PNG matrix'], obj.Name)
         end
 
         function output = serialize(obj)

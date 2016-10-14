@@ -65,15 +65,14 @@ classdef String < props.Prop
     methods
         function obj = String(varargin)
             args = props.Prop.setPropDefaults(varargin,                 ...
-                'DefaultValue', '',                                     ...
-                'PropInfo', 'a string');
+                'DefaultValue', '');
             obj = obj@props.Prop(args{:});
         end
 
         function val = validate(obj, val)
             if ~ischar(val)
-                error('props:stringError', '%s must be %s',             ...
-                      obj.Name, obj.PropInfo)
+                error('props:stringError', '%s must be a string',       ...
+                      obj.Name);
             end
             fields = fieldnames(obj.Choices);
             if isempty(fields)

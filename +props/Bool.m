@@ -27,15 +27,14 @@ classdef Bool < props.Prop
     methods
         function obj = Bool(varargin)
             args = props.Prop.setPropDefaults(varargin,                 ...
-                'DefaultValue', true,                                   ...
-                'PropInfo', 'true or false');
+                'DefaultValue', true);
             obj = obj@props.Prop(args{:});
         end
 
         function val = validate(obj, val)
             if ~islogical(val) || length(val(:)) ~= 1
-                error('props:boolError', '%s must be %s',               ...
-                      obj.Name, obj.PropInfo)
+                error('props:boolError', '%s must be true or false',    ...
+                      obj.Name)
             end
         end
 

@@ -29,8 +29,7 @@ classdef Int < props.Float
 
     methods
         function obj = Int(varargin)
-            args = props.Prop.setPropDefaults(varargin,                 ...
-                'PropInfo', 'a single integer');
+            args = props.Prop.setPropDefaults(varargin);
             obj = obj@props.Float(args{:});
         end
         

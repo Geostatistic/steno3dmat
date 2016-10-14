@@ -46,8 +46,7 @@ classdef Union < props.Prop
 
     methods
         function obj = Union(varargin)
-            args = props.Prop.setPropDefaults(varargin,                 ...
-                'PropInfo', 'union of multiple types of props');
+            args = props.Prop.setPropDefaults(varargin);
             obj = obj@props.Prop(args{:});
             if isempty(obj.PropTypes)
                 error('props:unionError',                               ...

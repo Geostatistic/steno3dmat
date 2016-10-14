@@ -33,14 +33,14 @@ classdef Color < props.Prop
 %   See also props.Prop, props.HasProps, props.Vector, props.Instance
 %
 
-
+    properties (Constant, Hidden)
+        PROP_INFO = ['RGB with values 0-1 or 0-255, hex color (e.g. '   ...
+                     '''#FF0000''), string color name, or ''random''']
+    end
     methods
         function obj = Color(varargin)
             args = props.Prop.setPropDefaults(varargin,                 ...
-                'DefaultValue', 'random',                               ...
-                'PropInfo', ['RGB with values 0-1 or 0-255, hex color ' ...
-                              'e.g. ''#FF0000'', string color name, or '...
-                              '''random''']);
+                'DefaultValue', 'random');
             obj = obj@props.Prop(args{:});
         end
 
@@ -60,7 +60,7 @@ classdef Color < props.Prop
                 end
                 if length(val) ~= 6
                     error('props:colorError', '%s must be %s',          ...
-                          obj.Name, obj.PropInfo);
+                          obj.Name, obj.PROP_INFO);
                 end
                 try
                     val = [hex2dec(val(1:2)),                           ...
@@ -68,12 +68,12 @@ classdef Color < props.Prop
                            hex2dec(val(5:6))];
                 catch
                     error('props:colorError', '%s must be %s',          ...
-                          obj.Name, obj.PropInfo);
+                          obj.Name, obj.PROP_INFO);
                 end
             end
             if ~isnumeric(val) || length(val(:)) ~= 3
                 error('props:colorError', '%s must be %s',              ...
-                      obj.Name, obj.PropInfo);
+                      obj.Name, obj.PROP_INFO);
             end
             if all(val >= 0 & val <= 1)
                 val = val*255;
@@ -81,7 +81,7 @@ classdef Color < props.Prop
             val = round(val);
             if any(val < 0 | val > 255)
                 error('props:colorError', '%s must be %s',              ...
-                      obj.Name, obj.PropInfo);
+                      obj.Name, obj.PROP_INFO);
             end
         end
 

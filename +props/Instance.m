@@ -59,8 +59,7 @@ classdef Instance < props.Prop
     methods
         function obj = Instance(varargin)
             args = props.Prop.setPropDefaults(varargin,                 ...
-                'Args', {},                                             ...
-                'PropInfo', 'an instance');
+                'Args', {});
             obj = obj@props.Prop(args{:});
             if isempty(obj.Class)
                 error('props:instanceError',                            ...

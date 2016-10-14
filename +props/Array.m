@@ -59,8 +59,7 @@ classdef Array < props.Prop
         function obj = Array(varargin)
             args = props.Prop.setPropDefaults(varargin,                 ...
                 'DefaultValue', [],                                     ...
-                'ValidateDefault', false,                               ...
-                'PropInfo', 'a numeric array or matrix');
+                'ValidateDefault', false);
             obj = obj@props.Prop(args{:});
         end
 
@@ -113,8 +112,8 @@ classdef Array < props.Prop
 
         function val = validate(obj, val)
             if ~isnumeric(val)
-                error('props:arrayError', '%s must be %s',              ...
-                      obj.Name, obj.PropInfo);
+                error('props:arrayError', '%s must be numeric',          ...
+                      obj.Name);
             end
             if strcmp(obj.DataType, 'int') && ~all(val(:) == round(val(:)))
                 error('props:arrayError', '%s must be all integers',    ...

@@ -34,8 +34,7 @@ classdef Vector < props.Array
             args = props.Prop.setPropDefaults(varargin,                 ...
                 'Shape', {1, 3},                                        ...
                 'DefaultValue', [0 0 0],                                ...
-                'ValidateDefault', true,                                ...
-                'PropInfo', 'a vector of length 3');
+                'ValidateDefault', true);
             obj = obj@props.Array(args{:});
         end
 
@@ -52,5 +51,4 @@ classdef Vector < props.Array
             val = validate@props.Array(obj, val);
         end
     end
-
 end

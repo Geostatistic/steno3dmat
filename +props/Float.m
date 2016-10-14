@@ -38,8 +38,7 @@ classdef Float < props.Prop
     methods
         function obj = Float(varargin)
             args = props.Prop.setPropDefaults(varargin,                 ...
-                'DefaultValue', 0,                                      ...
-                'PropInfo', 'a single number');
+                'DefaultValue', 0);
             obj = obj@props.Prop(args{:});
             if obj.MinValue > obj.MaxValue
                 error('props:floatError',                               ...
@@ -65,8 +64,8 @@ classdef Float < props.Prop
 
         function val = validate(obj, val)
             if ~isnumeric(val) || length(val(:)) ~= 1
-                error('props:floatError', '%s must be %s',              ...
-                      obj.Name, obj.PropInfo)
+                error('props:floatError', '%s must be a number',        ...
+                      obj.Name)
             end
             if val < obj.MinValue || val > obj.MaxValue
                 error('props:floatError',                               ...
