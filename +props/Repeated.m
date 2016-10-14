@@ -108,7 +108,7 @@ classdef Repeated < props.Prop
         end
 
         function val = DynamicDefault(obj)
-            val = obj.PropType.DynamicDefault;
+            val = {};
         end
         
         function doc = dynamicDoc(obj)
