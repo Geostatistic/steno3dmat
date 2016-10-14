@@ -111,6 +111,13 @@ function autodoc(htobj)
         if ~isempty(prop.dynamicDoc())
             propdoc = [propdoc '%%           ' escape(prop.dynamicDoc()) '\n'];
         end
+        if ~isempty(prop.DefaultValue)
+            try
+                propdoc = [propdoc '%%           Default: '             ...
+                           escape(mat2str(prop.DefaultValue)) '\n'];
+            catch
+            end
+        end
         propdoc = [propdoc '%%\n'];
         if prop.Required
             requiredDoc = [requiredDoc propdoc];
