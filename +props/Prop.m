@@ -2,12 +2,13 @@ classdef Prop
 %PROP Basic property with no given type
 %   Used with subclasses of props.HasProps, a PROPS.PROP instance is
 %   created dynamically on class instantiation based on a declarative,
-%   immutable property of the props.HasProps class. For an example of how
-%   to use PROPS.PROP, see <a href="matlab: help props.HasProps
-%   ">props.HasProps</a> or one of the specific property
-%   types listed below.
+%   immutable property of the props.HasProps class. For more information
+%   about to use PROPS.PROP, see <a href="matlab: help props.HasProps
+%   ">props.HasProps</a>, a <a href="matlab: help props.examples.CandyJar
+%   ">simple example</a>, or the
+%   specific types listed below.
 %
-%   PROPERTIES
+%   PROPS.PROP PROPERTIES
 %       Value: The saved value of the PROPS.PROP.
 %
 %       Name: The name used to access the value of PROPS.PROP from the
