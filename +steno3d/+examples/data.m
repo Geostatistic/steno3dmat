@@ -73,6 +73,9 @@
 %
 %   You can run the above examples with:
 %       >> steno3d.examples.data
+%   This script packages the three examples into Steno3D Projects so they
+%   can be plotted with:
+%       >> example1.plot(); example2.plot(); example3.plot();
 %
 %   See also steno3d.core.DataArray, steno3d.core.binders,
 %   steno3d.addData, steno3d.core.Point, steno3d.core.Surface,
@@ -101,6 +104,12 @@ myPoints.Data = {                                            ...
 
 % Ensure that the Point resource is valid
 myPoints.validate();
+
+example1 = steno3d.core.Project(                             ...
+    'Title', 'Data: Example 1',                              ...
+    'Resources', myPoints                                    ...
+);
+clear myPoints myData;
 
 % Example 2:
 % Initialize a Steno3D Surface resource
@@ -134,6 +143,12 @@ mySurf.Data{2} = {                                           ...
 % Ensure that the Surface resource is valid
 mySurf.validate();
 
+example2 = steno3d.core.Project(                             ...
+    'Title', 'Data: Example 2',                              ...
+    'Resources', mySurf                                      ...
+);
+clear mySurf myDataCC myDataN ccValues nValues;
+
 % Example 3:
 % Initialize the same resources as Examples 1 and 2
 myPoints = steno3d.core.Point;
@@ -152,3 +167,9 @@ steno3d.addData(mySurf, 'Random Data 2', rand(6, 11));
 % Ensure the resources are valid
 myPoints.validate();
 mySurf.validate();
+
+example3 = steno3d.core.Project(                             ...
+    'Title', 'Data: Example 3',                              ...
+    'Resources', {myPoints, mySurf}                          ...
+);
+clear myPoints mySurf;
