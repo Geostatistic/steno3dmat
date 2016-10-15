@@ -15,23 +15,23 @@ function installSteno3D(varargin)
 %   See also UPGRADESTENO3D, UNINSTALLSTENO3D
 
 
-    if verLessThan('matlab', 'R2014b')
+    if verLessThan('matlab', '8.4')
         error('steno3d:installError', ['Steno3D requires MATLAB '       ...
               'Release R2014b or greater.\nIf you do not have access '  ...
               'to this version, consider trying the\n<a href="matlab: ' ...
               'web(''https://github.com/3ptscience/steno3dpy/master/'','...
               ' ''-browser'')">Steno3D client library for Python</a>.']);
     end
-    
+
     narginchk(0, 1);
-    
+
     installpath = strsplit(mfilename('fullpath'), filesep);
     installfolder = strjoin(installpath(1:end-1), filesep);
     if ~strcmp(pwd, installfolder)
         error('steno3d:installError',                                   ...
               'Please install from within the unzipped steno3dmat folder');
     end
-    
+
     if nargin == 1
         targetdir = varargin{1};
         if ~ischar(targetdir)
@@ -77,7 +77,7 @@ function installSteno3D(varargin)
     copyfile('+steno3d', steno3ddir)
     propsdir = [targetdir filesep '+props'];
     copyfile('+props', propsdir)
-    
+
     fprintf('Adding steno3d to current MATLAB path...\n')
     addpath(targetdir)
 
@@ -87,7 +87,7 @@ function installSteno3D(varargin)
     addpath(targetdir)
     savepath
     path(savedPath)
-    
+
     remove = input('Remove installation source folder? (yes/[no]): ', 's');
     if strcmp(remove, 'yes')
         fprintf('Removing installation folder:\n%s\n', installfolder);
