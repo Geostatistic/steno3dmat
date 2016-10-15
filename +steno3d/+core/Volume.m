@@ -140,8 +140,9 @@ classdef Volume < steno3d.core.CompositeResource
                     ec = 'none';
                 end
 
-                patch(ax, 'Vertices', verts, 'Faces', faces, cdata{:},  ...
-                      'EdgeColor', ec, 'FaceAlpha', obj.Opts.Opacity);
+                patch('Parent', ax, 'Vertices', verts, 'Faces', faces,  ...
+                      cdata{:}, 'EdgeColor', ec, 'FaceAlpha',           ...
+                      obj.Opts.Opacity);
                 hold on;
             end
         end
