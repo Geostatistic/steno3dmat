@@ -7,7 +7,7 @@
 % The Props MATLAB package facilitates the creation of classes with
 % type-checked, validated properties through a relatively simple,
 % declarative interface.
-% 
+%
 % Base Classes:
 %   Prop     - Basic property with no given type
 %   HasProps - Class with dynamically created, declarative Props
@@ -28,4 +28,13 @@
 % Additional Packages
 %   examples - Example classes and scripts with Props implementation
 %   utils    - Supplemental utilities for HasProps classes
+%
+% Note: Props requires MATLAB R2014b or greater (<a href="matlab:
+%   fprintf('Required version: 2014b\n');
+%   fprintf(['Your version: ' version('-release') '\n']);
+%   if verLessThan('matlab', '8.4')
+%       fprintf('Please upgrade to the latest version of MATLAB.\n');
+%   else
+%       fprintf('MATLAB version is valid.\n');
+%   end">Check your version</a>).
 %

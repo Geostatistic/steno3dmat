@@ -4,7 +4,7 @@ function login(varargin)
 %   key and adds steno3d to your MATLAB path if it is not already added.
 %
 %   STENO3D.LOGIN(APIKEY) logs in to steno3d.com with API key APIKEY
-%   requested by a Steno3D account holder from their <a href=" matlab: 
+%   requested by a Steno3D account holder from their <a href=" matlab:
 %   web('https://steno3d.com/settings/developer', '-browser')
 %   ">profile</a>. APIKEY may
 %   also be a username if the API key associated with that username is
@@ -67,6 +67,15 @@ function login(varargin)
         'user please `steno3d.logout()`, then login specifying a\n'     ...
         'different username or API developer key.\n\n'                  ...
     ];
+
+    % Check version on login
+    if verLessThan('matlab', '8.4')
+        error('steno3d:loginError', ['Steno3D requires MATLAB '         ...
+              'Release R2014b or greater.\nIf you do not have access '  ...
+              'to this version, consider trying the\n<a href="matlab: ' ...
+              'web(''https://github.com/3ptscience/steno3dpy/'','       ...
+              ' ''-browser'')">Steno3D client library for Python</a>.']);
+    end
 
     % Check if already logged in
     [loggedIn, user] = steno3d.utils.User.isLoggedIn();
@@ -258,7 +267,7 @@ function loginWith(apikey, endpoint)
     user = steno3d.utils.User(apikey, endpoint, resp);
     fprintf('Welcome to Steno3D! You are logged in as @%s\n', user.Uid)
     assignin('base', 'steno3d_user', user);
-    
+
     % Check if steno3d is on the path and if not, add it
     loginpath = strsplit(mfilename('fullpath'), filesep);
     steno3dpath = strjoin(loginpath(1:end-2), filesep);

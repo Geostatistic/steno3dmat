@@ -11,7 +11,7 @@
 % Note: Steno3D requires MATLAB R2014b or greater (<a href="matlab:
 %   fprintf('Required version: 2014b\n');
 %   fprintf(['Your version: ' version('-release') '\n']);
-%   if verLessThan('matlab', 'R2014b')
+%   if verLessThan('matlab', '8.4')
 %   	fprintf('Please upgrade to the latest version of MATLAB.\n');
 %   else
 %       fprintf('MATLAB version is valid.\n');
