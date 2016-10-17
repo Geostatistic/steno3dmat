@@ -4,7 +4,7 @@
 %       >> myPoints.Mesh = steno3d.core.Mesh0D;
 %       >> myPoints.Mesh.Vertices = rand(100, 3);
 %       >>
-%       >> % Create a DATARRAY the same length as the Vertices
+%       >> % Create a DataArray the same length as the Vertices
 %       >> myData = steno3d.core.DataArray;
 %       >> myData.Title = 'Random Point Data';
 %       >> myData.Array = rand(100, 1);
@@ -19,6 +19,13 @@
 %       >>
 %       >> % Ensure that the Point resource is valid
 %       >> myPoints.validate();
+%       >>
+%       >> % Pack this example into a project
+%       >> example1 = steno3d.core.Project(                             ...
+%              'Title', 'Data: Example 1',                              ...
+%              'Resources', myPoints                                    ...
+%          );
+%       >> clear myPoints myData;
 %
 %   Example 2:
 %       >> % Initialize a Steno3D Surface resource
@@ -27,13 +34,13 @@
 %       >> mySurf.Mesh.H1 = ones(5, 1);
 %       >> mySurf.Mesh.H2 = ones(10, 1);
 %       >>
-%       >> % Create a DATARRAY the same size as the cell centers
+%       >> % Create a DataArray the same size as the cell centers
 %       >> ccValues = rand(5, 10);
 %       >> myDataCC = steno3d.core.DataArray;
 %       >> myDataCC.Title = 'Random Cell-Centered Data';
 %       >> myDataCC.Array = ccValues(:);
 %       >>
-%       >> % Create a DATARRAY the same size as the nodes
+%       >> % Create a DataArray the same size as the nodes
 %       >> nValues = rand(6, 11);
 %       >> myDataN = steno3d.core.DataArray;
 %       >> myDataN.Title = 'Random Node Data';
@@ -51,6 +58,13 @@
 %       >>
 %       >> % Ensure that the Surface resource is valid
 %       >> mySurf.validate();
+%       >>
+%       >> % Pack this example into a project
+%       >> example2 = steno3d.core.Project(                             ...
+%              'Title', 'Data: Example 2',                              ...
+%              'Resources', mySurf                                      ...
+%          );
+%       >> clear mySurf myDataCC myDataN ccValues nValues;
 %
 %   Example 3:
 %       >> % Initialize the same resources as Examples 1 and 2
@@ -70,12 +84,19 @@
 %       >> % Ensure the resources are valid
 %       >> myPoints.validate();
 %       >> mySurf.validate();
+%       >>
+%       >> % Pack this example into a project
+%       >> example3 = steno3d.core.Project(                             ...
+%              'Title', 'Data: Example 3',                              ...
+%              'Resources', {myPoints, mySurf}                          ...
+%          );
+%       >> clear myPoints mySurf;
 %
-%   You can run the above examples with:
-%       >> steno3d.examples.data
-%   This script packages the three examples into Steno3D Projects so they
-%   can be plotted with:
-%       >> example1.plot(); example2.plot(); example3.plot();
+%   You can <a href="matlab: steno3d.examples.core.data
+%   ">click here</a> to run the above examples or type:
+%       >> steno3d.examples.core.data
+%   Then plot the projects with:
+%       >> example1.plot(); % etc...
 %
 %   See also steno3d.core.DataArray, steno3d.core.binders,
 %   steno3d.addData, steno3d.core.Point, steno3d.core.Surface,
@@ -89,7 +110,7 @@ myPoints = steno3d.core.Point;
 myPoints.Mesh = steno3d.core.Mesh0D;
 myPoints.Mesh.Vertices = rand(100, 3);
 
-% Create a DATARRAY the same length as the Vertices
+% Create a DataArray the same length as the Vertices
 myData = steno3d.core.DataArray;
 myData.Title = 'Random Point Data';
 myData.Array = rand(100, 1);
@@ -118,13 +139,13 @@ mySurf.Mesh = steno3d.core.Mesh2DGrid;
 mySurf.Mesh.H1 = ones(5, 1);
 mySurf.Mesh.H2 = ones(10, 1);
 
-% Create a DATARRAY the same size as the cell centers
+% Create a DataArray the same size as the cell centers
 ccValues = rand(5, 10);
 myDataCC = steno3d.core.DataArray;
 myDataCC.Title = 'Random Cell-Centered Data';
 myDataCC.Array = ccValues(:);
 
-% Create a DATARRAY the same size as the nodes
+% Create a DataArray the same size as the nodes
 nValues = rand(6, 11);
 myDataN = steno3d.core.DataArray;
 myDataN.Title = 'Random Node Data';
