@@ -54,7 +54,6 @@
 %
 %   See also steno3d.trisurf, steno3d.core.Surface, steno3d.core.Project
 %
-% Steno3D trisurf plotting examples
 
 % Example 1:
 % Create a Steno3D Project with triangulated Surface resource
