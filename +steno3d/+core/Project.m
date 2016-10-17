@@ -1,18 +1,62 @@
 classdef Project < steno3d.core.UserContent
-%PROJECT Steno3D Project contains composite resources and can be uploaded
+%PROJECT Container of related Steno3D resources for plotting and uploading
+%   Creating projects is the reason the Steno3D MATLAB toolbox exists. A
+%   PROJECT contains one or more related <a href="matlab:
+%   help steno3d.core.Point">Point</a>, <a href="matlab:
+%   help steno3d.core.Line">Line</a>, <a href="matlab:
+%   help steno3d.core.Surface">Surface</a>, or <a href="matlab:
+%   help steno3d.core.Volume">Volume</a>
+%   resources. They can be created and edited using the high-level plotting
+%   interface (see <a href="matlab: help steno3d.examples.plotting
+%   ">EXAMPLES) or the low-level command line interface (see
+%   <a href="matlab: help steno3d.examples.project">EXAMPLES).
+%
+%   Once a PROJECT is created, it can be plotted in MATLAB with the PLOT()
+%   function. This allows an initial visualization to verify the PROJECT is
+%   constructed correctly. After the PROJECT is complete in MATLAB, it can
+%   be uploaded to steno3d.com with the UPLOAD() function. This validates
+%   the PROJECT, checks user quotas, and uploads the PROJECT. The URL of
+%   the uploaded PROJECT is returned and can also be accessed with the
+%   URL() function.
+%
+%   PROJECT implements <a href="matlab: help props.HasProps
+%   ">HasProps</a> for dynamic, type-checked <a href="matlab:
+%   help props.Prop">properties</a>
+%
+%   REQUIRED PROPERTIES:
+%       Public (<a href="matlab: help props.Bool">props.Bool</a>)
+%           Public visibility on steno3d.com
+%           Default: false
+%
+%       Resources (<a href="matlab: help props.Repeated
+%       ">props.Repeated</a>)
+%           Composite resources the project contains
+%           Type: props.Instance (Class: <a href="matlab:
+%           help steno3d.core.CompositeResource">CompositeResource</a>)
+%
+%   OPTIONAL PROPERTIES:
+%       Title (<a href="matlab: help props.String">props.String</a>)
+%           Content title
+%
+%       Description (<a href="matlab: help props.String">props.String</a>)
+%           Content description
+%
+%   See also steno3d.core.CompositeResource, steno3d.core.UserContent,
+%
+
 
     properties (Hidden, SetAccess = immutable)
         ProjProps = {                                                   ...
             struct(                                                     ...
                 'Name', 'Public',                                       ...
                 'Type', @props.Bool,                                    ...
-                'Doc', 'Public visibility of the project',              ...
+                'Doc', 'Public visibility on steno3d.com',              ...
                 'DefaultValue', false,                                  ...
                 'Required', true                                        ...
             ), struct(                                                  ...
                 'Name', 'Resources',                                    ...
                 'Type', @props.Repeated,                                ...
-                'Doc', 'Project Resources',                             ...
+                'Doc', 'Composite resources the project contains',      ...
                 'PropType', struct(                                     ...
                     'Type', @props.Instance,                            ...
                     'Class', @steno3d.core.CompositeResource,           ...
@@ -25,6 +69,7 @@ classdef Project < steno3d.core.UserContent
     
     properties (Hidden)
         PR__ax = []
+        PR__url = ''
     end
 
     methods
@@ -32,19 +77,51 @@ classdef Project < steno3d.core.UserContent
             obj = obj@steno3d.core.UserContent(varargin{:});
         end
 
-        function url = upload(obj)
-            obj.validate()
+        function appURL = upload(obj)
+        %UPLOAD Validate and upload the project to steno3d.com
+        %   P.UPLOAD() validates project P, uploads it to steno3d.com
+        %
+        %   URL = P.UPLOAD() returns the URL of the uploaded project
+        %   
+            if ~steno3d.utils.User.isLoggedIn()
+                error('steno3d:projectError', 'Please "steno3d.login()"');
+            end
+            obj.validate();
             obj.quotaCheck(obj.Public);
             obj.uploadContent('');
             user = steno3d.utils.User.currentUser();
             uidsplit = strsplit(obj.PR__uid, ':');
-            url = strjoin([user.Endpoint 'app/' uidsplit(2)], '');
+            appURL = strjoin([user.Endpoint 'app/' uidsplit(2)], '');
             fprintf(['<a href="matlab: '                                ...
-                    'web(''' url ''', ''-browser'')"'...
-                    '>View Project</a>\n'])
+                    'web(''' appURL ''', ''-browser'')"'                ...
+                    '>View Project</a>\n']);
+            obj.PR__url = appURL;
+        end
+        
+        function appURL = url(obj)
+        %URL Return the URL of the project if it has been uploaded
+        %   P.URL() returns the URL of an uploaded project P and errors if
+        %   the project isn't uploaded
+        %
+            if isempty(obj.PR__url)
+                error('steno3d:projectError', 'Project not uploaded');
+            end
+            appURL = obj.PR__url;
         end
 
-        function fig = plot(obj, ax)
+        function ax = plot(obj, ax)
+        %PLOT Locally plot the project in a MATLAB axes
+        %   P.PLOT() plots the project P in a new figure window
+        %
+        %   P.PLOT(AX) plots the project P in an existing axes AX
+        %
+        %   AX = P.PLOT(...) returns the axes handle of the plot
+        %
+        %   It is recommended to call PLOT with no arguments (not provide 
+        %   AX). This prevents loss of graphics objects unrelated to the
+        %   project and ensures that uploading the axes will correctly
+        %   upload the project.
+        %
             obj.validate();
             if nargin < 2
                 ax = obj.PR__ax;
@@ -59,7 +136,6 @@ classdef Project < steno3d.core.UserContent
                     ax.UserData = obj;
                 end
             end
-            
             obj.PR__ax = ax;
             hold(ax, 'on');
             title(ax, obj.Title);
@@ -88,12 +164,10 @@ classdef Project < steno3d.core.UserContent
                         plot3(rect(:, 1), rect(:, 2), rect(:, 3), 'k--');
                     end
                 end
-                
                 mc = metaclass(obj.Resources{i});
                 cls = strsplit(mc.Name, '.');
                 cls = cls{end};
                 legendStr{i} = [t ' (' cls '): ' dtstr];
-                
             end
             legend(legendHandle, legendStr{:});
         end
@@ -108,7 +182,7 @@ classdef Project < steno3d.core.UserContent
             if steno3d.utils.User.isLoggedIn()
                 user = steno3d.utils.User.currentUser();
                 if length(obj.Resources) > user.FigCompLimit
-                    error('steno3d:validationError',                    ...
+                    error('steno3d:projectError',                       ...
                           [num2str(length(obj.Resources)) ' resources ' ...
                            'in project exceeds limit of '               ...
                            num2str(user.FigCompLimit)]);
@@ -118,16 +192,14 @@ classdef Project < steno3d.core.UserContent
                     sz = sz + obj.Resources{i}.nbytes();
                 end
                 if sz > user.FigSizeLimit
-                    error('steno3d:validationError',                    ...
+                    error('steno3d:projectError',                       ...
                           ['Project size ' num2str(sz) ' bytes exceeds '...
                            'project limit of '                          ...
                            num2str(user.FigSizeLimit) ' bytes']);
                 end
             end
         end
-
-
-
+        
         function uploadChildren(obj, tabLevel)
             for i = 1:length(obj.Resources)
                 obj.Resources{i}.uploadContent(tabLevel);
@@ -136,14 +208,11 @@ classdef Project < steno3d.core.UserContent
 
         function args = uploadArgs(obj)
             args = {'public', obj.PR_Public.serialize()};
-
             res = '';
             for i = 1:length(obj.Resources)
                 res = [res obj.Resources{i}.PR__uid ','];
             end
             args = [args, {'resourceUids', res(1:end-1)}];
-
-
             args = [args, uploadArgs@steno3d.core.UserContent(obj)];
         end
 
@@ -189,6 +258,5 @@ classdef Project < steno3d.core.UserContent
             end
         end
     end
-
 end
 
