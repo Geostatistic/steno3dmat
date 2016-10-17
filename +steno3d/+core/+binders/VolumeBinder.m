@@ -1,5 +1,25 @@
 classdef VolumeBinder < props.HasProps
-%VOLUMEBINDER Object to add data to steno3d Volume
+%VOLUMEBINDER Bind data to cell centers of a Steno3D Volume
+%   For usage details, see the <a href="matlab: help steno3d.core.binders
+%   ">binders help</a>.
+%
+%   VOLUMEBINDER implements <a href="matlab: help props.HasProps
+%   ">HasProps</a> for dynamic, type-checked <a href="matlab:
+%   help props.Prop">properties</a>
+%
+%   REQUIRED PROPERTIES:
+%       Location (<a href="matlab: help props.String">props.String</a>)
+%           Location of the data on mesh
+%           Choices: CC
+%           Default: 'CC'
+%
+%       Data (<a href="matlab: help props.Instance">props.Instance</a>)
+%           Volume data array
+%           Class: <a href="matlab: help steno3d.core.DataArray">DataArray</a>
+%
+%   See also steno3d.core.binders, steno3d.core.Volume,
+%   steno3d.core.DataArray
+%
 
 
     properties (Hidden, SetAccess = immutable)
@@ -9,7 +29,8 @@ classdef VolumeBinder < props.HasProps
                 'Type', @props.String,                                  ...
                 'Doc', 'Location of the data on mesh',                  ...
                 'Choices', struct(                                      ...
-                    'CC', {{'CELLCENTER'}}                              ...
+                    'CC', {{'CELLCENTER', 'CELL', 'CELLS',              ...
+                            'CELLCENTERS'}}                             ...
                 ),                                                      ...
                 'DefaultValue', 'CC',                                   ...
                 'Required', true                                        ...
@@ -28,6 +49,5 @@ classdef VolumeBinder < props.HasProps
             obj = obj@props.HasProps(varargin{:});
         end
     end
-
 end
 

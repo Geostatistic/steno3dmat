@@ -1,5 +1,10 @@
-classdef Options < props.HasProps
-%OPTIONS Base class for steno3d options
+classdef (Abstract) Options < props.HasProps
+%OPTIONS Base class for Steno3D options
+%   For usage details, see the <a href="matlab: help steno3d.core.opts
+%   ">options help</a>.
+%
+%   See also steno3d.core.opts
+%
 
     properties
     end
@@ -10,6 +15,7 @@ classdef Options < props.HasProps
         end
 
         function json = toJSON(obj)
+        %TOJSON Serialize options to JSON string
             json = '';
             for i = 1:length(obj.PR__props)
                 optname = obj.PR__props{i};
@@ -20,6 +26,5 @@ classdef Options < props.HasProps
             json = ['{' json(1:end-2) '}'];
         end
     end
-
 end
 

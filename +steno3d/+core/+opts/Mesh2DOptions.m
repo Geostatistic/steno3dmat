@@ -1,5 +1,21 @@
 classdef Mesh2DOptions < steno3d.core.opts.Options
-%MESH2DOPTIONS Options applicable for steno3d Mesh2D or Mesh2DGrid
+%MESH2DOPTIONS Options for to Steno3D Mesh2D and Mesh2DGrid objects
+%   For usage details, see the <a href="matlab: help steno3d.core.opts
+%   ">options help</a>.
+%
+%   MESH2DOPTIONS implements <a href="matlab: help props.HasProps
+%   ">HasProps</a> for dynamic, type-checked <a href="matlab:
+%   help props.Prop">properties</a>
+%
+%   OPTIONAL PROPERTIES:
+%       Wireframe (<a href="matlab: help props.Bool">props.Bool</a>)
+%           Display 2D mesh wireframe
+%           Default: false
+%
+%   See also steno3d.core.opts, steno3d.core.Mesh2D,
+%   steno3d.core.Mesh2DGrid
+%
+
 
     properties (Hidden, SetAccess = immutable)
         M2DOptProps = {                                                 ...

@@ -1,5 +1,25 @@
 classdef PointBinder < props.HasProps
-%POINTBINDER Object to add data to steno3d Point
+%POINTBINDER Bind data to nodes of a Steno3D Point.
+%   For usage details, see the <a href="matlab: help steno3d.core.binders
+%   ">binders help</a>.
+%
+%   POINTBINDER implements <a href="matlab: help props.HasProps
+%   ">HasProps</a> for dynamic, type-checked <a href="matlab:
+%   help props.Prop">properties</a>
+%
+%   REQUIRED PROPERTIES:
+%       Location (<a href="matlab: help props.String">props.String</a>)
+%           Location of the data on mesh
+%           Choices: N
+%           Default: 'N'
+%
+%       Data (<a href="matlab: help props.Instance">props.Instance</a>)
+%           Point data array
+%           Class: <a href="matlab: help steno3d.core.DataArray">DataArray</a>
+%
+%   See also steno3d.core.binders, steno3d.core.Point,
+%   steno3d.core.DataArray
+%
 
 
     properties (Hidden, SetAccess = immutable)
@@ -9,7 +29,8 @@ classdef PointBinder < props.HasProps
                 'Type', @props.String,                                  ...
                 'Doc', 'Location of the data on mesh',                  ...
                 'Choices', struct(                                      ...
-                    'N', {{'VERTEX', 'NODE', 'CC', 'CELLCENTER'}}       ...
+                    'N', {{'VERTEX', 'VERTICES', 'NODE', 'NODES', 'CC', ...
+                           'CELLCENTER', 'CELLCENTERS'}}                ...
                 ),                                                      ...
                 'DefaultValue', 'N',                                    ...
                 'Required', true                                        ...
@@ -28,6 +49,5 @@ classdef PointBinder < props.HasProps
             obj = obj@props.HasProps(varargin{:});
         end
     end
-
 end
 
