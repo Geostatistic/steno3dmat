@@ -1,5 +1,5 @@
 classdef VolumeOptions < steno3d.core.opts.Options
-%VOLUMEOPTIONS Options for to Steno3D Volume objects
+%VOLUMEOPTIONS Options for Steno3D Volume objects
 %   For usage details, see the <a href="matlab: help steno3d.core.opts
 %   ">options help</a>.
 %
@@ -47,4 +47,5 @@ classdef VolumeOptions < steno3d.core.opts.Options
         end
     end
 end
+
 

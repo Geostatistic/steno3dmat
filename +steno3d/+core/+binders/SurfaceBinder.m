@@ -1,5 +1,5 @@
 classdef SurfaceBinder < props.HasProps
-%SURFACEBINDER Bind data to faces or nodes of a Steno3D Surface
+%SURFACEBINDER Bind data to faces or vertices of a Steno3D Surface
 %   For usage details, see the <a href="matlab: help steno3d.core.binders
 %   ">binders help</a>.
 %

@@ -1,5 +1,5 @@
 classdef Mesh3DOptions < steno3d.core.opts.Options
-%MESH3DOPTIONS Options for to Steno3D MESH3DGRID objects
+%MESH3DOPTIONS Options for Steno3D Mesh3DGrid objects
 %   For usage details, see the <a href="matlab: help steno3d.core.opts
 %   ">options help</a>.
 %
@@ -35,4 +35,5 @@ classdef Mesh3DOptions < steno3d.core.opts.Options
     end
 
 end
+
 

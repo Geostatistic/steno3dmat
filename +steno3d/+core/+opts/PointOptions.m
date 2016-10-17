@@ -1,5 +1,5 @@
 classdef PointOptions < steno3d.core.opts.Options
-%POINTOPTIONS Options for to Steno3D Point objects
+%POINTOPTIONS Options for Steno3D Point objects
 %   For usage details, see the <a href="matlab: help steno3d.core.opts
 %   ">options help</a>.
 %
@@ -47,4 +47,5 @@ classdef PointOptions < steno3d.core.opts.Options
     end
 
 end
+
 

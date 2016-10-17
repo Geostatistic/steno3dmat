@@ -1,5 +1,5 @@
 classdef SurfaceOptions < steno3d.core.opts.Options
-%SURFACEOPTIONS Options for to Steno3D Surface objects
+%SURFACEOPTIONS Options for Steno3D Surface objects
 %   For usage details, see the <a href="matlab: help steno3d.core.opts
 %   ">options help</a>.
 %
@@ -49,4 +49,5 @@ classdef SurfaceOptions < steno3d.core.opts.Options
     end
 
 end
+
 

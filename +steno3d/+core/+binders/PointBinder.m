@@ -1,5 +1,5 @@
 classdef PointBinder < props.HasProps
-%POINTBINDER Bind data to nodes of a Steno3D Point.
+%POINTBINDER Bind data to nodes of a Steno3D Point
 %   For usage details, see the <a href="matlab: help steno3d.core.binders
 %   ">binders help</a>.
 %

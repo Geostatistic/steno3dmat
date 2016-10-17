@@ -1,5 +1,5 @@
 classdef Mesh0DOptions < steno3d.core.opts.Options
-%MESH0DOPTIONS Options for to Steno3D Mesh0D objects
+%MESH0DOPTIONS Options for Steno3D Mesh0D objects
 %   For usage details, see the <a href="matlab: help steno3d.core.opts
 %   ">options help</a>.
 %
@@ -25,4 +25,5 @@ classdef Mesh0DOptions < steno3d.core.opts.Options
     end
 
 end
+
 

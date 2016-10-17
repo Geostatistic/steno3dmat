@@ -1,5 +1,5 @@
 classdef LineBinder < props.HasProps
-%LINEBINDER Bind data to segments or vertices of a Steno3D Line.
+%LINEBINDER Bind data to segments or vertices of a Steno3D Line
 %   For usage details, see the <a href="matlab: help steno3d.core.binders
 %   ">binders help</a>.
 %
@@ -14,7 +14,8 @@ classdef LineBinder < props.HasProps
 %
 %       Data (<a href="matlab: help props.Instance">props.Instance</a>)
 %           Line data array
-%           Class: <a href="matlab: help steno3d.core.DataArray">DataArray</a>
+%           Class: <a href="matlab: help steno3d.core.DataArray
+%           ">DataArray</a>
 %
 %   See also steno3d.core.binders, steno3d.core.Line,
 %   steno3d.core.DataArray

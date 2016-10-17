@@ -1,5 +1,5 @@
 classdef LineOptions < steno3d.core.opts.Options
-%LINEOPTIONS Options for to Steno3D Line objects
+%LINEOPTIONS Options for Steno3D Line objects
 %   For usage details, see the <a href="matlab: help steno3d.core.opts
 %   ">options help</a>.
 %
@@ -46,4 +46,5 @@ classdef LineOptions < steno3d.core.opts.Options
         end
     end
 end
+
 
