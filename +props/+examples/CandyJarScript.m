@@ -1,6 +1,6 @@
 %   Command Window
 %   **************
-%   >> cj = CandyJar
+%   >> cj = props.examples.CandyJar
 % 
 %   cj = 
 % 
@@ -69,7 +69,7 @@
 %
 
 
-cj = CandyJar
+cj = props.examples.CandyJar
 cj.CandyBrand = 'Props Pops';
 cj.MaximumAmount = 25;
 cj.CurrentAmount = cj.MaximumAmount;
