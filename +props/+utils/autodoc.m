@@ -94,8 +94,8 @@ function autodoc(htobj)
     nmsplit = strsplit(mc.Name, '.');
     fprintf(tempfid, ['%%   ' upper(nmsplit{end}) ' implements '        ...
             '<a href="matlab: help props.HasProps\n'                    ...
-            '%%   ">HasProps</a> for dynamic, type-checked <a '        ...
-            'href="matlab:\n%%   help props.Prop">'                    ...
+            '%%   ">HasProps</a> for dynamic, type-checked <a '         ...
+            'href="matlab:\n%%   help props.Prop">'                     ...
             'properties</a>\n%%\n']); 
     
     requiredDoc = '';
@@ -137,6 +137,9 @@ function autodoc(htobj)
     if isempty(seealsoDoc)
         seealso = unique(seealso);
         seealsoDoc = ['%%   See also ' strjoin(seealso, ', ') '\n%%\n\n'];
+    end
+    if isempty(requiredDoc) && isempty(optionalDoc)
+        requiredDoc = '%%   ---- CLASS HAS NO PROPERTIES ----\n%%\n';
     end
     
     fprintf(tempfid, requiredDoc);
