@@ -1,4 +1,4 @@
-classdef CompositeResource < steno3d.core.UserContent
+classdef (Abstract) CompositeResource < steno3d.core.UserContent
 %COMPOSITERESOURCE Base class for Steno3D resources (Point, Line, etc.)
 %   Composite resources are the building blocks of Steno3D <a href="
 %   matlab: help steno3d.core.Project">Projects</a>. They
@@ -8,17 +8,6 @@ classdef CompositeResource < steno3d.core.UserContent
 %   help steno3d.core.Volume">Volume</a>. They all must have a mesh to
 %   define their geometry. They may also have data bound to the mesh, image
 %   textures, and options.
-%
-%   COMPOSITERESOURCE implements <a href="matlab: help props.HasProps
-%   ">HasProps</a> for dynamic, type-checked <a href="matlab:
-%   help props.Prop">properties</a>
-%
-%   OPTIONAL PROPERTIES:
-%       Title (<a href="matlab: help props.String">props.String</a>)
-%           Content title
-%
-%       Description (<a href="matlab: help props.String">props.String</a>)
-%           Content description
 %
 %   See also steno3d.core.Point, steno3d.core.Line, steno3d.core.Surface,
 %   steno3d.core.Volume, steno3d.core.Project, steno3d.core.UserContent
@@ -72,10 +61,8 @@ classdef CompositeResource < steno3d.core.UserContent
                           num2str(length(obj.Data{i}.Data.Array))       ...
                           '\nExpected Length for location '             ...
                           obj.Data{i}.Location ': ' num2str(validLength)]);
-                        
                 end
             end
-            
             if steno3d.utils.User.isLoggedIn()
                 user = steno3d.utils.User.currentUser();
                 for i = 1:length(obj.Data)
@@ -121,7 +108,6 @@ classdef CompositeResource < steno3d.core.UserContent
 
         function args = uploadArgs(obj)
             args = {'mesh', ['{"uid": "' obj.Mesh.PR__uid '"}']};
-
             data = '';
             for i = 1:length(obj.Data)
                 data = [data '{"location": "' obj.Data{i}.Location      ...
@@ -129,7 +115,6 @@ classdef CompositeResource < steno3d.core.UserContent
                         '"},'];
             end
             args = [args, {'data', ['[' data(1:end-1) ']']}];
-
             if length(obj.findprop('Textures')) == 1
                 tex = '';
                 for i = 1:length(obj.Textures)
@@ -138,7 +123,6 @@ classdef CompositeResource < steno3d.core.UserContent
                 end
                 args = [args, {'textures', ['[' tex(1:end-1) ']']}];
             end
-
             args = [args, uploadArgs@steno3d.core.UserContent(obj)];
         end
     end

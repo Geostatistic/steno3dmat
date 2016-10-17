@@ -105,14 +105,6 @@ classdef Project < steno3d.core.UserContent
         end
 
         function validator(obj)
-            for i = 1:length(obj.Resources)
-                mc = metaclass(obj.Resources{i});
-                if strcmp(mc.Name, 'steno3d.core.CompositeResource')
-                    error('steno3d:projectError', ['Project Resources ' ...
-                          'cannot be instances of CompositeResource - ' ...
-                          'they must be subclasses'])
-                end
-            end
             if steno3d.utils.User.isLoggedIn()
                 user = steno3d.utils.User.currentUser();
                 if length(obj.Resources) > user.FigCompLimit
