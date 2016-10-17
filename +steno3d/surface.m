@@ -119,7 +119,6 @@ function [proj, surf] = surface(varargin)
     origin = [0 0 0];
     u = 'X';
     v = 'Y';
-    
     if length(varargin) > 1 &&                                          ...
             ismatrix(varargin{2}) && all(size(varargin{2}) > 1)
         origin = varargin{1};
@@ -132,7 +131,6 @@ function [proj, surf] = surface(varargin)
     if isempty(varargin)
         error('steno3d:surfaceError', 'Not enough input arguments');
     end
-    
     if ismatrix(varargin{1}) && all(size(varargin{1}) > 1)
         x = 0:size(varargin{1}, 1)-1;
         y = 0:size(varargin{1}, 2)-1;
@@ -156,19 +154,18 @@ function [proj, surf] = surface(varargin)
         x = varargin{1}; y = varargin{2};
         varargin = varargin(3:end);
     end
-    
     if isempty(x)
         error('steno3d:surfaceError', 'Invalid input arguments');
     end
-    
     if ~isempty(varargin) && validSize(length(x), length(y), varargin{1})
         Z = varargin{1};
         varargin = varargin(2:end);
     end
-    
     if rem(length(varargin), 2) == 1
         if ~props.Color.isValid(varargin{1})
-            error('steno3d:surfaceError', 'Invalid color')
+            error('steno3d:surfaceError', ['Invalid input arguments - ' ...
+                  'possibly Z matrix is incorrect size or color is '    ...
+                  'wrong format'])
         end
         color = varargin{1};
         varargin = varargin(2:end);
