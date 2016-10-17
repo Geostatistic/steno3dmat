@@ -81,7 +81,10 @@ classdef HasProps < dynamicprops
     methods
         function obj = HasProps(varargin)
         %HASPROPS Constructor builds dynamic props, assigns initial values
-        
+            if verLessThan('matlab', '8.4')
+                error('props:versionError', ['Props requires MATLAB '   ...
+                      'Release R2014b (8.4) or greater']);
+            end
             % First look through the class properties. All properties that
             % are NOT immutable cell arrays will be treated like normal
             % MATLAB class properties.
@@ -104,7 +107,6 @@ classdef HasProps < dynamicprops
                     setupProp(obj, props{j});
                 end
             end
-            
             % After building the instance with dynamic props, assign
             % initial values based on Parameter/Value pairs from varargin
             if length(varargin) == 1
@@ -112,8 +114,8 @@ classdef HasProps < dynamicprops
             end
             if rem(length(varargin), 2) ~= 0
                 error('props:hasPropsError',                            ...
-                      ['Input to HasProps class must be property/value' ...
-                       ' pairs']);
+                      ['Input to HasProps class must be property/value '...
+                       'pairs']);
             end
             for i = 1:2:length(varargin)
                 if ~ischar(varargin{i})
@@ -127,7 +129,6 @@ classdef HasProps < dynamicprops
     end
     
     methods (Hidden)
-
         function validator(obj)
         %VALIDATOR Cross-validates different properties
         %   This function contains any validation that does not happen
@@ -138,11 +139,9 @@ classdef HasProps < dynamicprops
         %   instances. That function calls "obj.validator()" in addition to
         %   performing other validation.
         end
-
     end
 
     methods (Sealed)
-
         function validate(obj)
         %VALIDATE Validates a PROPS.HASPROPS instance
         %   This function re-validates all the prop values, ensures that
