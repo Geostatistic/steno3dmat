@@ -25,7 +25,7 @@
 %              'Title', 'Data: Example 1',                              ...
 %              'Resources', myPoints                                    ...
 %          );
-%       >> clear myPoints myData;
+%       >> clear myPoints myData
 %
 %   Example 2:
 %       >> % Initialize a Steno3D Surface resource
@@ -64,33 +64,7 @@
 %              'Title', 'Data: Example 2',                              ...
 %              'Resources', mySurf                                      ...
 %          );
-%       >> clear mySurf myDataCC myDataN ccValues nValues;
-%
-%   Example 3:
-%       >> % Initialize the same resources as Examples 1 and 2
-%       >> myPoints = steno3d.core.Point;
-%       >> myPoints.Mesh = steno3d.core.Mesh0D;
-%       >> myPoints.Mesh.Vertices = rand(100, 3);
-%       >> mySurf = steno3d.core.Surface;
-%       >> mySurf.Mesh = steno3d.core.Mesh2DGrid;
-%       >> mySurf.Mesh.H1 = ones(5, 1);
-%       >> mySurf.Mesh.H2 = ones(10, 1);
-%       >>
-%       >> % Use the steno3d.addData function to simplify adding data
-%       >> steno3d.addData(myPoints, 'Random Point Data', rand(100, 1));
-%       >> steno3d.addData(mySurf, 'Random Data 1', rand(5, 10));
-%       >> steno3d.addData(mySurf, 'Random Data 2', rand(6, 11));
-%       >>
-%       >> % Ensure the resources are valid
-%       >> myPoints.validate();
-%       >> mySurf.validate();
-%       >>
-%       >> % Pack this example into a project
-%       >> example3 = steno3d.core.Project(                             ...
-%              'Title', 'Data: Example 3',                              ...
-%              'Resources', {myPoints, mySurf}                          ...
-%          );
-%       >> clear myPoints mySurf;
+%       >> clear mySurf myDataCC myDataN ccValues nValues
 %
 %   You can <a href="matlab: steno3d.examples.core.data
 %   ">click here</a> to run the above examples or type:
@@ -126,11 +100,12 @@ myPoints.Data = {                                            ...
 % Ensure that the Point resource is valid
 myPoints.validate();
 
+% Pack this example into a project
 example1 = steno3d.core.Project(                             ...
     'Title', 'Data: Example 1',                              ...
     'Resources', myPoints                                    ...
 );
-clear myPoints myData;
+clear myPoints myData
 
 % Example 2:
 % Initialize a Steno3D Surface resource
@@ -164,33 +139,10 @@ mySurf.Data{2} = {                                           ...
 % Ensure that the Surface resource is valid
 mySurf.validate();
 
+% Pack this example into a project
 example2 = steno3d.core.Project(                             ...
     'Title', 'Data: Example 2',                              ...
     'Resources', mySurf                                      ...
 );
-clear mySurf myDataCC myDataN ccValues nValues;
+clear mySurf myDataCC myDataN ccValues nValues
 
-% Example 3:
-% Initialize the same resources as Examples 1 and 2
-myPoints = steno3d.core.Point;
-myPoints.Mesh = steno3d.core.Mesh0D;
-myPoints.Mesh.Vertices = rand(100, 3);
-mySurf = steno3d.core.Surface;
-mySurf.Mesh = steno3d.core.Mesh2DGrid;
-mySurf.Mesh.H1 = ones(5, 1);
-mySurf.Mesh.H2 = ones(10, 1);
-
-% Use the steno3d.addData function to simplify adding data
-steno3d.addData(myPoints, 'Random Point Data', rand(100, 1));
-steno3d.addData(mySurf, 'Random Data 1', rand(5, 10));
-steno3d.addData(mySurf, 'Random Data 2', rand(6, 11));
-
-% Ensure the resources are valid
-myPoints.validate();
-mySurf.validate();
-
-example3 = steno3d.core.Project(                             ...
-    'Title', 'Data: Example 3',                              ...
-    'Resources', {myPoints, mySurf}                          ...
-);
-clear myPoints mySurf;
