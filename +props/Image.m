@@ -4,7 +4,8 @@ classdef Image < props.Prop
 %   class needs an image property. Only PNG images are currently supported.
 %   Valid values are either PNG filenames that can be read with <a href="
 %   matlab: help imread">imread</a> or
-%   valid PNG matrices already in MATLAB.
+%   valid PNG matrices already in MATLAB. Image will attempt to
+%   coerce different image formats to PNG, but the success may be limited.
 %
 %   PROPERTIES - No properties besides those inherited from props.Prop
 %
@@ -41,6 +42,12 @@ classdef Image < props.Prop
             catch
             end
             try
+                imwrite(val, [tempname '.png'], 'png');
+                return
+            catch
+            end
+            try
+                val = imread(val);
                 imwrite(val, [tempname '.png'], 'png');
                 return
             catch
