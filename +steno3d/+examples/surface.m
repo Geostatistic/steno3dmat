@@ -41,7 +41,7 @@
 %       >> example5.Title = 'Example 5 Project';
 %       >> mySurface.Title = 'Peaks, Data, and Space';
 %       >> mySurface.Mesh.Opts.Wireframe = true;
-%       >> example5.plot()
+%       >> example5.plot();
 %       >> clear mySurface Z pngFile
 %       >> % Note: mySurface is always accessable using:
 %       >> example5.Resources{1};
@@ -105,7 +105,7 @@ imwrite(imread('ngc6543a.jpg'), pngFile, 'png');
 example5.Title = 'Example 5 Project';
 mySurface.Title = 'Peaks, Data, and Space';
 mySurface.Mesh.Opts.Wireframe = true;
-example5.plot()
+example5.plot();
 clear mySurface Z pngFile
 % Note: mySurface is always accessable using:
 example5.Resources{1};

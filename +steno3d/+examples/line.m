@@ -34,7 +34,7 @@
 %                                            sin(x(:)), 'turquoise');
 %       >> % Change properties of the Project and the Line
 %       >> example4.Title = 'Example 4 Project';
-%       >> example4.plot()
+%       >> example4.plot();
 %       >> myLine.Title = 'Turquoise Line';
 %       >> myLine.Opts.Opacity = .75;
 %       >> clear myLine x segs verts
@@ -95,7 +95,7 @@ sin(x(:)), 'turquoise');
 example4.Title = 'Example 4 Project';
 myLine.Title = 'Turquoise Line';
 myLine.Opts.Opacity = .75;
-example4.plot()
+example4.plot();
 clear myLine x segs verts
 % Note: myLine is always accessable using:
 example4.Resources{1};

@@ -32,7 +32,7 @@
 %       >> example4.Title = 'Example 4 Project';
 %       >> myPoints.Title = 'Turquoise Scatter';
 %       >> myPoints.Opts.Opacity = .75;
-%       >> example4.plot()
+%       >> example4.plot();
 %       >> clear myPoints x
 %       >> % Note: myPoints is always accessable using:
 %       >> example4.Resources{1};
@@ -87,7 +87,7 @@ sin(x(:)), 'turquoise');
 example4.Title = 'Example 4 Project';
 myPoints.Title = 'Turquoise Scatter';
 myPoints.Opts.Opacity = .75;
-example4.plot()
+example4.plot();
 clear myPoints x
 % Note: myPoints is always accessable using:
 example4.Resources{1};
