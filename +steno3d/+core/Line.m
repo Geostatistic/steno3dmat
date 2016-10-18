@@ -99,6 +99,9 @@ classdef Line < steno3d.core.CompositeResource
                 cdata = {'CData', obj.Data{1}.Data.Array,               ...
                          'EdgeColor', 'interp'};
             end
+            if strcmp(obj.Mesh.Opts.ViewType, 'tube')
+                cdata = [cdata {'LineWidth', 5}];
+            end
             patch('Parent', ax, 'Faces', obj.Mesh.Segments,             ...
                   'Vertices', obj.Mesh.Vertices, cdata{:},              ...
                   'EdgeAlpha', obj.Opts.Opacity, 'FaceColor', 'w');
