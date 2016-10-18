@@ -55,6 +55,8 @@ function proj = convert(handle, varargin)
 %
             
             
+    steno3d.utils.matverchk();
+    
     narginchk(1, 7)
     if rem(length(varargin), 2) ~= 0
         error('steno3d:convertError', ...

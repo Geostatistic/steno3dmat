@@ -24,6 +24,11 @@ function addImage(varargin)
 %   underlying surface geometry. To map data to the geometry, use
 %   <a href="matlab: help steno3d.addData">steno3d.addData</a> instead.
 %
+%   Also, when plotting projects locally, images only show up as dashed
+%   outlines at the position they are projected from. To see the result of
+%   adding the image, you must upload the project and view it on
+%   steno3d.com.
+%
 %   Example:
 %       % Generate a png image
 %       [x, y, z] = sphere; surf(x, y, z); h = findobj('Type','surface');
@@ -47,6 +52,8 @@ function addImage(varargin)
 %
 
 
+    steno3d.utils.matverchk();
+    
     narginchk(4, 8);
     
     res = varargin{1};

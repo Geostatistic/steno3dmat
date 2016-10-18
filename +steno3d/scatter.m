@@ -52,6 +52,8 @@ function [proj, pts] = scatter(varargin)
 %
 
 
+    steno3d.utils.matverchk();
+    
     if isempty(varargin)
         error('steno3d:scatterError', 'Not enough input arguments');
     end

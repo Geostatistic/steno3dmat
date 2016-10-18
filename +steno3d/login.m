@@ -55,6 +55,8 @@ function login(varargin)
 %   See also STENO3D.LOGOUT, STENO3D.UPLOAD, UPGRADESTENO3D
 %
 
+    steno3d.utils.matverchk();
+    
     PRODUCTION_BASE_URL = 'https://steno3d.com/';
     VALID_PARAMS = {'Endpoint', 'CredentialsFile', 'SkipCredentials'};
 
@@ -67,15 +69,6 @@ function login(varargin)
         'user please `steno3d.logout()`, then login specifying a\n'     ...
         'different username or API developer key.\n\n'                  ...
     ];
-
-    % Check version on login
-    if verLessThan('matlab', '8.4')
-        error('steno3d:loginError', ['Steno3D requires MATLAB '         ...
-              'Release R2014b or greater.\nIf you do not have access '  ...
-              'to this version, consider trying the\n<a href="matlab: ' ...
-              'web(''https://github.com/3ptscience/steno3dpy/'','       ...
-              ' ''-browser'')">Steno3D client library for Python</a>.']);
-    end
 
     % Check if already logged in
     [loggedIn, user] = steno3d.utils.User.isLoggedIn();

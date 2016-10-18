@@ -28,7 +28,9 @@ function addData(varargin)
 %   STENO3D.LINE, STENO3D.TRISURF, STENO3D.SURFACE, STENO3D.VOLUME
 %
 
-
+    steno3d.utils.matverchk();
+    
+    steno3d.utils.matverchk();
     narginchk(2, 3);
     
     res = varargin{1};
@@ -62,10 +64,7 @@ function addData(varargin)
               'number of nodes (%s) or cell centers(%s)'], res.Mesh.nN, ...
               res.Mesh.nC)
     end
-    
     dat = {'Location', loc, 'Data', {'Array', data, 'Title', title}};
-    
     res.Data{end+1} = dat;
-
 end
 

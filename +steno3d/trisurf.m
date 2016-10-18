@@ -56,6 +56,8 @@ function [proj, surf] = trisurf(varargin)
 %
 
 
+    steno3d.utils.matverchk();
+    
     if isempty(varargin)
         error('steno3d:trisurfError', 'Not enough input arguments');
     end

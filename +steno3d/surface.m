@@ -89,6 +89,8 @@ function [proj, surf] = surface(varargin)
 %
 
 
+    steno3d.utils.matverchk();
+    
     if isempty(varargin)
         error('steno3d:surfaceError', 'Not enough input arguments');
     end

@@ -40,6 +40,8 @@ function url = upload(handle, privacy)
 %
 
     
+    steno3d.utils.matverchk();
+    
     narginchk(1, 2)
     if nargin == 2
         if strcmpi(privacy, 'public')
@@ -58,7 +60,8 @@ function url = upload(handle, privacy)
     
     if isa(handle, 'steno3d.core.Project')
         projs = handle;
-    elseif isgraphics(handle) && isa(handle.UserData, 'steno3d.core.Project')
+    elseif length(handle) == 1 && isgraphics(handle) &&                 ...
+            isa(handle.UserData, 'steno3d.core.Project')
         projs = handle.UserData;
     else
         try

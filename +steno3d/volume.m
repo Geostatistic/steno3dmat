@@ -61,7 +61,9 @@ function [proj, vol] = volume(varargin)
 %   See also STENO3D.CORE.VOLUME, STENO3D.UPLOAD, STENO3D.ADDDATA,      ...
 %   STENO3D.CORE.PROJECT
 %   
-
+    
+    
+    steno3d.utils.matverchk();
 
     if isempty(varargin)
         error('steno3d:volumeError', 'Not enough input arguments');

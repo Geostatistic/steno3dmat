@@ -54,6 +54,8 @@ function [proj, lin] = line(varargin)
 %   
 
 
+    steno3d.utils.matverchk();
+    
     if isempty(varargin)
         error('steno3d:lineError', 'Not enough input arguments');
     end

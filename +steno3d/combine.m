@@ -19,6 +19,8 @@ function proj = combine(varargin)
 %
 
 
+    steno3d.utils.matverchk();
+    
     narginchk(1, inf);
     if ischar(varargin{end})
         tabLevel = varargin{end};

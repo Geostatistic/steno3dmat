@@ -39,6 +39,7 @@ classdef (Abstract) UserContent < props.HasProps
 
     methods
         function obj = UserContent(varargin)
+            steno3d.utils.matverchk();
             obj = obj@props.HasProps(varargin{:});
         end
     end
