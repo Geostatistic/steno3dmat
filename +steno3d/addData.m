@@ -28,17 +28,14 @@ function addData(varargin)
 %   STENO3D.LINE, STENO3D.TRISURF, STENO3D.SURFACE, STENO3D.VOLUME
 %
 
-    steno3d.utils.matverchk();
-    
+
     steno3d.utils.matverchk();
     narginchk(2, 3);
-    
     res = varargin{1};
     if ~isa(res, 'steno3d.core.CompositeResource')
         error('steno3d:addDataError', ['Data can only be added to '...
               'Steno3D composite resources']);
     end
-    
     if nargin == 3
         title = varargin{2};
         data = varargin{3};
@@ -49,12 +46,10 @@ function addData(varargin)
         title = '';
         data = varargin{2};
     end
-    
     if ~isnumeric(data)
         error('steno3d:addDataError', 'Data must be numeric');
     end
     data = data(:);
-    
     if length(data) == res.Mesh.nC
         loc = 'CC';
     elseif length(data) == res.Mesh.nN

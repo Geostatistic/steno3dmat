@@ -33,8 +33,10 @@ function url = upload(handle, privacy)
 %   ">online</a>.
 %
 %   Example:
+%       steno3d.login();
 %       myProj = steno3d.scatter(rand(100, 1), rand(100, 1), rand(100, 1));
 %       myURL = STENO3D.UPLOAD(myProj, 'private');
+%       steno3d.logout();
 %
 %   See also STENO3D.CONVERT, STENO3D.CORE.PROJECT
 %

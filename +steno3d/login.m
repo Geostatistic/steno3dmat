@@ -13,8 +13,6 @@ function login(varargin)
 %   STENO3D.LOGIN(..., PARAMETER, VALUE) logs in using the given
 %   PARAMETER/VALUE pairs. Avaliable parameters are:
 %
-%       Endpoint: string (default: steno3d.com)
-%           The target site URL.
 %       CredentialsFile: string (default: '~/.steno3d_client/credentials')
 %           Path to file with saved API key. If a new API key is provided
 %           and the file does not yet exist, it will be created. Unless the
