@@ -9,8 +9,9 @@ classdef (Abstract) CompositeResource < steno3d.core.UserContent
 %   define their geometry. They may also have data bound to the mesh, image
 %   textures, and options.
 %
-%   See also steno3d.core.Point, steno3d.core.Line, steno3d.core.Surface,
-%   steno3d.core.Volume, steno3d.core.Project, steno3d.core.UserContent
+%
+%   See also STENO3D.CORE.POINT, STENO3D.CORE.LINE, STENO3D.CORE.SURFACE,
+%   STENO3D.CORE.VOLUME, STENO3D.CORE.USERCONTENT, STENO3D.CORE.PROJECT
 %
 
 
@@ -67,7 +68,7 @@ classdef (Abstract) CompositeResource < steno3d.core.UserContent
                 user = steno3d.utils.User.currentUser();
                 for i = 1:length(obj.Data)
                     sz = obj.Data{i}.Data.(                             ...
-                        [obj.PROP_PREFIX 'Array']).nbytes;
+                         [obj.PROP_PREFIX 'Array']).nbytes;
                     if sz > user.FileSizeLimit
                         error('steno3d:resourceError',                  ...
                               ['File size ' num2str(sz) ' bytes '       ...
@@ -78,7 +79,7 @@ classdef (Abstract) CompositeResource < steno3d.core.UserContent
                 if length(obj.findprop('Textures')) == 1
                     for i = 1:length(obj.Textures)
                         sz = obj.Textures{i}.(                          ...
-                            [obj.PROP_PREFIX 'Image']).nbytes;
+                             [obj.PROP_PREFIX 'Image']).nbytes;
                         if sz > user.FileSizeLimit
                             error('steno3d:resourceError',              ...
                                   ['Image file size ' num2str(sz)       ...
