@@ -1,4 +1,4 @@
-% Steno3D High-Level Plotting Function Examples
+% PLOTTING: Steno3D High-Level Plotting Function Examples
 %
 %   <a href="matlab: help steno3d.examples.scatter
 %   ">scatter</a>  - Examples to create a Steno3D Point resource
@@ -11,10 +11,9 @@
 %   <a href="matlab: help steno3d.examples.volume
 %   ">volume</a>   - Examples to create a Steno3D Volume resource
 %
-%   <a href="matlab: help steno3d.examples.addData
-%   ">addData</a>  - Examples adding data to existing resources
-%   <a href="matlab: help steno3d.examples.addImage
-%   ">addImage</a> - Examples adding images to existing resources
+%   <a href="matlab: help steno3d.examples.data
+%   ">data</a>  - Examples adding data to existing resources
+%   <a href="matlab: help steno3d.examples.image
+%   ">image</a> - Examples adding image textures to existing resources
 %
 %   See also steno3d.examples
-%
