@@ -17,16 +17,16 @@
 %       imwrite(imread('ngc6543a.jpg'), pngFile, 'png');
 %       % Create a Project with a vertical Surface resource
 %       [example2, sfc] = steno3d.surface(                          ...
-%              'X', 0:.1:1, 'Z', 0:.1:1, [0 0 0]                        ...
-%          );
+%           'X', 0:.1:1, 'Z', 0:.1:1, [0 0 0]                        ...
+%       );
 %       % Add the image to the points, projecting it horizontally
 %       steno3d.addImage(sfc, pngFile, 'X', .25, 'Z', .25);
 %       % Add the image to the points with an offset
 %       steno3d.addImage(sfc, pngFile, 'X', .25, 'Z', .25,          ...
-%                           [.25 0 .25]);
+%                        [.25 0 .25]);
 %       % Add the image to the points with title, offset and reversed
 %       steno3d.addImage(sfc, pngFile, [-1 0 0], .5, [0 0 -1], .5,   ...
-%                           [1 0 1], 'Reversed Space Image');
+%                        [1 0 1], 'Reversed Space Image');
 %       example2.plot();
 %       clear pngFile sfc
 %
@@ -50,7 +50,7 @@
 %       [example3, sph] = steno3d.trisurf(tris, verts);
 %       % Add the image
 %       steno3d.addImage(sph, pngFile, 'X', 2, 'Z', 2, [-1 -1 -1],   ...
-%                           'Hemisphere');
+%                        'Hemisphere');
 %       example3.plot();
 %       clear x y z verts tris sph pngFile
 %

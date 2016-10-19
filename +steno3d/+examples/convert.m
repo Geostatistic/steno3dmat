@@ -35,7 +35,7 @@
 %       % Convert this figure, combine the axes, and attempt to
 %       % consolidate all the resources
 %       example4 = steno3d.convert(fig, 'CombineAxes', true,         ...
-%                                     'CombineResources', true);
+%                                  'CombineResources', true);
 %       close; clear fig x y; example4.plot();
 %
 %   You can <a href="matlab: steno3d.examples.convert
