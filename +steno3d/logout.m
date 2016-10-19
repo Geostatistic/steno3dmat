@@ -10,11 +10,14 @@ function logout()
 %
 %   Example:
 %       steno3d.login();
-%       peaks;
-%       steno3d.upload(gcf);
+%       peaks; steno3d.upload(gcf);
 %       STENO3D.LOGOUT();
 %
-%   See also STENO3D.LOGIN, STENO3D.UPLOAD
+%
+%   See more <a href="matlab: help steno3d.exampls.upload">EXAMPLES</a>
+%
+%   See also STENO3D.LOGIN, STENO3D.UPLOAD, UPGRADESTENO3D,
+%   UNINSTALLSTENO3D
 %
 
 

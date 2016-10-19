@@ -1,7 +1,8 @@
 function url = upload(handle, privacy)
 % UPLOAD Upload a figure, axes, or Steno3D Project to <a href="matlab:
 % web('https://steno3d.com/','-browser')">steno3d.com</a>
-%   STENO3D.UPLOAD(HANDLE) uploads Steno3D Project HANDLE to steno3d.com.
+%   STENO3D.UPLOAD(HANDLE) uploads Steno3D <a href="matlab:
+%   help steno3d.core.Project">Project</a> HANDLE to steno3d.com.
 %   If HANDLE is a figure or axes created by a Steno3D plotting function,
 %   the corresponding Project is uploaded. (Note: The the current state of
 %   the Project will be uploaded, including modifications that may not yet
@@ -34,16 +35,19 @@ function url = upload(handle, privacy)
 %
 %   Example:
 %       steno3d.login();
-%       myProj = steno3d.scatter(rand(100, 1), rand(100, 1), rand(100, 1));
-%       myURL = STENO3D.UPLOAD(myProj, 'private');
+%       peaks; proj = steno3d.convert(gcf);
+%       url = STENO3D.UPLOAD(proj, 'private');
 %       steno3d.logout();
 %
-%   See also STENO3D.CONVERT, STENO3D.CORE.PROJECT
+%
+%   See more <a href="matlab: help steno3d.examples.upload">EXAMPLES</a>
+%
+%   See also STENO3D.CONVERT, STENO3D.CORE.PROJECT, STENO3D.LOGIN,
+%   STENO3D.LOGOUT
 %
 
     
     steno3d.utils.matverchk();
-    
     narginchk(1, 2)
     if nargin == 2
         if strcmpi(privacy, 'public')
@@ -54,12 +58,10 @@ function url = upload(handle, privacy)
             error('steno3d:uploadError', 'Invalid privacy setting');
         end
     end
-    
     if ~steno3d.utils.User.isLoggedIn()
         error('steno3d:uploadError',                                    ...
               'Please steno3d.login() before uploading');
     end
-    
     if isa(handle, 'steno3d.core.Project')
         projs = handle;
     elseif length(handle) == 1 && isgraphics(handle) &&                 ...
@@ -85,7 +87,4 @@ function url = upload(handle, privacy)
             url = projurl;
         end
     end
-    
-    
-
 end

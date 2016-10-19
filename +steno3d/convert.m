@@ -1,7 +1,8 @@
 function proj = convert(handle, varargin)
 %CONVERT Convert MATLAB figure or axes into a Steno3D Project
 %   PROJECT = STENO3D.CONVERT(HANDLE) converts the figure or axes HANDLE
-%   to PROJECT, a Steno3D Project or list of Projects.
+%   to PROJECT, a Steno3D <a href="matlab: help steno3d.core.Project
+%   ">Projects</a> or list of Projects.
 %
 %   PROJECT = STENO3D.CONVERT(..., PARAMETER, VALUE) converts the figure or
 %   axes HANDLE using the given PARAMETER/VALUE pairs. Available parameters
@@ -48,15 +49,14 @@ function proj = convert(handle, varargin)
 %   Example:
 %       peaks;
 %       peaksProj = STENO3D.CONVERT(gcf);
-%       peaksProj.plot();
-%       steno3d.upload(peaksProj, 'private');
 %
-%   See also STENO3D.UPLOAD, STENO3D.COMBINE, STENO3D.ADDDATA
+%   See more <a href="matlab: help steno3d.examples.convert">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.PROJECT, STENO3D.COMBINE
 %
             
             
     steno3d.utils.matverchk();
-    
     narginchk(1, 7)
     if rem(length(varargin), 2) ~= 0
         error('steno3d:convertError', ...
@@ -105,15 +105,14 @@ function proj = convert(handle, varargin)
                       '"' varargin{i} '"']);
         end
     end
-    
     fprintf([tabLevel 'Converting ' handle.Type '...\n']);
-    
     switch handle.Type
         case 'figure'
-            proj = steno3d.utils.convert.figure(handle, combineAxes,        ...
+            proj = steno3d.utils.convert.figure(handle, combineAxes,    ...
                                                 combineRes, tabLevel);
         case 'axes'
-            proj = steno3d.utils.convert.axes(handle, combineRes, tabLevel);
+            proj = steno3d.utils.convert.axes(handle, combineRes,       ...
+                                              tabLevel);
     end
 end
 

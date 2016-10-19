@@ -4,6 +4,11 @@
 %
 % Version 0.0.1
 %
+% Use Steno3D to Analyze, Collaborate, and Present your MATLAB projects.
+%
+% It's as simple as:
+%   >> peaks; proj = steno3d.convert(gcf); proj.upload();
+%
 % The Steno3D MATLAB package contains tools to build Steno3D resources
 % through plotting functions or at the command line, convert existing
 % MATLAB figures to Steno3D resources, and upload these resources

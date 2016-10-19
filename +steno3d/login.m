@@ -49,6 +49,10 @@ function login(varargin)
 %   Example:
 %       STENO3D.LOGIN('username//12345678-xxxx-yyyy-zzzz-SOMEDEVELKEY', ...
 %                     'CredentialsFile', '~/Dropbox/steno3d_cred')
+%       peaks; steno3d.upload(gcf);
+%
+%
+%   See more <a href="matlab: help steno3d.examples.upload">EXAMPLES</a>
 %
 %   See also STENO3D.LOGOUT, STENO3D.UPLOAD, UPGRADESTENO3D
 %

@@ -1,6 +1,8 @@
 function [proj, lin] = line(varargin)
 %LINE Create and plot a Steno3D Line resource
-%   STENO3D.LINE(X, Y, Z) creates a Steno3D Project with a Line resource
+%   STENO3D.LINE(X, Y, Z) creates a Steno3D <a href="matlab:
+%   help steno3d.core.Project">Project</a> with a <a href="matlab:
+%   help steno3d.core.Line">Line</a> resource
 %   defined by vectors X, Y, and Z. If X, Y, and Z are matrices of the same
 %   size, only one Line resource is created but separate columns are
 %   disconnected.
@@ -17,8 +19,8 @@ function [proj, lin] = line(varargin)
 %   titled datasets to the Line resource. TITLE must be a string and DATA 
 %   must be an n x 1 or an m x 1 vector, where n is the number of segments
 %   and m is the number of vertices. If m == n, the data location will 
-%   default to segments (to override this see <a href="matlab:    
-%   help steno3d.addData">steno3d.addData</a>).
+%   default to segments. Data may also be added with <a href="matlab:    
+%   help steno3d.addData">steno3d.addData</a>.
 %
 %   STENO3D.LINE(PROJECT, ...) adds the Line resource to PROJECT, an
 %   existing Steno3D Project. PROJECT may also be a figure or axes handle
@@ -38,28 +40,24 @@ function [proj, lin] = line(varargin)
 %
 %   Example:
 %       x = 0:pi/10:4*pi;
-%       [myProject, myLine] = STENO3D.LINE(                             ...
-%           x, cos(x), sin(x), 'k',                                     ...
-%           'Random Vert Data', rand(size(x)),                          ...
-%           'Random Seg Data', rand(length(x)-1, 1)                     ...
+%       [proj, lin] = STENO3D.LINE(                                     ...
+%           x, cos(x), sin(x), 'k', 'Cosine Vert Data', cos(x)          ...
 %       );
-%       myLine.Title = 'Example Line';
-%       myLine.Description = 'Trig functions with random data';
-%       myProject.Title = 'Project with one Line';
-%       myProject.Public = true;
-%       steno3d.upload(myProject);
+%       lin.Title = 'Example Line';
+%       lin.Description = 'Trig functions with random data';
+%       proj.Title = 'Project with one Line';
+%       proj.upload()
 %
-%   See also STENO3D.CORE.LINE, STENO3D.UPLOAD, STENO3D.ADDDATA,
-%   STENO3D.CORE.PROJECT
+%
+%   See more <a href="matlab: help steno3d.examples.line">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.LINE, STENO3D.CORE.PROJECT, STENO3D.UPLOAD,
+%   STENO3D.ADDDATA, STENO3D.CORE.PROJECT
 %   
 
 
     steno3d.utils.matverchk();
-    
-    if isempty(varargin)
-        error('steno3d:lineError', 'Not enough input arguments');
-    end
-    
+    narginchk(2, inf);
     if isa(varargin{1}, 'steno3d.core.Project')
         proj = varargin{1};
         varargin = varargin(2:end);
@@ -74,11 +72,9 @@ function [proj, lin] = line(varargin)
     else
         proj = steno3d.core.Project;
     end
-    
     if length(varargin) < 2
         error('steno3d:lineError', 'Not enough input arguments');
     end
-    
     if ismatrix(varargin{1}) && size(varargin{1}, 2) == 2 &&            ...
             ismatrix(varargin{2}) && size(varargin{2}, 2) == 3
         segs = varargin{1};
@@ -104,7 +100,6 @@ function [proj, lin] = line(varargin)
     else
         error('steno3d:lineError', 'Not enough input arguments')
     end
-    
     if ~all(segs(:) == round(segs(:)))
         error('steno3d:lineError', 'Segments must be integers');
     end
@@ -112,7 +107,6 @@ function [proj, lin] = line(varargin)
         error('steno3d:lineError', ['Segments must be integers between '...
               '1 and length(Vertices)']);
     end
-    
     if length(varargin) == 1 ||                                         ...
             (length(varargin) > 1 && ischar(varargin{2}))
         color = varargin{1};
@@ -120,8 +114,6 @@ function [proj, lin] = line(varargin)
     else
         color = 'random';
     end
-    
-    
     data = {};
     for i = 1:2:length(varargin)
         if ~ischar(varargin{i})
@@ -140,21 +132,18 @@ function [proj, lin] = line(varargin)
             error('steno3d:lineError', ['Data must be the same length ' ...
                   'as either the number of Segments or Vertices']);
         end
-        data{end+1} = {'Location', loc,                                  ...
-                       'Data', {'Title', varargin{i},                    ...
+        data{end+1} = {'Location', loc,                                 ...
+                       'Data', {'Title', varargin{i},                   ...
                                 'Array', dat}};
     end
-    
     lin = steno3d.core.Line(                                            ...
         'Mesh', steno3d.core.Mesh1D(                                    ...
             'Vertices', verts,                                          ...
-            'Segments', segs                                           ...
+            'Segments', segs                                            ...
         ),                                                              ...
         'Data', data,                                                   ...
         'Opts', {'Color', color}                                        ...
     );
-
     proj.Resources = [proj.Resources {lin}];
-    
     proj.plot();
 end

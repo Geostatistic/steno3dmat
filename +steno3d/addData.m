@@ -1,7 +1,11 @@
 function addData(varargin)
 %ADDDATA Add a dataset to an existing Steno3d resource
 %   STENO3D.ADDDATA(RESOURCE, DATA) adds matrix or vector DATA to the
-%   Steno3D RESOURCE (Point, Line, Surface, or Volume). This function first
+%   Steno3D RESOURCE (<a href="matlab: help steno3d.core.Point
+%   ">Point</a>, <a href="matlab: help steno3d.core.Point
+%   ">Line</a>, <a href="matlab: help steno3d.core.Point
+%   ">Surface</a>, or <a href="matlab: help steno3d.core.Point
+%   ">Volume</a>). This function first
 %   attempts to assign DATA to cell centers then to nodes. If the length of
 %   the data does not match either of these, this function errors.
 %
@@ -11,11 +15,11 @@ function addData(varargin)
 %   Example:
 %       x = [0 1 0 0]; y = [0 0 1 0]; z = [0 0 0 1];
 %       tris = convhull(x, y, z);
-%       [myProject, mySurface] = steno3d.trisurf(tris, x, y, z, 'r');
-%       STENO3D.ADDDATA(mySurface, 'Cell Center Data', rand(4, 1));
+%       [proj, sfc] = steno3d.trisurf(tris, x, y, z, 'r');
+%       STENO3D.ADDDATA(sfc, 'Cell Center Data', rand(4, 1));
 %
-%   If the number of cell centers matches the number of nodes (as is the
-%   case in the example above), this function will default to locating
+%   Note: If the number of cell centers matches the number of nodes (as is
+%   the case in the example above), this function will default to locating
 %   data on cell centers. However, this can be changed programatically:
 %
 %       mySurface.Data{end}.Location = 'N';
@@ -24,8 +28,10 @@ function addData(varargin)
 %
 %       mySurface.Data{end}.Data.Title = 'Node Data';
 %
-%   See also STENO3D.CORE.DATAARRAY, STENO3D.ADDIMAGE, STENO3D.SCATTER,
-%   STENO3D.LINE, STENO3D.TRISURF, STENO3D.SURFACE, STENO3D.VOLUME
+%
+%   See more <a href="matlab: help steno3d.examples.adddata">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.DATAARRAY, STENO3D.ADDIMAGE, STENO3D.TRISURF
 %
 
 
@@ -33,7 +39,7 @@ function addData(varargin)
     narginchk(2, 3);
     res = varargin{1};
     if ~isa(res, 'steno3d.core.CompositeResource')
-        error('steno3d:addDataError', ['Data can only be added to '...
+        error('steno3d:addDataError', ['Data can only be added to '     ...
               'Steno3D composite resources']);
     end
     if nargin == 3

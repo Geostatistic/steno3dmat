@@ -47,43 +47,36 @@ function [proj, vol] = volume(varargin)
 %   Volume object can be directly modified.
 %
 %   Example:
-%       [xvals, yvals, zvals] = ndgrid(1:5, 1:10, 1:20);
-%       [myProject, myVolume] = STENO3D.VOLUME(                         ...
+%       [xvals, yvals, zvals] = ndgrid(-7.5:4:7.5, -9:2:9, -9.5:9.5);
+%       [proj, vol] = STENO3D.VOLUME(                                   ...
 %           4*ones(5, 1), 2*ones(10, 1), ones(20, 1), [-10 -10 -10],    ...
 %           'X-Values', xvals, 'Y-Values', yvals, 'Z-Values', zvals     ...
 %       );
-%       myVolume.Title = 'Example Volume';
-%       myVolume.Description = 'Volume with x, y, and z data';
-%       myProject.Title = 'Project with one Volume';
-%       myProject.Public = true;
-%       steno3d.upload(myProject);
+%       vol.Title = 'Example Volume';
+%       vol.Description = 'Volume with x, y, and z data';
+%       vol.Title = 'Project with one Volume';
+%       proj.Public = true;
+%       steno3d.upload(proj);
 %
-%   See also STENO3D.CORE.VOLUME, STENO3D.UPLOAD, STENO3D.ADDDATA,      ...
+%   See also STENO3D.CORE.VOLUME, STENO3D.UPLOAD, STENO3D.ADDDATA,
 %   STENO3D.CORE.PROJECT
 %   
     
     
     steno3d.utils.matverchk();
-
-    if isempty(varargin)
-        error('steno3d:volumeError', 'Not enough input arguments');
-    end
-
+    narginchk(1, inf);
     if isa(varargin{1}, 'steno3d.core.Project')
         proj = varargin{1};
         varargin = varargin(2:end);
     else
         proj = steno3d.core.Project;
     end
-
     if isempty(varargin)
         error('steno3d:volumeError', 'Not enough input arguments');
     end
-    
     xyzInput = false;
     origin = [0 0 0];
     if length(varargin) > 3
-        
         x = varargin{1}; y = varargin{2}; z = varargin{3};
         if length(x) == length(x(:)) && length(y) == length(y(:)) && 	...
                 length(z) == length(z(:))
@@ -91,29 +84,23 @@ function [proj, vol] = volume(varargin)
             varargin = varargin(4:end);
         end
     end
-    
     if isempty(varargin)
         error('steno3d:volumeError', 'Not enough input arguments');
     end
-    
     if ismatrix(varargin{1}) && isnumeric(varargin{1}) &&               ...
             all(size(varargin{1}) == [1 3])
         origin = varargin{1};
         varargin = varargin(2:end);
     end
-    
     if isempty(varargin)
         error('steno3d:volumeError', 'Not enough input arguments');
     end
-    
     if isnumeric(varargin{1})
        varargin = [{''} varargin];
     end
-
     if ~isnumeric(varargin{2})
         error('steno3d:volumeError', 'Data must be numeric');
     end
-
     if xyzInput
         if validSize(length(x), length(y), length(z), varargin{2})
             h1 = x;
@@ -139,7 +126,6 @@ function [proj, vol] = volume(varargin)
             h3 = ones(size(varargin{2}, 3), 1);
         end
     end
-        
     data = {};
     for i = 1:2:length(varargin)
         if ~ischar(varargin{i})
@@ -154,7 +140,6 @@ function [proj, vol] = volume(varargin)
         data{end+1} = {'Data', {'Title', varargin{i},                    ...
                                 'Array', varargin{i+1}(:)}};
     end
-    
     vol = steno3d.core.Volume(                                          ...
         'Mesh', steno3d.core.Mesh3DGrid(                                ...
             'H1', h1(:),                                                ...
@@ -164,9 +149,7 @@ function [proj, vol] = volume(varargin)
         ),                                                              ...
         'Data', data                                                    ...
     );
-
     proj.Resources = [proj.Resources {vol}];
-    
     proj.plot();
 end
 
@@ -176,7 +159,6 @@ function valid = validSize(lenx, leny, lenz, data)
         valid = true;
         return
     end
-    
     if length(data) == length(data(:)) &&                               ...
             lenx * leny * lenz == length(data)
         valid = true;

@@ -4,6 +4,11 @@
 %
 % Version 0.0.1
 %
+% Use Steno3D to Analyze, Collaborate, and Present your MATLAB projects.
+%
+% It's as simple as:
+%   >> peaks; proj = steno3d.convert(gcf); proj.upload();
+%
 % This folder contains Steno3D, the Props package, as well as
 % installation, upgrade, and test scripts. Please follow the links below
 % for additional help.
@@ -24,5 +29,5 @@
 %   installSteno3D   - Add Steno3D to the MATLAB environment
 %   uninstallSteno3D - Remove Steno3D from the MATLAB environment
 %   upgradeSteno3D   - Download and install the latest version of Steno3D
-%   testSteno3D      - Test suite for steno3d
+%   testSteno3D      - Test suite for Steno3D
 %
