@@ -1,58 +1,39 @@
 %Steno3D Line resource construction examples
 %
-%   Example 1:
-%       % Create a basic Steno3D Line.
+%   Example 1: Create a basic Steno3D <a href="matlab:
+%   help steno3d.core.Line">Line</a> resource
 %       lin = steno3d.core.Line;
-%
-%       % A Line requires a Mesh1D with spatial vertices and connecting
-%       % segment indices
 %       verts = [0:30; sin(0:30); cos(0:30)]';
 %       segs = [1:30; 2:31]';
 %       mesh = steno3d.core.Mesh1D;
 %       mesh.Vertices = verts;
 %       mesh.Segments = segs;
 %       lin.Mesh = mesh;
-%
-%       % Ensure this Line is valid
-%       lin.validate();
-%
-%       % Add this Line to a Steno3D Project
 %       example1 = steno3d.core.Project;
 %       example1.Resources = lin;
-%       example1.plot();
-%       clear lin verts segs mesh
+%       clear lin verts segs mesh;
 %
-%   Example 2:
-%       % Create a Steno3D Line with customized appearance.
+%   Example 2: Create a Line resource and set display options
 %       lin = steno3d.core.Line;
 %       lin.Title = 'Example 2 Line';
 %       lin.Description = 'This Line resource will be yellow tubes';
-%
-%       % Give the Line a mesh
 %       mesh = steno3d.core.Mesh1D;
 %       mesh.Vertices = [0:30; sin(0:30); cos(0:30)]';
 %       mesh.Segments = [1:30; 2:31]';
 %       lin.Mesh = mesh;
-%
-%       % Set display options
 %       lin.Opts.Color = 'y';
 %       lin.Opts.Opacity = 0.75;
 %       lin.Mesh.Opts.ViewType = 'tube';
-%
-%       % Ensure this Point is valid
-%       lin.validate();
-%       % Add this Point to a Steno3D Project
 %       example2 = steno3d.core.Project;
 %       example2.Title = 'Example 2';
 %       example2.Description = 'Project with a line';
 %       example2.Resources = lin;
-%       example2.plot();
-%       clear lin mesh
+%       clear lin mesh;
 %
-%   Example 3:
-%       % Create a Steno3D Line with data.
-%       % Note: This Line constructor encapsulates all the features of
-%       % lin from Example 2.
+%   Example 3: Create a Line resource with node <a href="matlab:
+%   help steno3d.core.DataArray">data</a>
+%       % Note: This constructor encapsulates all the features of lin from
+%       % Example 2.
 %       lin = steno3d.core.Line(                                     ...
 %           'Title', 'Example 3 Line',                               ...
 %           'Description', 'This Line resource will have data',      ...
@@ -63,29 +44,19 @@
 %           ),                                                       ...
 %           'Opts', {'Color', 'y', 'Opacity', 0.75}                  ...
 %       );
-%
-%       % Construct a DataArray
 %       cosdata = steno3d.core.DataArray(                            ...
 %           'Title', 'Cosine Values',                                ...
 %           'Array', cos(0:30)'                                      ...
 %       );
-%       % Add the data to the Line resource. Location 'N' puts the data
-%       % on the vertices. 'CC' would put data on segments.
 %       lin.Data = {'Location', 'N', 'Data', cosdata};
-%
-%       % Ensure this Line is valid
-%       lin.validate();
-%       % Add this Line to a Steno3D Project
 %       example3 = steno3d.core.Project(                             ...
 %           'Title', 'Example 3',                                    ...
 %           'Description', 'Project with a line',                    ...
 %           'Resources', lin                                         ...
 %       );
-%       example3.plot();
-%       clear lin cosdata
+%       clear lin cosdata;
 %
-%   Example 4:
-%       % Create a Steno3D Line with multiple datasets.
+%   Example 4: Create a Steno3D Line with multiple datasets.
 %       % Note: There are a couple new features introduced in this
 %       % consolidated construction. (1) Multiple datasets are assigned
 %       % as a cell array. (2) Passing cell arrays of parameters (e.g.
@@ -109,17 +80,12 @@
 %               }                                                    ...
 %           }}                                                       ...
 %       );
-%
-%       % Ensure this Line is valid
-%       lin.validate();
-%       % Add this Line to a Steno3D Project
 %       example4 = steno3d.core.Project(                             ...
 %           'Title', 'Example 4',                                    ...
 %           'Description', 'Project with a line',                    ...
 %           'Resources', lin                                         ...
 %       );
-%       example4.plot();
-%       clear lin
+%       clear lin;
 %
 %   You can <a href="matlab: steno3d.examples.core.line
 %   ">click here</a> to run the above examples or type:
@@ -127,64 +93,42 @@
 %   Then plot the projects with:
 %       example1.plot(); % etc...
 %
-%   See also
 %
+%   See also STENO3D.CORE.LINE, STENO3D.CORE.MESH1D, STENO3D.CORE.PROJECT,
+%   STENO3D.CORE.DATAARRAY
 %
 
 
-% Example 1:
-% Create a basic Steno3D Line.
+% Example 1: Create a basic Steno3D Line resource
 lin = steno3d.core.Line;
-
-% A Line requires a Mesh1D with spatial vertices and connecting
-% segment indices
 verts = [0:30; sin(0:30); cos(0:30)]';
 segs = [1:30; 2:31]';
 mesh = steno3d.core.Mesh1D;
 mesh.Vertices = verts;
 mesh.Segments = segs;
 lin.Mesh = mesh;
-
-% Ensure this Line is valid
-lin.validate();
-
-% Add this Line to a Steno3D Project
 example1 = steno3d.core.Project;
 example1.Resources = lin;
-example1.plot();
-clear lin verts segs mesh
+clear lin verts segs mesh;
 
-% Example 2:
-% Create a Steno3D Line with customized appearance.
+% Example 2: Create a Line resource and set display options
 lin = steno3d.core.Line;
 lin.Title = 'Example 2 Line';
 lin.Description = 'This Line resource will be yellow tubes';
-
-% Give the Line a mesh
 mesh = steno3d.core.Mesh1D;
 mesh.Vertices = [0:30; sin(0:30); cos(0:30)]';
 mesh.Segments = [1:30; 2:31]';
 lin.Mesh = mesh;
-
-% Set display options
 lin.Opts.Color = 'y';
 lin.Opts.Opacity = 0.75;
 lin.Mesh.Opts.ViewType = 'tube';
-
-% Ensure this Point is valid
-lin.validate();
-% Add this Point to a Steno3D Project
 example2 = steno3d.core.Project;
 example2.Title = 'Example 2';
 example2.Description = 'Project with a line';
 example2.Resources = lin;
-example2.plot();
-clear lin mesh
+clear lin mesh;
 
-% Example 3:
-% Create a Steno3D Line with data.
-% Note: This Line constructor encapsulates all the features of
-% lin from Example 2.
+% Example 3: Create a Line resource with node data
 lin = steno3d.core.Line(                                     ...
     'Title', 'Example 3 Line',                               ...
     'Description', 'This Line resource will have data',      ...
@@ -195,33 +139,19 @@ lin = steno3d.core.Line(                                     ...
     ),                                                       ...
     'Opts', {'Color', 'y', 'Opacity', 0.75}                  ...
 );
-
-% Construct a DataArray
 cosdata = steno3d.core.DataArray(                            ...
     'Title', 'Cosine Values',                                ...
     'Array', cos(0:30)'                                      ...
 );
-% Add the data to the Line resource. Location 'N' puts the data
-% on the vertices. 'CC' would put data on segments.
 lin.Data = {'Location', 'N', 'Data', cosdata};
-
-% Ensure this Line is valid
-lin.validate();
-% Add this Line to a Steno3D Project
 example3 = steno3d.core.Project(                             ...
     'Title', 'Example 3',                                    ...
     'Description', 'Project with a line',                    ...
     'Resources', lin                                         ...
 );
-example3.plot();
-clear lin cosdata
+clear lin cosdata;
 
-% Example 4:
-% Create a Steno3D Line with multiple datasets.
-% Note: There are a couple new features introduced in this
-% consolidated construction. (1) Multiple datasets are assigned
-% as a cell array. (2) Passing cell arrays of parameters (e.g.
-% for Mesh) implicitly calls the correct constructor.
+% Example 4: Create a Steno3D Line with multiple datasets.
 lin = steno3d.core.Line(                                     ...
     'Title', 'Example 4 Line',                               ...
     'Description', 'This Line resource will have data',      ...
@@ -241,14 +171,9 @@ lin = steno3d.core.Line(                                     ...
         }                                                    ...
     }}                                                       ...
 );
-
-% Ensure this Line is valid
-lin.validate();
-% Add this Line to a Steno3D Project
 example4 = steno3d.core.Project(                             ...
     'Title', 'Example 4',                                    ...
     'Description', 'Project with a line',                    ...
     'Resources', lin                                         ...
 );
-example4.plot();
-clear lin
+clear lin;

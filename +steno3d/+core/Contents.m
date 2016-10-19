@@ -21,3 +21,5 @@
 %       DataArray      - Steno3D object to hold resource data
 %       Texture2DImage - Steno3D object to hold images and mapping to
 %                        resources
+%
+%   See the <a href="matlab: help steno3d.examples.core">EXAMPLES</a>

@@ -11,9 +11,6 @@ classdef Point < steno3d.core.CompositeResource
 %   interface with <a href="matlab: help steno3d.scatter
 %   ">steno3d.scatter</a>.
 %
-%   For a demonstration of POINT, see the <a href="
-%   matlab: help steno3d.examples.point">EXAMPLES</a>.
-%
 %   POINT implements <a href="matlab: help props.HasProps
 %   ">HasProps</a> for dynamic, type-checked <a href="matlab:
 %   help props.Prop">properties</a>
@@ -48,9 +45,13 @@ classdef Point < steno3d.core.CompositeResource
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-%   See also steno3d.examples.point, steno3d.scatter, steno3d.core.Mesh0D,
-%   steno3d.core.opts.PointOptions, steno3d.core.binders,
-%   steno3d.core.CompositeResource, steno3d.core.Project
+% 
+%   See the <a href="matlab: help steno3d.examples.core.point
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.SCATTER, STENO3D.CORE.MESH0D, STENO3D.CORE.BINDERS,
+%   STENO3D.CORE.OPTS.POINTOPTIONS, STENO3D.CORE.COMPOSITERESOURCE,
+%   STENO3D.CORE.PROJECT
 %
 
 

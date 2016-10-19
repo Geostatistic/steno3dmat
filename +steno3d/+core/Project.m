@@ -7,9 +7,7 @@ classdef Project < steno3d.core.UserContent
 %   help steno3d.core.Surface">Surface</a>, or <a href="matlab:
 %   help steno3d.core.Volume">Volume</a>
 %   resources. They can be created and edited using the high-level plotting
-%   interface (see <a href="matlab: help steno3d.examples.plotting
-%   ">EXAMPLES) or the low-level command line interface (see
-%   <a href="matlab: help steno3d.examples.project">EXAMPLES).
+%   interface or the low-level command line interface.
 %
 %   Once a PROJECT is created, it can be plotted in MATLAB with the PLOT()
 %   function. This allows an initial visualization to verify the PROJECT is
@@ -41,7 +39,11 @@ classdef Project < steno3d.core.UserContent
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-%   See also steno3d.core.CompositeResource, steno3d.core.UserContent,
+% 
+%   See the <a href="matlab: help steno3d.examples.core.project
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.COMPOSITERESOURCE, STENO3D.CORE.USERCONTENT
 %
 
 

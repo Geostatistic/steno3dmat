@@ -7,15 +7,12 @@ classdef Line < steno3d.core.CompositeResource
 %   defined on the vertices (nodes) or the segments (cell-centers). There
 %   are several <a href="matlab: help steno3d.core.opts.LineOptions
 %   ">line options</a> and <a href="matlab:
-%   help steno3d.core.opts.Mesh0DOptions
+%   help steno3d.core.opts.Mesh1DOptions
 %   ">mesh options</a> available for customizing the
 %   appearance.
 %
 %   LINE resources can also be created through a high-level functional
 %   interface with <a href="matlab: help steno3d.line">steno3d.line</a>.
-%
-%   For a demonstration of LINE, see the <a href="
-%   matlab: help steno3d.examples.line">EXAMPLES</a>.
 %
 %   LINE implements <a href="matlab: help props.HasProps
 %   ">HasProps</a> for dynamic, type-checked <a href="
@@ -45,10 +42,12 @@ classdef Line < steno3d.core.CompositeResource
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-%   See also steno3d.examples.line, steno3d.line, steno3d.core.Mesh1D,
-%   steno3d.core.opts.LineOptions, steno3d.core.opts.Mesh1DOptions,
-%   steno3d.core.binders, steno3d.core.CompositeResource,
-%   steno3d.core.Project
+%
+%   See the <a href="matlab: help steno3d.core.examples.line">EXAMPLES</a>
+%
+%   See also STENO3D.LINE, STENO3D.CORE.MESH1D, STENO3D.CORE.BINDERS,
+%   STENO3D.CORE.OPTS.LINEOPTIONS, STENO3D.CORE.COMPOSITERESOURCE,
+%   STENO3D.CORE.PROJECT
 %
 
 

@@ -10,4 +10,4 @@
 %   data    - Steno3D DataArray construction examples
 %   texture - Steno3D Texture2DImage construction examples
 %
-%   See also steno3d.examples
+%   See also STENO3D.EXAMPLES

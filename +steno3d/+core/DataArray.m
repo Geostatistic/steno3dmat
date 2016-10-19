@@ -19,9 +19,6 @@ classdef DataArray < steno3d.core.UserContent
 %   functional interface with <a href="matlab: help
 %   steno3d.addData">steno3d.addData</a>.
 %
-%   For a demonstration of DATAARRAY, see the <a href="
-%   matlab: help steno3d.examples.data">EXAMPLES</a>.
-%
 %   DATAARRAY implements <a href="matlab: help props.HasProps
 %   ">HasProps</a> for dynamic, type-checked <a href="matlab: help
 %   props.Prop">properties</a>
@@ -44,8 +41,10 @@ classdef DataArray < steno3d.core.UserContent
 %           Content description
 %
 %
-%   See also steno3d.examples.data, steno3d.addData, steno3d.core.binders,
-%   steno3d.core.CompositeResource, steno3d.core.Texture2DImage
+%   See the <a href="matlab: help steno3d.core.examples.data">EXAMPLES</a>
+%
+%   See also STENO3D.ADDDATA, STENO3D.CORE.BINDERS, 
+%   STENO3D.CORE.COMPOSITERESOURCE, STENO3D.CORE.TEXTURE2DIMAGE
 %
 
 

@@ -29,8 +29,10 @@ classdef Mesh0D < steno3d.core.UserContent
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-%   See also steno3d.examples.point, steno3d.core.Point,
-%   steno3d.core.opts.Mesh0DOptions
+%   
+%   See the <a href="matlab: help steno3d.core.examples.point">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.POINT, STENO3D.CORE.MESH0DOPTIONS
 %
 
 

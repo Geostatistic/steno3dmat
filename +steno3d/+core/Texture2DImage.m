@@ -20,9 +20,6 @@ classdef Texture2DImage < steno3d.core.UserContent
 %   <a href="matlab: help steno3d.surface
 %   ">steno3d.surface</a> also allows creation of a surface with an image.
 %
-%   For a demonstration of TEXTURE2DIMAGE, see the <a href="
-%   matlab: help steno3d.examples.texture">EXAMPLES</a>.
-%
 %   TEXTURE2DIMAGE implements <a href="matlab: help props.HasProps
 %   ">HasProps</a> for dynamic, type-checked <a href="matlab:
 %   help props.Prop">properties</a>
@@ -53,8 +50,12 @@ classdef Texture2DImage < steno3d.core.UserContent
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-%   See also steno3d.examples.texture, steno3d.addImage, steno3d.surface,
-%   steno3d.core.CompositeResource, steno3d.core.DataArray
+%
+%   See the <a href="matlab: help steno3d.core.examples.texture
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.ADDIMAGE, STENO3D.SURFACE, STENO3D.CORE.POINT,
+%   STENO3D.CORE.SURFACE, STENO3D.CORE.DATAARRAY
 %
 
 

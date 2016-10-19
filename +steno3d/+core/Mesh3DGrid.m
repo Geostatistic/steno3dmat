@@ -43,8 +43,11 @@ classdef Mesh3DGrid < steno3d.core.UserContent
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-%   See also steno3d.examples.volume, steno3d.core.Volume,
-%   steno3d.core.opts.Mesh3DOptions
+%   
+%   See the <a href="matlab: help steno3d.core.examples.volume
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.VOLUME, STENO3D.CORE.MESH3DOPTIONS
 %
 
 

@@ -13,9 +13,6 @@ classdef Volume < steno3d.core.CompositeResource
 %   interface with <a href="matlab: help steno3d.volume
 %   ">steno3d.volume</a>.
 %
-%   For a demonstration of VOLUME, see the <a href="
-%   matlab: help steno3d.examples.volume">EXAMPLES</a>.
-%
 %   VOLUME implements <a href="matlab: help props.HasProps
 %   ">HasProps</a> for dynamic, type-checked <a href="
 %   matlab: help props.Prop">properties</a>
@@ -44,10 +41,13 @@ classdef Volume < steno3d.core.CompositeResource
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-%   See also steno3d.examples.volume, steno3d.volume,
-%   steno3d.core.Mesh3DGrid, steno3d.core.opts.VolumeOptions,
-%   steno3d.core.opts.Mesh3DOptions, steno3d.core.binders,
-%   steno3d.core.CompositeResource, steno3d.core.Project
+% 
+%   See the <a href="matlab: help steno3d.examples.core.volume
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.VOLUME, STENO3D.CORE.MESH3DGRID, STENO3D.CORE.BINDERS,
+%   STENO3D.CORE.OPTS.VOLUMEOPTIONS, STENO3D.CORE.COMPOSITERESOURCE,
+%   STENO3D.CORE.PROJECT
 %
 
 
@@ -102,9 +102,9 @@ classdef Volume < steno3d.core.CompositeResource
                   [0 0 1], [0 0 1], [0 0 1]};
             dat = reshape(obj.Data{1}.Data.Array, length(obj.Mesh.H1),  ...
                           length(obj.Mesh.H2), length(obj.Mesh.H3));
-            dats = {dat(:, :, 1), dat(:, :, round(end/2)), dat(:, :, end),     ...
-                    dat(:, 1, :), dat(:, round(end/2), :), dat(:, end, :),     ...
-                    dat(1, :, :), dat(round(end/2), :, :), dat(end, :, :)};
+            dats = {dat(:,:,1), dat(:,:,round(end/2)), dat(:,:,end),    ...
+                    dat(:,1,:), dat(:,round(end/2),:), dat(:,end,:),    ...
+                    dat(1,:,:), dat(round(end/2),:,:), dat(end,:,:)};
             h1s = {obj.Mesh.H1, obj.Mesh.H1, obj.Mesh.H1,               ...
                    obj.Mesh.H1, obj.Mesh.H1, obj.Mesh.H1,               ...
                    obj.Mesh.H2, obj.Mesh.H2, obj.Mesh.H2};
@@ -121,25 +121,21 @@ classdef Volume < steno3d.core.CompositeResource
                 u = u/sqrt(sum(u.^2));
                 v = v/sqrt(sum(v.^2));
                 verts = h1(:)*u + h2(:)*v + ones(size(h1(:)))*os{i};
-
                 f = 1:lh1;
                 f = [f; f+1; f+lh1+2; f+lh1+1]';
                 faces = repmat(f, lh2, 1);
                 offset = (lh1+1)*(0:lh2-1);
                 offset = ones(lh1, 1) * offset;
                 faces = faces + offset(:)*ones(1, 4);
-
                 ccarr = dats{i}(:);
                 narr = ccarr(1)*ones(size(verts, 1), 1);
                 narr(faces(:, 1)) = ccarr;
                 cdata = {'CData', narr, 'FaceColor', 'flat'};
-
                 if obj.Mesh.Opts.Wireframe
                     ec = [0 0 0];
                 else
                     ec = 'none';
                 end
-
                 patch('Parent', ax, 'Vertices', verts, 'Faces', faces,  ...
                       cdata{:}, 'EdgeColor', ec, 'FaceAlpha',           ...
                       obj.Opts.Opacity);

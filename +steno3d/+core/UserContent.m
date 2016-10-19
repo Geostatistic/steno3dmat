@@ -7,7 +7,7 @@ classdef (Abstract) UserContent < props.HasProps
 %   help props.HasProps">HasProps</a>, providing
 %   dynamically created, type-checked properties.
 %
-%   See also steno3d.core.CompositeResource, steno3d.core.Project
+%   See also STENO3D.CORE.COMPOSITERESOURCE, STENO3D.CORE.PROJECT
 %
 
 

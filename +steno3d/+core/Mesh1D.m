@@ -8,9 +8,6 @@ classdef Mesh1D < steno3d.core.UserContent
 %   help steno3d.core.opts.Mesh1DOptions
 %   ">options</a> to customize the appearance of the line.
 %
-%   For a demonstration of MESH1D, see the <a href="
-%   matlab: help steno3d.examples.line">EXAMPLES</a>.
-%
 %   MESH1D implements <a href="matlab: help props.HasProps
 %   ">HasProps</a> for dynamic, type-checked <a href="matlab:
 %   help props.Prop">properties</a>
@@ -36,8 +33,10 @@ classdef Mesh1D < steno3d.core.UserContent
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-%   See also steno3d.examples.line, steno3d.core.Line,
-%   steno3d.core.opts.Mesh1DOptions
+%   
+%   See the <a href="matlab: help steno3d.core.examples.line">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.LINE, STENO3D.CORE.MESH1DOPTIONS
 %
 
 

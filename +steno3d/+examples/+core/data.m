@@ -1,72 +1,55 @@
 %Steno3D DataArray construction examples
 %
-%   Example 1:
-%       % Initialize a Steno3D Point resource
-%       myPoints = steno3d.core.Point;
-%       myPoints.Mesh = steno3d.core.Mesh0D;
-%       myPoints.Mesh.Vertices = rand(100, 3);
-%
-%       % Create a DataArray the same length as the Vertices
-%       myData = steno3d.core.DataArray;
-%       myData.Title = 'Random Point Data';
-%       myData.Array = rand(100, 1);
-%
-%       % Bind the data to the Point resource
-%       % Location must be specified; for points, the only available
-%       % option is 'N' (nodes)
-%       myPoints.Data = {                                            ...
+%   Example 1: Create a <a href="matlab: help steno3d.core.Point
+%   ">Point</a> resource and add a <a href="matlab:
+%   help steno3d.core.DataArray">DataArray</a> with random data
+%       pts = steno3d.core.Point;
+%       pts.Mesh = steno3d.core.Mesh0D;
+%       pts.Mesh.Vertices = rand(100, 3);
+%       dat = steno3d.core.DataArray;
+%       dat.Title = 'Random Point Data';
+%       dat.Array = rand(100, 1);
+%       % Note: Data is bound with a cell array. This implicitly creates
+%       % a <a href="matlab: help steno3d.core.binders
+%       ">binder</a>. location must be specified; for points, the only
+%       % available option is 'N' (nodes)
+%       pts.Data = {                                                 ...
 %           'Location', 'N',                                         ...
-%           'Data', myData                                           ...
+%           'Data', dat                                              ...
 %       };
-%
-%       % Ensure that the Point resource is valid
-%       myPoints.validate();
-%
-%       % Pack this example into a project
 %       example1 = steno3d.core.Project(                             ...
 %           'Title', 'Data: Example 1',                              ...
-%           'Resources', myPoints                                    ...
+%           'Resources', pts                                         ...
 %       );
-%       clear myPoints myData
+%       clear pts dat
 %
-%   Example 2:
-%       % Initialize a Steno3D Surface resource
-%       mySurf = steno3d.core.Surface;
-%       mySurf.Mesh = steno3d.core.Mesh2DGrid;
-%       mySurf.Mesh.H1 = ones(5, 1);
-%       mySurf.Mesh.H2 = ones(10, 1);
-%
-%       % Create a DataArray the same size as the cell centers
+%   Example 2: Create a <a href="matlab: help steno3d.core.Surface
+%   ">Surface</a> and add node and cell-center DataArrays
+%       sfc = steno3d.core.Surface;
+%       sfc.Mesh = steno3d.core.Mesh2DGrid;
+%       sfc.Mesh.H1 = ones(5, 1);
+%       sfc.Mesh.H2 = ones(10, 1);
 %       ccValues = rand(5, 10);
-%       myDataCC = steno3d.core.DataArray;
-%       myDataCC.Title = 'Random Cell-Centered Data';
-%       myDataCC.Array = ccValues(:);
-%
-%       % Create a DataArray the same size as the nodes
+%       datCC = steno3d.core.DataArray;
+%       datCC.Title = 'Random Cell-Centered Data';
+%       datCC.Array = ccValues(:);
 %       nValues = rand(6, 11);
-%       myDataN = steno3d.core.DataArray;
-%       myDataN.Title = 'Random Node Data';
-%       myDataN.Array = nValues(:);
-%
-%       % Bind the data sets to their respective Surface locations
-%       mySurf.Data{1} = {                                           ...
+%       datN = steno3d.core.DataArray;
+%       datN.Title = 'Random Node Data';
+%       datN.Array = nValues(:);
+%       sfc.Data{1} = {                                              ...
 %           'Location', 'CC',                                        ...
-%           'Data', myDataCC                                         ...
+%           'Data', datCC                                            ...
 %       };
-%       mySurf.Data{2} = {                                           ...
+%       sfc.Data{2} = {                                              ...
 %           'Location', 'N',                                         ...
-%           'Data', myDataN                                          ...
+%           'Data', datN                                             ...
 %       };
-%
-%       % Ensure that the Surface resource is valid
-%       mySurf.validate();
-%
-%       % Pack this example into a project
 %       example2 = steno3d.core.Project(                             ...
 %           'Title', 'Data: Example 2',                              ...
-%           'Resources', mySurf                                      ...
+%           'Resources', sfc                                         ...
 %       );
-%       clear mySurf myDataCC myDataN ccValues nValues
+%       clear sfc datCC datN ccValues nValues
 %
 %   You can <a href="matlab: steno3d.examples.core.data
 %   ">click here</a> to run the above examples or type:
@@ -74,77 +57,53 @@
 %   Then plot the projects with:
 %       example1.plot(); % etc...
 %
-%   See also steno3d.core.DataArray, steno3d.core.binders,
-%   steno3d.addData, steno3d.core.Point, steno3d.core.Surface,
-%   steno3d.core.Mesh0D, steno3d.core.Mesh2DGrid
+%
+%   See also STENO3D.CORE.DATAARRAY, STENO3D.CORE.BINDERS,
+%   STENO3D.CORE.POINT, STENO3D.CORE.MESH0D, STENO3D.CORE.SURFACE,
+%   STENO3D.CORE.MESH2DGRID, STENO3D.CORE.PROJECT
 %
 
 
-% Example 1:
-% Initialize a Steno3D Point resource
-myPoints = steno3d.core.Point;
-myPoints.Mesh = steno3d.core.Mesh0D;
-myPoints.Mesh.Vertices = rand(100, 3);
-
-% Create a DataArray the same length as the Vertices
-myData = steno3d.core.DataArray;
-myData.Title = 'Random Point Data';
-myData.Array = rand(100, 1);
-
-% Bind the data to the Point resource
-% Location must be specified; for points, the only available
-% option is 'N' (nodes)
-myPoints.Data = {                                            ...
+%Example 1: Create a Point resource and add a DataArray with random data
+pts = steno3d.core.Point;
+pts.Mesh = steno3d.core.Mesh0D;
+pts.Mesh.Vertices = rand(100, 3);
+dat = steno3d.core.DataArray;
+dat.Title = 'Random Point Data';
+dat.Array = rand(100, 1);
+pts.Data = {                                                 ...
     'Location', 'N',                                         ...
-    'Data', myData                                           ...
+    'Data', dat                                              ...
 };
-
-% Ensure that the Point resource is valid
-myPoints.validate();
-
-% Pack this example into a project
 example1 = steno3d.core.Project(                             ...
     'Title', 'Data: Example 1',                              ...
-    'Resources', myPoints                                    ...
+    'Resources', pts                                         ...
 );
-clear myPoints myData
+clear pts dat
 
-% Example 2:
-% Initialize a Steno3D Surface resource
-mySurf = steno3d.core.Surface;
-mySurf.Mesh = steno3d.core.Mesh2DGrid;
-mySurf.Mesh.H1 = ones(5, 1);
-mySurf.Mesh.H2 = ones(10, 1);
-
-% Create a DataArray the same size as the cell centers
+%Example 2: Create a Surface and add node and cell-center DataArrays
+sfc = steno3d.core.Surface;
+sfc.Mesh = steno3d.core.Mesh2DGrid;
+sfc.Mesh.H1 = ones(5, 1);
+sfc.Mesh.H2 = ones(10, 1);
 ccValues = rand(5, 10);
-myDataCC = steno3d.core.DataArray;
-myDataCC.Title = 'Random Cell-Centered Data';
-myDataCC.Array = ccValues(:);
-
-% Create a DataArray the same size as the nodes
+datCC = steno3d.core.DataArray;
+datCC.Title = 'Random Cell-Centered Data';
+datCC.Array = ccValues(:);
 nValues = rand(6, 11);
-myDataN = steno3d.core.DataArray;
-myDataN.Title = 'Random Node Data';
-myDataN.Array = nValues(:);
-
-% Bind the data sets to their respective Surface locations
-mySurf.Data{1} = {                                           ...
+datN = steno3d.core.DataArray;
+datN.Title = 'Random Node Data';
+datN.Array = nValues(:);
+sfc.Data{1} = {                                              ...
     'Location', 'CC',                                        ...
-    'Data', myDataCC                                         ...
+    'Data', datCC                                            ...
 };
-mySurf.Data{2} = {                                           ...
+sfc.Data{2} = {                                              ...
     'Location', 'N',                                         ...
-    'Data', myDataN                                          ...
+    'Data', datN                                             ...
 };
-
-% Ensure that the Surface resource is valid
-mySurf.validate();
-
-% Pack this example into a project
 example2 = steno3d.core.Project(                             ...
     'Title', 'Data: Example 2',                              ...
-    'Resources', mySurf                                      ...
+    'Resources', sfc                                         ...
 );
-clear mySurf myDataCC myDataN ccValues nValues
-
+clear sfc datCC datN ccValues nValues

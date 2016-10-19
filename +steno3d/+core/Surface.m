@@ -18,9 +18,6 @@ classdef Surface < steno3d.core.CompositeResource
 %   <a href="matlab: help steno3d.surface
 %   ">steno3d.surface</a> (grid surface).
 %
-%   For a demonstration of SURFACE, see the <a href="
-%   matlab: help steno3d.examples.surface">EXAMPLES</a>.
-%
 %   SURFACE implements <a href="matlab: help props.HasProps
 %   ">HasProps</a> for dynamic, type-checked <a href="matlab:
 %   help props.Prop">properties</a>
@@ -58,11 +55,14 @@ classdef Surface < steno3d.core.CompositeResource
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-%   See also steno3d.examples.surface, steno3d.trisurf, steno3d.surface,
-%   steno3d.core.Mesh2D, steno3d.core.Mesh2DGrid,
-%   steno3d.core.opts.SurfaceOptions, steno3d.core.opts.Mesh2DOptions,
-%   steno3d.core.binders, steno3d.core.CompositeResource,
-%   steno3d.core.Project
+% 
+%   See the <a href="matlab: help steno3d.examples.core.surface
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.TRISURF, STENO3D.SURFACE, STENO3D.CORE.MESH2D,
+%   STENO3D.CORE.MESH2DGRID, STENO3D.CORE.BINDERS,
+%   STENO3D.CORE.OPTS.SURFACEOPTIONS, STENO3D.CORE.COMPOSITERESOURCE,
+%   STENO3D.CORE.PROJECT
 %
 
 
@@ -136,16 +136,13 @@ classdef Surface < steno3d.core.CompositeResource
                     z = z/sqrt(sum(z.^2));
                     verts = verts + obj.Mesh.Z*z;
                 end
-
                 f = 1:lh1;
                 f = [f; f+1; f+lh1+2; f+lh1+1]';
                 faces = repmat(f, lh2, 1);
                 offset = (lh1+1)*(0:lh2-1);
                 offset = ones(lh1, 1) * offset;
                 faces = faces + offset(:)*ones(1, 4);
-
             end
-
             if isempty(obj.Data)
                 cdata = {'FaceColor', obj.Opts.Color/255};
             elseif strcmp(obj.Data{1}.Location, 'N')
@@ -155,13 +152,11 @@ classdef Surface < steno3d.core.CompositeResource
                 cdata = {'CData', obj.Data{1}.Data.Array,               ...
                          'FaceColor', 'flat'};
             end
-
             if obj.Mesh.Opts.Wireframe
                 ec = [0 0 0];
             else
                 ec = 'none';
             end
-
             patch('Parent', ax, 'Vertices', verts, 'Faces', faces,      ...
                   cdata{:}, 'EdgeColor', ec, 'FaceAlpha',               ...
                   obj.Opts.Opacity);
