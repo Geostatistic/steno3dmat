@@ -12,7 +12,11 @@ classdef Mesh3DOptions < steno3d.core.opts.Options
 %           Display 3D mesh wireframe
 %           Default: false
 %
-%   See also steno3d.core.opts, steno3d.core.Mesh3DGrid
+%
+%   See the volume <a href="matlab: help steno3d.core.examples.volume
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.OPTS, STENO3D.CORE.MESH3DGRID
 %
 
 
@@ -33,7 +37,6 @@ classdef Mesh3DOptions < steno3d.core.opts.Options
             obj = obj@steno3d.core.opts.Options(varargin{:});
         end
     end
-
 end
 
 

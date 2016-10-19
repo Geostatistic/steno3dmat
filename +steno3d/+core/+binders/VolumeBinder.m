@@ -15,10 +15,15 @@ classdef VolumeBinder < props.HasProps
 %
 %       Data (<a href="matlab: help props.Instance">props.Instance</a>)
 %           Volume data array
-%           Class: <a href="matlab: help steno3d.core.DataArray">DataArray</a>
+%           Class: <a href="matlab: help steno3d.core.DataArray
+%           ">DataArray</a>
 %
-%   See also steno3d.core.binders, steno3d.core.Volume,
-%   steno3d.core.DataArray
+%
+%   See the volume <a href="matlab: help steno3d.core.examples.point
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.BINDERS, STENO3D.CORE.DATAARRAY,
+%   STENO3D.CORE.VOLUME
 %
 
 

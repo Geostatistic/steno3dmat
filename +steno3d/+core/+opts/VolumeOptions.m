@@ -17,7 +17,11 @@ classdef VolumeOptions < steno3d.core.opts.Options
 %           Minimum: 0, Maximum: 1
 %           Default: 1
 %
-%   See also steno3d.core.opts, steno3d.core.Volume
+%
+%   See the volume <a href="matlab: help steno3d.core.examples.volume
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.OPTS, STENO3D.CORE.VOLUME
 %
 
 
@@ -41,7 +45,6 @@ classdef VolumeOptions < steno3d.core.opts.Options
     end
 
     methods
-
         function obj = VolumeOptions(varargin)
             obj = obj@steno3d.core.opts.Options(varargin{:});
         end

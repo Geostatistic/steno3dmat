@@ -9,7 +9,11 @@ classdef Mesh0DOptions < steno3d.core.opts.Options
 %
 %   ---- CLASS HAS NO PROPERTIES ----
 %
-%   See also steno3d.core.opts, steno3d.core.Mesh0D
+%
+%   See the point <a href="matlab: help steno3d.core.examples.point
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.OPTS, STENO3D.CORE.MESH0D
 %
 
 
@@ -23,7 +27,6 @@ classdef Mesh0DOptions < steno3d.core.opts.Options
             obj = obj@steno3d.core.opts.Options(varargin{:});
         end
     end
-
 end
 
 

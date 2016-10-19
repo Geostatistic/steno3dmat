@@ -3,7 +3,7 @@ classdef (Abstract) Options < props.HasProps
 %   For usage details, see the <a href="matlab: help steno3d.core.opts
 %   ">options help</a>.
 %
-%   See also steno3d.core.opts
+%   See also STENO3D.CORE.OPTS
 %
 
     properties

@@ -17,7 +17,11 @@ classdef PointOptions < steno3d.core.opts.Options
 %           Minimum: 0, Maximum: 1
 %           Default: 1
 %
-%   See also steno3d.core.opts, steno3d.core.Point
+%
+%   See the point <a href="matlab: help steno3d.core.examples.point
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.OPTS, STENO3D.CORE.POINT
 %
 
 
@@ -45,7 +49,6 @@ classdef PointOptions < steno3d.core.opts.Options
             obj = obj@steno3d.core.opts.Options(varargin{:});
         end
     end
-
 end
 
 

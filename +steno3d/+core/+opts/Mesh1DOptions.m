@@ -13,7 +13,11 @@ classdef Mesh1DOptions < steno3d.core.opts.Options
 %           Choices: line, tube
 %           Default: 'line'
 %
-%   See also steno3d.core.opts, steno3d.core.Mesh1D
+%
+%   See the line <a href="matlab: help steno3d.core.examples.line
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.OPTS, STENO3D.CORE.MESH1D
 %
 
 

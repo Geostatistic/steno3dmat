@@ -17,7 +17,11 @@ classdef SurfaceOptions < steno3d.core.opts.Options
 %           Minimum: 0, Maximum: 1
 %           Default: 1
 %
-%   See also steno3d.core.opts, steno3d.core.Surface
+%
+%   See the surface <a href="matlab: help steno3d.core.examples.surface
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.OPTS, STENO3D.CORE.SURFACE
 %
 
 
@@ -37,17 +41,14 @@ classdef SurfaceOptions < steno3d.core.opts.Options
                 'Required', false,                                      ...
                 'DefaultValue', 1                                       ...
             )                                                           ...
-
         }
     end
 
     methods
-
         function obj = SurfaceOptions(varargin)
             obj = obj@steno3d.core.opts.Options(varargin{:});
         end
     end
-
 end
 
 

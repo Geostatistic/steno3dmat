@@ -17,8 +17,12 @@ classdef LineBinder < props.HasProps
 %           Class: <a href="matlab: help steno3d.core.DataArray
 %           ">DataArray</a>
 %
-%   See also steno3d.core.binders, steno3d.core.Line,
-%   steno3d.core.DataArray
+%
+%   See the line <a href="matlab: help steno3d.core.examples.line
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.BINDERS, STENO3D.CORE.DATAARRAY,
+%   STENO3D.CORE.LINE
 %
 
 

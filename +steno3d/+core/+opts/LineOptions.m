@@ -17,7 +17,11 @@ classdef LineOptions < steno3d.core.opts.Options
 %           Minimum: 0, Maximum: 1
 %           Default: 1
 %
-%   See also steno3d.core.opts, stneo3d.core.Line
+%
+%   See the line <a href="matlab: help steno3d.core.examples.line
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.OPTS, STENO3D.CORE.LINE
 %
 
 
