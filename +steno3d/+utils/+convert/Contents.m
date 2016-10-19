@@ -1,1 +1,1 @@
-% convert: Non-user-facing MATLAB graphics handle conversion functions
+% CONVERT: Non-user-facing MATLAB graphics handle conversion functions
