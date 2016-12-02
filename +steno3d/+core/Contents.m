@@ -11,7 +11,7 @@
 %       Volume         - Low-level Steno3D Volume resource
 %
 %   Mesh Classes
-%       Mesh0          - Mesh for Steno3D Point resources
+%       Mesh0D         - Mesh for Steno3D Point resources
 %       Mesh1D         - Mesh for Steno3D Line resources
 %       Mesh2D         - Mesh for triangluated Steno3D Surface resources
 %       Mesh2DGrid     - Mesh for gridded Steno3D Surface resources
