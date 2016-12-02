@@ -2,7 +2,7 @@
 % "matlab: web('https://steno3d.com/','-browser')">Steno3D</a> by <a href=
 % "matlab: web('https://www.3ptscience.com','-browser')">3pt Science</a>
 %
-% Version 0.0.1
+% Version 0.0.2
 %
 % Use Steno3D to Analyze, Collaborate, and Present your MATLAB projects.
 %

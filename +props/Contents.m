@@ -2,7 +2,7 @@
 %        by <a href="matlab: web('https://www.3ptscience.com',
 %        '-browser')">3pt Science</a>
 %
-% Version 0.0.1
+% Version 0.0.2
 %
 % The Props MATLAB package facilitates the creation of classes with
 % type-checked, validated properties through a relatively simple,
