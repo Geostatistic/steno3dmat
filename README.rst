@@ -8,9 +8,10 @@ Steno3D
 Welcome to the MATLAB client library for `Steno3D <https://steno3d.com>`_
 by `3point Science <https://www.3ptscience.com>`_.
 
-NOTE: This library is in BETA. Please submit any issues or feedback on
+NOTE: This library is in PRE-RELEASE. Please submit any issues or feedback on
 `github <https://github.com/3ptscience/steno3dmat/issues>`_. There will very
-likely be backwards-incompatible changes as development continues.
+likely be backwards-incompatible changes as development continues. You can
+follow along with new releases on the `github release page <https://github.com/3ptscience/steno3dmat/releases>`_.
 
 If you have not yet installed Steno3D for MATLAB, you can
 `download the zip file <https://github.com/3ptscience/steno3dmat/releases/download/v0.0.1/steno3dmat.zip>`_
