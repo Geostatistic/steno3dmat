@@ -2,7 +2,7 @@ function proj = convert(handle, varargin)
 %CONVERT Convert MATLAB figure or axes into a Steno3D Project
 %   PROJECT = STENO3D.CONVERT(HANDLE) converts the figure or axes HANDLE
 %   to PROJECT, a Steno3D <a href="matlab: help steno3d.core.Project
-%   ">Projects</a> or list of Projects.
+%   ">Project</a> or list of Projects.
 %
 %   PROJECT = STENO3D.CONVERT(..., PARAMETER, VALUE) converts the figure or
 %   axes HANDLE using the given PARAMETER/VALUE pairs. Available parameters
