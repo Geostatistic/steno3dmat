@@ -8,7 +8,7 @@
 %       clear x;
 %
 %   Example 2: Plot Project with red Line from segments and vertices
-%       x = 0:pi/10:4*pi;
+%       x = (0:pi/10:4*pi)';
 %       verts = [x cos(x+0.2) sin(x); x zeros(length(x), 2)];
 %       segs = [1:length(x); length(x) + (1:length(x))]';
 %       example2 = steno3d.line(segs, verts, 'r');
@@ -53,7 +53,7 @@ example1 = steno3d.line(x, cos(x+0.2), sin(x));
 clear x;
 
 % Example 2: Plot Project with red Line from segments and vertices
-x = 0:pi/10:4*pi;
+x = (0:pi/10:4*pi)';
 verts = [x cos(x+0.2) sin(x); x zeros(length(x), 2)];
 segs = [1:length(x); length(x) + (1:length(x))]';
 example2 = steno3d.line(segs, verts, 'r');
