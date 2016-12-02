@@ -1,5 +1,5 @@
 function res = group(gh, tabLevel)
-%GROUP Matlab graphics group to steno3d resources conversion
+%GROUP MATLAB group to Steno3D Resources conversion
 
     if ~isgraphics(gh) || ~any(strcmp(gh.Type, {'axes', 'hggroup'}))
         error('steno3d:convertError', ['steno3d.utils.convert.axes '    ...
@@ -24,6 +24,12 @@ function res = group(gh, tabLevel)
                                                 [tabLevel '    ']);
             case 'hggroup'
                 r = steno3d.utils.convert.group(gh.Children(i),         ...
+                                                [tabLevel '    ']);
+            case 'contour'
+                r = steno3d.utils.convert.contour(gh.Children(i),       ...
+                                                  [tabLevel '    ']);
+            case 'image'
+                r = steno3d.utils.convert.image(gh.Children(i),         ...
                                                 [tabLevel '    ']);
             otherwise
                 r = [];

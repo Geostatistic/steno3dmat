@@ -1,5 +1,15 @@
 function upgradeSteno3D()
 %UPGRADESTENO3D Download and install the latest version of Steno3D
+%   UPGRADESTENO3D() checks for an existing Steno3D installation, downloads
+%   the latest release of Steno3D to a temporary directory, tests the new
+%   version of Steno3D, and if tests pass, replaces the old version.
+%
+%   On login, Steno3D checks if the current version is out of date. If so,
+%   the user will be prompted to UPGRADESTENO3D()
+%
+%   See also STENO3D.LOGIN, UNINSTALLSTENO3D, INSTALLSTENO3D
+%
+
 
     narginchk(0, 0);
     
@@ -7,7 +17,7 @@ function upgradeSteno3D()
     steno3dmatfolder = strjoin(upgradepath(1:end-1), filesep);
     steno3dfolder = strjoin(upgradepath(1:end-2), filesep);
     
-    if isdir([steno3dmatfolder filesep '+props']) &&                       ...
+    if isdir([steno3dmatfolder filesep '+props']) &&                    ...
             isdir([steno3dmatfolder filesep '+steno3d'])
         fprintf('Existing Steno3D installation found.\n');
     else
@@ -103,5 +113,4 @@ function upgradeSteno3D()
         fprintf('Deleting temporary directory:\n%s\n', upgradefolder);
         rmdir(upgradefolder, 's');
     end
-    
 end

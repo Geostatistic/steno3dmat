@@ -1,5 +1,30 @@
 classdef SurfaceBinder < props.HasProps
-%SURFACEBINDER Object to add data to steno3d Surface
+%SURFACEBINDER Bind data to faces or vertices of a Steno3D Surface
+%   For usage details, see the <a href="matlab: help steno3d.core.binders
+%   ">binders help</a>.
+%
+%   SURFACEBINDER implements <a href="matlab: help props.HasProps
+%   ">HasProps</a> for dynamic, type-checked <a href="matlab:
+%   help props.Prop">properties</a>
+%
+%   REQUIRED PROPERTIES:
+%       Location (<a href="matlab: help props.String">props.String</a>)
+%           Location of the data on mesh
+%           Choices: CC, N
+%
+%       Data (<a href="matlab: help props.Instance">props.Instance</a>)
+%           Surface data array
+%           Class: <a href="matlab: help steno3d.core.DataArray
+%           ">DataArray</a>
+%
+%
+%   See the surface <a href="matlab: help steno3d.core.examples.surface
+%   ">EXAMPLES</a>
+%
+%   See also STENO3D.CORE.BINDERS, STENO3D.CORE.DATAARRAY,
+%   STENO3D.CORE.SURFACE
+%
+
 
     properties (Hidden, SetAccess = immutable)
         SBidnerProps = {                                                ...
@@ -8,8 +33,9 @@ classdef SurfaceBinder < props.HasProps
                 'Type', @props.String,                                  ...
                 'Doc', 'Location of the data on mesh',                  ...
                 'Choices', struct(                                      ...
-                    'CC', {{'FACE', 'CELLCENTER'}},                     ...
-                    'N', {{'VERTEX', 'NODE', 'CORNER'}}                 ...
+                    'CC', {{'FACE', 'FACES', 'CELLCENTER',              ...
+                            'CELLCENTERS', 'TRIANGLE', 'TRIANGLES'}},   ...
+                    'N', {{'VERTEX', 'VERTICES', 'NODE', 'NODES'}}      ...
                 ),                                                      ...
                 'ValidateDefault', false,                               ...
                 'Required', true                                        ...
@@ -28,6 +54,5 @@ classdef SurfaceBinder < props.HasProps
             obj = obj@props.HasProps(varargin{:});
         end
     end
-
 end
 

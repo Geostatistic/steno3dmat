@@ -1,5 +1,5 @@
 function newRes = consolidate(oldRes, tabLevel)
-%CONSOLIDATE Attempts to combine similar steno3d resources
+%CONSOLIDATE Attempts to combine similar Steno3D Resources
 
     if isempty(oldRes) || ~isa(oldRes{1}, 'steno3d.core.CompositeResource')
         error('steno3d:convertError', ['steno3d.utils.consolidate '     ...
@@ -26,7 +26,8 @@ end
 
 
 function res = consolidateResources(res1, res2)
-%CONSOLIDATERESOURCES Combines two resources or errors if not possible 
+%CONSOLIDATERESOURCES Combines two resources or errors if not possible
+
     mc = metaclass(res1.Mesh);
     if ~isa(res2.Mesh, mc.Name)
         error('steno3d:consolidationError', ...
@@ -143,36 +144,3 @@ function res = consolidateResources(res1, res2)
               'Cannot consolidate resources');
     end
 end
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    

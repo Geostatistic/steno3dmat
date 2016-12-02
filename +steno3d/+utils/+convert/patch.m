@@ -1,5 +1,5 @@
 function res = patch(ph, tabLevel)
-%PATCH Matlab patch to steno3d surface
+%PATCH MATLAB patch to Steno3D Surface conversion
 
     if ~isgraphics(ph) || ~strcmp(ph.Type, 'patch')
         error('steno3d:convertError', ['steno3d.utils.convert.patch '   ...
@@ -46,10 +46,11 @@ function res = patch(ph, tabLevel)
         cd = cd(:);
     end
     if size(faces, 2) > 3
-        newFaces = zeros(size(faces, 1)*(size(faces, 2)-2), 3);
+        ff = size(faces, 2)-2;
+        newFaces = zeros(size(faces, 1)*ff, 3);
         for i = 1:size(faces, 1)
-            newFaces((i-1)*size(faces, 1)+(1:size(faces, 2)-2), 1:3) = [...
-                faces(i, 1)*ones(size(faces, 2)-2, 1)                   ...
+            newFaces((i-1)*ff+(1:ff), 1:3) = [                          ...
+                faces(i, 1)*ones(ff, 1)                                 ...
                 faces(i, 2:end-1)'                                      ...
                 faces(i, 3:end)'                                        ...
             ];
@@ -78,7 +79,6 @@ function res = patch(ph, tabLevel)
     else
         alpha = ph.FaceAlpha;
     end
-    
     if ~strcmp(ph.EdgeColor, 'none') || ~strcmp(ph.FaceColor, 'none')
         if size(faces, 2) == 3
             res = [res {                                                ...
@@ -96,7 +96,7 @@ function res = patch(ph, tabLevel)
             }];
         elseif size(faces, 2) == 2
             res = [res {                                                ...
-                steno3d.core.Surface(                                   ...
+                steno3d.core.Line(                                   ...
                     'Title', ph.DisplayName,                            ...
                     'Mesh', steno3d.core.Mesh1D(                        ...
                         'Vertices', vert,                               ...
@@ -131,9 +131,6 @@ function res = patch(ph, tabLevel)
         end
     end
 
-
-
-
     if strcmp(ph.MarkerFaceColor, 'none')
         mcol = ph.MarkerEdgeColor;
     else
@@ -153,9 +150,5 @@ function res = patch(ph, tabLevel)
             )                                                           ...
         }];
     end
-
-
-
-
 end
 

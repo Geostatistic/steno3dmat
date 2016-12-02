@@ -1,5 +1,5 @@
 function proj = axes(ah, combineRes, tabLevel)
-%AXES Matlab axes to steno3d project conversion
+%AXES MATLAB axes to Steno3D Project conversion
 
     if ~isgraphics(ah) || ~strcmp(ah.Type, 'axes')
         error('steno3d:convertError', ['steno3d.utils.convert.axes '    ...
@@ -41,6 +41,5 @@ function proj = axes(ah, combineRes, tabLevel)
     else
         fprintf([tabLevel '... Axis conversion complete!\n'])
     end
-
 end
 

@@ -1,5 +1,5 @@
 function res = line(lh, tabLevel)
-%LINE Matlab line to steno3d Line conversion
+%LINE MATLAB line to Steno3D Line conversion
 
     if ~isgraphics(lh) || ~strcmp(lh.Type, 'line')
         error('steno3d:convertError', ['steno3d.utils.convert.line requires ' ...
@@ -15,7 +15,7 @@ function res = line(lh, tabLevel)
         zdata = lh.ZData;
     end
     vertices = [xdata(:) ydata(:) zdata(:)];
-    segments = [0:length(xdata)-2;1:length(xdata)-1]';
+    segments = [1:length(xdata)-1;2:length(xdata)]';
 
     % Remove nans for now
     keep = ~sum(isnan(vertices), 2);
@@ -55,7 +55,5 @@ function res = line(lh, tabLevel)
             )                                                           ...
         }];
     end
-
-
 end
 

@@ -1,5 +1,15 @@
-classdef UserContent < props.HasProps
-%USERCONTENT Base class for all Steno3D content that can be uploaded
+classdef (Abstract) UserContent < props.HasProps
+%USERCONTENT Base class for all uploadable Steno3D content
+%   The main purpose of the Steno3D MATLAB Toolbox is uploading plots and
+%   projects to <a href="matlab: web('https://steno3d.com/','-browser')
+%   ">steno3d.com</a>. USERCONTENT provides upload functionality
+%   to Steno3D objects. It also inherits behaviour from <a href="matlab:
+%   help props.HasProps">HasProps</a>, providing
+%   dynamically created, type-checked properties.
+%
+%   See also STENO3D.CORE.COMPOSITERESOURCE, STENO3D.CORE.PROJECT
+%
+
 
     properties (Hidden, SetAccess = immutable)
         UCProps = {                                                     ...
@@ -28,8 +38,8 @@ classdef UserContent < props.HasProps
     end
 
     methods
-
         function obj = UserContent(varargin)
+            steno3d.utils.matverchk();
             obj = obj@props.HasProps(varargin{:});
         end
     end
@@ -61,9 +71,7 @@ classdef UserContent < props.HasProps
                 resp = steno3d.utils.post(                              ...
                     ['api/' obj.modelAPILocation()], args{:}            ...
                 );
-
                 obj.PR__uid = resp.longUid;
-
                 fprintf([tabLevel '... Complete\n']);
             catch ME
             end
@@ -74,20 +82,15 @@ classdef UserContent < props.HasProps
         end
 
         function uploadChildren(obj, tabLevel)
-
         end
 
         function args = uploadArgs(obj)
             args = {'title', obj.Title, 'description', obj.Description};
             opts = obj.findprop('Opts');
             if length(opts) == 1
-                args = [args, {'meta', obj.Opts.toJSON()}];
+                args = [args {'meta', obj.Opts.toJSON()}];
             end
         end
-
-
-
     end
-
 end
 

@@ -1,9 +1,56 @@
 classdef Array < props.Prop
-%ARRAY Multi-dimensional float or int array property
+%ARRAY Multi-dimensional float or int array prop
+%   This is a type of props.Prop that can be used when a props.HasProps
+%   class needs a numeric array property.
+%
+%   PROPERTIES (in addition to those inherited from props.Prop)
+%       Shape: A nested cell array describing the shape of the array where
+%              the n-th entry must correspond to size(array, n). If an
+%              entry is '*', that dimension can be any size. Note: The
+%              requirement for nesting the cell array is necessary to
+%              subvert MATLAB's default treatment of cell arrays contained
+%              in structs.
+%              Example:
+%                   If Shape = {{1, 3, '*'}}, valid array sizes include
+%                   [1, 3, 1], [1, 3, 100], etc. Invalid array sizes
+%                   include [1, 3], [1, 3, 100, 1], [3, 1, 100].
+%       
+%       Binary: If true, array is written to binary when serialized to a
+%               file. If false, array is written as a string when
+%               serialized.
+%
+%       DataType: 'float' or 'int'
+%
+%       IndexArray: If true, the array is saved as as (array - 1) for
+%                   compatibility with zero-indexed languages. If false,
+%                   the array is saved as-is.
+%
+%   Example:
+%       ...
+%       class HasArrayProp < props.HasProps
+%           properties (Hidden, SetAccess = immutable)
+%               ArrayPropStruct = {                                     ...
+%                   struct(                                             ...
+%                       'Name', 'ThreeColumns',                         ...
+%                       'Type', @props.Array,                           ...
+%                       'Doc', 'Three column array, saved as binary',   ...
+%                       'Shape', {{'*', 3}},                            ...
+%                       'Binary', true,                                 ...
+%                       'DataType', 'float'                             ...
+%                   )                                                   ...
+%               }
+%           end
+%           ...
+%       end
+%
+%   See also props.Prop, props.HasProps, props.Float, props.Int,
+%   props.Repeated, props.Image
+%
+
 
     properties (SetAccess = ?props.Prop)
-        Shape = {'*'}
-        Serial = false
+        Shape = {{'*', '*'}}
+        Binary = false
         DataType = 'float'
         IndexArray = false
     end
@@ -12,14 +59,13 @@ classdef Array < props.Prop
         function obj = Array(varargin)
             args = props.Prop.setPropDefaults(varargin,                 ...
                 'DefaultValue', [],                                     ...
-                'ValidateDefault', false,                               ...
-                'PropInfo', 'a numeric array or matrix');
+                'ValidateDefault', false);
             obj = obj@props.Prop(args{:});
         end
 
         function obj = set.Shape(obj, val)
             if ~iscell(val)
-                error('steno3d:propError',                              ...
+                error('props:arrayError',                               ...
                       'Array property `Shape` must be cell array')
             end
             for i = 1:length(val)
@@ -29,7 +75,7 @@ classdef Array < props.Prop
                 elseif ischar(v) && v == '*'
                     continue
                 else
-                    error('steno3d:propError',                          ...
+                    error('props:arrayError',                           ...
                           ['Array property `shape` must be either '     ...
                            'integers corresponding to valid array '     ...
                            'dimension size or ''*'' if array dimension '...
@@ -39,17 +85,17 @@ classdef Array < props.Prop
             obj.Shape = val;
         end
 
-        function obj = set.Serial(obj, val)
+        function obj = set.Binary(obj, val)
             if ~islogical(val) || length(val(:)) ~= 1
-                error('steno3d:propError',                              ...
-                      'Array property `Serial` must be true or false');
+                error('props:arrayError',                               ...
+                      'Array property `Binary` must be true or false');
             end
-            obj.Serial = val;
+            obj.Binary = val;
         end
         
         function obj = set.IndexArray(obj, val)
             if ~islogical(val) || length(val(:)) ~= 1
-                error('steno3d:propError',                              ...
+                error('props:arrayError',                               ...
                       'Array property `IndexArray` must be true or false');
             end
             obj.IndexArray = val;
@@ -57,7 +103,7 @@ classdef Array < props.Prop
 
         function obj = set.DataType(obj, val)
             if ~ischar(val) || ~ismember(val, {'float', 'int'})
-                error('steno3d:propError',                              ...
+                error('props:arrayError',                               ...
                       ['Array property `DataType` must be ''float'' or '...
                        '''int''']);
             end
@@ -66,16 +112,16 @@ classdef Array < props.Prop
 
         function val = validate(obj, val)
             if ~isnumeric(val)
-                error('steno3d:propError', '%s must be %s',             ...
-                      obj.Name, obj.PropInfo);
+                error('props:arrayError', '%s must be numeric',          ...
+                      obj.Name);
             end
             if strcmp(obj.DataType, 'int') && ~all(val(:) == round(val(:)))
-                error('steno3d:propError', '%s must be all integers',   ...
+                error('props:arrayError', '%s must be all integers',    ...
                       obj.Name);
             end
             shp = size(val);
             if length(shp) ~= length(obj.Shape)
-                error('steno3d:propError',                              ...
+                error('props:arrayError',                               ...
                       '%s must have %d dimensions', obj.Name,           ...
                       length(obj.Shape))
             end
@@ -84,7 +130,7 @@ classdef Array < props.Prop
                     continue
                 end
                 if shp(i) ~= obj.Shape{i}
-                    error('steno3d:propError',                          ...
+                    error('props:arrayError',                           ...
                           '%s dimension %d must be size %d', obj.Name,  ...
                           i, obj.Shape{i})
                 end
@@ -94,7 +140,7 @@ classdef Array < props.Prop
         function output = serialize(obj)
             obj.validate(obj.Value);
             if length(obj.Shape) > 2
-                error('steno3d:propError',                              ...
+                error('props:arrayError',                               ...
                       'Cannot serialize arrays > 2 dimensions');
             end
             val = obj.Value';
@@ -102,7 +148,7 @@ classdef Array < props.Prop
             if obj.IndexArray
                 val = val-1;
             end
-            if obj.Serial
+            if obj.Binary
                 tmpFile = [tempname '.dat'];
                 fid = fopen(tmpFile, 'w+', 'l');
                 if strcmp(obj.DataType, 'int')
@@ -125,6 +171,22 @@ classdef Array < props.Prop
         
         function n = nbytes(obj)
             n = length(obj.Value(:))*8;
+        end
+        
+        function doc = dynamicDoc(obj)
+            doc = '{';
+            for i = 1:length(obj.Shape)
+                if i > 1
+                    doc = [doc ', '];
+                end
+                if isnumeric(obj.Shape{i})
+                    doc = [doc num2str(obj.Shape{i})];
+                else
+                    doc = [doc obj.Shape{1}];
+                end
+            end
+                        
+            doc = ['Shape: ' doc '}, DataType: ' obj.DataType];
         end
     end
 end
