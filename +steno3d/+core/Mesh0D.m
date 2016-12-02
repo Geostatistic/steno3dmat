@@ -32,7 +32,7 @@ classdef Mesh0D < steno3d.core.UserContent
 %   
 %   See the <a href="matlab: help steno3d.core.examples.point">EXAMPLES</a>
 %
-%   See also STENO3D.CORE.POINT, STENO3D.CORE.MESH0DOPTIONS
+%   See also STENO3D.CORE.POINT, STENO3D.CORE.OPTS.MESH0DOPTIONS
 %
 
 

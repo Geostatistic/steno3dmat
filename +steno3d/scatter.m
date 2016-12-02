@@ -47,6 +47,9 @@ function [proj, pts] = scatter(varargin)
 %       myProject.Public = true;
 %       steno3d.upload(myProject);
 %
+%
+%   See more <a href="matlab: help steno3d.examples.scatter">EXAMPLES</a>
+%
 %   See also STENO3D.CORE.POINT, STENO3D.UPLOAD, STENO3D.ADDDATA,
 %   STENO3D.ADDIMAGE, STENO3D.CORE.PROJECT
 %

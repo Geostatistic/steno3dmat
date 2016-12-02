@@ -18,7 +18,7 @@ classdef SurfaceBinder < props.HasProps
 %           ">DataArray</a>
 %
 %
-%   See the surface <a href="matlab: help steno3d.core.examples.point
+%   See the surface <a href="matlab: help steno3d.core.examples.surface
 %   ">EXAMPLES</a>
 %
 %   See also STENO3D.CORE.BINDERS, STENO3D.CORE.DATAARRAY,

@@ -36,7 +36,7 @@ classdef Mesh1D < steno3d.core.UserContent
 %   
 %   See the <a href="matlab: help steno3d.core.examples.line">EXAMPLES</a>
 %
-%   See also STENO3D.CORE.LINE, STENO3D.CORE.MESH1DOPTIONS
+%   See also STENO3D.CORE.LINE, STENO3D.CORE.OPTS.MESH1DOPTIONS
 %
 
 

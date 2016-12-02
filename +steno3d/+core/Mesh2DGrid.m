@@ -69,7 +69,7 @@ classdef Mesh2DGrid < steno3d.core.UserContent
 %   See the <a href="matlab: help steno3d.core.examples.surface
 %   ">EXAMPLES</a>
 %
-%   See also STENO3D.CORE.SURFACE, STENO3D.CORE.MESH2DOPTIONS
+%   See also STENO3D.CORE.SURFACE, STENO3D.CORE.OPTS.MESH2DOPTIONS
 %
 
 

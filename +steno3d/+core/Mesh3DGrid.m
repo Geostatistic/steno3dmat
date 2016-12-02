@@ -47,7 +47,7 @@ classdef Mesh3DGrid < steno3d.core.UserContent
 %   See the <a href="matlab: help steno3d.core.examples.volume
 %   ">EXAMPLES</a>
 %
-%   See also STENO3D.CORE.VOLUME, STENO3D.CORE.MESH3DOPTIONS
+%   See also STENO3D.CORE.VOLUME, STENO3D.CORE.OPTS.MESH3DOPTIONS
 %
 
 

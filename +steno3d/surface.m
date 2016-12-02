@@ -84,6 +84,9 @@ function [proj, surf] = surface(varargin)
 %       myProject.Pulbic = true;
 %       steno3d.upload(myProject);
 %
+%
+%   See more <a href="matlab: help steno3d.examples.surface">EXAMPLES</a>
+%
 %   See also STENO3D.CORE.SURFACE, STENO3D.UPLOAD, STENO3D.ADDDATA,
 %   STENO3D.ADDIMAGE, STENO3D.CORE.PROJECT
 %

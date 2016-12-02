@@ -49,7 +49,10 @@ function [proj, surf] = trisurf(varargin)
 %       mySurface.Description = 'Convex hull triangles';
 %       myProject.Title = 'Project with one Surface';
 %       myProject.Public = true;
-%       steno3d.upload(myProject)
+%       steno3d.upload(myProject);
+%
+%
+%   See more <a href="matlab: help steno3d.examples.trisurf">EXAMPLES</a>
 %
 %   See also STENO3D.CORE.SURFACE, STENO3D.UPLOAD, STENO3D.ADDDATA,
 %   STENO3D.ADDIMAGE, STENO3D.CORE.PROJECT

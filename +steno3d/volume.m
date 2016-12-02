@@ -58,6 +58,9 @@ function [proj, vol] = volume(varargin)
 %       proj.Public = true;
 %       steno3d.upload(proj);
 %
+%
+%   See more <a href="matlab: help steno3d.examples.volume">EXAMPLES</a>
+%
 %   See also STENO3D.CORE.VOLUME, STENO3D.UPLOAD, STENO3D.ADDDATA,
 %   STENO3D.CORE.PROJECT
 %   
