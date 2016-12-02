@@ -26,7 +26,11 @@ At that point, you can
     >> steno3d.login()
 
 then start uploading your MATLAB figures. Function and API documentation is
-available through the MATLAB help browser or online (https://steno3d.com/docs).
+available through the MATLAB help browser or at the command line with
+
+    >> help steno3d
+
+and following the links from there.
 
 If you run into problems or if you see a new release on github
 (https://github.com/3ptscience/steno3dmat/releases), you can upgrade in MATLAB:
