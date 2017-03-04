@@ -11,8 +11,8 @@
 %       volume  - Examples to create a Steno3D Volume resource
 %
 %   Additional Functional Utilities
-%       data    - Examples adding data to existing resources
-%       image   - Examples adding image textures to existing resources
+%       adddata    - Examples adding data to existing resources
+%       addimage   - Examples adding image textures to existing resources
 %       combine - Examples combining multiple projects
 %       convert - Examples converting MATLAB figure/axes to Steno3D
 %

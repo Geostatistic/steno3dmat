@@ -1,5 +1,5 @@
 classdef Mesh2D < steno3d.core.UserContent
-%MESH2D Mesh for triangluated Steno3D Surface resources
+%MESH2D Mesh for triangulated Steno3D Surface resources
 %   This mesh provides the geometry for triangulated <a href="matlab:
 %   help steno3d.core.Surface">Surface</a> resources. It
 %   consists of an m x 3 array of spatial vertices and an n x 3 array of
@@ -37,7 +37,7 @@ classdef Mesh2D < steno3d.core.UserContent
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-%   
+%
 %   See the <a href="matlab: help steno3d.core.examples.surface
 %   ">EXAMPLES</a>
 %

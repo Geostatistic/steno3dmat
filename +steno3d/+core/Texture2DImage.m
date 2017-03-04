@@ -9,9 +9,9 @@ classdef Texture2DImage < steno3d.core.UserContent
 %
 %   The image is mapped on to the resource by projecting it out of the
 %   plane defined by the origin, U, and V, in a U-cross-V direction. Only
-%   <a href="matlab: help steno3d.core.CompositeResource
+%   <a href="matlab: help steno3d.core.Point
 %   ">Points</a> and <a href="matlab:
-%   help steno3d.core.CompositeResource
+%   help steno3d.core.Surface
 %   ">Surfaces</a> support TEXTURE2DIMAGE; Lines and Volumes do not.
 %
 %   A TEXTURE2DIMAGE can also be added to a resource through a high-level

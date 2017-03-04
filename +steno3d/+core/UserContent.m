@@ -3,7 +3,7 @@ classdef (Abstract) UserContent < props.HasProps
 %   The main purpose of the Steno3D MATLAB Toolbox is uploading plots and
 %   projects to <a href="matlab: web('https://steno3d.com/','-browser')
 %   ">steno3d.com</a>. USERCONTENT provides upload functionality
-%   to Steno3D objects. It also inherits behaviour from <a href="matlab:
+%   to Steno3D objects. It also inherits behavior from <a href="matlab:
 %   help props.HasProps">HasProps</a>, providing
 %   dynamically created, type-checked properties.
 %

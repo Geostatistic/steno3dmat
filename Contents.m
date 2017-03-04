@@ -1,6 +1,6 @@
 % STENO3DMAT: MATLAB Client for <a href=
 % "matlab: web('https://steno3d.com/','-browser')">Steno3D</a> by <a href=
-% "matlab: web('https://www.3ptscience.com','-browser')">3pt Science</a>
+% "matlab: web('https://www.3ptscience.com','-browser')">3point Science</a>
 %
 % Version 0.0.2
 %
@@ -23,7 +23,7 @@
 %   end">Check your version</a>)
 %
 % steno3d - MATLAB client for Steno3D by 3pt Science
-% props - MATLAB package to build declarative, validated classes
+% props   - MATLAB package to build declarative, validated classes
 %
 % Installation, Upgrade, and Testing Scripts:
 %   installSteno3D   - Add Steno3D to the MATLAB environment

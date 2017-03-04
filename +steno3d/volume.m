@@ -35,7 +35,7 @@ function [proj, vol] = volume(varargin)
 %   PROJECT = STENO3D.VOLUME(...) returns PROJECT, the Steno3D Project that
 %   contains the new Volume resource.
 %
-%   [PROJECT, VOLUME] = STENO3D.VOLUME(...) returns PROJECT, the Steno3D 
+%   [PROJECT, VOLUME] = STENO3D.VOLUME(...) returns PROJECT, the Steno3D
 %   Project, and VOLUME, the new Volume resource.
 %
 %   STENO3D.VOLUME does not have a MATLAB builtin counterpart. When
@@ -63,9 +63,9 @@ function [proj, vol] = volume(varargin)
 %
 %   See also STENO3D.CORE.VOLUME, STENO3D.UPLOAD, STENO3D.ADDDATA,
 %   STENO3D.CORE.PROJECT
-%   
-    
-    
+%
+
+
     steno3d.utils.matverchk();
     narginchk(1, inf);
     if isa(varargin{1}, 'steno3d.core.Project')
@@ -119,7 +119,7 @@ function [proj, vol] = volume(varargin)
             error('steno3d:volumeError',                            ...
                   'x/y/z lengths and data size do not correspond');
         end
-    else    
+    else
         if ndims(varargin{2}) ~= 3
             error('steno3d:volumeError',                            ...
                   'Data must have 3 dimensions');

@@ -17,7 +17,7 @@ function [proj, surf] = trisurf(varargin)
 %   of titled datasets to the Surface resource. TITLE must be a string and
 %   DATA must be an n x 1 or an m x 1 vector, where n is the number of
 %   triangles and m is the number of vertices. If m == n, the data location
-%   will default to triangles (to override this see <a href="matlab:    
+%   will default to triangles (to override this see <a href="matlab:
 %   help steno3d.addData">steno3d.addData</a>).
 %
 %   STENO3D.TRISURF(PROJECT, ...) adds the Surface resource to PROJECT, an
@@ -60,7 +60,7 @@ function [proj, surf] = trisurf(varargin)
 
 
     steno3d.utils.matverchk();
-    
+
     if isempty(varargin)
         error('steno3d:trisurfError', 'Not enough input arguments');
     end
@@ -78,18 +78,18 @@ function [proj, surf] = trisurf(varargin)
     else
         proj = steno3d.core.Project;
     end
-    
+
     if length(varargin) < 2
         error('steno3d:trisurfError', 'Not enough input arguments');
     end
-    
-    if ismatrix(varargin{1}) && size(varargin{1}, 2) == 3 
+
+    if ismatrix(varargin{1}) && size(varargin{1}, 2) == 3
         tris = varargin{1};
         varargin = varargin(2:end);
     else
         error('steno3d:trisurfError', 'Triangles is the wrong size');
     end
-    
+
     if length(varargin) > 2 && isnumeric(varargin{1}) &&                ...
             isnumeric(varargin{2}) && isnumeric(varargin{3}) &&         ...
             length(varargin{1}(:)) == length(varargin{2}(:)) &&         ...
@@ -103,7 +103,7 @@ function [proj, surf] = trisurf(varargin)
         error('steno3d:trisurfError', ['Triangles and Vertices are the '...
               'wrong size']);
     end
-    
+
     if ~all(tris(:) == round(tris(:)))
         error('steno3d:trisurfError', 'Triangles must be integers');
     end
@@ -111,7 +111,7 @@ function [proj, surf] = trisurf(varargin)
         error('steno3d:trisurfError', ['Triangles must be integers '    ...
               'between 1 and length(Vertices)']);
     end
-    
+
     if length(varargin) == 1 ||                                         ...
             (length(varargin) > 1 && ischar(varargin{2}))
         color = varargin{1};
@@ -119,15 +119,15 @@ function [proj, surf] = trisurf(varargin)
     else
         color = 'random';
     end
-    
-    
+
+
     data = {};
     for i = 1:2:length(varargin)
         if ~ischar(varargin{i})
             error('steno3d:trisurfError', ['Data must be provided with '...
                   'title/value pairs']);
         end
-        if ~isnumeric(varargin{i+1}) 
+        if ~isnumeric(varargin{i+1})
             error('steno3d:trisurfError', 'Data must be the numeric');
         end
         dat = varargin{i+1}(:);
@@ -143,7 +143,7 @@ function [proj, surf] = trisurf(varargin)
                        'Data', {'Title', varargin{i},                   ...
                                 'Array', dat}};
     end
-    
+
     surf = steno3d.core.Surface(                                        ...
         'Mesh', steno3d.core.Mesh2D(                                    ...
             'Vertices', verts,                                          ...
@@ -154,6 +154,6 @@ function [proj, surf] = trisurf(varargin)
     );
 
     proj.Resources = [proj.Resources {surf}];
-    
+
     proj.plot();
 end

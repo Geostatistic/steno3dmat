@@ -41,7 +41,7 @@ classdef Volume < steno3d.core.CompositeResource
 %       Description (<a href="matlab: help props.String">props.String</a>)
 %           Content description
 %
-% 
+%
 %   See the <a href="matlab: help steno3d.examples.core.volume
 %   ">EXAMPLES</a>
 %
@@ -128,7 +128,7 @@ classdef Volume < steno3d.core.CompositeResource
                 offset = ones(lh1, 1) * offset;
                 faces = faces + offset(:)*ones(1, 4);
                 ccarr = dats{i}(:);
-                narr = ccarr(1)*ones(size(verts, 1), 1);
+                narr = ccarr(1)*ones(size(verts, 1), 1, 'double');
                 narr(faces(:, 1)) = ccarr;
                 cdata = {'CData', narr, 'FaceColor', 'flat'};
                 if obj.Mesh.Opts.Wireframe
