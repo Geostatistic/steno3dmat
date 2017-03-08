@@ -14,6 +14,11 @@ function res = line(lh, tabLevel)
     else
         zdata = lh.ZData;
     end
+    if length(xdata) == 1
+        xdata = [xdata; xdata];
+        ydata = [ydata; ydata];
+        zdata = [zdata; zdata];
+    end
     vertices = [xdata(:) ydata(:) zdata(:)];
     segments = [1:length(xdata)-1;2:length(xdata)]';
 

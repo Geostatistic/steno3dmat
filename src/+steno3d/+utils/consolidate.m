@@ -5,9 +5,9 @@ function newRes = consolidate(oldRes, tabLevel)
         error('steno3d:convertError', ['steno3d.utils.consolidate '     ...
               'requires input of type "steno3d.core.CompositeResource"']);
     end
-    
+
     fprintf([tabLevel 'Consolidating project resources...\n']);
-    
+
     newRes = {};
     while ~isempty(oldRes)
         newRes = {newRes{:} oldRes{1}};
@@ -33,7 +33,7 @@ function res = consolidateResources(res1, res2)
         error('steno3d:consolidationError', ...
               'Cannot consolodate resources with different mesh types');
     end
-    
+
     dataeq = true;
     if length(res1.Data) ~= length(res2.Data)
         dataeq = false;
@@ -45,7 +45,7 @@ function res = consolidateResources(res1, res2)
             end
         end
     end
-                            
+
     if isa(res1.Mesh, 'steno3d.core.Mesh0D')
         if length(res1.Mesh.Vertices) == length(res2.Mesh.Vertices) &&  ...
                 all(res1.Mesh.Vertices(:) == res2.Mesh.Vertices(:))
@@ -53,7 +53,7 @@ function res = consolidateResources(res1, res2)
             res.Data = [res.Data res2.Data];
             res.Textures = [res.Textures res2.Textures];
             return
-            
+
         elseif dataeq
             res = res1;
             res.Mesh.Vertices = [res.Mesh.Vertices; res2.Mesh.Vertices];
@@ -63,7 +63,7 @@ function res = consolidateResources(res1, res2)
             end
             res.Textures = [res.Textures res2.Textures];
             return
-            
+
         end
     elseif isa(res1.Mesh, 'steno3d.core.Mesh1D')
         if length(res1.Mesh.Vertices) == length(res2.Mesh.Vertices) &&  ...
@@ -74,7 +74,7 @@ function res = consolidateResources(res1, res2)
             res.Data = [res.Data res2.Data];
             res.Textures = [res.Textures res2.Textures];
             return
-            
+
         elseif dataeq
             res = res1;
             res.Mesh.Segments = [                                       ...
@@ -86,9 +86,8 @@ function res = consolidateResources(res1, res2)
                 res.Data{i}.Data.Array = [res.Data{i}.Data.Array;       ...
                                           res2.Data{i}.Data.Array];
             end
-            res.Textures = [res.Textures res2.Textures];
             return
-            
+
         end
     elseif isa(res1.Mesh, 'steno3d.core.Mesh2D')
         if length(res1.Mesh.Vertices) == length(res2.Mesh.Vertices) &&  ...
@@ -99,7 +98,7 @@ function res = consolidateResources(res1, res2)
             res.Data = [res.Data res2.Data];
             res.Textures = [res.Textures res2.Textures];
             return
-            
+
         elseif dataeq
             res = res1;
             res.Mesh.Triangles = [                                      ...
@@ -113,7 +112,7 @@ function res = consolidateResources(res1, res2)
             end
             res.Textures = [res.Textures res2.Textures];
             return
-            
+
         end
         fprintf('why are we here')
     elseif isa(res1.Mesh, 'steno3d.core.Mesh2DGrid')
@@ -127,7 +126,7 @@ function res = consolidateResources(res1, res2)
             res.Data = [res.Data res2.Data];
             res.Textures = [res.Textures res2.Textures];
             return
-            
+
         end
     elseif isa(res1.Mesh, 'steno3d.core.Mesh3DGrid')
         if all(res1.Mesh.H1(:) == res2.Mesh.H1(:)) &&                   ...
@@ -136,7 +135,6 @@ function res = consolidateResources(res1, res2)
                 all(res1.Mesh.O(:) == res2.Mesh.O(:))
             res = res1;
             res.Data = [res.Data res2.Data];
-            res.Textures = [res.Textures res2.Textures];
             return
         end
     else
