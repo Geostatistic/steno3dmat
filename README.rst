@@ -6,7 +6,7 @@ Steno3D
     :target: https://github.com/3ptscience/steno3dmat/blob/master/LICENSE
 
 Welcome to the MATLAB client library for `Steno3D <https://steno3d.com>`_
-by `3point Science <https://www.3ptscience.com>`_.
+by `ARANZ Geo Limited <https://www.aranzgeo.com>`_.
 
 NOTE: This library is in PRE-RELEASE. Please submit any issues or feedback on
 `github <https://github.com/3ptscience/steno3dmat/issues>`_. There will very
