@@ -1,6 +1,10 @@
 function testBumpZip()
 %TESTBUMPZIP Helper function to run tests, bump version, and zip files
 
+    resp = input('Are docs built? ([yes]/no)', 's');
+    if ~isempty(resp) && ~strcmp(resp, 'yes')
+        return
+    end
     resp = input('Are all changes committed? ([yes]/no)', 's');
     if ~isempty(resp) && ~strcmp(resp, 'yes')
         return
@@ -10,33 +14,41 @@ function testBumpZip()
                  'directory\n']);
         return
     end
-    fprintf('Running tests\n');
-    success = testSteno3D();
+    testpath = which('testSteno3D');
+    if strfind(testpath, 'build')
 
-    if ~success
-        fprintf('Tests failed\n');
+        fprintf('Running tests\n');
+        success = testSteno3D();
+
+        if ~success
+            fprintf('Tests failed\n');
+            return
+        end
+    else
+        fprintf(['Steno3D path must be build directory:\n' testpath '\n']);
         return
     end
 
-    prevVer = steno3d.version();
-    fprintf(['Old version: ' prevVer '\n'])
-    fprintf('Please bump the version then continue\n');
-    pause
+    if exist('releases/steno3dmat.zip')
+        prevVer = steno3d.version();
+        fprintf(['Old version: ' prevVer '\n'])
+        fprintf('Please bump the version then continue\n');
+        pause
 
-    fprintf('Stashing old release locally\n');
-    system(['mv releases/steno3dmat.zip '                              	...
-            'releases/steno3dmat.' prevVer '.zip']);
-
+        fprintf('Stashing old release locally\n');
+        system(['mv releases/steno3dmat.zip '                              	...
+                'releases/steno3dmat.' prevVer '.zip']);
+    end
 
     fprintf('Zipping files\n');
     cd ..
     zip('steno3dmat/releases/steno3dmat.zip',                           ...
-        {'steno3dmat/+steno3d/*',                                       ...
-         'steno3dmat/+props/*',                                         ...
-         'steno3dmat/installSteno3D.m',                                 ...
-         'steno3dmat/uninstallSteno3D.m',                               ...
-         'steno3dmat/upgradeSteno3D.m',                                 ...
-         'steno3dmat/testSteno3D.m',                                    ...
+        {'steno3dmat/build/+steno3d/*',                                 ...
+         'steno3dmat/build/+props/*',                                   ...
+         'steno3dmat/build/installSteno3D.m',                           ...
+         'steno3dmat/build/uninstallSteno3D.m',                         ...
+         'steno3dmat/build/upgradeSteno3D.m',                           ...
+         'steno3dmat/build/testSteno3D.m',                              ...
          'steno3dmat/LICENSE',                                          ...
          'steno3dmat/README'});
     cd steno3dmat/
