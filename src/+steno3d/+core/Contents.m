@@ -14,7 +14,7 @@
 %   %%%class[Mesh1D](steno3d.core.Mesh1D)     - Mesh for Steno3D Line resources
 %   %%%class[Mesh2D](steno3d.core.Mesh2D)     - Mesh for triangulated Steno3D Surface resources
 %   %%%class[Mesh2DGrid](steno3d.core.Mesh2DGrid) - Mesh for gridded Steno3D Surface resources
-%   %%%class[Mesh3DGrid](steno3d.core.Mesh3DGrdi) - Mesh for Steno3D Volume resources
+%   %%%class[Mesh3DGrid](steno3d.core.Mesh3DGrid) - Mesh for Steno3D Volume resources
 %
 %   %%%bold[Data and Texture Classes]:
 %   %%%class[DataArray](steno3d.core.DataArray)      - Steno3D object to hold resource data

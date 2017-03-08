@@ -29,7 +29,7 @@ Core Resources
 
  :class:`steno3d.core.Mesh2DGrid` - Mesh for gridded Steno3D Surface resources
 
- :class:`steno3d.core.Mesh3DGrdi` - Mesh for Steno3D Volume resources
+ :class:`steno3d.core.Mesh3DGrid` - Mesh for Steno3D Volume resources
 
 **Data and Texture Classes**:
 
