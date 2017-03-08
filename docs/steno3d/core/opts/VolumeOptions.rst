@@ -13,7 +13,7 @@ For usage details, see the :ref:`options help <steno3dcoreopts>`.
 
 **Optional Properties**:
 
-    **Color** (:class:`props.Color`) - Solid volume color, Default: [158 218 229]
+    **Color** (:class:`props.Color`) - Solid volume color, Default: 'random'
 
     **Opacity** (:class:`props.Float`) - Volume opacity, Minimum: 0, Maximum: 1, Default: 1
 

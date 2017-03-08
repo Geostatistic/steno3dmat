@@ -13,7 +13,7 @@ For usage details, see the :ref:`options help <steno3dcoreopts>`.
 
 **Optional Properties**:
 
-    **Color** (:class:`props.Color`) - Point color, Default: [227 119 194]
+    **Color** (:class:`props.Color`) - Point color, Default: 'random'
 
     **Opacity** (:class:`props.Float`) - Point opacity, Minimum: 0, Maximum: 1, Default: 1
 

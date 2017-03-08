@@ -13,7 +13,7 @@ For usage details, see the :ref:`options help <steno3dcoreopts>`.
 
 **Optional Properties**:
 
-    **Color** (:class:`props.Color`) - Solid surface color, Default: [196 156 148]
+    **Color** (:class:`props.Color`) - Solid surface color, Default: 'random'
 
     **Opacity** (:class:`props.Float`) - Surface opacity, Minimum: 0, Maximum: 1, Default: 1
 

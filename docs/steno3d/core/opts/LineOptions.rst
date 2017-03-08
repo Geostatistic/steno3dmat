@@ -13,7 +13,7 @@ For usage details, see the :ref:`options help <steno3dcoreopts>`.
 
 **Optional Properties**:
 
-    **Color** (:class:`props.Color`) - Solid line color, Default: [152 223 138]
+    **Color** (:class:`props.Color`) - Solid line color, Default: 'random'
 
     **Opacity** (:class:`props.Float`) - Line opacity, Minimum: 0, Maximum: 1, Default: 1
 
