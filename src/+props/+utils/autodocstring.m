@@ -22,11 +22,11 @@ function docstring = autodocstring(htobj, doctype)
 
     nmsplit = strsplit(mc.Name, '.');
     if strcmp(doctype, 'matlab')
-        docstring = ['%%   ' upper(nmsplit{end}) ' implements '         ...
+        docstring = ['%   ' upper(nmsplit{end}) ' implements '         ...
                 '<a href="matlab: help props.HasProps\n'                ...
-                '%%   ">HasProps</a> for dynamic, type-checked <a '     ...
-                'href="matlab:\n%%   help props.Prop">'                 ...
-                'properties</a>\n%%\n'];
+                '%   ">HasProps</a> for dynamic, type-checked <a '     ...
+                'href="matlab:\n%   help props.Prop">'                 ...
+                'properties</a>\n%\n'];
     else
         docstring = ['**' nmsplit{end} '** implements '                 ...
                 ':ref:`props.HasProps <propshasprops>` for dynamic, '   ...
@@ -41,16 +41,16 @@ function docstring = autodocstring(htobj, doctype)
         prop = htobj.(['PR_' htobj.PR__props{i}]);
         propmc = metaclass(prop);
         if strcmp(doctype, 'matlab')
-            propdoc = ['%%       ' prop.Name ' (<a href="matlab: help ' ...
+            propdoc = ['%       ' prop.Name ' (<a href="matlab: help ' ...
                        propmc.Name '">' propmc.Name '</a>)\n'           ...
-                       '%%           ' escape(prop.Doc) '\n'];
+                       '%           ' escape(prop.Doc) '\n'];
         else
             propdoc = ['    **' prop.Name '** (:class:`'           ...
                        propmc.Name '`) - ' escape(prop.Doc)];
         end
         if ~isempty(prop.dynamicDoc(doctype))
             if strcmp(doctype, 'matlab')
-                propdoc = [propdoc '%%           '                      ...
+                propdoc = [propdoc '%           '                      ...
                            escape(prop.dynamicDoc(doctype)) '\n'];
             else
                 propdoc = [propdoc ', ' escape(prop.dynamicDoc(doctype))];
@@ -59,7 +59,7 @@ function docstring = autodocstring(htobj, doctype)
         if ~isempty(prop.DefaultValue)
             try
                 if strcmp(doctype, 'matlab')
-                    propdoc = [propdoc '%%           Default: '         ...
+                    propdoc = [propdoc '%           Default: '         ...
                                escape(mat2str(prop.DefaultValue)) '\n'];
                 else
                     propdoc = [propdoc ', Default: '                    ...
@@ -69,9 +69,9 @@ function docstring = autodocstring(htobj, doctype)
             end
         end
         if strcmp(doctype, 'matlab')
-            propdoc = [propdoc '%%\n'];
+            propdoc = [propdoc '%\n'];
         else
-            propdoc = [propdoc '\n'];
+            propdoc = [propdoc '\n\n'];
         end
         if prop.Required
             requiredDoc = [requiredDoc propdoc];
@@ -82,21 +82,21 @@ function docstring = autodocstring(htobj, doctype)
 
     if ~isempty(requiredDoc)
         if strcmp(doctype, 'matlab')
-            requiredDoc = ['%%   REQUIRED PROPERTIES:\n' requiredDoc];
+            requiredDoc = ['%   REQUIRED PROPERTIES:\n' requiredDoc];
         else
             requiredDoc = ['**Required Properties**:\n\n' requiredDoc];
         end
     end
     if ~isempty(optionalDoc)
         if strcmp(doctype, 'matlab')
-            optionalDoc = ['%%   OPTIONAL PROPERTIES:\n' optionalDoc];
+            optionalDoc = ['%   OPTIONAL PROPERTIES:\n' optionalDoc];
         else
-            optionalDoc = ['**Required Properties**:\n\n' optionalDoc];
+            optionalDoc = ['**Optional Properties**:\n\n' optionalDoc];
         end
     end
     if isempty(requiredDoc) && isempty(optionalDoc)
         if strcmp(doctype, 'matlab')
-            requiredDoc = '%%   ---- CLASS HAS NO PROPERTIES ----\n%%\n';
+            requiredDoc = '%   ---- CLASS HAS NO PROPERTIES ----\n%\n';
         else
             requiredDoc = '**---- Class has no properties ----**\n\n';
         end
