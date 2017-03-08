@@ -29,14 +29,16 @@ function testBumpZip()
         return
     end
 
-    prevVer = steno3d.version();
-    fprintf(['Old version: ' prevVer '\n'])
-    fprintf('Please bump the version then continue\n');
-    pause
+    if exist('releases/steno3dmat.zip')
+        prevVer = steno3d.version();
+        fprintf(['Old version: ' prevVer '\n'])
+        fprintf('Please bump the version then continue\n');
+        pause
 
-    fprintf('Stashing old release locally\n');
-    system(['mv releases/steno3dmat.zip '                              	...
-            'releases/steno3dmat.' prevVer '.zip']);
+        fprintf('Stashing old release locally\n');
+        system(['mv releases/steno3dmat.zip '                              	...
+                'releases/steno3dmat.' prevVer '.zip']);
+    end
 
     fprintf('Zipping files\n');
     cd ..
