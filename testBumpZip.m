@@ -1,6 +1,10 @@
 function testBumpZip()
 %TESTBUMPZIP Helper function to run tests, bump version, and zip files
 
+    resp = input('Are docs built? ([yes]/no)', 's');
+    if ~isempty(resp) && ~strcmp(resp, 'yes')
+        return
+    end
     resp = input('Are all changes committed? ([yes]/no)', 's');
     if ~isempty(resp) && ~strcmp(resp, 'yes')
         return
@@ -10,12 +14,18 @@ function testBumpZip()
                  'directory\n']);
         return
     end
-    cd build
-    fprintf('Running tests\n');
-    success = testSteno3D();
+    testpath = which('testSteno3D');
+    if strfind(testpath, 'build')
 
-    if ~success
-        fprintf('Tests failed\n');
+        fprintf('Running tests\n');
+        success = testSteno3D();
+
+        if ~success
+            fprintf('Tests failed\n');
+            return
+        end
+    else
+        fprintf(['Steno3D path must be build directory:\n' testpath '\n']);
         return
     end
 
@@ -24,12 +34,9 @@ function testBumpZip()
     fprintf('Please bump the version then continue\n');
     pause
 
-    cd ..
-
     fprintf('Stashing old release locally\n');
     system(['mv releases/steno3dmat.zip '                              	...
             'releases/steno3dmat.' prevVer '.zip']);
-
 
     fprintf('Zipping files\n');
     cd ..
