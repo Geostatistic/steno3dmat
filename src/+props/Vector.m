@@ -7,7 +7,7 @@ classdef Vector < props.Array
 %   values 'X', 'Y', and 'Z'; these are converted to [1 0 0], [0 1 0], and
 %   [0 0 1], respectively.
 %
-%   PROPERTIES - No properties besides those inherited from %%%ref[props.Array](props.Array)
+%   %%%bold[Attributes] - No properties besides those inherited from %%%ref[props.Array](props.Array)
 %
 %   Example:
 %   %%%codeblock

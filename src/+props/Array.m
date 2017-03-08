@@ -3,27 +3,34 @@ classdef Array < props.Prop
 %   This is a type of %%%ref[props.Prop](props.Prop) that can be used when a %%%ref[props.HasProps](props.HasProps)
 %   class needs a numeric array property.
 %
-%   PROPERTIES (in addition to those inherited from %%%ref[props.Prop](props.Prop))
-%       Shape: A nested cell array describing the shape of the array where
-%              the n-th entry must correspond to size(array, n). If an
-%              entry is '*', that dimension can be any size. Note: The
-%              requirement for nesting the cell array is necessary to
-%              subvert MATLAB's default treatment of cell arrays contained
-%              in structs.
-%              Example:
-%                   If Shape = {{1, 3, '*'}}, valid array sizes include
-%                   [1, 3, 1], [1, 3, 100], etc. Invalid array sizes
-%                   include [1, 3], [1, 3, 100, 1], [3, 1, 100].
+%   %%%bold[Attributes] (in addition to those inherited from %%%ref[props.Prop](props.Prop)):
 %
-%       Binary: If true, array is written to binary when serialized to a
-%               file. If false, array is written as a string when
-%               serialized.
+%   Shape:
+%       A nested cell array describing the shape of the array where
+%       the n-th entry must correspond to size(array, n). If an
+%       entry is '*', that dimension can be any size. Note: The
+%       requirement for nesting the cell array is necessary to
+%       subvert MATLAB's default treatment of cell arrays contained
+%       in structs.
 %
-%       DataType: 'float' or 'int'
+%       Example:
 %
-%       IndexArray: If true, the array is saved as as (array - 1) for
-%                   compatibility with zero-indexed languages. If false,
-%                   the array is saved as-is.
+%            If `Shape = {{1, 3, '*'}}`, valid array sizes include
+%            `[1, 3, 1]`, `[1, 3, 100]`, etc. Invalid array sizes
+%            include `[1, 3]`, `[1, 3, 100, 1]`, `[3, 1, 100]`.
+%
+%   Binary:
+%       If true, array is written to binary when serialized to a
+%       file. If false, array is written as a string when
+%       serialized.
+%
+%   DataType:
+%       `float` or `int`
+%
+%   IndexArray:
+%       If true, the array is saved as as (array - 1) for
+%       compatibility with zero-indexed languages. If false,
+%       the array is saved as-is.
 %
 %   Example:
 %   %%%codeblock
@@ -44,8 +51,7 @@ classdef Array < props.Prop
 %           ...
 %       end
 %
-%   %%%seealso props.Prop, props.HasProps, props.Float, props.Int,
-%   props.Repeated, props.Image
+%   %%%seealso props.Prop, props.HasProps, props.Float, props.Int, props.Repeated, props.Image
 %
 
 
@@ -183,7 +189,7 @@ classdef Array < props.Prop
                 if isnumeric(obj.Shape{i})
                     doc = [doc num2str(obj.Shape{i})];
                 else
-                    doc = [doc obj.Shape{1}];
+                    doc = [doc '\' obj.Shape{1}];
                 end
             end
 

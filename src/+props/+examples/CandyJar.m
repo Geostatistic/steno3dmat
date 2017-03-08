@@ -52,8 +52,7 @@ classdef CandyJar < props.HasProps
 %   An <a href="matlab: help props.examples.CandyJarScript
 %   ">example script using a CandyJar instance</a> is also available.
 %
-%   %%%seealso props.HasProps, props.Prop, props.String, props.Int,
-%   props.examples.CandyJarScript
+%   %%%seealso props.HasProps, props.Prop, props.String, props.Int, props.examples.CandyJarScript
 %
 
 %CANDYJAR Object to describe the contents of a candy jar

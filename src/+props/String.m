@@ -4,23 +4,26 @@ classdef String < props.Prop
 %   class needs a string property. PROPS.STRING can either accept any
 %   string or only certain spcecified strings.
 %
-%   PROPERTIES (in addition to those inherited from %%%ref[props.Prop](props.Prop))
-%       Choices: The available choices for the string property. If choices
-%                is not specified, any string will be considered valid. If
-%                choices is a nested cell array of strings, only those
-%                choices are valid. Choices may also be a struct with
-%                strings as fields and nested cell array of strings as
-%                values. This allows several different strings (the values)
-%                to be coerced into a single string (the field). Note: The
-%                requirement for nesting the cell array is necessary to
-%                subvert MATLAB's default treatment of cell arrays
-%                contained in structs. See example below for the
-%                implementation of each of these types of Choices.
+%   %%%bold[Attributes] (in addition to those inherited from %%%ref[props.Prop](props.Prop)):
 %
-%       Lowercase: If true, the input string is coerced to all-lowercase.
-%                  If false and Choices are set, the string is coerced to
-%                  the case found in Choices. If false and Choices is not
-%                  set, the string is kept as-is.
+%   Choices:
+%       The available choices for the string property. If choices
+%       is not specified, any string will be considered valid. If
+%       choices is a nested cell array of strings, only those
+%       choices are valid. Choices may also be a struct with
+%       strings as fields and nested cell array of strings as
+%       values. This allows several different strings (the values)
+%       to be coerced into a single string (the field). Note: The
+%       requirement for nesting the cell array is necessary to
+%       subvert MATLAB's default treatment of cell arrays
+%       contained in structs. See example below for the
+%       implementation of each of these types of Choices.
+%
+%   Lowercase:
+%       If true, the input string is coerced to all-lowercase.
+%       If false and Choices are set, the string is coerced to
+%       the case found in Choices. If false and Choices is not
+%       set, the string is kept as-is.
 %
 %   Example:
 %   %%%codeblock

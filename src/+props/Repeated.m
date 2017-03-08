@@ -5,10 +5,12 @@ classdef Repeated < props.Prop
 %   PROPS.REPEATED stores the repeated values in a cell array; each value
 %   is validated.
 %
-%   PROPERTIES (in addition to those inherited from %%%ref[props.Prop](props.Prop))
-%       PropType: A struct that defines another valid prop type. This
-%                 struct requires Type handle but not Name or Doc - those
-%                 are inherited from the PROPS.REPEATED values.
+%   %%%bold[Attributes] (in addition to those inherited from %%%ref[props.Prop](props.Prop)):
+%
+%   PropType:
+%       A struct that defines another valid prop type. This
+%       struct requires Type handle but not Name or Doc - those
+%       are inherited from the PROPS.REPEATED values.
 %
 %   Example:
 %   %%%codeblock
@@ -29,8 +31,7 @@ classdef Repeated < props.Prop
 %           ...
 %       end
 %
-%   %%%seealso props.Prop, props.HasProps, props.Union, props.Array,
-%   props.Color
+%   %%%seealso props.Prop, props.HasProps, props.Union, props.Array, props.Color
 %
 
 

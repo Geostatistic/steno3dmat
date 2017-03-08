@@ -5,29 +5,30 @@ classdef Instance < props.Prop
 %   instance class is also a subclass of %%%ref[props.HasProps](props.HasProps), it will be
 %   recursively validated on a call to 'validate()'.
 %
+%   %%%bold[Attributes] (in addition to those inherited from %%%ref[props.Prop](props.Prop)):
 %
+%   Class:
+%       Handle to the type of instance this prop requires. This may
+%       be any MATLAB class. If the Class is another subclass of
+%       props.HasProps it will benefit from additional recursive
+%       validation. Even circular Class assignment (for example
+%       having a class use itself as a PROPS.INSTANCE) can be
+%       achieved by setting Class = eval('@CurcularClass'), as long
+%       as the %%%matlabref[eval](eval) function is valid at runtime.
 %
-%   PROPERTIES (in addition to those inherited from %%%ref[props.Prop](props.Prop))
-%       Class: Handle to the type of instance this prop requires. This may
-%              be any MATLAB class. If the Class is another subclass of
-%              props.HasProps it will benefit from additional recursive
-%              validation. Even circular Class assignment (for example
-%              having a class use itself as a PROPS.INSTANCE) can be
-%              achieved by setting Class = eval('@CurcularClass'), as long
-%              as the <a href="matlab: help eval
-%              ">eval</a> function is valid at runtime.
+%   Args:
+%       Cell array of default arguments used to construct the
+%       DynamicDefault value of the class if Initialize is true. If
+%       Initialize is false, Args are unused.
 %
-%       Args: Cell array of default arguments used to construct the
-%             DynamicDefault value of the class if Initialize is true. If
-%             Initialize is false, Args are unused.
-%
-%       Initialize: Whether or not to auto-create an instance of the class
-%                   for the property. If Initialize is true, valid Args
-%                   must be provided as well. If Initialize is false,
-%                   Required or ValidateDefault will likely need to be
-%                   false as well. Otherwise, PROPS.INSTANCE will attempt
-%                   to validate the uninitialized (empty) default value and
-%                   probably fail.
+%   Initialize:
+%       Whether or not to auto-create an instance of the class
+%       for the property. If Initialize is true, valid Args
+%       must be provided as well. If Initialize is false,
+%       Required or ValidateDefault will likely need to be
+%       false as well. Otherwise, PROPS.INSTANCE will attempt
+%       to validate the uninitialized (empty) default value and
+%       probably fail.
 %
 %   Example:
 %   %%%codeblock
@@ -133,8 +134,7 @@ classdef Instance < props.Prop
                 doc = ['Class: <a href="matlab: help '                  ...
                        func2str(obj.Class) '">' shortclass '</a>'];
             else
-                doc = ['Class: :ref:`' shortclass ' <'                  ...
-                       strrep(func2str(obj.Class), '.', '') '>`'];
+                doc = ['Class: :ref:`' shortclass ' <' strrep(func2str(obj.Class), '.', '') '>`'];
             end
         end
 

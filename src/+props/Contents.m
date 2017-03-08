@@ -1,4 +1,4 @@
-%PROPS:
+%Props:
 %
 %   The Props MATLAB package facilitates the creation of classes with
 %   type-checked, validated properties through a relatively simple,
@@ -21,5 +21,7 @@
 %   %%%class[Union](props.Union)    - Prop that may be one of several different types of props
 %   %%%class[Vector](props.Vector)   - Three-component vector prop
 %
-%   %%%note Props requires MATLAB R2014b or greater %%%versioncheck
+%   %%%note
+%       Props requires MATLAB R2014b or greater %%%versioncheck
 %
+%   %%%tree Prop HasProps Array Bool Color Float Image Instance Int Repeated String Union Vector

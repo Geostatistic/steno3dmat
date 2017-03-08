@@ -7,27 +7,32 @@ classdef Prop
 %   ">simple example</a>, or the
 %   specific types listed below.
 %
-%   PROPS.PROP PROPERTIES
-%       Value: The saved value of the PROPS.PROP.
+%   %%%bold[Attributes]:
 %
-%       Name: The name used to access the value of PROPS.PROP from the
-%             props.HasProps class.
+%   Value:
+%       The saved value of the PROPS.PROP.
 %
-%       Doc: A description of the specific PROPS.PROP on a props.HasProps
-%            class.
+%   Name:
+%       The name used to access the value of PROPS.PROP from the
+%       props.HasProps class.
 %
-%       Required: Whether or not the PROPS.PROP must be given a value for a
-%                 props.HasProps instance to pass validation.
+%   Doc:
+%       A description of the specific PROPS.PROP on a props.HasProps
+%       class.
 %
-%       ValidateDefault: Whether or not the DefaultValue must pass
-%                        validation.
+%   Required:
+%       Whether or not the PROPS.PROP must be given a value for a
+%       props.HasProps instance to pass validation.
 %
-%       DefaultValue: The default value when the PROPS.PROP is accessed
-%                     prior to getting set.
+%   ValidateDefault:
+%       Whether or not the DefaultValue must pass
+%       validation.
 %
-%   %%%seealso PROPS.HASPROPS, PROPS.ARRAY, PROPS.BOOL, PROPS.COLOR,
-%   PROPS.FLOAT, PROPS.IMAGE, PROPS.INSTANCE, PROPS.INT, PROPS.REPEATED,
-%   PROPS.STRING, PROPS.UNION, PROPS.VECTOR
+%   DefaultValue:
+%       The default value when the PROPS.PROP is accessed
+%       prior to getting set.
+%
+%   %%%seealso PROPS.HASPROPS, PROPS.ARRAY, PROPS.BOOL, PROPS.COLOR, PROPS.FLOAT, PROPS.IMAGE, PROPS.INSTANCE, PROPS.INT, PROPS.REPEATED, PROPS.STRING, PROPS.UNION, PROPS.VECTOR
 %
 
 

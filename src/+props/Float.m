@@ -3,12 +3,15 @@ classdef Float < props.Prop
 %   This is a type of %%%ref[props.Prop](props.Prop) that can be used when a %%%ref[props.HasProps](props.HasProps)
 %   class needs a float property.
 %
-%   PROPERTIES (in addition to those inherited from %%%ref[props.Prop](props.Prop))
-%       MinValue: The minimum allowed value for the property. The default
-%                 is -Inf (no minimum).
+%   %%%bold[Attributes] (in addition to those inherited from %%%ref[props.Prop](props.Prop)):
 %
-%       MaxValue: The maximum allowed value for the property. The default
-%                 is Inf (no maximum).
+%   MinValue:
+%       The minimum allowed value for the property. The default
+%       is -Inf (no minimum).
+%
+%   MaxValue:
+%       The maximum allowed value for the property. The default
+%       is Inf (no maximum).
 %
 %   Example:
 %   %%%codeblock

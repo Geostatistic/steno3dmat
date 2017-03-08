@@ -41,20 +41,10 @@ classdef HasProps < dynamicprops
 %       constructor takes no arguments, and passing Parameter/Value pairs
 %       will result in an error.
 %
-%   A simple example of a PROPS.HASPROPS subclass is provided at
-%   props.examples.CandyJar. It may help to look at the <a href="matlab:
-%   help props.examples.CandyJar">implementation of</a>
-%   <a href="matlab: help props.examples.CandyJar
-%   ">CandyJar</a> and an <a href="matlab:
-%   help props.examples.CandyJarScript
-%   ">example script using a CandyJar instance</a>.
+%   For a substantial practical example, look at the Steno3D MATLAB
+%   client on %%%link[github](https://github.com/3ptscience/steno3dmat).
 %
-%   For a more substantial practical example, look at the Steno3D MATLAB
-%   client on <a href="matlab:
-%   web('https://github.com/3ptscience/steno3dmat','-browser')">github</a>.
-%
-%   %%%seealso props.Prop, props.examples.CandyJar,
-%   props.examples.CandyJarScript
+%   %%%seealso props.Prop
 %
 
 

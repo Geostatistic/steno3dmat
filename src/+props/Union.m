@@ -5,14 +5,16 @@ classdef Union < props.Prop
 %   assigned, PROPS.UNION attempts to validate it as each type until it
 %   succeeds.
 %
-%   PROPERTIES (in addition to those inherited from %%%ref[props.Prop](props.Prop))
-%       PropTypes: A nested cell array of structs that define the valid
-%                  prop types. The structs in PropTypes require Type handle
-%                  but do not require Name or Doc - those are inherited
-%                  from the PROPS.UNION values. Note: The requirement for
-%                  nesting the cell array is necessary to subvert MATLAB's
-%                  default treatment of cell arrays contained in structs.
-%                  See the example below for how this is implemented.
+%   %%%bold[Attributes] (in addition to those inherited from %%%ref[props.Prop](props.Prop)):
+%
+%   PropTypes:
+%       A nested cell array of structs that define the valid
+%       prop types. The structs in PropTypes require Type handle
+%       but do not require Name or Doc - those are inherited
+%       from the PROPS.UNION values. Note: The requirement for
+%       nesting the cell array is necessary to subvert MATLAB's
+%       default treatment of cell arrays contained in structs.
+%       See the example below for how this is implemented.
 %
 %   Example:
 %   %%%codeblock
@@ -36,8 +38,7 @@ classdef Union < props.Prop
 %           ...
 %       end
 %
-%   %%%seealso props.Prop, props.HasProps, props.Int, props.String,
-%   props.Repeated, props.Instance
+%   %%%seealso props.Prop, props.HasProps, props.Int, props.String, props.Repeated, props.Instance
 %
 
 

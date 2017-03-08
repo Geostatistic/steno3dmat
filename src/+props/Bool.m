@@ -3,7 +3,7 @@ classdef Bool < props.Prop
 %   This is a type of %%%ref[props.Prop](props.Prop) that can be used when a %%%ref[props.HasProps](props.HasProps)
 %   class needs a boolean property.
 %
-%   PROPERTIES - No properties besides those inherited from %%%ref[props.Prop](props.Prop)
+%   %%%bold[Attributes] - No properties besides those inherited from %%%ref[props.Prop](props.Prop)
 %
 %   Example:
 %   %%%codeblock

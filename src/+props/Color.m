@@ -2,17 +2,19 @@ classdef Color < props.Prop
 %COLOR RGB, Hex, or string color prop
 %   This is a type of %%%ref[props.Prop](props.Prop) that can be used when a %%%ref[props.HasProps](props.HasProps)
 %   class needs a color property. Examples of valid colors include:
+%
 %       - 8-bit RGB colors with values betweeon 0-255 (e.g. [0 128 255])
 %       - MATLAB RGB colors with values between 0-1 (e.g. [0 .5 .5])
 %       - Hex string colors with 6 digits (e.g. '#0080FF')
 %       - Hex string colors with 3 digits (e.g. '#F50')
 %       - MATLAB color letters (e.g. 'y')
-%       - Predefined named colors (e.g. 'papayawhip')
+%       - Standard, named web colors (e.g. 'papayawhip')
 %       - Random color ('random')
+%
 %   All of these are converted to and stored as their equivalent 8-bit RGB
 %   color.
 %
-%   PROPERTIES - No properties besides those inherited from %%%ref[props.Prop](props.Prop)
+%   %%%bold[Attributes] - No properties besides those inherited from %%%ref[props.Prop](props.Prop)
 %
 %   Example:
 %   %%%codeblock

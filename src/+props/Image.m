@@ -6,7 +6,7 @@ classdef Image < props.Prop
 %   valid PNG matrices already in MATLAB. Image will attempt to
 %   coerce different image formats to PNG, but the success may be limited.
 %
-%   PROPERTIES - No properties besides those inherited from %%%ref[props.Prop](props.Prop)
+%   %%%bold[Attributes] - No properties besides those inherited from %%%ref[props.Prop](props.Prop)
 %
 %   Example:
 %   %%%codeblock

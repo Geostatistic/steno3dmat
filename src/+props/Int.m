@@ -3,7 +3,7 @@ classdef Int < props.Float
 %   This is a type of %%%ref[props.Prop](props.Prop) that can be used when a %%%ref[props.HasProps](props.HasProps)
 %   class needs an integer property.
 %
-%   PROPERTIES - No properties besides those inherited from %%%ref[props.Float](props.Float)
+%   %%%bold[Attributes] - No properties besides those inherited from %%%ref[props.Float](props.Float)
 %
 %   Example:
 %   %%%codeblock
@@ -23,8 +23,7 @@ classdef Int < props.Float
 %           ...
 %       end
 %
-%   %%%seealso props.Prop, props.HasProps, props.Float, props.Array,
-%   props.Bool
+%   %%%seealso props.Prop, props.HasProps, props.Float, props.Array, props.Bool
 %
 
 
