@@ -2,7 +2,7 @@ Steno3D
 *******
 
 Welcome to the MATLAB client library for Steno3D (https://steno3d.com)
-by 3point Science (https://www.3ptscience.com).
+by ARANZ Geo Limited (https://www.aranzgeo.com).
 
 NOTE: This library is in PRE-RELEASE. Please submit any issues or feedback on
 github (https://github.com/3ptscience/steno3dmat/issues). There will very
@@ -39,5 +39,5 @@ If you run into problems or if you see a new release on github
 
 If your problems persist, please submit an issue (https://github.com/3ptscience/steno3dmat/issues).
 
-Your version of Steno3D is 0.0.2. Detailed release notes are available
+Your version of Steno3D is 0.0.3. Detailed release notes are available
 on github (https://github.com/3ptscience/steno3dmat/releases).
