@@ -7,9 +7,8 @@ function [proj, surf] = surface(varargin)
 %
 %   `steno3d.surface(origin, Z)` creates a Steno3D Project with a Surface
 %   resource. `origin` is a 1 x 3 vector offset; x and y values correspond to
-%   `origin`(1) + (0:m-1) and `origin`(2) + (0:n-1), and heights equal to
-%   `Z` + `origin`(3).
-%
+%   origin(1) + (0:m-1) and origin(2) + (0:n-1), and heights equal to
+%   `Z` + origin(3).
 %
 %   `steno3d.surface(X, Y)` creates a Steno3D Project with a flat grid
 %   Surface in the horizontal plane with x and y node values corresponding
@@ -45,7 +44,7 @@ function [proj, surf] = surface(varargin)
 %   of titled images to the Surface resource. `title` must be a string and
 %   `png` must be a png file. The image will be stretched to span the
 %   entire grid surface. Any number of datasets and textures may be applied
-%   to an individual Surface. (For more details see %%%func[steno3d.addImage(steno3d.addImage))
+%   to an individual Surface. (For more details see %%%func[steno3d.addImage](steno3d.addImage))
 %
 %   `steno3d.surface(project, ...)` adds the Surface resource to `project`, an
 %   existing Steno3D Project. `project` may also be a figure or axes handle
@@ -57,7 +56,7 @@ function [proj, surf] = surface(varargin)
 %   `[project, surface] = steno3d.surface(...)` returns `project`, the Steno3D
 %   Project, and `surface`, the new Surface resource.
 %
-%   An important difference between `steno3d.surface the MATLAB builtin
+%   An important difference between `steno3d.surface` the MATLAB builtin
 %   %%%matlabref[surface](surface) function is data ordering. This function uses ordering produced
 %   by the function %%%matlabref[ndgrid](ndgrid), where size(Z) == [length(x) length(y)].
 %   The builtin surface function uses ordering produced by the function
@@ -83,8 +82,7 @@ function [proj, surf] = surface(varargin)
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.surface)
 %
-%   %%%seealso STENO3D.CORE.SURFACE, STENO3D.UPLOAD, STENO3D.ADDDATA,
-%   STENO3D.ADDIMAGE, STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.core.Surface, steno3d.upload, steno3d.addData, steno3d.addImage, steno3d.core.Project
 %
 
 

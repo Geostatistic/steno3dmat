@@ -1,22 +1,21 @@
-%Steno3D addImage examples
+%addImage examples:
 %
 %   %%%extractexamples
 %
 %   %%%runexamples
 %
-%   %%%seealso STENO3D.ADDIMAGE, STENO3D.SCATTER, STENO3D.SURFACE,
-%   STENO3D.TRISURF
+%   %%%seealso steno3d.addImage, steno3d.scatter, steno3d.surface, steno3d.trisurf
 %
 
 
-%Example 1: Add a newly created PNG image to a %%%ref[Point](steno3d.core.Point) resource
+%   Example 1: Add a newly created PNG image to a %%%ref[Point](steno3d.core.Point) resource
 pngFile = [tempname '.png'];
 imwrite(imread('ngc6543a.jpg'), pngFile, 'png');
 [example1, pts] = steno3d.scatter(rand(1000, 3));
 steno3d.addImage(pts, pngFile, 1, 1);
 clear pngFile pts;
 
-%Example 2: Add three images to a %%%ref[Surface](steno3d.core.Surface) with varying orientations
+%   Example 2: Add three images to a %%%ref[Surface](steno3d.core.Surface) with varying orientations
 pngFile = [tempname '.png'];
 imwrite(imread('ngc6543a.jpg'), pngFile, 'png');
 [example2, sfc] = steno3d.surface(                           ...
@@ -29,7 +28,7 @@ steno3d.addImage(sfc, pngFile, [-1 0 0], .5, [0 0 -1], .5,   ...
                  [1 0 1], 'Reversed Space Image');
 clear pngFile sfc;
 
-%Example 3: Project an image created with MATLAB texturemap on a sphere
+%   Example 3: Project an image created with MATLAB texturemap on a sphere
 fig = figure; [x, y, z] = sphere; surf(x, y, z);
 h = findobj('Type', 'surface');
 load earth; hemisphere = [ones(257,125), X, ones(257,125)];

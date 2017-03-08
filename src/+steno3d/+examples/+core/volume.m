@@ -1,17 +1,17 @@
-%Steno3D Volume resource construction examples
+%Volume resource construction examples:
 %
 %   %%%extractexamples
 %
 %   %%%runexamples
 %
-%   %%%seealso STENO3D.CORE.VOLUME, STENO3D.CORE.MESH3DGRID,
-%   STENO3D.CORE.DATAARRAY, STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.core.Volume, steno3d.core.Mesh3DGrid, steno3d.core.DataArray, steno3d.core.Project
 %
 
 
-%Example 1:  Create a Steno3D %%%ref[Volume](steno3d.core.Volume) resource with cell-centered %%%ref[data](steno3d.core.DataArray)
+%   Example 1:  Create a Steno3D %%%ref[Volume](steno3d.core.Volume) resource with cell-centered %%%ref[data](steno3d.core.DataArray)
 %
-%%%%note Unlike other Steno3D resources, Volumes require data
+%   %%%note
+%       Unlike other Steno3D resources, Volumes require data
 vol = steno3d.core.Volume;
 xspacing = ones(5, 1);
 yspacing = ones(10, 1);
@@ -30,7 +30,7 @@ example1 = steno3d.core.Project;
 example1.Resources = vol;
 clear vol xspacing yspacing zspacing mesh xdata x;
 
-%Example 2: Create a Volume resource offset from zero and set options
+%   Example 2: Create a Volume resource offset from zero and set options
 vol = steno3d.core.Volume;
 vol.Title = 'Example 2 Volume';
 vol.Description = 'This Volume resource will be yellow';
@@ -54,7 +54,7 @@ example2.Description = 'Project with a volume';
 example2.Resources = vol;
 clear vol mesh xdata x;
 
-%Example 3: Create a Volume resource in a more compact way
+%   Example 3: Create a Volume resource in a more compact way
 vol = steno3d.core.Volume(                                   ...
     'Title', 'Example 3 Volume',                             ...
     'Description', 'This Volume resource will have data',    ...
@@ -80,14 +80,15 @@ example3 = steno3d.core.Project(                             ...
 );
 clear vol xdata x;
 
-%Example 4: Create a Volume resource with multiple datasets
+%   Example 4: Create a Volume resource with multiple datasets
 %
-%%%%note There are a couple new features introduced in this
-%consolidated construction. (1) Multiple datasets are assigned
-%as a cell array. (2) Passing cell arrays of parameters (e.g.
-%for Mesh) implicitly calls the correct constructor. (3) Data
-%Location is not specified since 'CC' is the only available
-%location for volumes.
+%   %%%note
+%       There are a couple new features introduced in this
+%       consolidated construction. (1) Multiple datasets are assigned
+%       as a cell array. (2) Passing cell arrays of parameters (e.g.
+%       for Mesh) implicitly calls the correct constructor. (3) Data
+%       Location is not specified since 'CC' is the only available
+%       location for volumes.
 [x, y, z] = ndgrid(-2:2, -4.5:4.5, -7:7);
 vol = steno3d.core.Volume(                                   ...
     'Title', 'Example 4 Volume',                             ...

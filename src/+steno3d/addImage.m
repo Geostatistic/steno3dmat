@@ -7,7 +7,7 @@ function addImage(varargin)
 %
 %   `steno3d.addImage(resource, pngfile, dir1, dim1, dir2, dim2)` scales and
 %   reshapes the PNG image `pngfile` so its x-axis lies along `dir1` with
-%   length `dim1` and its y-axis lies along `dir2` with length dim2`. `dir1` and
+%   length `dim1` and its y-axis lies along `dir2` with length `dim2`. `dir1` and
 %   `dir2` are either a 1 x 3 vector or 'X', 'Y' or 'Z'. The image is then
 %   projected in a direction perpendicular to `dir1` and `dir2` (the
 %   `dir1`-cross-`dir2` direction) onto the Steno3D `resource`.
@@ -51,7 +51,7 @@ function addImage(varargin)
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.addimage)
 %
-%   %%%seealso STENO3D.CORE.TEXTURE2DIMAGE, STENO3D.ADDDATA, STENO3D.TRISURF
+%   %%%seealso steno3d.core.Texture2DImage, steno3d.addData, steno3d.trisurf
 %
 
 

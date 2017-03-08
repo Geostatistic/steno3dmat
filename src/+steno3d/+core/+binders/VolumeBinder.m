@@ -4,10 +4,9 @@ classdef VolumeBinder < props.HasProps
 %
 %   %%%properties
 %
-%   See the volume %%%ref[EXAMPLES](steno3d.core.examples.volume)
+%   See the volume %%%ref[EXAMPLES](steno3d.examples.core.volume)
 %
-%   %%%seealso STENO3D.CORE.BINDERS, STENO3D.CORE.DATAARRAY,
-%   STENO3D.CORE.VOLUME
+%   %%%seealso steno3d.core.binders, steno3d.core.DataArray, steno3d.core.Volume
 %
 
 

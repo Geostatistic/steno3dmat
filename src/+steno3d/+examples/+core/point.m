@@ -1,15 +1,14 @@
-%Steno3D Point resource construction examples
+%Point resource construction examples:
 %
 %   %%%extractexamples
 %
 %   %%%runexamples
 %
-%   %%%seealso STENO3D.CORE.POINT, STENO3D.CORE.MESH0D, STENO3D.CORE.PROJECT,
-%   STENO3D.CORE.DATAARRAY, STENO3D.CORE.TEXTURE2DIMAGE
+%   %%%seealso steno3d.core.Point, steno3d.core.Mesh0D, steno3d.core.Project, steno3d.core.DataArray, steno3d.core.Texture2DImage
 %
 
 
-%Example 1: Create a basic Steno3D %%%ref[Point](steno3d.core.Point) resource
+%   Example 1: Create a basic Steno3D %%%ref[Point](steno3d.core.Point) resource
 pt = steno3d.core.Point;
 verts = rand(100, 3);
 mesh = steno3d.core.Mesh0D;
@@ -19,7 +18,7 @@ example1 = steno3d.core.Project;
 example1.Resources = pt;
 clear pt verts mesh;
 
-%Example 2: Create a Point resource and set display options
+%   Example 2: Create a Point resource and set display options
 pt = steno3d.core.Point;
 pt.Title = 'Example 2 Point';
 pt.Description = 'This Point resource will be yellow';
@@ -34,10 +33,11 @@ example2.Description = 'Project with some points';
 example2.Resources = pt;
 clear pt mesh;
 
-%Example 3: Create a Point resource with node %%%ref[data](steno3d.core.DataArray)
+%   Example 3: Create a Point resource with node %%%ref[data](steno3d.core.DataArray)
 %
-%Note: This constructor encapsulates all the features of pt from
-%Example 2.
+%   %%%note
+%       This constructor encapsulates all the features of pt from
+%       Example 2.
 verts = rand(100, 3);
 pt = steno3d.core.Point(                                     ...
     'Title', 'Example 3 Point',                              ...
@@ -59,7 +59,7 @@ example3 = steno3d.core.Project(                             ...
 );
 clear pt xdata verts;
 
-%Example 4: Create a Point resource with an %%%ref[image](steno3d.core.Texture2DImage) projected onto it
+%   Example 4: Create a Point resource with an %%%ref[image](steno3d.core.Texture2DImage) projected onto it
 pt = steno3d.core.Point(                                     ...
     'Title', 'Example 4 Point',                              ...
     'Description', 'This Point resource will have an image', ...
@@ -84,16 +84,17 @@ example4 = steno3d.core.Project(                             ...
 );
 clear pt tex pngFile;
 
-%Example 5: Create a Point resource with multiple datasets and textures
+%   Example 5: Create a Point resource with multiple datasets and textures
 %
-%%%%note There are several new features introduced in this highly
-%consolidated construction. (1) Multiple datasets and textures
-%are assigned as a cell array. (2) Passing cell arrays of
-%parameters (e.g. for Mesh) implicitly calls the correct
-%constructor. (3) Data Location is not specified since 'N' is
-%the only available location for points. (4) The texture uses
-%default values for O, U, and V, and attempts to coerce a JPG
-%file to PNG.
+%   %%%note
+%       There are several new features introduced in this highly
+%       consolidated construction. (1) Multiple datasets and textures
+%       are assigned as a cell array. (2) Passing cell arrays of
+%       parameters (e.g. for Mesh) implicitly calls the correct
+%       constructor. (3) Data Location is not specified since 'N' is
+%       the only available location for points. (4) The texture uses
+%       default values for O, U, and V, and attempts to coerce a JPG
+%       file to PNG.
 verts = rand(100, 3);
 pt = steno3d.core.Point(                                     ...
     'Title', 'Example 5 Point',                              ...

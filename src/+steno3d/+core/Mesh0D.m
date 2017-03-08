@@ -6,9 +6,9 @@ classdef Mesh0D < steno3d.core.UserContent
 %
 %   %%%properties
 %
-%   See the %%%ref[EXAMPLES](steno3d.core.examples.point)
+%   See the %%%ref[EXAMPLES](steno3d.examples.core.point)
 %
-%   %%%seealso STENO3D.CORE.POINT, STENO3D.CORE.OPTS.MESH0DOPTIONS
+%   %%%seealso steno3d.core.Point, steno3d.core.opts.Mesh0DOptions
 %
 
 

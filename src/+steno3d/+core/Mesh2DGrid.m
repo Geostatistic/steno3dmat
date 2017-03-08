@@ -13,9 +13,9 @@ classdef Mesh2DGrid < steno3d.core.UserContent
 %
 %   %%%properties
 %
-%   See the %ref[EXAMPLES](steno3d.core.examples.surface)
+%   See the %ref[EXAMPLES](steno3d.examples.core.surface)
 %
-%   %%%seealso STENO3D.CORE.SURFACE, STENO3D.CORE.OPTS.MESH2DOPTIONS
+%   %%%seealso steno3d.core.Surface, steno3d.core.opts.Mesh2DOptions
 %
 
 

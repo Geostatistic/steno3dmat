@@ -1,6 +1,6 @@
 function [proj, lin] = line(varargin)
 %LINE Create and plot a Steno3D Line resource
-%   `steno3d.line(X, Y, Z)` creates a Steno3D %%%ref[Project](steno3d.core.Project) with a %%%re[Line](steno3d.core.Line) resource
+%   `steno3d.line(X, Y, Z)` creates a Steno3D %%%ref[Project](steno3d.core.Project) with a %%%ref[Line](steno3d.core.Line) resource
 %   defined by vectors `X`, `Y`, and `Z`. If `X`, `Y`, and `Z` are matrices of the same
 %   size, only one Line resource is created but separate columns are
 %   disconnected.
@@ -35,6 +35,7 @@ function [proj, lin] = line(varargin)
 %   object can be directly modified.
 %
 %   Example:
+%   %%%codeblock
 %       x = 0:pi/10:4*pi;
 %       [proj, lin] = steno3d.line(                                     ...
 %           x, cos(x), sin(x), 'k', 'Cosine Vert Data', cos(x)          ...
@@ -47,8 +48,7 @@ function [proj, lin] = line(varargin)
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.line)
 %
-%   %%%seealso STENO3D.CORE.LINE, STENO3D.CORE.PROJECT, STENO3D.UPLOAD,
-%   STENO3D.ADDDATA, STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.core.Line, steno3d.upload, steno3d.addData, steno3d.core.Project
 %
 
 

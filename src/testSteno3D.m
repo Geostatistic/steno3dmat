@@ -6,7 +6,7 @@ function success = testSteno3D(raiseError)
 %   `success = testSteno3D(true)` raises an error instead of returning
 %   false if tests fail.
 %
-%   %%%seealso INSTALLSTENO3D, UPGRADESTENO3D
+%   %%%seealso installSteno3D, upgradeSteno3D
 %
 
 

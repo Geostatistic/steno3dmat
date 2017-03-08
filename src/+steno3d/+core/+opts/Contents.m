@@ -1,4 +1,4 @@
-%OPTIONS: Adding options to resources in Steno3D
+%Options: Adding options to resources in Steno3D
 %   Most Steno3D objects have options to customize their appearance. These
 %   are set with Options objects. See the specific Options type to see the
 %   available options.
@@ -36,3 +36,4 @@
 %   %%%class[Mesh3DOptions](steno3d.core.opts.Mesh3DOptions)  - Options for Steno3D %%%ref[Mesh3DGrid](steno3d.core.Mesh3DGrid)
 %   %%%class[Options](steno3d.core.opts.Options)        - Abstract base class for Steno3D options
 %
+%   %%%tree PointOptions LineOptions SurfaceOptions VolumeOptions Mesh0DOptions Mesh1DOptions Mesh2DOptions Mesh3DOptions Options

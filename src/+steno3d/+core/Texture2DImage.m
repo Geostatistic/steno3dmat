@@ -16,10 +16,9 @@ classdef Texture2DImage < steno3d.core.UserContent
 %
 %   %%%properties
 %
-%   See the %%%ref[EXAMPLES](steno3d.core.examples.texture)
+%   See the %%%ref[EXAMPLES](steno3d.examples.core.texture)
 %
-%   %%%seealso STENO3D.ADDIMAGE, STENO3D.SURFACE, STENO3D.CORE.POINT,
-%   STENO3D.CORE.SURFACE, STENO3D.CORE.DATAARRAY
+%   %%%seealso steno3d.addImage, steno3d.surface, steno3d.core.Point, steno3d.core.Surface, steno3d.core.DataArray
 %
 
 

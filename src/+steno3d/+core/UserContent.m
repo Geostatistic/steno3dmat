@@ -5,7 +5,7 @@ classdef (Abstract) UserContent < props.HasProps
 %   to Steno3D objects. It also inherits behavior from %%%ref[HasProps](props.HasProps), providing
 %   dynamically created, type-checked properties.
 %
-%   %%%seealso STENO3D.CORE.COMPOSITERESOURCE, STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.core.CompositeResource, steno3d.core.Project
 %
 
 

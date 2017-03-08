@@ -4,9 +4,9 @@ classdef VolumeOptions < steno3d.core.opts.Options
 %
 %   %%%properties
 %
-%   See the volume %%%ref[EXAMPLES](steno3d.core.examples.volume)
+%   See the volume %%%ref[EXAMPLES](steno3d.examples.core.volume)
 %
-%   %%%seealso STENO3D.CORE.OPTS, STENO3D.CORE.VOLUME
+%   %%%seealso steno3d.core.opts, steno3d.core.Volume
 %
 
 

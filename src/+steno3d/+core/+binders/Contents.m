@@ -1,4 +1,4 @@
-%DATA BINDERS: Adding data to resources in Steno3D
+%Data Binders: Adding data to resources in Steno3D
 %   Steno3D uses data binders to bind %%%ref[DataArrays](steno3d.core.DataArray) to %%%ref[CompositeResources](steno3d.core.CompositeResource).
 %   Because of this, the "Data" property of a resource is a binder (or cell
 %   array of binders). These binders each have two properties:
@@ -50,5 +50,6 @@
 %
 %   For more examples see the DataArray %%%ref[examples](steno3d.examples.core.data)
 %
-%   %%%seealso STENO3D.CORE.DATAARRAY, STENO3D.ADDDATA
+%   %%%seealso steno3d.core.DataArray, steno3d.addData
 %
+%   %%%tree PointBinder LineBinder SurfaceBinder VolumeBinder

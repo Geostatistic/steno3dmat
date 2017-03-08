@@ -7,9 +7,9 @@ classdef Mesh1D < steno3d.core.UserContent
 %
 %   %%%properties
 %
-%   See the %%%ref[EXAMPLES](steno3d.core.examples.line)
+%   See the %%%ref[EXAMPLES](steno3d.examples.core.line)
 %
-%   %%%seealso STENO3D.CORE.LINE, STENO3D.CORE.OPTS.MESH1DOPTIONS
+%   %%%seealso steno3d.core.Line, steno3d.core.opts.Mesh1DOptions
 %
 
 

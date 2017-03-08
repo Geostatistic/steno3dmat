@@ -1,4 +1,4 @@
-%STENO3D:
+%Steno3D:
 %
 %   The Steno3D MATLAB package contains tools to build Steno3D resources
 %   through plotting functions or at the command line, convert existing
@@ -28,7 +28,9 @@
 %   %%%ref[core](steno3d.core)     - Command-line tools for building Steno3D objects from scratch
 %   %%%ref[utils](steno3d.utils)    - Supplemental utilities for figure conversion and web comms
 %
-%   %%%note Steno3D requires MATLAB R2014b or greater %%%versioncheck
-%   and the %%%ref[props](props) package that comes bundled in the steno3dmat
-%   distribution.
+%   %%%note
+%       Steno3D requires MATLAB R2014b or greater %%%versioncheck
+%       and the %%%ref[props](props) package that comes bundled in the steno3dmat
+%       distribution.
 %
+%   %%%tree scatter line surface trisurf volume addData addImage combine convert login upload logout version examples/Contents core/Contents utils/Contents

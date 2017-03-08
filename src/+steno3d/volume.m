@@ -7,8 +7,8 @@ function [proj, vol] = volume(varargin)
 %
 %   `steno3d.volume(origin, data)` creates a Steno3D Project with a Volume
 %   resource as above, offset by 1 x 3 `origin` vector. Cell boundaries are
-%   defined by x = `origin`(1) + (0:m), y = `origin`(2) + (0:n), and
-%   z = `origin`(3) + (0:p).
+%   defined by x = origin(1) + (0:m), y = origin(2) + (0:n), and
+%   z = origin(3) + (0:p).
 %
 %   `steno3d.volume(X, Y, Z, data)` creates a Steno3D Project with a Volume
 %   resource as above. `X`, `Y`, and `Z` are vectors of cell boundaries (with
@@ -34,8 +34,8 @@ function [proj, vol] = volume(varargin)
 %   `project = steno3d.volume(...)` returns `project`, the Steno3D Project that
 %   contains the new Volume resource.
 %
-%   `[project, VOLUME] = steno3d.volume(...)` returns `project`, the Steno3D
-%   Project, and `VOLUME`, the new Volume resource.
+%   `[project, volume] = steno3d.volume(...)` returns `project`, the Steno3D
+%   Project, and `volume`, the new Volume resource.
 %
 %   `steno3d.volume` does not have a MATLAB builtin counterpart. When
 %   plotting a Steno3D Volume locally, its boundaries are displayed in a
@@ -60,8 +60,7 @@ function [proj, vol] = volume(varargin)
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.volume)
 %
-%   %%%seealso STENO3D.CORE.VOLUME, STENO3D.UPLOAD, STENO3D.ADDDATA,
-%   STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.core.Volume, steno3d.upload, steno3d.addData, steno3d.core.Project
 %
 
 

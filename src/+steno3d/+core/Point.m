@@ -11,9 +11,7 @@ classdef Point < steno3d.core.CompositeResource
 %
 %   See the %%%ref[EXAMPLES](steno3d.examples.core.point)
 %
-%   %%%seealso STENO3D.SCATTER, STENO3D.CORE.MESH0D, STENO3D.CORE.BINDERS,
-%   STENO3D.CORE.OPTS.POINTOPTIONS, STENO3D.CORE.COMPOSITERESOURCE,
-%   STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.scatter, steno3d.core.Mesh0D, steno3d.core.binders, steno3d.core.opts.PointOptions, steno3d.core.CompositeResource, steno3d.core.Project
 %
 
 

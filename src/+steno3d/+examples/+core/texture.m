@@ -1,15 +1,14 @@
-%Steno3D Texture2DImage construction examples
+%Texture2DImage construction examples:
 %
 %   %%%extractexamples
 %
 %   %%%runexamples
 %
-%   %%%seealso STENO3D.CORE.TEXTURE2DIMAGE, STENO3D.CORE.POINT,
-%   STENO3D.CORE.SURFACE, STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.core.Texture2DImage, steno3d.core.Point, steno3d.core.Surface, steno3d.core.Project
 %
 
 
-%Example 1: Create a Surface resource and add a %%%ref[Texture2DImage](steno3d.core.Texture2DImage)
+%   Example 1: Create a Surface resource and add a %%%ref[Texture2DImage](steno3d.core.Texture2DImage)
 sfc = steno3d.core.Surface;
 sfc.Mesh = {'H1', ones(10, 1), 'H2', ones(10, 1)};
 tex = steno3d.core.Texture2DImage;
@@ -25,7 +24,7 @@ example1 = steno3d.core.Project(                             ...
 );
 clear sfc tex pngFile;
 
-%Example 2: Create a Point resource and add multiple textures
+%   Example 2: Create a Point resource and add multiple textures
 pts = steno3d.core.Point(                                    ...
     'Mesh', {'Vertices', rand(1000, 3)}                      ...
 );
@@ -46,10 +45,11 @@ example2 = steno3d.core.Project(                             ...
 );
 clear pts;
 
-%Example 3: Add a texture to a sphere to make it look like Earth
+%   Example 3: Add a texture to a sphere to make it look like Earth
 %
-%%%%note The Texture2DImage constructor is called implicitly when
-%constructing sfc by providing a cell array of input parameters.
+%   %%%note
+%       The Texture2DImage constructor is called implicitly when
+%       constructing sfc by providing a cell array of input parameters.
 fig = figure; [x, y, z] = sphere; surf(x, y, z);
 h = findobj('Type', 'surface');
 load earth; hemisphere = [ones(257,125),X,ones(257,125)];

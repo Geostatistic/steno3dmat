@@ -1,5 +1,5 @@
 function logout()
-% LOGOUT Log out of current session on steno3d.com
+%LOGOUT Log out of current session on steno3d.com
 %   `steno3d.logout()` logs user out of their current session with
 %   steno3d.com, deletes current user data from the workspace, and removes
 %   steno3d from the path if it is not on the default path by default.
@@ -14,10 +14,9 @@ function logout()
 %       steno3d.logout();
 %
 %
-%   See more %%%ref[EXAMPLES](steno3d.exampls.upload)
+%   See more %%%ref[EXAMPLES](steno3d.examples.upload)
 %
-%   %%%seealso STENO3D.LOGIN, STENO3D.UPLOAD, UPGRADESTENO3D,
-%   UNINSTALLSTENO3D
+%   %%%seealso steno3d.login, steno3d.upload, upgradeSteno3D, uninstallSteno3D
 %
 
 

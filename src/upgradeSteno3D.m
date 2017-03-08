@@ -7,7 +7,7 @@ function upgradeSteno3D()
 %   On login, Steno3D checks if the current version is out of date. If so,
 %   the user will be prompted to `upgradeSteno3D()`
 %
-%   %%%seealso STENO3D.LOGIN, UNINSTALLSTENO3D, INSTALLSTENO3D, TESTSTENO3D
+%   %%%seealso steno3d.login, uninstallSteno3D, installSteno3D, testSteno3D
 %
 
 

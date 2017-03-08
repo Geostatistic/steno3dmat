@@ -4,7 +4,7 @@ function login(varargin)
 %   key and adds steno3d to your MATLAB path if it is not already added.
 %
 %   `steno3d.login(apikey)` logs in to steno3d.com with API key `apikey`
-%   requested by a Steno3D account holder from their %%%link[profile](https://steno3d.com/settings/developer. APIKEY may
+%   requested by a Steno3D account holder from their %%%link[profile](https://steno3d.com/settings/developer). APIKEY may
 %   also be a username if the API key associated with that username is
 %   saved.
 %
@@ -49,7 +49,7 @@ function login(varargin)
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.upload)
 %
-%   %%%seealso STENO3D.LOGOUT, STENO3D.UPLOAD, UPGRADESTENO3D
+%   %%%seealso steno3d.logout, steno3d.upload, upgradeSteno3D
 %
 
     steno3d.utils.matverchk();

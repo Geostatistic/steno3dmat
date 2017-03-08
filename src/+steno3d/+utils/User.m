@@ -21,7 +21,7 @@ classdef User
         %   OBJ = USER(APIKEY, ENDPT, USERDATA) creates USER object with
         %   steno3d.com APIKEY, ENDPT web address, and user-query response
         %   struct USERDATA.
-        
+
             obj.ApiKey = apikey;
             obj.Endpoint = endpt;
             obj.Uid = userdata.uid;
@@ -43,7 +43,7 @@ classdef User
         %   [LOGGEDIN, USER] = STENO3D.UTILS.ISLOGGEDIN() returns true or
         %   false for LOGGEDIN as described above, and the currently
         %   logged in USER. If LOGGEDIN is false, USER is 'None'.
-        
+
             try
                 user = evalin('base', 'steno3d_user');
                 loggedIn = true;
@@ -56,7 +56,7 @@ classdef User
                       ['The variable used to store user data '          ...
                        '(steno3d_user) exists\nbut does''t contain '    ...
                        'user data.\nPlease `clear steno3d_user` '       ...
-                       'and `steno3d.login() again.'])
+                       'and `steno3d.login()` again.'])
             end
         end
         function user = currentUser()
@@ -64,7 +64,7 @@ classdef User
         %
         %   USER = CURRENTUSER() returns the current Steno3D USER or
         %   errors if no user is logged in.
-            
+
             [loggedIn, user] = steno3d.utils.User.isLoggedIn();
             if ~loggedIn
                 error('steno3d:userError',                              ...

@@ -5,8 +5,7 @@ classdef (Abstract) CompositeResource < steno3d.core.UserContent
 %   define their geometry. They may also have data bound to the mesh, image
 %   textures, and options.
 %
-%   %%%seealso STENO3D.CORE.POINT, STENO3D.CORE.LINE, STENO3D.CORE.SURFACE,
-%   STENO3D.CORE.VOLUME, STENO3D.CORE.USERCONTENT, STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.core.Point, steno3d.core.Line, steno3d.core.Surface, steno3d.core.Volume, steno3d.core.UserContent, steno3d.core.Project
 %
 
 

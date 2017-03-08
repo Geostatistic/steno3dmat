@@ -1,7 +1,7 @@
 classdef Surface < steno3d.core.CompositeResource
 %SURFACE Low-level Steno3D Surface resource
 %   Surfaces are 2D resources. Their geometry is defined by either a
-%   triangulated %%%ref[Mesh2D](steno3d.core.Mesh2D) or a regularly gridded %%%ref[Mesh2DGrid](steno3d.core.Mesh2DGrid. Mesh2D has
+%   triangulated %%%ref[Mesh2D](steno3d.core.Mesh2D) or a regularly gridded %%%ref[Mesh2DGrid](steno3d.core.Mesh2DGrid). Mesh2D has
 %   Vertices connected by Triangles; Mesh2DGrid has regular spacing defined
 %   on two axes. Surfaces may have %%%ref[Data](steno3d.core.DataArray) defined either on the vertices
 %   (nodes) or the faces (cell-centers). There are several %%%ref[surface options](steno3d.core.opts.SurfaceOptions)
@@ -15,10 +15,7 @@ classdef Surface < steno3d.core.CompositeResource
 %
 %   See the %%%ref[EXAMPLES](steno3d.examples.core.surface)
 %
-%   %%%seealso STENO3D.TRISURF, STENO3D.SURFACE, STENO3D.CORE.MESH2D,
-%   STENO3D.CORE.MESH2DGRID, STENO3D.CORE.BINDERS,
-%   STENO3D.CORE.OPTS.SURFACEOPTIONS, STENO3D.CORE.COMPOSITERESOURCE,
-%   STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.trisurf, steno3d.surface, steno3d.core.Mesh2D, steno3d.core.Mesh2DGrid, steno3d.core.binders, steno3d.core.opts.SurfaceOptions, steno3d.core.CompositeResource, steno3d.core.Project
 %
 
 

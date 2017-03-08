@@ -4,10 +4,9 @@ classdef SurfaceBinder < props.HasProps
 %
 %   %%%properties
 %
-%   See the surface %%%ref[EXAMPLES](steno3d.core.examples.surface)
+%   See the surface %%%ref[EXAMPLES](steno3d.examples.core.surface)
 %
-%   %%%seealso STENO3D.CORE.BINDERS, STENO3D.CORE.DATAARRAY,
-%   STENO3D.CORE.SURFACE
+%   %%%seealso steno3d.core.binders, steno3d.core.DataArray, steno3d.core.Surface
 %
 
 

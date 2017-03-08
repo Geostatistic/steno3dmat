@@ -3,11 +3,12 @@ function uninstallSteno3D()
 %   `uninstallSteno3D()` removes steno3d from the MATLAB path and prompts the
 %   user to delete the directory with Steno3D files.
 %
-%   %%%note This function deletes the entire steno3dmat directory if the user
-%   answers yes to a prompt. This will delete any files in that directory
-%   even if they were not part of the original installation.
+%   %%%note
+%       This function deletes the entire steno3dmat directory if the user
+%       answers yes to a prompt. This will delete any files in that directory
+%       even if they were not part of the original installation.
 %
-%   %%%seealso UPGRADESTENO3D, INSTALLSTENO3D
+%   %%%seealso upgradeSteno3D, installSteno3D
 %
 
 

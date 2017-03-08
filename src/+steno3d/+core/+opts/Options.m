@@ -2,7 +2,7 @@ classdef (Abstract) Options < props.HasProps
 %OPTIONS Abstract base class for Steno3D options
 %   For usage details, see the %%%ref[options help](steno3d.core.opts).
 %
-%   %%%seealso STENO3D.CORE.OPTS
+%   %%%seealso steno3d.core.opts
 %
 
 

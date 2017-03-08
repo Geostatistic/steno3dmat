@@ -4,9 +4,9 @@ classdef Mesh1DOptions < steno3d.core.opts.Options
 %
 %   %%%properties
 %
-%   See the line %%%ref[EXAMPLES](steno3d.core.examples.line)
+%   See the line %%%ref[EXAMPLES](steno3d.examples.core.line)
 %
-%   %%%seealso STENO3D.CORE.OPTS, STENO3D.CORE.MESH1D
+%   %%%seealso steno3d.core.opts, steno3d.core.Mesh1D
 %
 
 

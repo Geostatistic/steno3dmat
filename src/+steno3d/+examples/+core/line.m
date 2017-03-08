@@ -1,15 +1,14 @@
-%Steno3D Line resource construction examples
+%Line resource construction examples:
 %
 %   %%%extractexamples
 %
 %   %%%runexamples
 %
-%   %%%seealso STENO3D.CORE.LINE, STENO3D.CORE.MESH1D, STENO3D.CORE.PROJECT,
-%   STENO3D.CORE.DATAARRAY
+%   %%%seealso steno3d.core.Line, steno3d.core.Mesh1D, steno3d.core.Project, steno3d.core.DataArray
 %
 
 
-%Example 1: Create a basic Steno3D %%%ref[Line](steno3d.core.Line) resource
+%   Example 1: Create a basic Steno3D %%%ref[Line](steno3d.core.Line) resource
 lin = steno3d.core.Line;
 verts = [0:30; sin(0:30); cos(0:30)]';
 segs = [1:30; 2:31]';
@@ -21,7 +20,7 @@ example1 = steno3d.core.Project;
 example1.Resources = lin;
 clear lin verts segs mesh;
 
-%Example 2: Create a Line resource and set display options
+%   Example 2: Create a Line resource and set display options
 lin = steno3d.core.Line;
 lin.Title = 'Example 2 Line';
 lin.Description = 'This Line resource will be yellow tubes';
@@ -38,10 +37,11 @@ example2.Description = 'Project with a line';
 example2.Resources = lin;
 clear lin mesh;
 
-%Example 3: Create a Line resource with node %%%ref[data](steno3d.core.DataArray)
+%   Example 3: Create a Line resource with node %%%ref[data](steno3d.core.DataArray)
 %
-%%%%note This constructor encapsulates all the features of lin from
-%Example 2.
+%   %%%note
+%       This constructor encapsulates all the features of lin from
+%       Example 2.
 lin = steno3d.core.Line(                                     ...
     'Title', 'Example 3 Line',                               ...
     'Description', 'This Line resource will have data',      ...
@@ -64,12 +64,13 @@ example3 = steno3d.core.Project(                             ...
 );
 clear lin cosdata;
 
-%Example 4: Create a Steno3D Line with multiple datasets.
+%   Example 4: Create a Steno3D Line with multiple datasets.
 %
-%%%%note There are a couple new features introduced in this
-%consolidated construction. (1) Multiple datasets are assigned
-%as a cell array. (2) Passing cell arrays of parameters (e.g.
-%for Mesh) implicitly calls the correct constructor.
+%   %%%note
+%       There are a couple new features introduced in this
+%       consolidated construction. (1) Multiple datasets are assigned
+%       as a cell array. (2) Passing cell arrays of parameters (e.g.
+%       for Mesh) implicitly calls the correct constructor.
 lin = steno3d.core.Line(                                     ...
     'Title', 'Example 4 Line',                               ...
     'Description', 'This Line resource will have data',      ...

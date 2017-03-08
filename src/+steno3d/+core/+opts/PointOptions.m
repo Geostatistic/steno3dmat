@@ -4,9 +4,9 @@ classdef PointOptions < steno3d.core.opts.Options
 %
 %   %%%properties
 %
-%   See the point %%%ref[EXAMPLES](steno3d.core.examples.point)
+%   See the point %%%ref[EXAMPLES](steno3d.examples.core.point)
 %
-%   %%%seealso STENO3D.CORE.OPTS, STENO3D.CORE.POINT
+%   %%%seealso steno3d.core.opts, steno3d.core.Point
 %
 
 

@@ -15,20 +15,20 @@ function addData(varargin)
 %       [proj, sfc] = steno3d.trisurf(tris, x, y, z, 'r');
 %       steno3d.addData(sfc, 'Cell Center Data', rand(4, 1));
 %
-%   %%%note If the number of cell centers matches the number of nodes (as is
-%   the case in the example above), this function will default to locating
-%   data on cell centers. However, this can be changed programatically:
-%   %%%codeblock
-%       mySurface.Data{end}.Location = 'N';
+%   %%%note
+%       If the number of cell centers matches the number of nodes (as is
+%       the case in the example above), this function will default to locating
+%       data on cell centers. However, this can be changed programatically:
+%       %%%codeblock
+%           mySurface.Data{end}.Location = 'N';
 %
-%   and change the title accordingly:
-%   %%%codeblock
-%       mySurface.Data{end}.Data.Title = 'Node Data';
-%
+%       and change the title accordingly:
+%       %%%codeblock
+%           mySurface.Data{end}.Data.Title = 'Node Data';
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.adddata)
 %
-%   %%%seealso STENO3D.CORE.DATAARRAY, STENO3D.ADDIMAGE, STENO3D.TRISURF
+%   %%%seealso steno3d.core.DataArray, steno3d.addImage, steno3d.trisurf
 %
 
 

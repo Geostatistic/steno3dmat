@@ -4,10 +4,9 @@ classdef PointBinder < props.HasProps
 %
 %   %%%properties
 %
-%   See the point %%%ref[EXAMPLES](steno3d.core.examples.point)
+%   See the point %%%ref[EXAMPLES](steno3d.examples.core.point)
 %
-%   %%%seealso STENO3D.CORE.BINDERS, STENO3D.CORE.DATAARRAY,
-%   STENO3D.CORE.POINT
+%   %%%seealso steno3d.core.binders, steno3d.core.DataArray, steno3d.core.Point
 %
 
 

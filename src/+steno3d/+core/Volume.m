@@ -10,11 +10,9 @@ classdef Volume < steno3d.core.CompositeResource
 %
 %   %%%properties
 %
-%   See the %%%ref[EXAMPLES](steno3d.examples.core.volume
+%   See the %%%ref[EXAMPLES](steno3d.examples.core.volume)
 %
-%   %%%seealso STENO3D.VOLUME, STENO3D.CORE.MESH3DGRID, STENO3D.CORE.BINDERS,
-%   STENO3D.CORE.OPTS.VOLUMEOPTIONS, STENO3D.CORE.COMPOSITERESOURCE,
-%   STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.volume, steno3d.core.Mesh3DGrid, steno3d.core.binders, steno3d.core.opts.VolumeOptions, steno3d.core.CompositeResource, steno3d.core.Project
 %
 
 

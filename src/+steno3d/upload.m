@@ -1,5 +1,5 @@
 function url = upload(handle, privacy)
-% UPLOAD Upload a figure, axes, or Steno3D Project to %%%link[steno3d.com](https://steno3d.com/)
+%UPLOAD Upload a figure, axes, or Steno3D Project to steno3d.com
 %   `steno3d.upload(handle)` uploads Steno3D %%%ref[Project](steno3d.core.Project) `handle` to steno3d.com.
 %   If `handle` is a figure or axes created by a Steno3D plotting function,
 %   the corresponding Project is uploaded. (Note: The the current state of
@@ -37,8 +37,7 @@ function url = upload(handle, privacy)
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.upload)
 %
-%   %%%seealso STENO3D.CONVERT, STENO3D.CORE.PROJECT, STENO3D.LOGIN,
-%   STENO3D.LOGOUT
+%   %%%seealso steno3d.convert, steno3d.core.Project, steno3d.login, steno3d.logout
 %
 
 

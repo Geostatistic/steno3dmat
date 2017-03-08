@@ -1,16 +1,14 @@
-%Steno3D Surface resource construction examples
+%Surface resource construction examples:
 %
 %   %%%extractexamples
 %
 %   %%%runexamples
 %
-%   %%%seealso STENO3D.CORE.SURFACE, STENO3D.CORE.MESH2D,
-%   STENO3D.CORE.MESH2DGRID, STENO3D.CORE.PROJECT, STENO3D.CORE.DATAARRAY,
-%   STENO3D.CORE.TEXTURE2DIMAGE
+%   %%%seealso steno3d.core.Surface, steno3d.core.Mesh2D, steno3d.core.Mesh2DGrid, steno3d.core.Project, steno3d.core.DataArray, steno3d.core.Texture2DImage
 %
 
 
-%Example 1: Create a basic triangulated Steno3D %%%ref[Surface](steno3d.core.Surface)
+%   Example 1: Create a basic triangulated Steno3D %%%ref[Surface](steno3d.core.Surface)
 sfc = steno3d.core.Surface;
 verts = rand(100, 3);
 tris = convhull(verts(:, 1), verts(:, 2), verts(:, 3));
@@ -22,7 +20,7 @@ example1 = steno3d.core.Project;
 example1.Resources = sfc;
 clear sfc tris verts mesh;
 
-%Example 2: Create a basic grid Surface resource and set display options
+%   Example 2: Create a basic grid Surface resource and set display options
 sfc = steno3d.core.Surface;
 sfc.Title = 'Example 2 Grid';
 sfc.Description = 'This Surface will be yellow';
@@ -41,10 +39,11 @@ example2.Description = 'Project with a surface';
 example2.Resources = sfc;
 clear sfc mesh heights;
 
-%Example 3: Create a Surface resource with cell-centered %%%ref[data](steno3d.core.DataArray)
+%   Example 3: Create a Surface resource with cell-centered %%%ref[data](steno3d.core.DataArray)
 %
-%%%%note This constructor encapsulates all the features of sfc (and
-%more) from Example 1.
+%   %%%note
+%       This constructor encapsulates all the features of sfc (and
+%       more) from Example 1.
 v = rand(100, 3);
 t = convhull(v(:, 1), v(:, 2), v(:, 3));
 sfc = steno3d.core.Surface(                                  ...
@@ -70,7 +69,7 @@ example3 = steno3d.core.Project(                             ...
 );
 clear sfc xdata v t;
 
-%Example 4: Create a Surface resource with an %%%ref[image](steno3d.core.Texture2DImage) projected onto it
+%   Example 4: Create a Surface resource with an %%%ref[image](steno3d.core.Texture2DImage) projected onto it
 v = rand(100, 3);
 sfc = steno3d.core.Surface(                                  ...
     'Title', 'Example 4 Surface',                            ...
@@ -98,15 +97,16 @@ example4 = steno3d.core.Project(                             ...
 );
 clear sfc tex pngFile v;
 
-%Example 5: Create a Surface resource with multiple datasets/textures
+%   Example 5: Create a Surface resource with multiple datasets/textures
 %
-%%%%note There are several new features introduced in this highly
-%consolidated construction. (1) Multiple datasets and textures
-%are assigned as a cell array. (2) Passing cell arrays of
-%parameters (e.g. for Mesh) implicitly calls the correct
-%constructor. (3) Specifying O, U, and V in the Mesh2DGrid
-%moves it away from the origin and rotates/skews the axes.
-%(4) The texture attempts to coerce a JPG file to PNG.
+%   %%%note
+%       There are several new features introduced in this highly
+%       consolidated construction. (1) Multiple datasets and textures
+%       are assigned as a cell array. (2) Passing cell arrays of
+%       parameters (e.g. for Mesh) implicitly calls the correct
+%       constructor. (3) Specifying O, U, and V in the Mesh2DGrid
+%       moves it away from the origin and rotates/skews the axes.
+%       (4) The texture attempts to coerce a JPG file to PNG.
 pks = peaks(20);
 sfc = steno3d.core.Surface(                                  ...
     'Title', 'Example 5 Grid',                               ...

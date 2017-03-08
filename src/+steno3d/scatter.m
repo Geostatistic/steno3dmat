@@ -48,8 +48,7 @@ function [proj, pts] = scatter(varargin)
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.scatter)
 %
-%   %%%seealso STENO3D.CORE.POINT, STENO3D.UPLOAD, STENO3D.ADDDATA,
-%   STENO3D.ADDIMAGE, STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.core.Point, steno3d.upload, steno3d.addData, steno3d.addImage, steno3d.core.Project
 %
 
 

@@ -6,9 +6,9 @@ classdef Mesh3DGrid < steno3d.core.UserContent
 %
 %   %%%properties
 %
-%   See the %%%ref[EXAMPLES](steno3d.core.examples.volume)
+%   See the %%%ref[EXAMPLES](steno3d.examples.core.volume)
 %
-%   %%%seealso STENO3D.CORE.VOLUME, STENO3D.CORE.OPTS.MESH3DOPTIONS
+%   %%%seealso steno3d.core.Volume, steno3d.core.opts.Mesh3DOptions
 %
 
 

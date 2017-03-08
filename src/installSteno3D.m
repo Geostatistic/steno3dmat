@@ -11,7 +11,7 @@ function installSteno3D(varargin)
 %       % To install Steno3D to the standard toolbox location
 %       installSteno3D([matlabroot filesep 'toolbox'])
 %
-%   %%%seealso UPGRADESTENO3D, UNINSTALLSTENO3D, TESTSTENO3D
+%   %%%seealso upgradeSteno3D, uninstallSteno3D, testSteno3D
 
 
     if verLessThan('matlab', '8.4')

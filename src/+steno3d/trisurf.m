@@ -23,10 +23,10 @@ function [proj, surf] = trisurf(varargin)
 %   existing Steno3D Project. `project` may also be a figure or axes handle
 %   that was created by a Steno3D plotting function.
 %
-%   project = steno3d.trisurf(...)` returns `project`, the Steno3D Project that
+%   `project = steno3d.trisurf(...)` returns `project`, the Steno3D Project that
 %   contains the new Surface resource.
 %
-%   [project, SURFACE] = steno3d.trisurf(...)` returns `project`, the Steno3D
+%   `[project, SURFACE] = steno3d.trisurf(...)` returns `project`, the Steno3D
 %   Project, and `SURFACE`, the new Surface resource.
 %
 %   `steno3d.trisurf` is useful in conjunction with MATLAB triangulation
@@ -52,8 +52,7 @@ function [proj, surf] = trisurf(varargin)
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.trisurf)
 %
-%   %%%seealso STENO3D.CORE.SURFACE, STENO3D.UPLOAD, STENO3D.ADDDATA,
-%   STENO3D.ADDIMAGE, STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.core.Surface, steno3d.upload, steno3d.addData, steno3d.addImage, steno3d.core.Project
 %
 
 

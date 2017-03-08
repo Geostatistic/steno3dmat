@@ -49,7 +49,7 @@ function proj = convert(handle, varargin)
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.convert)
 %
-%   %%%seealso STENO3D.CORE.PROJECT, STENO3D.COMBINE
+%   %%%seealso steno3d.core.Project, steno3d.combine
 %
 
 

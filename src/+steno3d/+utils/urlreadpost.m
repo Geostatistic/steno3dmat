@@ -21,7 +21,7 @@ function [output,status] = urlreadpost(urlChar,params)
 
 %  2010-04-07 Dan Ellis dpwe@ee.columbia.edu
 
-%  2016-09-27 3ptscience - info@3ptscience.com
+%  2016-09-27 ARANZ Geo Limited - support@steno3d.com
 %      Updated and modified for use with Steno3D
 
 % This function requires Java.

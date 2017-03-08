@@ -17,7 +17,7 @@ classdef Project < steno3d.core.UserContent
 %
 %   See the %%%ref[EXAMPLES](steno3d.examples.core.project)
 %
-%   %%%seealso STENO3D.CORE.COMPOSITERESOURCE, STENO3D.CORE.USERCONTENT
+%   %%%seealso steno3d.core.CompositeResource, steno3d.core.UserContent
 %
 
 

@@ -4,9 +4,9 @@ classdef SurfaceOptions < steno3d.core.opts.Options
 %
 %   %%%properties
 %
-%   See the surface %%%ref[EXAMPLES](steno3d.core.examples.surface)
+%   See the surface %%%ref[EXAMPLES](steno3d.examples.core.surface)
 %
-%   %%%seealso STENO3D.CORE.OPTS, STENO3D.CORE.SURFACE
+%   %%%seealso steno3d.core.opts, steno3d.core.Surface
 %
 
 

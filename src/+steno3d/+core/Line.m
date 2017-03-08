@@ -11,11 +11,9 @@ classdef Line < steno3d.core.CompositeResource
 %
 %   %%%properties
 %
-%   See the %%%ref[EXAMPLES](steno3d.core.examples.line)
+%   See the %%%ref[EXAMPLES](steno3d.examples.core.line)
 %
-%   %%%seealso STENO3D.LINE, STENO3D.CORE.MESH1D, STENO3D.CORE.BINDERS,
-%   STENO3D.CORE.OPTS.LINEOPTIONS, STENO3D.CORE.COMPOSITERESOURCE,
-%   STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.line, steno3d.core.Mesh1D, steno3d.core.binders, steno3d.core.opts.LineOptions, steno3d.core.CompositeResource, steno3d.core.Project
 %
 
 

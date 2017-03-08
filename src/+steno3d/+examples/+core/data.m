@@ -1,16 +1,14 @@
-%Steno3D DataArray construction examples
+%DataArray construction examples:
 %
 %   %%%extractexamples
 %
 %   %%%runexamples
 %
-%   %%%seealso STENO3D.CORE.DATAARRAY, STENO3D.CORE.BINDERS,
-%   STENO3D.CORE.POINT, STENO3D.CORE.MESH0D, STENO3D.CORE.SURFACE,
-%   STENO3D.CORE.MESH2DGRID, STENO3D.CORE.PROJECT
+%   %%%seealso steno3d.core.DataArray, steno3d.core.binders, steno3d.core.Point, steno3d.core.Mesh0D, steno3d.core.Surface, steno3d.core.Mesh2DGrid, steno3d.core.Project
 %
 
 
-%Example 1: Create a %%%ref[Point](steno3d.core.Point) resource and add a %%%ref[DataArray](steno3d.core.DataArray) with random data
+%   Example 1: Create a %%%ref[Point](steno3d.core.Point) resource and add a %%%ref[DataArray](steno3d.core.DataArray) with random data
 pts = steno3d.core.Point;
 pts.Mesh = steno3d.core.Mesh0D;
 pts.Mesh.Vertices = rand(100, 3);
@@ -27,7 +25,7 @@ example1 = steno3d.core.Project(                             ...
 );
 clear pts dat
 
-%Example 2: Create a %%%ref[Surface](steno3d.core.Surface) and add node and cell-center DataArrays
+%   Example 2: Create a %%%ref[Surface](steno3d.core.Surface) and add node and cell-center DataArrays
 sfc = steno3d.core.Surface;
 sfc.Mesh = steno3d.core.Mesh2DGrid;
 sfc.Mesh.H1 = ones(5, 1);

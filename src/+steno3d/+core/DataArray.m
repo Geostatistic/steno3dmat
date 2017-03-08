@@ -5,7 +5,7 @@ classdef DataArray < steno3d.core.UserContent
 %   specified mesh geometry location (nodes or cell centers). For some
 %   types of meshes, this is straightforward (e.g. using %%%ref[Mesh0D](steno3d.core.Mesh0D) the Array
 %   must be equal in length to the Vertices). For gridded meshes
-%   (%%%ref[Mesh2DGrid](steno3d.core.Mesh2DGrid0, %%%ref[Mesh3DGrid](steno3d.core.Mesh3DGrid)), the Array must be unwrapped in the correct
+%   (%%%ref[Mesh2DGrid](steno3d.core.Mesh2DGrid), %%%ref[Mesh3DGrid](steno3d.core.Mesh3DGrid)), the Array must be unwrapped in the correct
 %   order. By default, if you have a matrix of the correct shape
 %   [X-length, Y-length(, Z-length)], flattening with matrix(:) gives the
 %   correct order.
@@ -15,10 +15,9 @@ classdef DataArray < steno3d.core.UserContent
 %
 %   %%%properties
 %
-%   See the %%%[EXAMPLES](steno3d.core.examples.data)
+%   See the %%%ref[EXAMPLES](steno3d.examples.core.data)
 %
-%   %%%seealso STENO3D.ADDDATA, STENO3D.CORE.BINDERS,
-%   STENO3D.CORE.COMPOSITERESOURCE, STENO3D.CORE.TEXTURE2DIMAGE
+%   %%%seealso steno3d.addData, steno3d.core.binders, steno3d.core.CompositeResource, steno3d.core.Texture2DImage
 %
 
 

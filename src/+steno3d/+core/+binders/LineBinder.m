@@ -4,10 +4,9 @@ classdef LineBinder < props.HasProps
 %
 %   %%%properties
 %
-%   See the line %%%ref[EXAMPLES](steno3d.core.examples.line)
+%   See the line %%%ref[EXAMPLES](steno3d.examples.core.line)
 %
-%   %%%seealso STENO3D.CORE.BINDERS, STENO3D.CORE.DATAARRAY,
-%   STENO3D.CORE.LINE
+%   %%%seealso steno3d.core.binders, steno3d.core.DataArray, steno3d.core.Line
 %
 
 

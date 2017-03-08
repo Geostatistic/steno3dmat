@@ -1,4 +1,4 @@
-%EXAMPLES: Steno3D Example Scripts
+%Examples: Steno3D Example Scripts
 %
 %   %%%bold[Logging-In and Uploading to steno3d.com]
 %   %%%ref[upload](steno3d.examples.upload)  - Steno3D upload examples
@@ -24,3 +24,5 @@
 %   %%%ref[volume](steno3d.examples.core.volume)  - Steno3D Volume resource construction examples
 %   %%%ref[data](steno3d.examples.core.data)    - Steno3D DataArray construction examples
 %   %%%ref[texture](steno3d.examples.core.texture) - Steno3D Texture2DImage construction examples
+%
+%   %%%tree upload scatter line surface trisurf volume adddata addimage combine convert core/Contents
