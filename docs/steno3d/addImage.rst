@@ -40,7 +40,8 @@ Example:
 
 .. code::
 
-        [x, y, z] = sphere; surf(x, y, z); h = findobj('Type', 'surface');
+    % Generate a png image
+    [x, y, z] = sphere; surf(x, y, z); h = findobj('Type', 'surface');
     load earth; hemisphere = [ones(257,125), X, ones(257,125)];
     set(h, 'CData', flipud(hemisphere), 'FaceColor', 'texturemap');
     colormap(map); axis equal; view([90 0]);
@@ -48,10 +49,12 @@ Example:
     ax = gca; ax.Position = [0 0 1 1];
     pngFile = [tempname '.png'];
     print(fig, '-dpng', tempFile);
-        verts = [x(:) y(:) z(:)];
+    % Create a surface
+    verts = [x(:) y(:) z(:)];
     tris = convhull(x(:), y(:), z(:));
     [proj, sfc] = steno3d.trisurf(tris, verts);
-        steno3d.addImage(sfc, pngFile, 'X', 2, 'Z', 2, [-1 -1 -1],      ...
+    % Add the image
+    steno3d.addImage(sfc, pngFile, 'X', 2, 'Z', 2, [-1 -1 -1],      ...
                      'Hemisphere');
 
 

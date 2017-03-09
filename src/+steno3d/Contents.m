@@ -1,4 +1,4 @@
-%Steno3D:
+%Steno3D MATLAB Package:
 %
 %   The Steno3D MATLAB package contains tools to build Steno3D resources
 %   through plotting functions or at the command line, convert existing
@@ -24,9 +24,9 @@
 %   %%%func[logout](steno3d.logout)   - Log out of current session on steno3d.com
 %
 %   %%%bold[Additional Packages]:
-%   %%%ref[examples](steno3d.examples) - Example scripts to demonstrate Steno3D
-%   %%%ref[core](steno3d.core)     - Command-line tools for building Steno3D objects from scratch
-%   %%%ref[utils](steno3d.utils)    - Supplemental utilities for figure conversion and web comms
+%   %%%ref[Examples](steno3d.examples) - Example scripts to demonstrate Steno3D
+%   %%%ref[Core](steno3d.core)     - Command-line tools for building Steno3D objects from scratch
+%   %%%ref[Utils](steno3d.utils)    - Supplemental utilities for figure conversion and web comms
 %
 %   %%%note
 %       Steno3D requires MATLAB R2014b or greater %%%versioncheck

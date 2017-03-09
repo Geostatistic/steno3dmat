@@ -1,4 +1,4 @@
-%Props:
+%Props MATLAB Package:
 %
 %   The Props MATLAB package facilitates the creation of classes with
 %   type-checked, validated properties through a relatively simple,

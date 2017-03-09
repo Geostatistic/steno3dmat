@@ -10,9 +10,8 @@ Basic property with no given type
 Used with subclasses of :ref:`props.HasProps <propshasprops>`, a PROPS.PROP instance is
 created dynamically on class instantiation based on a declarative,
 immutable property of the props.HasProps class. For more information
-about to use PROPS.PROP, see :ref:`props.HasProps <propshasprops>`, a <a href="matlab: help props.examples.CandyJar
-">simple example</a>, or the
-specific types listed below.
+about to use PROPS.PROP, see :ref:`props.HasProps <propshasprops>` or the specific
+types listed below.
 
 **Attributes**:
 
