@@ -1,7 +1,7 @@
 function buildFromSrc(buildtype)
 %BUILDFROMSRC Builds docs and build directories from src
 %
-%   BUILDFROMSRC('build') builds the matlab files in ./build/
+%   BUILDFROMSRC('build') builds the matlab files in ./steno3dmat/
 %
 %   BUILDFROMSRC('docs') builds the sphinx rst files in ./docs/
 %   After building docs, you must run 'make html' from within the docs/
@@ -19,6 +19,7 @@ function buildFromSrc(buildtype)
     };
     if strcmp(buildtype, 'docs')
         ignore = [ignore; {
+            [pwd filesep 'src' filesep 'Contents.m'],
             [pwd filesep 'src' filesep '+props' filesep '+examples'],
             [pwd filesep 'src' filesep '+props' filesep '+utils'],
             [pwd filesep 'src' filesep '+steno3d' filesep '+utils' filesep '+convert'],
@@ -42,24 +43,32 @@ function buildFromSrc(buildtype)
         }];
     end
 
-    copyFolder([pwd filesep 'src'], [pwd filesep buildtype], pwd, buildtype, ignore);
+    if strcmp(buildtype, 'build')
+        builddir = 'steno3dmat';
+    else
+        builddir = buildtype;
+    end
+    copyFolder([pwd filesep 'src'], [pwd filesep builddir], pwd, buildtype, ignore);
 
     if strcmp(buildtype, 'docs')
         copyfile([pwd filesep 'src' filesep 'conf.py'], [pwd filesep 'docs']);
         copyfile([pwd filesep 'src' filesep 'Makefile'], [pwd filesep 'docs']);
+        writeIndex(pwd);
     else
         copyfile(                                                       ...
             [pwd filesep 'src' filesep '+props' filesep '+utils' filesep 'autodoc.m'], ...
-            [pwd filesep 'build' filesep '+props' filesep '+utils' filesep 'autodoc.m'] ...
+            [pwd filesep 'steno3dmat' filesep '+props' filesep '+utils' filesep 'autodoc.m'] ...
         );
         copyfile(                                                       ...
             [pwd filesep 'src' filesep '+props' filesep '+utils' filesep 'autodocstring.m'], ...
-            [pwd filesep 'build' filesep '+props' filesep '+utils' filesep 'autodocstring.m'] ...
+            [pwd filesep 'steno3dmat' filesep '+props' filesep '+utils' filesep 'autodocstring.m'] ...
         )
         copyfile(                                                       ...
             [pwd filesep 'src' filesep '+steno3d' filesep '+utils'], ...
-            [pwd filesep 'build' filesep '+steno3d' filesep '+utils'] ...
+            [pwd filesep 'steno3dmat' filesep '+steno3d' filesep '+utils'] ...
         )
+        copyfile([pwd filesep 'LICENSE'], [pwd filesep 'steno3dmat']);
+        copyfile([pwd filesep 'README'], [pwd filesep 'steno3dmat']);
     end
 
 end
@@ -126,14 +135,14 @@ function copyFolder(source, dest, base, buildtype, ignore)
         srcline = fgetl(srcfid);
         while isempty(srcline) || all(srcline ~= -1)
             if strcmp(buildtype, 'build')
-                newline = strrep(buildFormat(srcline, srcitem), '%', '%%');
+                newline = buildFormat(srcline, srcitem);
             else
                 newline = sphinxFormat(srcline, srcitem);
                 if newline == -1
                     break;
                 end
             end
-            newline = [newline '\n'];
+            newline = [strrep(newline, '%', '%%') '\n'];
             fprintf(destfid, newline);
             srcline = fgetl(srcfid);
         end
@@ -142,6 +151,29 @@ function copyFolder(source, dest, base, buildtype, ignore)
         fclose(destfid);
     end
 end
+
+function writeIndex(basedir)
+    readmefid = fopen([basedir filesep 'README.rst'], 'r');
+    indexfid = fopen([basedir filesep 'docs' filesep 'index.rst'], 'w');
+
+    fprintf(indexfid, '.. _index:\n\n');
+    srcline = fgetl(readmefid);
+    while isempty(srcline) || all(srcline ~= -1)
+        fprintf(indexfid, [escape(srcline) '\n']);
+        srcline = fgetl(readmefid);
+    end
+
+    fprintf(indexfid, '\n.. toctree::\n    :maxdepth: 2\n\n');
+    fprintf(indexfid, '    steno3d/Contents\n');
+    fprintf(indexfid, '    props/Contents\n');
+    fprintf(indexfid, '    installSteno3D\n');
+    fprintf(indexfid, '    upgradeSteno3D\n');
+    fprintf(indexfid, '    uninstallSteno3D\n');
+    fprintf(indexfid, '    testSteno3D\n');
+    fclose(readmefid);
+    fclose(indexfid);
+end
+
 
 function absfuncname = absname(srcitem)
     absfuncname = strsplit(srcitem, ['src' filesep]);
@@ -377,7 +409,7 @@ function srcline = sphinxFormat(srcline, srcitem)
             '    ' absname(srcitem) '\n\n'                              ...
             'Then plot the projects with:\n\n'                          ...
             '.. code::\n\n'                                             ...
-            '    example1.plot(); %% etc...\n\n'                         ...
+            '    example1.plot(); % etc...\n\n'                         ...
         ];
     end
 

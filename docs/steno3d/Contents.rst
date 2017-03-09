@@ -1,7 +1,7 @@
 .. _steno3d:
 
-Steno3D
-=======
+Steno3D MATLAB Package
+======================
 
 
 
@@ -42,11 +42,11 @@ to `steno3d.com <https://steno3d.com>`_.
 
 **Additional Packages**:
 
- :ref:`examples <steno3dexamples>` - Example scripts to demonstrate Steno3D
+ :ref:`Examples <steno3dexamples>` - Example scripts to demonstrate Steno3D
 
- :ref:`core <steno3dcore>`     - Command-line tools for building Steno3D objects from scratch
+ :ref:`Core <steno3dcore>`     - Command-line tools for building Steno3D objects from scratch
 
- :ref:`utils <steno3dutils>`    - Supplemental utilities for figure conversion and web comms
+ :ref:`Utils <steno3dutils>`    - Supplemental utilities for figure conversion and web comms
 
 .. note::
 

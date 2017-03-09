@@ -6,7 +6,8 @@ function installSteno3D(varargin)
 %   `installSteno3D(folder)` copies steno3dmat to `folder` and adds steno3d to
 %   the default MATLAB path.
 %
-%   Steno3D requires MATLAB R2014b or later %%%versioncheck
+%   %%%note
+%       Steno3D requires MATLAB R2014b or later %%%versioncheck
 %   %%%codeblock
 %       % To install Steno3D to the standard toolbox location
 %       installSteno3D([matlabroot filesep 'toolbox'])

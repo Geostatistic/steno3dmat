@@ -1,7 +1,7 @@
 .. _props:
 
-Props
-=====
+Props MATLAB Package
+====================
 
 
 

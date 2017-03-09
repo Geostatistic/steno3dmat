@@ -13,20 +13,23 @@ be created implicitly using cell arrays as shown in the example below.
 
 .. code::
 
-        mySurface = steno3d.core.Surface;
+    % Initialize a Steno3D Surface resource
+    mySurface = steno3d.core.Surface;
     mySurface.Mesh = steno3d.core.Mesh2DGrid(                    ...
         'H1', ones(10, 1),                                       ...
         'H2', ones(20, 1)                                        ...
     );
 
-        myPoint.Opts = steno3d.core.opts.PointOptions(               ...
+    % Explicit options construction (NOT RECOMMENDED)
+    myPoint.Opts = steno3d.core.opts.PointOptions(               ...
         'Opacity', .75, 'Color', 'r'                             ...
     );
     myPoint.Mesh.Opts = steno3d.core.opts.Mesh2DOptions(         ...
         'Wireframe', true                                        ...
     );
 
-        myPoint.Opts = {'Opacity', .75, 'Color', 'r'};
+    % Implicit data binder construction (RECOMMENDED)
+    myPoint.Opts = {'Opacity', .75, 'Color', 'r'};
     myPoint.Mesh.Opts = {'Wireframe', true};
 
 **Options Types**:

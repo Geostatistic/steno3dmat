@@ -46,6 +46,7 @@ U-cross-V direction, z-direction by default). :code:`Mesh2DGrid` has additional
 
 
 
-See the 
+See the %ref[EXAMPLES](steno3d.examples.core.surface)
+
 See also :ref:`steno3d.core.Surface <steno3dcoresurface>`, :ref:`steno3d.core.opts.Mesh2DOptions <steno3dcoreoptsmesh2doptions>`
 
