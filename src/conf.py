@@ -45,7 +45,7 @@ extensions = [
 source_suffix = '.rst'
 
 # The master toctree document.
-master_doc = 'Contents'
+master_doc = 'index'
 
 # General information about the project.
 project = u'steno3dmat'
@@ -161,6 +161,16 @@ texinfo_documents = [
      author, 'steno3dmat', 'One line description of project.',
      'Miscellaneous'),
 ]
+
+
+import sphinx.environment
+from docutils.utils import get_source_line
+
+def _supress_nonlocal_image_warn(self, msg, node, **kwargs):
+    if not msg.startswith('nonlocal image URI found:'):
+        self._warnfunc(msg, '%s:%s' % get_source_line(node), **kwargs)
+
+sphinx.environment.BuildEnvironment.warn_node = _supress_nonlocal_image_warn
 
 
 

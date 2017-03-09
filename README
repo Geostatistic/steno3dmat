@@ -4,33 +4,37 @@ Steno3D
 Welcome to the MATLAB client library for Steno3D (https://steno3d.com)
 by ARANZ Geo Limited (https://www.aranzgeo.com).
 
-NOTE: This library is in PRE-RELEASE. Please submit any issues or feedback on
+WARNING: This library is in PRE-RELEASE. Please submit any issues or feedback on
 github (https://github.com/3ptscience/steno3dmat/issues). There will very
 likely be backwards-incompatible changes as development continues. You can
 follow along with new releases at https://github.com/3ptscience/steno3dmat/releases.
 
 If you have not yet installed Steno3D for MATLAB, you can
 download the zip file (https://github.com/3ptscience/steno3dmat/releases/latest)
-then in MATLAB (R2014b or greater):
+then in MATLAB:
 
     >> cd Downloads/
     >> unzip('steno3dmat.zip')
     >> cd steno3dmat
     >> installSteno3D
 
+NOTE: Steno3D requires MATLAB version R2014b or later.
+
 You also need to sign up for a Steno3D account (https://steno3d.com/signup).
 From there, you can request a developer API key (https://steno3d.com/settings/developer).
 
-At that point, you can
+At that point, login and start uploading your MATLAB figures
 
     >> steno3d.login()
+    >> peaks;
+    >> proj = steno3d.convert(gcf);
+    >> proj.upload;
 
-then start uploading your MATLAB figures. Function and API documentation is
-available through the MATLAB help browser or at the command line with
+Function and API documentation is available from within MATLAB
 
-    >> help steno3d
+    >> help steno3d;
 
-and following the links from there.
+or online (http://steno3dmat.readthedocs.io).
 
 If you run into problems or if you see a new release on github
 (https://github.com/3ptscience/steno3dmat/releases), you can upgrade in MATLAB:

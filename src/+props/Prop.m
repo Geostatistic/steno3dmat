@@ -3,9 +3,8 @@ classdef Prop
 %   Used with subclasses of %%%ref[props.HasProps](props.HasProps), a PROPS.PROP instance is
 %   created dynamically on class instantiation based on a declarative,
 %   immutable property of the props.HasProps class. For more information
-%   about to use PROPS.PROP, see %%%ref[props.HasProps](props.HasProps), a <a href="matlab: help props.examples.CandyJar
-%   ">simple example</a>, or the
-%   specific types listed below.
+%   about to use PROPS.PROP, see %%%ref[props.HasProps](props.HasProps) or the specific
+%   types listed below.
 %
 %   %%%bold[Attributes]:
 %

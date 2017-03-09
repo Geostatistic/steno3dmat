@@ -97,5 +97,5 @@ ENV/
 # MATLAB
 *~
 releases/
-build/
 docs/_build/
+steno3dmat/
