@@ -15,7 +15,7 @@ function testBumpZip()
         return
     end
     testpath = which('testSteno3D');
-    if strfind(testpath, 'build')
+    if strfind(testpath, ['steno3dmat' filesep 'steno3dmat'])
 
         fprintf('Running tests\n');
         success = testSteno3D();
