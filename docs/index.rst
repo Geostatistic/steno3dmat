@@ -1,3 +1,5 @@
+.. _index:
+
 Steno3D
 *******
 
@@ -65,3 +67,13 @@ If your problems persist, please submit an `issue <https://github.com/3ptscience
 
 The latest version of Steno3D is 0.0.3. Detailed release notes are
 `available on github <https://github.com/3ptscience/steno3dmat/releases>`_.
+
+.. toctree::
+    :maxdepth: 2
+
+    steno3d/Contents
+    props/Contents
+    installSteno3D
+    upgradeSteno3D
+    uninstallSteno3D
+    testSteno3D
