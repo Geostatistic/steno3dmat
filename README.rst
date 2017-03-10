@@ -4,6 +4,9 @@
     :target: https://steno3d.com/
     :alt: Steno3D
 
+|
+|
+
 .. image:: https://img.shields.io/badge/docs-latest-brightgreen.svg
     :alt: ReadTheDocs
     :target: http://steno3dmat.readthedocs.io/en/latest/
