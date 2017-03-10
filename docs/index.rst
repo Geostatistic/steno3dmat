@@ -1,7 +1,13 @@
 .. _index:
 
-Steno3D
-*******
+.. image:: https://raw.githubusercontent.com/3ptscience/steno3dpy/master/docs/images/steno3d_logo.png
+    :width: 240
+    :align: center
+    :target: https://steno3d.com/
+    :alt: Steno3D
+
+|
+|
 
 .. image:: https://img.shields.io/badge/docs-latest-brightgreen.svg
     :alt: ReadTheDocs
@@ -12,7 +18,18 @@ Steno3D
     :target: https://github.com/3ptscience/steno3dmat/blob/master/LICENSE
 
 Welcome to the MATLAB client library for `Steno3D <https://steno3d.com>`_
-by `ARANZ Geo Limited <https://www.aranzgeo.com>`_.
+by `ARANZ Geo Limited <https://www.aranzgeo.com>`_. Explore and collaborate
+on your 3D data!
+
+Demo Video
+----------
+
+.. image:: https://img.youtube.com/vi/So1puiHry2o/0.jpg
+    :target: https://www.youtube.com/watch?v=So1puiHry2o
+    :alt: steno3dmat demo
+
+Quickstart
+----------
 
 .. warning::
 
