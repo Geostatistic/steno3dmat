@@ -94,6 +94,8 @@ except Exception, e:
     html_theme = 'default'
 # html_theme = 'alabaster'
 
+html_favicon = 'https://raw.githubusercontent.com/3ptscience/steno3dpy/master/docs/images/steno3d_icon.ico'
+
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.

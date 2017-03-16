@@ -157,19 +157,23 @@ function writeIndex(basedir)
     indexfid = fopen([basedir filesep 'docs' filesep 'index.rst'], 'w');
 
     fprintf(indexfid, '.. _index:\n\n');
+    fprintf(indexfid, 'Steno3D MATLAB Client\n=====================\n\n');
     srcline = fgetl(readmefid);
     while isempty(srcline) || all(srcline ~= -1)
         fprintf(indexfid, [escape(srcline) '\n']);
         srcline = fgetl(readmefid);
     end
 
-    fprintf(indexfid, '\n.. toctree::\n    :maxdepth: 2\n\n');
+
+    fprintf(indexfid, '\nContents\n********\n\n');
+    fprintf(indexfid, '.. toctree::\n    :maxdepth: 2\n\n');
     fprintf(indexfid, '    steno3d/Contents\n');
     fprintf(indexfid, '    props/Contents\n');
     fprintf(indexfid, '    installSteno3D\n');
     fprintf(indexfid, '    upgradeSteno3D\n');
     fprintf(indexfid, '    uninstallSteno3D\n');
-    fprintf(indexfid, '    testSteno3D\n');
+    fprintf(indexfid, '    testSteno3D\n\n');
+    fprintf(indexfid, 'Index\n*****\n\n* :ref:`genindex`\n')
     fclose(readmefid);
     fclose(indexfid);
 end
