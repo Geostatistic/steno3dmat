@@ -1,4 +1,32 @@
-function buildFromSrc(buildtype)
+function buildFromSrc()
+
+    items = {'images', 'Makefile', 'conf.py'};
+
+    for i=1:3
+        src_exists = exist([pwd filesep 'src' filesep items{i}]);
+        docs_exist = exist([pwd filesep 'docs' filesep items{i}]);
+        if ~src_exists && docs_exist
+            movefile([pwd filesep 'docs' filesep items{i}], [pwd filesep 'src']);
+        elseif src_exists && docs_exist
+            error('steno3d:buildError',                                     ...
+                  ['dual item ' items{i} ' found in docs and src']);
+        elseif ~src_exists && ~docs_exist
+            error('steno3d:buildError', ['no item ' items{i} ' found']);
+        end
+    end
+    if exist([pwd filesep 'docs'])
+        rmdir([pwd filesep 'docs'], 's');
+    end
+    if exist([pwd filesep 'steno3dmat'])
+        rmdir([pwd filesep 'steno3dmat'], 's');
+    end
+    addpath([pwd filesep 'src'])
+    buildFolderFromSrc('docs');
+    buildFolderFromSrc('build');
+    rmpath([pwd filesep 'src'])
+end
+
+function buildFolderFromSrc(buildtype)
 %BUILDFROMSRC Builds docs and build directories from src
 %
 %   BUILDFROMSRC('build') builds the matlab files in ./steno3dmat/
@@ -16,6 +44,7 @@ function buildFromSrc(buildtype)
     ignore = {
         [pwd filesep 'src' filesep 'conf.py'],
         [pwd filesep 'src' filesep 'Makefile'],
+        [pwd filesep 'src' filesep 'images']
     };
     if strcmp(buildtype, 'docs')
         ignore = [ignore; {
@@ -51,9 +80,10 @@ function buildFromSrc(buildtype)
     copyFolder([pwd filesep 'src'], [pwd filesep builddir], pwd, buildtype, ignore);
 
     if strcmp(buildtype, 'docs')
-        copyfile([pwd filesep 'src' filesep 'conf.py'], [pwd filesep 'docs']);
-        copyfile([pwd filesep 'src' filesep 'Makefile'], [pwd filesep 'docs']);
+        movefile([pwd filesep 'src' filesep 'conf.py'], [pwd filesep 'docs']);
+        movefile([pwd filesep 'src' filesep 'Makefile'], [pwd filesep 'docs']);
         writeIndex(pwd);
+        movefile([pwd filesep 'src' filesep 'images'], [pwd filesep 'docs'])
     else
         copyfile(                                                       ...
             [pwd filesep 'src' filesep '+props' filesep '+utils' filesep 'autodoc.m'], ...
@@ -308,6 +338,11 @@ function srcline = buildFormat(srcline, srcitem)
         srcline = '';
     end
 
+    %images
+    if strfind(srcline, '%%%image')
+        srcline = '';
+    end
+
     if strfind(srcline, '%%%')
         error('steno3d:builderror', ['tag replacement failed: ' escape(srcline)]);
     end
@@ -475,6 +510,9 @@ function srcline = sphinxFormat(srcline, srcitem)
         sources = strrep(sources{2}, ' ', '\n    ');
         srcline = ['\n.. toctree::\n    :maxdepth: 2\n    :hidden:\n' sources];
     end
+
+    %image
+    srcline = strrep(srcline, '%%%image', '.. image::');
 
     srcline = strrep(srcline, '''@', '''\\@');
 

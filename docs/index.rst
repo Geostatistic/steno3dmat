@@ -1,5 +1,8 @@
 .. _index:
 
+Steno3D MATLAB Client
+=====================
+
 .. image:: https://raw.githubusercontent.com/3ptscience/steno3dpy/master/docs/images/steno3d_logo.png
     :width: 240
     :align: center
@@ -85,6 +88,9 @@ If your problems persist, please submit an `issue <https://github.com/3ptscience
 The latest version of Steno3D is 0.0.3. Detailed release notes are
 `available on github <https://github.com/3ptscience/steno3dmat/releases>`_.
 
+Contents
+********
+
 .. toctree::
     :maxdepth: 2
 
@@ -94,3 +100,8 @@ The latest version of Steno3D is 0.0.3. Detailed release notes are
     upgradeSteno3D
     uninstallSteno3D
     testSteno3D
+
+Index
+*****
+
+* :ref:`genindex`
