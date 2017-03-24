@@ -36,6 +36,38 @@ the uploaded :code:`Project` is returned and can also be accessed with the
 
 
 
+**Available Methods**:
+
+* **upload**:
+
+    :code:`p.upload()` validates and uploads to steno3d.com the project or
+    array of projects :code:`p`.
+
+    :code:`url = p.upload()` returns the :code:`url` or URLs of the uploaded
+    project(s).
+
+* **url**:
+
+    :code:`url = p.url()` returns the :code:`url` of an uploaded project :code:`p` or cell
+    array of URLs if :code:`p` is an array of projects. This method raises
+    an error if a project isn't uploaded.
+
+* **plot**:
+
+    :code:`p.plot()` plots the project :code:`p` in a new figure window. If :code:`p` is
+    an array of multiple projects, each is plotted in a new
+    window.
+
+    :code:`p.plot(ax)` plots the project(s) :code:`p` in an existing axes :code:`ax`.
+
+    :code:`ax = p.plot(...)` returns :code:`ax`, the axes handle of the plot or a
+    cell array of axes handles if :code:`p` is an array of multiple projects.
+
+    It is recommended to call :code:`plot` with no arguments (not provide
+    :code:`ax` ). This prevents loss of graphics objects unrelated to the
+    project and ensures that uploading the axes will correctly
+    upload the project.
+
 See the :ref:`EXAMPLES <steno3dexamplescoreproject>`
 
 See also :ref:`steno3d.core.CompositeResource <steno3dcorecompositeresource>`, :ref:`steno3d.core.UserContent <steno3dcoreusercontent>`
