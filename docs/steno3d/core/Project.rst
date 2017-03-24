@@ -64,7 +64,7 @@ the uploaded :code:`Project` is returned and can also be accessed with the
     cell array of axes handles if :code:`p` is an array of multiple projects.
 
     It is recommended to call :code:`plot` with no arguments (not provide
-    :code:`ax` ). This prevents loss of graphics objects unrelated to the
+    :code:`ax`). This prevents loss of graphics objects unrelated to the
     project and ensures that uploading the axes will correctly
     upload the project.
 

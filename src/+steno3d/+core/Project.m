@@ -17,7 +17,7 @@ classdef Project < steno3d.core.UserContent
 %
 %   %%%bold[Available Methods]:
 %
-%   * %%%bold[upload]:
+%   * %%%matlabref[upload](steno3d.core.Project.upload):
 %
 %       `p.upload()` validates and uploads to steno3d.com the project or
 %       array of projects `p`.
@@ -25,13 +25,13 @@ classdef Project < steno3d.core.UserContent
 %       `url = p.upload()` returns the `url` or URLs of the uploaded
 %       project(s).
 %
-%   * %%%bold[url]:
+%   * %%%matlabref[url](steno3d.core.Project.url):
 %
 %       `url = p.url()` returns the `url` of an uploaded project `p` or cell
 %       array of URLs if `p` is an array of projects. This method raises
 %       an error if a project isn't uploaded.
 %
-%   * %%%bold[plot]:
+%   * %%%matlabref[plot](steno3d.core.Project.plot):
 %
 %       `p.plot()` plots the project `p` in a new figure window. If `p` is
 %       an array of multiple projects, each is plotted in a new
@@ -43,7 +43,7 @@ classdef Project < steno3d.core.UserContent
 %       cell array of axes handles if `p` is an array of multiple projects.
 %
 %       It is recommended to call `plot` with no arguments (not provide
-%       `ax` ). This prevents loss of graphics objects unrelated to the
+%       `ax`). This prevents loss of graphics objects unrelated to the
 %       project and ensures that uploading the axes will correctly
 %       upload the project.
 %
