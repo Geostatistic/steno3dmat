@@ -36,7 +36,7 @@ contains the new Line resource.
 :code:`[project, line] = steno3d.line(...)` returns :code:`project`, the Steno3D
 Project, and :code:`line`, the new Line resource.
 
-Unlike the MATLAB builtin :code:`line` function, :code:`steno3d.line` requires 3D data
+Unlike the MATLAB builtin **line** function, :code:`steno3d.line` requires 3D data
 and does not support any additional property/value pairs. After
 creating a Line resource with :code:`steno3d.line`, properties of the Line
 object can be directly modified.

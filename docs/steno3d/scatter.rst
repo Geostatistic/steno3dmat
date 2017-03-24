@@ -32,8 +32,8 @@ that contains the new Point resource.
 :code:`[project, points] = steno3d.scatter(...)` returns :code:`project`, the Steno3D
 Project, and :code:`points`, the new Point resource.
 
-:code:`steno3d.scatter` is more similar to the MATLAB builtin function :code:`scatter3`
-than the builtin function :code:`scatter` since it requres a 3D dataset.
+:code:`steno3d.scatter` is more similar to the MATLAB builtin function **scatter3**
+than the builtin function **scatter** since it requres a 3D dataset.
 Unlike the builtin functions, :code:`steno3d.scatter` does not support any
 additional property/value pairs. After creating a Point resource with
 :code:`steno3d.scatter`, properties for the Point object can be directly

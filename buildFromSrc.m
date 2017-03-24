@@ -1,4 +1,32 @@
-function buildFromSrc(buildtype)
+function buildFromSrc()
+
+    items = {'images', 'Makefile', 'conf.py'};
+
+    for i=1:3
+        src_exists = exist([pwd filesep 'src' filesep items{i}]);
+        docs_exist = exist([pwd filesep 'docs' filesep items{i}]);
+        if ~src_exists && docs_exist
+            movefile([pwd filesep 'docs' filesep items{i}], [pwd filesep 'src']);
+        elseif src_exists && docs_exist
+            error('steno3d:buildError',                                     ...
+                  ['dual item ' items{i} ' found in docs and src']);
+        elseif ~src_exists && ~docs_exist
+            error('steno3d:buildError', ['no item ' items{i} ' found']);
+        end
+    end
+    if exist([pwd filesep 'docs'])
+        rmdir([pwd filesep 'docs'], 's');
+    end
+    if exist([pwd filesep 'steno3dmat'])
+        rmdir([pwd filesep 'steno3dmat'], 's');
+    end
+    addpath([pwd filesep 'src']);
+    buildFolderFromSrc('docs');
+    buildFolderFromSrc('build');
+    rmpath([pwd filesep 'src']);
+end
+
+function buildFolderFromSrc(buildtype)
 %BUILDFROMSRC Builds docs and build directories from src
 %
 %   BUILDFROMSRC('build') builds the matlab files in ./steno3dmat/
@@ -16,6 +44,7 @@ function buildFromSrc(buildtype)
     ignore = {
         [pwd filesep 'src' filesep 'conf.py'],
         [pwd filesep 'src' filesep 'Makefile'],
+        [pwd filesep 'src' filesep 'images']
     };
     if strcmp(buildtype, 'docs')
         ignore = [ignore; {
@@ -51,9 +80,10 @@ function buildFromSrc(buildtype)
     copyFolder([pwd filesep 'src'], [pwd filesep builddir], pwd, buildtype, ignore);
 
     if strcmp(buildtype, 'docs')
-        copyfile([pwd filesep 'src' filesep 'conf.py'], [pwd filesep 'docs']);
-        copyfile([pwd filesep 'src' filesep 'Makefile'], [pwd filesep 'docs']);
+        movefile([pwd filesep 'src' filesep 'conf.py'], [pwd filesep 'docs']);
+        movefile([pwd filesep 'src' filesep 'Makefile'], [pwd filesep 'docs']);
         writeIndex(pwd);
+        movefile([pwd filesep 'src' filesep 'images'], [pwd filesep 'docs']);
     else
         copyfile(                                                       ...
             [pwd filesep 'src' filesep '+props' filesep '+utils' filesep 'autodoc.m'], ...
@@ -62,11 +92,11 @@ function buildFromSrc(buildtype)
         copyfile(                                                       ...
             [pwd filesep 'src' filesep '+props' filesep '+utils' filesep 'autodocstring.m'], ...
             [pwd filesep 'steno3dmat' filesep '+props' filesep '+utils' filesep 'autodocstring.m'] ...
-        )
+        );
         copyfile(                                                       ...
             [pwd filesep 'src' filesep '+steno3d' filesep '+utils'], ...
             [pwd filesep 'steno3dmat' filesep '+steno3d' filesep '+utils'] ...
-        )
+        );
         copyfile([pwd filesep 'LICENSE'], [pwd filesep 'steno3dmat']);
         copyfile([pwd filesep 'README'], [pwd filesep 'steno3dmat']);
     end
@@ -157,19 +187,23 @@ function writeIndex(basedir)
     indexfid = fopen([basedir filesep 'docs' filesep 'index.rst'], 'w');
 
     fprintf(indexfid, '.. _index:\n\n');
+    fprintf(indexfid, 'Steno3D MATLAB Client\n=====================\n\n');
     srcline = fgetl(readmefid);
     while isempty(srcline) || all(srcline ~= -1)
         fprintf(indexfid, [escape(srcline) '\n']);
         srcline = fgetl(readmefid);
     end
 
-    fprintf(indexfid, '\n.. toctree::\n    :maxdepth: 2\n\n');
+
+    fprintf(indexfid, '\nContents\n********\n\n');
+    fprintf(indexfid, '.. toctree::\n    :maxdepth: 2\n\n');
     fprintf(indexfid, '    steno3d/Contents\n');
     fprintf(indexfid, '    props/Contents\n');
     fprintf(indexfid, '    installSteno3D\n');
     fprintf(indexfid, '    upgradeSteno3D\n');
     fprintf(indexfid, '    uninstallSteno3D\n');
-    fprintf(indexfid, '    testSteno3D\n');
+    fprintf(indexfid, '    testSteno3D\n\n');
+    fprintf(indexfid, 'Index\n*****\n\n* :ref:`genindex`\n');
     fclose(readmefid);
     fclose(indexfid);
 end
@@ -301,6 +335,11 @@ function srcline = buildFormat(srcline, srcitem)
 
     %toctree
     if strfind(srcline, '%%%tree')
+        srcline = '';
+    end
+
+    %images
+    if strfind(srcline, '%%%image')
         srcline = '';
     end
 
@@ -450,7 +489,7 @@ function srcline = sphinxFormat(srcline, srcitem)
     srcline = regexprep(srcline, '%%%(func|class)\[(?<name>.*?)\]\((?<ref>.*?)\)', ':$1:`$<ref>`');
 
     %matlabref
-    srcline = regexprep(srcline, '%%%matlabref\[(?<name>.*?)\]\((?<ref>.*?)\)', ':code:`$<ref>`');
+    srcline = regexprep(srcline, '%%%matlabref\[(?<name>.*?)\]\((?<ref>.*?)\)', '**$<name>**');
 
     %link
     srcline = regexprep(srcline, '%%%link\[(?<name>.*?)\]\((?<ref>.*?)\)', '`$<name> <$<ref>>`_');
@@ -471,6 +510,9 @@ function srcline = sphinxFormat(srcline, srcitem)
         sources = strrep(sources{2}, ' ', '\n    ');
         srcline = ['\n.. toctree::\n    :maxdepth: 2\n    :hidden:\n' sources];
     end
+
+    %image
+    srcline = strrep(srcline, '%%%image', '.. image::');
 
     srcline = strrep(srcline, '''@', '''\\@');
 

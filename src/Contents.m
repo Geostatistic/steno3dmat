@@ -1,5 +1,5 @@
 %STENO3DMAT: MATLAB Client for %%%link[Steno3D](https://steno3d.com) by %%%link[ARANZ Geo Limited](https://www.aranzgeo.com)
-%   Version 0.0.3
+%   Version 1.0.0
 %
 %   Use Steno3D to Analyze, Collaborate, and Present your MATLAB projects.
 %   %%%codeblock
