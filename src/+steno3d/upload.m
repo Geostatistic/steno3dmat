@@ -69,16 +69,10 @@ function url = upload(handle, privacy)
                   'give a figure, axes, or, Steno3D project.'])
         end
     end
-    url = {};
-    for i=1:length(projs)
-        if nargin == 2
+    if nargin == 2
+        for i=1:length(projs)
             projs(i).Public = public;
         end
-        projurl = projs(i).upload();
-        if length(projs) > 1
-           url{end} = projurl;
-        else
-            url = projurl;
-        end
     end
+    url = projs.upload();
 end
