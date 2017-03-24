@@ -66,10 +66,10 @@ that contains the new Surface resource.
 Project, and :code:`surface`, the new Surface resource.
 
 An important difference between :code:`steno3d.surface` the MATLAB builtin
-:code:`surface` function is data ordering. This function uses ordering produced
-by the function :code:`ndgrid`, where size(Z) == [length(x) length(y)].
+**surface** function is data ordering. This function uses ordering produced
+by the function **ndgrid**, where size(Z) == [length(x) length(y)].
 The builtin surface function uses ordering produced by the function
-:code:`meshgrid`, where size(Z) = [length(y) length(x)]. Also,
+**meshgrid**, where size(Z) = [length(y) length(x)]. Also,
 :code:`steno3d.surface` does not support additional property/value pairs; after
 creating the Surface, its properties may be directly modified.
 

@@ -37,7 +37,7 @@ contains the new Surface resource.
 Project, and :code:`SURFACE`, the new Surface resource.
 
 :code:`steno3d.trisurf` is useful in conjunction with MATLAB triangulation
-functions like :code:`convhull`. Unlike the MATLAB builtin :code:`trisurf`,
+functions like **convhull**. Unlike the MATLAB builtin **trisurf**,
 :code:`steno3d.trisurf` does not currently support triangulation objects, nor
 does it support any additional property/value pairs. After creating a
 Surface resource with :code:`steno3d.trisurf`, properties of the Surface object

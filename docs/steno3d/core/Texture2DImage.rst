@@ -10,7 +10,7 @@ Steno3D object to hold images and mapping to resources
 Image textures are used to map data to a Steno3D resource in space
 without requiring an array that corresponds to geometry. Images must be
 PNG files (or MATLAB matrices that can be written as PNGs with
-:code:`imwrite`). In addion to the image, :code:`Texture2DImage` contains spatial
+**imwrite**). In addion to the image, :code:`Texture2DImage` contains spatial
 location given by axes vectors U and V extending from an origin point.
 
 The image is mapped on to the resource by projecting it out of the

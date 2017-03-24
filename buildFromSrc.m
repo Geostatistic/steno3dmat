@@ -20,10 +20,10 @@ function buildFromSrc()
     if exist([pwd filesep 'steno3dmat'])
         rmdir([pwd filesep 'steno3dmat'], 's');
     end
-    addpath([pwd filesep 'src'])
+    addpath([pwd filesep 'src']);
     buildFolderFromSrc('docs');
     buildFolderFromSrc('build');
-    rmpath([pwd filesep 'src'])
+    rmpath([pwd filesep 'src']);
 end
 
 function buildFolderFromSrc(buildtype)
@@ -83,7 +83,7 @@ function buildFolderFromSrc(buildtype)
         movefile([pwd filesep 'src' filesep 'conf.py'], [pwd filesep 'docs']);
         movefile([pwd filesep 'src' filesep 'Makefile'], [pwd filesep 'docs']);
         writeIndex(pwd);
-        movefile([pwd filesep 'src' filesep 'images'], [pwd filesep 'docs'])
+        movefile([pwd filesep 'src' filesep 'images'], [pwd filesep 'docs']);
     else
         copyfile(                                                       ...
             [pwd filesep 'src' filesep '+props' filesep '+utils' filesep 'autodoc.m'], ...
@@ -92,11 +92,11 @@ function buildFolderFromSrc(buildtype)
         copyfile(                                                       ...
             [pwd filesep 'src' filesep '+props' filesep '+utils' filesep 'autodocstring.m'], ...
             [pwd filesep 'steno3dmat' filesep '+props' filesep '+utils' filesep 'autodocstring.m'] ...
-        )
+        );
         copyfile(                                                       ...
             [pwd filesep 'src' filesep '+steno3d' filesep '+utils'], ...
             [pwd filesep 'steno3dmat' filesep '+steno3d' filesep '+utils'] ...
-        )
+        );
         copyfile([pwd filesep 'LICENSE'], [pwd filesep 'steno3dmat']);
         copyfile([pwd filesep 'README'], [pwd filesep 'steno3dmat']);
     end
@@ -203,7 +203,7 @@ function writeIndex(basedir)
     fprintf(indexfid, '    upgradeSteno3D\n');
     fprintf(indexfid, '    uninstallSteno3D\n');
     fprintf(indexfid, '    testSteno3D\n\n');
-    fprintf(indexfid, 'Index\n*****\n\n* :ref:`genindex`\n')
+    fprintf(indexfid, 'Index\n*****\n\n* :ref:`genindex`\n');
     fclose(readmefid);
     fclose(indexfid);
 end
@@ -489,7 +489,7 @@ function srcline = sphinxFormat(srcline, srcitem)
     srcline = regexprep(srcline, '%%%(func|class)\[(?<name>.*?)\]\((?<ref>.*?)\)', ':$1:`$<ref>`');
 
     %matlabref
-    srcline = regexprep(srcline, '%%%matlabref\[(?<name>.*?)\]\((?<ref>.*?)\)', ':code:`$<ref>`');
+    srcline = regexprep(srcline, '%%%matlabref\[(?<name>.*?)\]\((?<ref>.*?)\)', '**$<name>**');
 
     %link
     srcline = regexprep(srcline, '%%%link\[(?<name>.*?)\]\((?<ref>.*?)\)', '`$<name> <$<ref>>`_');

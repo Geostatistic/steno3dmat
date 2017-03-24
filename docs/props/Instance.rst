@@ -21,7 +21,7 @@ Class:
     validation. Even circular Class assignment (for example
     having a class use itself as a PROPS.INSTANCE) can be
     achieved by setting Class = eval('\@CurcularClass'), as long
-    as the :code:`eval` function is valid at runtime.
+    as the **eval** function is valid at runtime.
 
 Args:
     Cell array of default arguments used to construct the
