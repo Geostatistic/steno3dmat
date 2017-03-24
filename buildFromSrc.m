@@ -489,7 +489,7 @@ function srcline = sphinxFormat(srcline, srcitem)
     srcline = regexprep(srcline, '%%%(func|class)\[(?<name>.*?)\]\((?<ref>.*?)\)', ':$1:`$<ref>`');
 
     %matlabref
-    srcline = regexprep(srcline, '%%%matlabref\[(?<name>.*?)\]\((?<ref>.*?)\)', ':code:`$<ref>`');
+    srcline = regexprep(srcline, '%%%matlabref\[(?<name>.*?)\]\((?<ref>.*?)\)', '**$<name>**');
 
     %link
     srcline = regexprep(srcline, '%%%link\[(?<name>.*?)\]\((?<ref>.*?)\)', '`$<name> <$<ref>>`_');
