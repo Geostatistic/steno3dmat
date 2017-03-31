@@ -244,12 +244,13 @@ function srcline = buildFormat(srcline, srcitem)
             if isempty(exline)
                 srcline = [srcline '%\n'];
                 incomment = true;
-            elseif incomment && length(exline >= 1) && strcmp(exline(1), '%')
+            elseif length(exline) >= 8 && strcmp(exline(1:8), '%%%image')
+            elseif incomment && length(exline) >= 1 && strcmp(exline(1), '%')
                 if any(exline(2:min(end, 4)) ~= ' ')
                     error('steno3d:builderror', ['bad example line: ' escape(exline)]);
                 end
                 srcline = [srcline exline '\n'];
-            elseif incomment && length(exline >= 1) && ~strcmp(exline(1), '%')
+            elseif incomment && length(exline) >= 1 && ~strcmp(exline(1), '%')
                 incomment = false;
                 srcline = [srcline '%\n%       ' exline '\n'];
             elseif ~incomment
@@ -422,12 +423,14 @@ function srcline = sphinxFormat(srcline, srcitem)
             if isempty(exline)
                 srcline = [srcline '\n'];
                 incomment = true;
-            elseif incomment && length(exline >= 1) && strcmp(exline(1), '%')
+            elseif length(exline) >= 8 && strcmp(exline(1:8), '%%%image')
+                srcline = [srcline strrep(exline, '%%%image', '.. image::') '\n'];
+            elseif incomment && length(exline) >= 1 && strcmp(exline(1), '%')
                 if any(exline(2:min(end, 4)) ~= ' ')
                     error('steno3d:builderror', ['bad example line: ' escape(exline)]);
                 end
                 srcline = [srcline exline(5:end) '\n'];
-            elseif incomment && length(exline >= 1) && ~strcmp(exline(1), '%')
+            elseif incomment && length(exline) >= 1 && ~strcmp(exline(1), '%')
                 incomment = false;
                 srcline = [srcline '\n.. code::\n\n    ' exline '\n'];
             elseif ~incomment
