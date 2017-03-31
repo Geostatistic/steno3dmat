@@ -7,13 +7,15 @@
 %   %%%seealso steno3d.scatter, steno3d.core.Point, steno3d.core.Project
 %
 
-%   Example 2: Create Project with red Point resource from n x 3 matrix
+%   Example 1: Create Project with red Point resource from n x 3 matrix
 x = 0:pi/10:4*pi;
-example1 = steno3d.scatter([x(:) cos(x(:)+0.2) sin(x(:))]);
+example1 = steno3d.scatter(x(:), cos(x(:)+0.2), sin(x(:)));
 
-%   Example 1:  Create Steno3D %%%ref[Project](steno3d.core.Project) with %%%ref[Point](steno3d.core.Point) resource from x, y, and z
+%   Example 2:  Create Steno3D %%%ref[Project](steno3d.core.Project) with %%%ref[Point](steno3d.core.Point) resource from x, y, and z
 x = 0:pi/10:4*pi;
-example2 = steno3d.scatter(x(:), cos(x(:)+0.2), sin(x(:)),'r');
+example2 = steno3d.scatter([x(:) cos(x(:)+0.2) sin(x(:))], 'b');
+
+%%%image /images/scatter-examples-images/scatter-example-2.png
 
 %   Example 3: Create Project with Point resource with 2 datasets
 x = 0:pi/10:4*pi;
@@ -35,3 +37,19 @@ myPoints.Title = 'Turquoise Scatter';
 myPoints.Opts.Opacity = .75;
 example4.plot();
 clear myPoints x
+
+
+x = 0:pi/10:4*pi;
+[myProject, myPoints] = steno3d.scatter(                        ...
+    [x(:) cos(x(:)+0.2) sin(x(:))], [0 .5 .5],                  ...
+    'Random Data', rand(size(x))                                ...
+);
+myPoints.Title = 'Example Points';
+myPoints.Description = 'Trig functions with random data';
+myProject.Title = 'Project with one set of Points';
+myProject.Public = true;
+steno3d.upload(myProject);
+
+x = 0:pi/10:4*pi;
+example1 = steno3d.scatter(x(:), cos(x(:)+0.2), sin(x(:)));
+
