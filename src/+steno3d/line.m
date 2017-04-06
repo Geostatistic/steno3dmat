@@ -2,7 +2,7 @@ function [proj, lin] = line(varargin)
 %LINE Create and plot a Steno3D Line resource
 %   `steno3d.line(X, Y, Z)` creates a Steno3D %%%ref[Project](steno3d.core.Project) with a %%%ref[Line](steno3d.core.Line) resource
 %   defined by vectors `X`, `Y`, and `Z`. If `X`, `Y`, and `Z` are matrices of the same
-%   size, only one Line resource is created but separate columns are
+%   size, only one Line resource is created but separate sections of line are
 %   disconnected.
 %
 %   `steno3d.line(segments, vertices)` creates a Steno3D Project with a Line
