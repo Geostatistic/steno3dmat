@@ -15,7 +15,7 @@ function [proj, lin] = line(varargin)
 %
 %   `steno3d.line(..., title1, data1, ..., titleN, dataN)` adds any number of
 %   titled datasets to the Line resource. `title` must be a string and `data`
-%   must be an n x 1 or an m x 1 vector, where n is the number of segments
+%   must be an 1 x n or an 1 x m vector, where n is the number of segments
 %   and m is the number of vertices. If m == n, the data location will
 %   default to segments. Data may also be added with %%%func[steno3d.addData](steno3d.addData).
 %
