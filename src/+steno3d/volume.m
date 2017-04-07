@@ -12,8 +12,8 @@ function [proj, vol] = volume(varargin)
 %
 %   `steno3d.volume(X, Y, Z, data)` creates a Steno3D Project with a Volume
 %   resource as above. `X`, `Y`, and `Z` are vectors of cell boundaries (with
-%   sizes n x 1, m x 1, and p x 1, respectively) OR of cell widths (with
-%   sizes (n-1) x 1, (m-1) x 1, and (p-1) x 1, respectively). Since the
+%   sizes 1 x n, 1 x m, and 1 x p, respectively) OR of cell widths (with
+%   sizes 1 x (n-1), 1 x (m-1), and 1 x (p-1), respectively). Since the
 %   volume dimensions are given by `X`, `Y`, and `Z` in this case, `data` may also
 %   be a m*n*p x 1 vector.
 %
