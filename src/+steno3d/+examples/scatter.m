@@ -32,12 +32,12 @@ steno3d.scatter(                                             ...
 
 %   Example 5: Return handle to Project and Point resource for editing
 x = 0:pi/10:4*pi;
-[example4, myPoints] = steno3d.scatter(x(:), cos(x(:)+0.2),  ...
+[example5, myPoints] = steno3d.scatter(x(:), cos(x(:)+0.2),  ...
                                        sin(x(:)), 'turquoise');
-example4.Title = 'Example 4 Project';
+example5.Title = 'Example 4 Project';
 myPoints.Title = 'Turquoise Scatter';
 myPoints.Opts.Opacity = .75;
-example4.plot();
+example5.plot();
 clear myPoints x
 
 
