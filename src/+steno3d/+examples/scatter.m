@@ -7,11 +7,11 @@
 %   %%%seealso steno3d.scatter, steno3d.core.Point, steno3d.core.Project
 %
 
-%   Example 1: Create Project with a Point resource defined by n x 3 matrix
+%   Example 1: Create a Steno3D %%%ref[Project](steno3d.core.Project) Project with a %%%ref[Point](steno3d.core.Point) resource defined by n x 3 matrix
 x = 0:pi/10:4*pi;
 example1 = steno3d.scatter([x(:) cos(x(:)+0.2) sin(x(:))]);
 
-%   Example 2: Create Steno3D Project with a red Point resource defined by equal-sized vectors x, y,and z
+%   Example 2: Create Project with a red Point resource defined by equal-sized vectors x, y,and z
 x = 0:pi/10:4*pi;
 example2 = steno3d.scatter([x(:), cos(x(:)+0.2), sin(x(:))], 'r');
 
