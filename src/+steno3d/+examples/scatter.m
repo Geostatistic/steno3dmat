@@ -11,9 +11,11 @@
 x = 0:pi/10:4*pi;
 example1 = steno3d.scatter([x(:) cos(x(:)+0.2) sin(x(:))]);
 
-%   Example 2: Create Project with a red Point resource defined by equal-sized vectors x, y,and z
+%%%image /images/scatter-examples-images/scatter-example-1.png
+
+%   Example 2: Create Project with a blue Point resource defined by equal-sized vectors x, y,and z
 x = 0:pi/10:4*pi;
-example2 = steno3d.scatter([x(:), cos(x(:)+0.2), sin(x(:))], 'r');
+example2 = steno3d.scatter([x(:), cos(x(:)+0.2), sin(x(:))], 'b');
 
 %%%image /images/scatter-examples-images/scatter-example-2.png
 
@@ -24,30 +26,24 @@ example3 = steno3d.scatter(                                  ...
     'Cosine Data', cos(x(:)), 'Sine Data', sin(x(:))         ...
 );
 
+%%%image /images/scatter-examples-images/scatter-example-3.png
+
 %   Example 4: Add a point resource with a titled dataset to an existing steno3D project (example3)
 steno3d.scatter(                                             ...
     example3, [x(:)+5*pi cos(x(:)+0.2) sin(x(:))],           ...
     'Arctangent Data', atan(x(:))                            ...
 );
 
+%%%image /images/scatter-examples-images/scatter-example-4.png
+
 %   Example 5: Return handle to Project and Point resource for editing
 x = 0:pi/10:4*pi;
 [example5, myPoints] = steno3d.scatter(x(:), cos(x(:)+0.2),  ...
-                                       sin(x(:)), 'turquoise');
-example5.Title = 'Example 4 Project';
-myPoints.Title = 'Turquoise Scatter';
+                                       sin(x(:)), 'green');
+example5.Title = 'Example 5 Project';
+myPoints.Title = 'Green Scatter';
 myPoints.Opts.Opacity = .75;
 example5.plot();
 clear myPoints x
 
-
-x = 0:pi/10:4*pi;
-[myProject, myPoints] = steno3d.scatter(                        ...
-    [x(:) cos(x(:)+0.2) sin(x(:))], [0 .5 .5],                  ...
-    'Random Data', rand(size(x))                                ...
-);
-myPoints.Title = 'Example Points';
-myPoints.Description = 'Trig functions with random data';
-myProject.Title = 'Project with one set of Points';
-myProject.Public = true;
-steno3d.upload(myProject);
+%%%image /images/scatter-examples-images/scatter-example-5.png
