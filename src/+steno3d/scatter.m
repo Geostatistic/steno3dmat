@@ -30,7 +30,8 @@ function [proj, pts] = scatter(varargin)
 %   Unlike the builtin functions, `steno3d.scatter` does not support any
 %   additional property/value pairs. After creating a Point resource with
 %   `steno3d.scatter`, properties for the Point object can be directly
-%   modified.
+%   modified. The below example shows a Point resource with a titled dataset added to 
+%   it which is uploaded in steno3D. 
 %
 %   Example:
 %   %%%codeblock
@@ -45,6 +46,7 @@ function [proj, pts] = scatter(varargin)
 %       myProject.Public = true;
 %       steno3d.upload(myProject);
 %
+%   %%%image /images/scatter-examples-images/scatter-example-front-page.png
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.scatter)
 %
