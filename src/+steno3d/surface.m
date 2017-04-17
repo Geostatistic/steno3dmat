@@ -37,8 +37,8 @@ function [proj, surf] = surface(varargin)
 %   of titled datasets to the Surface resource. `title` must be a string and
 %   `data` must be a matrix of size m x n or m*n x 1 for node data or a
 %   matrix of size (m-1) x (n-1) or (m-1)*(n-1) x 1 for face data, where n
-%   is the length(`X`), length(`h1`), or size(`Z`, 1) and m is the length(`Y`),
-%   length(`h2`), or size(`Z`, 2). (For more details see %%%func[steno3d.addData](steno3d.addData))
+%   is the length(X), length(h1), or size(Z, 1) and m is the length(Y),
+%   length(h2), or size(Z, 2). (For more details see %%%func[steno3d.addData](steno3d.addData))
 %
 %   `steno3d.surface(..., title1, png1, ..., titleN, pngN)` adds any number
 %   of titled images to the Surface resource. `title` must be a string and
