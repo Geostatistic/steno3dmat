@@ -16,8 +16,8 @@ Steno3D MATLAB Client
     :alt: ReadTheDocs
     :target: http://steno3dmat.readthedocs.io/en/latest/
 
-.. image:: https://img.shields.io/badge/license-MIT-blue.svg
-    :alt: MIT License
+.. image:: https://img.shields.io/badge/license-BSD-blue.svg
+    :alt: BSD License
     :target: https://github.com/3ptscience/steno3dmat/blob/master/LICENSE
 
 Welcome to the MATLAB client library for `Steno3D <https://steno3d.com>`_
