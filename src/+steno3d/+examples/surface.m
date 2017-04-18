@@ -12,9 +12,13 @@
 Z = peaks(20);
 example1 = steno3d.surface(Z);
 
+%%%image /images/surface-examples-images/surface-example-1.png
+
 %   Example 2: Create Project with red Surface offset from origin
 Z = peaks(20);
 example2 = steno3d.surface([100 100 100], Z, 'r');
+
+%%%image /images/surface-examples-images/surface-example-2.png
 
 %   Example 3: Create Project with irregular-spaced and angled Surfaces
 example3 = steno3d.surface([0:5:25 26:74 75:5:100],          ...
@@ -23,11 +27,16 @@ steno3d.surface(                                             ...
     example3, 'Z', [0:10], [0.3 1 0], [0:100], [0 0 5]       ...
 );
 
+%%%image /images/surface-examples-images/surface-example-3.png
+
 %   Example 4: Create Project with vertical Surface and Peaks topography
 Z = peaks(20);
 example4 = steno3d.surface('X', [0:2:10 11:18 19:2:29],      ...
                            'Z', [0:2:10 11:18 19:2:29],      ...
                            [0 0 0], Z);
+                       
+%%%image /images/surface-examples-images/surface-example-4.png
+
 
 %   Example 5: Add node data, cell-center data, and an image to the Surface
 Z = peaks(20);
@@ -43,4 +52,7 @@ example5.Title = 'Example 5 Project';
 mySurface.Title = 'Peaks, Data, and Space';
 mySurface.Mesh.Opts.Wireframe = true;
 example5.plot();
+example5.upload();
 clear mySurface Z pngFile
+
+%%%image /images/surface-examples-images/surface-example-5.png
