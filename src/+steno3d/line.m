@@ -34,7 +34,7 @@ function [proj, lin] = line(varargin)
 %   creating a Line resource with `steno3d.line`, properties of the Line
 %   object can be directly modified. The below example shows a Line resource with a titled dataset added to 
 %   it which is uploaded in steno3D. The line resource has been created using trigonometric functions. 
-% 
+%
 %
 %   Example:
 %   %%%codeblock
