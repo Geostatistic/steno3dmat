@@ -50,7 +50,7 @@ function [proj, surf] = trisurf(varargin)
 %       steno3d.upload(myProject);
 %
 %   %%%image /images/trisurf-examples-images/trisurf-example-front-page.png
-
+%
 %   See more %%%ref[EXAMPLES](steno3d.examples.trisurf)
 %
 %   %%%seealso steno3d.core.Surface, steno3d.upload, steno3d.addData, steno3d.addImage, steno3d.core.Project
