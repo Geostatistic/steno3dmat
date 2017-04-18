@@ -77,8 +77,8 @@ classdef Surface < steno3d.core.CompositeResource
             else
                 lh1 = length(obj.Mesh.H1);
                 lh2 = length(obj.Mesh.H2);
-                h1 = repmat([0 cumsum(obj.Mesh.H1)'], lh2+1, 1)';
-                h2 = repmat([0 cumsum(obj.Mesh.H2)'], lh1+1, 1);
+                h1 = repmat([0 cumsum(obj.Mesh.H1)'], lh2+1, 1);
+                h2 = repmat([0 cumsum(obj.Mesh.H2)'], lh1+1, 1)';
                 u = obj.Mesh.U;
                 v = obj.Mesh.V;
                 u = u/sqrt(sum(u.^2));
