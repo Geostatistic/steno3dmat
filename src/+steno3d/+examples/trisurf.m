@@ -45,4 +45,4 @@ example4.plot();
 example4.upload();
 clear mySurface verts tris
 
-%%%image /images/trisurf-examples-images/trisurf-example-3.png
+%%%image /images/trisurf-examples-images/trisurf-example-4.png
