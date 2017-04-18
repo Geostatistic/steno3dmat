@@ -513,6 +513,7 @@ function srcline = sphinxFormat(srcline, srcitem)
 
     %image
     srcline = strrep(srcline, '%%%image', '.. image::');
+    srcline = ['|\n' srcline '\n|']
 
     srcline = strrep(srcline, '''@', '''\\@');
 
