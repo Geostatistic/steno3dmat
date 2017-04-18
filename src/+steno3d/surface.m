@@ -76,9 +76,10 @@ function [proj, surf] = surface(varargin)
 %       mySurface.Description = ['Vertical surface with some random '   ...
 %                                'bumps and a space image'];
 %       myProject.Title = 'Project with one Surface';
-%       myProject.Pulbic = true;
-%       steno3d.upload(myProject);
-%
+%       myProject.Public = true;
+%       myProject.upload();
+%      
+%   %%%image /images/surface-examples-images/surface-example-front-page.png
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.surface)
 %
