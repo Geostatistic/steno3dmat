@@ -16,8 +16,8 @@ Steno3D MATLAB Client
     :alt: ReadTheDocs
     :target: http://steno3dmat.readthedocs.io/en/latest/
 
-.. image:: https://img.shields.io/badge/license-MIT-blue.svg
-    :alt: MIT License
+.. image:: https://img.shields.io/badge/license-BSD-blue.svg
+    :alt: BSD License
     :target: https://github.com/3ptscience/steno3dmat/blob/master/LICENSE
 
 Welcome to the MATLAB client library for `Steno3D <https://steno3d.com>`_
@@ -42,7 +42,7 @@ Quickstart
     follow along with new releases on the `github release page <https://github.com/3ptscience/steno3dmat/releases>`_.
 
 If you have not yet installed Steno3D for MATLAB, you can
-`download the zip file <https://github.com/3ptscience/steno3dmat/releases/download/v0.0.3/steno3dmat.zip>`_
+`download the zip file <https://github.com/3ptscience/steno3dmat/releases/download/v1.0.1/steno3dmat.zip>`_
 then in MATLAB:
 
 .. code:: matlab
@@ -85,7 +85,7 @@ you can upgrade in MATLAB:
 
 If your problems persist, please submit an `issue <https://github.com/3ptscience/steno3dmat/issues>`_.
 
-The latest version of Steno3D is 0.0.3. Detailed release notes are
+The latest version of Steno3D is 1.0.1. Detailed release notes are
 `available on github <https://github.com/3ptscience/steno3dmat/releases>`_.
 
 Contents

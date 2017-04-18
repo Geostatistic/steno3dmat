@@ -44,6 +44,9 @@ function res = consolidateResources(res1, res2)
                dataeq = false;
             end
         end
+        if any(res1.Opts.Color ~= res2.Opts.Color)
+            dataeq = false;
+        end
     end
 
     if isa(res1.Mesh, 'steno3d.core.Mesh0D')
@@ -67,7 +70,7 @@ function res = consolidateResources(res1, res2)
         end
     elseif isa(res1.Mesh, 'steno3d.core.Mesh1D')
         if length(res1.Mesh.Vertices) == length(res2.Mesh.Vertices) &&  ...
-           length(res1.Mesh.segments) == length(res2.Mesh.Segments) &&  ...
+           length(res1.Mesh.Segments) == length(res2.Mesh.Segments) &&  ...
                 all(res1.Mesh.Vertices(:) == res2.Mesh.Vertices(:)) &&  ...
                 all(res1.Mesh.Segments(:) == res2.Mesh.Segments(:))
             res = res1;
@@ -114,7 +117,6 @@ function res = consolidateResources(res1, res2)
             return
 
         end
-        fprintf('why are we here')
     elseif isa(res1.Mesh, 'steno3d.core.Mesh2DGrid')
         if all(res1.Mesh.H1(:) == res2.Mesh.H1(:)) &&                   ...
                 all(res1.Mesh.H2(:) == res2.Mesh.H2(:)) &&              ...

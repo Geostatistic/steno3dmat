@@ -9,7 +9,7 @@ PNG image prop
 
 This is a type of :ref:`props.Prop <propsprop>` that can be used when a :ref:`props.HasProps <propshasprops>`
 class needs an image property. Only PNG images are currently supported.
-Valid values are either PNG filenames that can be read with :code:`imread` or
+Valid values are either PNG filenames that can be read with **imread** or
 valid PNG matrices already in MATLAB. Image will attempt to
 coerce different image formats to PNG, but the success may be limited.
 

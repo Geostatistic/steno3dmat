@@ -46,7 +46,7 @@ Project, and :code:`volume`, the new Volume resource.
 
 :code:`steno3d.volume` does not have a MATLAB builtin counterpart. When
 plotting a Steno3D Volume locally, its boundaries are displayed in a
-similar way as :code:`slice`, but when uploaded to steno3d.com, the entire
+similar way as **slice**, but when uploaded to steno3d.com, the entire
 volume is available for plotting, slicing, and isosurfacing. After
 creating a Volume resource with :code:`steno3d.volume`, properties of the
 Volume object can be directly modified.

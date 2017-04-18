@@ -46,8 +46,8 @@ string, or 'random'.
 of titled datasets to the Surface resource. :code:`title` must be a string and
 :code:`data` must be a matrix of size m x n or m*n x 1 for node data or a
 matrix of size (m-1) x (n-1) or (m-1)*(n-1) x 1 for face data, where n
-is the length(`X:code:`), length(`h1:code:`), or size(`Z:code:`, 1) and m is the length(`Y`),
-length(`h2:code:`), or size(`Z`, 2). (For more details see :func:`steno3d.addData`)
+is the length(X), length(h1), or size(Z, 1) and m is the length(Y),
+length(h2), or size(Z, 2). (For more details see :func:`steno3d.addData`)
 
 :code:`steno3d.surface(..., title1, png1, ..., titleN, pngN)` adds any number
 of titled images to the Surface resource. :code:`title` must be a string and
@@ -66,10 +66,10 @@ that contains the new Surface resource.
 Project, and :code:`surface`, the new Surface resource.
 
 An important difference between :code:`steno3d.surface` the MATLAB builtin
-:code:`surface` function is data ordering. This function uses ordering produced
-by the function :code:`ndgrid`, where size(Z) == [length(x) length(y)].
+**surface** function is data ordering. This function uses ordering produced
+by the function **ndgrid**, where size(Z) == [length(x) length(y)].
 The builtin surface function uses ordering produced by the function
-:code:`meshgrid`, where size(Z) = [length(y) length(x)]. Also,
+**meshgrid**, where size(Z) = [length(y) length(x)]. Also,
 :code:`steno3d.surface` does not support additional property/value pairs; after
 creating the Surface, its properties may be directly modified.
 

@@ -15,6 +15,38 @@ classdef Project < steno3d.core.UserContent
 %
 %   %%%properties
 %
+%   %%%bold[Available Methods]:
+%
+%   * %%%matlabref[upload](steno3d.core.Project.upload):
+%
+%       `p.upload()` validates and uploads to steno3d.com the project or
+%       array of projects `p`.
+%
+%       `url = p.upload()` returns the `url` or URLs of the uploaded
+%       project(s).
+%
+%   * %%%matlabref[url](steno3d.core.Project.url):
+%
+%       `url = p.url()` returns the `url` of an uploaded project `p` or cell
+%       array of URLs if `p` is an array of projects. This method raises
+%       an error if a project isn't uploaded.
+%
+%   * %%%matlabref[plot](steno3d.core.Project.plot):
+%
+%       `p.plot()` plots the project `p` in a new figure window. If `p` is
+%       an array of multiple projects, each is plotted in a new
+%       window.
+%
+%       `p.plot(ax)` plots the project(s) `p` in an existing axes `ax`.
+%
+%       `ax = p.plot(...)` returns `ax`, the axes handle of the plot or a
+%       cell array of axes handles if `p` is an array of multiple projects.
+%
+%       It is recommended to call `plot` with no arguments (not provide
+%       `ax`). This prevents loss of graphics objects unrelated to the
+%       project and ensures that uploading the axes will correctly
+%       upload the project.
+%
 %   See the %%%ref[EXAMPLES](steno3d.examples.core.project)
 %
 %   %%%seealso steno3d.core.CompositeResource, steno3d.core.UserContent
@@ -55,12 +87,21 @@ classdef Project < steno3d.core.UserContent
 
         function appURL = upload(obj)
         %UPLOAD Validate and upload the project to steno3d.com
-        %   P.UPLOAD() validates project P, uploads it to steno3d.com
+        %   P.UPLOAD() validates and uploads to steno3d.com the project
+        %   or array of projects P.
         %
-        %   URL = P.UPLOAD() returns the URL of the uploaded project
+        %   URL = P.UPLOAD() returns the URL(s) of the uploaded project(s).
         %
             if ~steno3d.utils.User.isLoggedIn()
                 error('steno3d:projectError', 'Please "steno3d.login()"');
+            end
+            if length(obj) > 1
+                fprintf(['Uploading ' num2str(length(obj)) ' projects...\n']);
+                appURL = {};
+                for i=1:length(obj)
+                    appURL{end+1} = obj(i).upload();
+                end
+                return
             end
             obj.validate();
             obj.quotaCheck(obj.Public);
@@ -76,9 +117,18 @@ classdef Project < steno3d.core.UserContent
 
         function appURL = url(obj)
         %URL Return the URL of the project if it has been uploaded
-        %   P.URL() returns the URL of an uploaded project P and errors if
-        %   the project isn't uploaded
+        %   URL = P.URL() returns the URL of an uploaded project P or cell
+        %   array of URLs if P is an array of projects. This method raises
+        %   an error if a project isn't uploaded.
         %
+
+            if length(obj) > 1
+                appURL = {};
+                for i=1:length(obj)
+                    appURL{end+1} = obj(i).url();
+                end
+                return
+            end
             if isempty(obj.PR__url)
                 error('steno3d:projectError', 'Project not uploaded');
             end
@@ -87,17 +137,32 @@ classdef Project < steno3d.core.UserContent
 
         function ax = plot(obj, ax)
         %PLOT Locally plot the project in a MATLAB axes
-        %   P.PLOT() plots the project P in a new figure window
+        %   P.PLOT() plots the project P in a new figure window. If P is
+        %   an array of multiple projects, each is plotted in a new
+        %   window.
         %
-        %   P.PLOT(AX) plots the project P in an existing axes AX
+        %   P.PLOT(AX) plots the project(s) P in an existing axes AX.
         %
-        %   AX = P.PLOT(...) returns the axes handle of the plot
+        %   AX = P.PLOT(...) returns the axes handle of the plot or a
+        %   cell array of axes handles if P is an array of multiple projects.
         %
         %   It is recommended to call PLOT with no arguments (not provide
         %   AX). This prevents loss of graphics objects unrelated to the
         %   project and ensures that uploading the axes will correctly
         %   upload the project.
         %
+            if length(obj) > 1
+                ax_arr = {};
+                for i=1:length(obj)
+                    if nargin < 2
+                        ax_arr{end+1} = obj(i).plot();
+                    else
+                        ax_arr{end+1} = obj(i).plot(ax);
+                    end
+                end
+                ax = ax_arr;
+                return
+            end
             obj.validate();
             if nargin < 2
                 ax = obj.PR__ax;

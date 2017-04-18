@@ -14,14 +14,14 @@ to :code:`PROJECT`, a Steno3D :ref:`Project <steno3dcoreproject>` or list of Pro
 axes :code:`handle` using the given :code:`parameter`/:code:`value` pairs. Available parameters
 are:
 
-    **CombineAxes**: true or false (default: false)
+    **CombineAxes**: true or false (default: true)
         If HANDLE is a figure with multiple axes and CombineAxes is
         false, a separate project will be created for each axes.
         If HANDLE is a figure with multiple axes and CombineAxes is
         true, the contents of all axes will be added to one project.
         If HANDLE is an axes or a figure with one axes, CombineAxes has
         no effect.
-    **CombineResources**: true or false (default: false)
+    **CombineResources**: true or false (default: true)
         If CombineResources is false, every MATLAB graphics object
         encountered will produce a separate Steno3D Resource.
         If CombineResources is true, this function attempts to combine
