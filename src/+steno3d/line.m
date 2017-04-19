@@ -45,7 +45,7 @@ function [proj, lin] = line(varargin)
 %       lin.Title = 'Example Line';
 %       lin.Description = 'Trig functions';
 %       proj.Title = 'Project with one Line';
-%       proj.upload()
+%       proj.upload();
 %
 %   %%%image /images/line-examples-images/line-example-front-page.png
 %
