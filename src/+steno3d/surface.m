@@ -62,7 +62,8 @@ function [proj, surf] = surface(varargin)
 %   The builtin surface function uses ordering produced by the function
 %   %%%matlabref[meshgrid](meshgrid), where size(Z) = [length(y) length(x)]. Also,
 %   `steno3d.surface` does not support additional property/value pairs; after
-%   creating the Surface, its properties may be directly modified.
+%   creating the Surface, its properties may be directly modified. The below example shows a surface resource where a randomly created data ,`Increasing Numbers`, is added to the surface. Also, a titled image
+%   called "Space Image" added to the surface resource.
 %
 %   Example:
 %   %%%codeblock
@@ -85,7 +86,6 @@ function [proj, surf] = surface(varargin)
 %
 %   %%%seealso steno3d.core.Surface, steno3d.upload, steno3d.addData, steno3d.addImage, steno3d.core.Project
 %
-
 
     steno3d.utils.matverchk();
 
@@ -278,5 +278,3 @@ function valid = validSize(lenx, leny, data)
     end
     valid = false;
 end
-
-
