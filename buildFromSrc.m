@@ -404,7 +404,8 @@ function srcline = sphinxFormat(srcline, srcitem)
     elseif length(srcline) > 4 && strcmp(srcline(1:4), '%   ')
         srcline = srcline(5:end);
     else
-        error('steno3d:builderror', ['bad source line: ' escape(srcline)]);
+
+        error('steno3d:builderror', ['bad source line: ' escape(srcline) ' in file ' srcitem]);
     end
 
     %Extract examples
