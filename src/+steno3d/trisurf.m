@@ -34,7 +34,8 @@ function [proj, surf] = trisurf(varargin)
 %   `steno3d.trisurf` does not currently support triangulation objects, nor
 %   does it support any additional property/value pairs. After creating a
 %   Surface resource with `steno3d.trisurf`, properties of the Surface object
-%   can be directly modified.
+%   can be directly modified. The below example shows a trisurf resource which is created from triangles where randomly created data called `Face Data`
+%   added to the trisurf resource. 
 %
 %   Example:
 %   %%%codeblock
