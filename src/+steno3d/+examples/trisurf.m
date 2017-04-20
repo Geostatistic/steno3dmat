@@ -23,7 +23,7 @@ example2 = steno3d.trisurf(tris, verts, 'b');
 
 %%%image /images/trisurf-examples-images/trisurf-example-2.png
 
-%   Example 3: Create Project and Surface with node and cell-center data
+%   Example 3: Create Project and Surface with triangles and vertices where node and cell-center data added to the trisurf resource
 verts = rand(100, 3)-0.5;
 tris = convhull(verts(:, 1), verts(:, 2), verts(:, 3));
 example3 = steno3d.trisurf(tris, verts,                      ...
@@ -33,7 +33,7 @@ example3 = steno3d.trisurf(tris, verts,                      ...
 
 %%%image /images/trisurf-examples-images/trisurf-example-3.png
 
-%   Example 4: Create Project and two Surfaces from triangles and vertices
+%   Example 4: Create Project with a new trisurf resource (yellow surface) added to it 
 verts = rand(100, 3)-0.5;
 tris = convhull(verts(:, 1), verts(:, 2), verts(:, 3));
 [example4, mySurface] = steno3d.trisurf(tris, verts, 'b');
