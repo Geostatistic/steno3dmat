@@ -14,6 +14,10 @@ function addData(varargin)
 %       tris = convhull(x, y, z);
 %       [proj, sfc] = steno3d.trisurf(tris, x, y, z, 'r');
 %       steno3d.addData(sfc, 'Cell Center Data', rand(4, 1));
+%       proj.plot;
+%       
+%
+%   %%%image /images/addData-examples-images/addData-example-front-page.png
 %
 %   %%%note
 %       If the number of cell centers matches the number of nodes (as is
