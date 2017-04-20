@@ -14,13 +14,13 @@ example1 = steno3d.surface(Z);
 
 %%%image /images/surface-examples-images/surface-example-1.png
 
-%   Example 2: Create Project with red Surface offset from origin
+%   Example 2: Create a red Surface (same surface resource in example1) with an offset of [100 100 100] from origin
 Z = peaks(20);
 example2 = steno3d.surface([100 100 100], Z, 'r');
 
 %%%image /images/surface-examples-images/surface-example-2.png
 
-%   Example 3: Create Project with irregular-spaced and angled Surfaces
+%   Example 3: Add an angled Surface to an existing Steno3D project (irregular-spaced surface)
 example3 = steno3d.surface([0:5:25 26:74 75:5:100],          ...
                            [25:2:45 46:54 55:2:75]);
 steno3d.surface(                                             ...
