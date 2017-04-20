@@ -53,7 +53,6 @@ function [proj, pts] = scatter(varargin)
 %   %%%seealso steno3d.core.Point, steno3d.upload, steno3d.addData, steno3d.addImage, steno3d.core.Project
 %
 
-
     steno3d.utils.matverchk();
 
     if isempty(varargin)
