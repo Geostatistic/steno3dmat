@@ -53,6 +53,7 @@ function [proj, lin] = line(varargin)
 %
 %   %%%seealso steno3d.core.Line, steno3d.upload, steno3d.addData, steno3d.core.Project
 %
+%
 
     steno3d.utils.matverchk();
     narginchk(2, inf);
