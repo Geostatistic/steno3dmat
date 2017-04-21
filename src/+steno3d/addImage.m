@@ -2,7 +2,7 @@ function addImage(varargin)
 %ADDIMAGE Add a PNG image to an existing Steno3d resource
 %   `steno3d.addImage(resource, pngfile, width, height)` scales PNG image
 %   `pngfile` to size `width` x `height`, then projects it in a direction
-%   perpendicular to the horizontal plane onto the Steno3D `resource`
+%   perpendicular (normal) to the plane onto the Steno3D `resource`
 %   (%%%ref[Point](steno3d.core.Point) or %%%ref[Surface](steno3d.core.Surface)).
 %
 %   `steno3d.addImage(resource, pngfile, dir1, dim1, dir2, dim2)` scales and
@@ -27,7 +27,8 @@ function addImage(varargin)
 %   Also, when plotting projects locally, images only show up as dashed
 %   outlines at the position they are projected from. To see the result of
 %   adding the image, you must upload the project and view it on
-%   steno3d.com.
+%   steno3d.com. The below example shows how to project a png image to a
+%   surface.
 %
 %   Example:
 %   %%%codeblock
@@ -39,7 +40,7 @@ function addImage(varargin)
 %       fig = gcf; fig.Position = [fig.Position(1:3) fig.Position(3)];
 %       ax = gca; ax.Position = [0 0 1 1];
 %       pngFile = [tempname '.png'];
-%       print(fig, '-dpng', tempFile);
+%       print(fig, '-dpng', pngFile);
 %       % Create a surface
 %       verts = [x(:) y(:) z(:)];
 %       tris = convhull(x(:), y(:), z(:));
@@ -47,7 +48,7 @@ function addImage(varargin)
 %       % Add the image
 %       steno3d.addImage(sfc, pngFile, 'X', 2, 'Z', 2, [-1 -1 -1],      ...
 %                        'Hemisphere');
-%
+%   %%%image /images/addImage-examples-images/addImage-example-front-page.png
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.addimage)
 %
