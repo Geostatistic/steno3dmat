@@ -8,10 +8,14 @@ function proj = combine(varargin)
 %
 %   Example:
 %   %%%codeblock
-%       peaks; peaksProj = steno3d.convert(gcf);
-%       sphere; sphereProj = steno3d.convert(gcf);
+%       peaks; peaksProj = steno3d.convert(gcf); close;
+%       sphere; sphereProj = steno3d.convert(gcf); close;
 %       comboProj = steno3d.combine(peaksProj, sphereProj);
+%       comboProj.plot;
 %       comboProj.Title = 'Two-Surface Project';
+%       clear peaksProj sphereProj;
+%
+%   %%%image /images/combine-examples-images/combine-example-front-page.png
 %
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.combine)
