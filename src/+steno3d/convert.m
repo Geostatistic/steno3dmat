@@ -44,8 +44,12 @@ function proj = convert(handle, varargin)
 %
 %   Example:
 %   %%%codeblock
-%       peaks;
-%       peaksProj = steno3d.convert(gcf);
+%       figure; peaks;
+%       peaksProj = steno3d.convert(gca);
+%       peaksProj.plot;
+%       close;
+%
+%   %%%image /images/convert-examples-images/convert-example-front-page.png
 %
 %   See more %%%ref[EXAMPLES](steno3d.examples.convert)
 %
