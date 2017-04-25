@@ -44,7 +44,7 @@ function res = consolidateResources(res1, res2)
                dataeq = false;
             end
         end
-        if any(res1.Opts.Color ~= res2.Opts.Color)
+        if length(res1.Data) == 0 && any(res1.Opts.Color ~= res2.Opts.Color)
             dataeq = false;
         end
     end
