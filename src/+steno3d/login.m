@@ -137,7 +137,7 @@ function login(varargin)
         line = fgetl(fid);
         while isKey(line)
             splitkey = strsplit(line, '//');
-            usernames{end+1} = splitkey(1);
+            usernames{end+1} = splitkey{1};
             apikeys{end+1} = line;
             line = fgetl(fid);
         end
