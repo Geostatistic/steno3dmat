@@ -186,6 +186,7 @@ function [proj, surf] = surface(varargin)
     mesh.O = origin + x(1)*mesh.U/sqrt(sum(mesh.U.*mesh.U))             ...
                     + y(1)*mesh.V/sqrt(sum(mesh.V.*mesh.V));            ...
     if ~isempty(Z)
+        Z = Z'
         mesh.Z = Z(:);
     end
 
