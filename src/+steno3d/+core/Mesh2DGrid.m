@@ -8,7 +8,8 @@ classdef Mesh2DGrid < steno3d.core.UserContent
 %
 %   In addition to setting the axes, the `Mesh2DGrid` can be given any origin
 %   point and can have node topography perpendicular to the surface (in the
-%   U-cross-V direction, z-direction by default). `Mesh2DGrid` has additional
+%   U-cross-V direction, z-direction by default). The ordering for node
+%   topography must be row-major, c-ordering. `Mesh2DGrid` has additional
 %   %%%ref[options](steno3d.core.opts.Mesh2DOptions) to customize the appearance of the surface.
 %
 %   %%%properties
