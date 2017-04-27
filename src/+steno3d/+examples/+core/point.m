@@ -7,7 +7,6 @@
 %   %%%seealso steno3d.core.Point, steno3d.core.Mesh0D, steno3d.core.Project, steno3d.core.DataArray, steno3d.core.Texture2DImage
 %
 
-
 %   Example 1: Create a basic Steno3D %%%ref[Point](steno3d.core.Point) resource
 pt = steno3d.core.Point;
 verts = rand(100, 3);
@@ -16,7 +15,10 @@ mesh.Vertices = verts;
 pt.Mesh = mesh;
 example1 = steno3d.core.Project;
 example1.Resources = pt;
+example1.plot;
 clear pt verts mesh;
+
+%%%image /images/core-point-examples-images/core-point-example1.png
 
 %   Example 2: Create a Point resource and set display options
 pt = steno3d.core.Point;
@@ -31,7 +33,10 @@ example2 = steno3d.core.Project;
 example2.Title = 'Example 2';
 example2.Description = 'Project with some points';
 example2.Resources = pt;
+example2.plot;
 clear pt mesh;
+
+%%%image /images/core-point-examples-images/core-point-example2.png
 
 %   Example 3: Create a Point resource with node %%%ref[data](steno3d.core.DataArray)
 %
@@ -57,7 +62,10 @@ example3 = steno3d.core.Project(                             ...
     'Description', 'Project with some points',               ...
     'Resources', pt                                          ...
 );
+example3.plot;
 clear pt xdata verts;
+
+%%%image /images/core-point-examples-images/core-point-example3.png
 
 %   Example 4: Create a Point resource with an %%%ref[image](steno3d.core.Texture2DImage) projected onto it
 pt = steno3d.core.Point(                                     ...
@@ -82,7 +90,9 @@ example4 = steno3d.core.Project(                             ...
     'Description', 'Project with some points',               ...
     'Resources', pt                                          ...
 );
+example4.plot;
 clear pt tex pngFile;
+%%%image /images/core-point-examples-images/core-point-example4.png
 
 %   Example 5: Create a Point resource with multiple datasets and textures
 %
@@ -116,4 +126,6 @@ example5 = steno3d.core.Project(                             ...
     'Description', 'Project with some points',               ...
     'Resources', pt                                          ...
 );
+example5.plot;
 clear pt verts;
+%%%image /images/core-point-examples-images/core-point-example5.png
