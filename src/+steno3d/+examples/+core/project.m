@@ -14,7 +14,10 @@ pts = steno3d.core.Point(                                    ...
 );
 example1 = steno3d.core.Project;
 example1.Resources = pts;
+example1.plot;
 clear pts;
+
+%%%image /images/core-project-examples-images/core-project-example1.png
 
 %   Example 2: Create a Project with multiple resources
 pts = steno3d.core.Point(                                    ...
@@ -28,9 +31,12 @@ example2.Title = 'Example 2';
 example2.Description = 'Project with two resources';
 example2.Public = true;
 example2.Resources = {pts, sfc};
+example2.plot;
 clear pts sfc;
 
-%   Example 3: Create a Project with one resource then append another
+%%%image /images/core-project-examples-images/core-project-example2.png
+
+%   Example 3: Create a Project with one resource then append another resource
 pts = steno3d.core.Point(                                    ...
     'Mesh', {'Vertices', rand(100, 3)}                       ...
 );
@@ -44,8 +50,15 @@ sfc = steno3d.core.Surface(                                  ...
     'Mesh', {'H1', 0.1*ones(10, 1), 'H2', 0.1*ones(10, 1)}   ...
 );
 example3.Resources{end+1} = sfc;
+example3.plot;
 clear pts sfc;
 
+%%%image /images/core-project-examples-images/core-project-example3.png
+
 %   Example 4: Create a project and add to it with high-level functions
-example4 = steno3d.scatter(rand(100, 3));
-steno3d.volume(example4, [1 1 1], rand(5, 10, 15));
+proj = steno3d.scatter(rand(100, 3));
+steno3d.volume(proj, [1 1 1], rand(5, 10, 15));
+proj.plot;
+
+%%%image /images/core-project-examples-images/core-project-example4.png
+
