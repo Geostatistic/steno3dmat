@@ -18,7 +18,10 @@ mesh.Triangles = tris;
 sfc.Mesh = mesh;
 example1 = steno3d.core.Project;
 example1.Resources = sfc;
+example1.plot;
 clear sfc tris verts mesh;
+
+%%%image /images/core-surface-examples-images/core-surface-example1.png
 
 %   Example 2: Create a basic grid Surface resource and set display options
 sfc = steno3d.core.Surface;
@@ -37,7 +40,10 @@ example2 = steno3d.core.Project;
 example2.Title = 'Example 2';
 example2.Description = 'Project with a surface';
 example2.Resources = sfc;
+example2.plot;
 clear sfc mesh heights;
+
+%%%image /images/core-surface-examples-images/core-surface-example2.png
 
 %   Example 3: Create a Surface resource with cell-centered %%%ref[data](steno3d.core.DataArray)
 %
@@ -67,7 +73,10 @@ example3 = steno3d.core.Project(                             ...
     'Description', 'Project with a surface',                 ...
     'Resources', sfc                                         ...
 );
+example3.plot;
 clear sfc xdata v t;
+
+%%%image /images/core-surface-examples-images/core-surface-example3.png
 
 %   Example 4: Create a Surface resource with an %%%ref[image](steno3d.core.Texture2DImage) projected onto it
 v = rand(100, 3);
@@ -95,7 +104,11 @@ example4 = steno3d.core.Project(                             ...
     'Description', 'Project with a surface',                 ...
     'Resources', sfc                                         ...
 );
+example4.plot;
 clear sfc tex pngFile v;
+
+%%%image /images/core-surface-examples-images/core-surface-example4.png
+
 
 %   Example 5: Create a Surface resource with multiple datasets/textures
 %
@@ -146,4 +159,7 @@ example5 = steno3d.core.Project(                             ...
     'Description', 'Project with a surface',                 ...
     'Resources', sfc                                         ...
 );
+example5.plot;
 clear sfc;
+
+%%%image /images/core-surface-examples-images/core-surface-example5.png
