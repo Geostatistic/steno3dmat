@@ -87,7 +87,11 @@ classdef Surface < steno3d.core.CompositeResource
                 if ~isempty(obj.Mesh.Z)
                     z = cross(u, v);
                     z = z/sqrt(sum(z.^2));
-                    verts = verts + obj.Mesh.Z*z;
+                    mesh_z = obj.Mesh.Z;
+                    mesh_z = reshape(mesh_z, lh2+1, lh1+1);
+                    mesh_z = mesh_z';
+                    mesh_z = mesh_z(:);
+                    verts = verts + mesh_z*z;
                 end
                 f = 1:lh1;
                 f = [f; f+1; f+lh1+2; f+lh1+1]';
