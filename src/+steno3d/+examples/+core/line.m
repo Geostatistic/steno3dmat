@@ -18,7 +18,10 @@ mesh.Segments = segs;
 lin.Mesh = mesh;
 example1 = steno3d.core.Project;
 example1.Resources = lin;
+example1.plot;
 clear lin verts segs mesh;
+
+%%%image /images/core-line-examples-images/core-line-example1.png
 
 %   Example 2: Create a Line resource and set display options
 lin = steno3d.core.Line;
@@ -35,7 +38,10 @@ example2 = steno3d.core.Project;
 example2.Title = 'Example 2';
 example2.Description = 'Project with a line';
 example2.Resources = lin;
+example2.plot;
 clear lin mesh;
+
+%%%image /images/core-line-examples-images/core-line-example2.png
 
 %   Example 3: Create a Line resource with node %%%ref[data](steno3d.core.DataArray)
 %
@@ -62,7 +68,10 @@ example3 = steno3d.core.Project(                             ...
     'Description', 'Project with a line',                    ...
     'Resources', lin                                         ...
 );
+example3.plot;
 clear lin cosdata;
+
+%%%image /images/core-line-examples-images/core-line-example3.png
 
 %   Example 4: Create a Steno3D Line with multiple datasets.
 %
@@ -95,4 +104,9 @@ example4 = steno3d.core.Project(                             ...
     'Description', 'Project with a line',                    ...
     'Resources', lin                                         ...
 );
+example4.plot;
 clear lin;
+
+%%%image /images/core-line-examples-images/core-line-example4.png
+
+
