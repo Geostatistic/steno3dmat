@@ -28,7 +28,10 @@ xdata.Array = x(:);
 vol.Data = {'Location', 'CC', 'Data', xdata};
 example1 = steno3d.core.Project;
 example1.Resources = vol;
+example1.plot;
 clear vol xspacing yspacing zspacing mesh xdata x;
+
+%%%image /images/core-volume-examples-images/core-volume-example1.png
 
 %   Example 2: Create a Volume resource offset from zero and set options
 vol = steno3d.core.Volume;
@@ -52,7 +55,10 @@ example2 = steno3d.core.Project;
 example2.Title = 'Example 2';
 example2.Description = 'Project with a volume';
 example2.Resources = vol;
+example2.plot;
 clear vol mesh xdata x;
+
+%%%image /images/core-volume-examples-images/core-volume-example2.png
 
 %   Example 3: Create a Volume resource in a more compact way
 vol = steno3d.core.Volume(                                   ...
@@ -78,7 +84,10 @@ example3 = steno3d.core.Project(                             ...
     'Description', 'Project with a volume',                  ...
     'Resources', vol                                         ...
 );
+example3.plot;
 clear vol xdata x;
+
+%%%image /images/core-volume-examples-images/core-volume-example3.png
 
 %   Example 4: Create a Volume resource with multiple datasets
 %
@@ -110,4 +119,8 @@ example4 = steno3d.core.Project(                             ...
     'Description', 'Project with a volume',                  ...
     'Resources', vol                                         ...
 );
+example4.plot;
 clear vol x y z;
+
+%%%image /images/core-volume-examples-images/core-volume-example4.png
+
