@@ -1,9 +1,10 @@
 function [proj, lin] = line(varargin)
 %LINE Create and plot a Steno3D Line resource
-%   `steno3d.line(X, Y, Z)` creates a Steno3D %%%ref[Project](steno3d.core.Project) with a %%%ref[Line](steno3d.core.Line) resource
-%   defined by vectors `X`, `Y`, and `Z`. If `X`, `Y`, and `Z` are matrices of the same
-%   size, only one Line resource is created but separate sections of line are
-%   disconnected.
+%   `steno3d.line(X, Y, Z)` creates a Steno3D %%%ref[Project](steno3d.core.Project) 
+%   with a %%%ref[Line](steno3d.core.Line) resource
+%   defined by vectors `X`, `Y`, and `Z`. If `X`, `Y`, and `Z` are matrices
+%   of the same size, only one Line resource is created but separate sections 
+%   of line are disconnected.
 %
 %   `steno3d.line(segments, vertices)` creates a Steno3D Project with a Line
 %   resource defined by `segments`, n x 2 matrix of vertex indices, and
@@ -29,11 +30,12 @@ function [proj, lin] = line(varargin)
 %   `[project, line] = steno3d.line(...)` returns `project`, the Steno3D
 %   Project, and `line`, the new Line resource.
 %
-%   Unlike the MATLAB builtin %%%matlabref[line](line) function, `steno3d.line` requires 3D data
-%   and does not support any additional property/value pairs. After
-%   creating a Line resource with `steno3d.line`, properties of the Line
-%   object can be directly modified. The below example shows a Line resource with a titled dataset added to 
-%   it which is uploaded in steno3D. The line resource has been created using trigonometric functions. 
+%   Unlike the MATLAB builtin %%%matlabref[line](line) function, `steno3d.line`
+%   requires 3D data and does not support any additional property/value 
+%   pairs. After creating a Line resource with `steno3d.line`, properties of 
+%   the Line object can be directly modified. The below example shows a Line 
+%   resource with a titled dataset added to it which is uploaded in steno3D. 
+%   The line resource has been created using trigonometric functions. 
 %
 %
 %   Example:

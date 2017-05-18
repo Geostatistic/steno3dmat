@@ -57,13 +57,15 @@ function [proj, surf] = surface(varargin)
 %   Project, and `surface`, the new Surface resource.
 %
 %   An important difference between `steno3d.surface` the MATLAB builtin
-%   %%%matlabref[surface](surface) function is data ordering. This function uses ordering produced
-%   by the function %%%matlabref[ndgrid](ndgrid), where size(Z) == [length(x) length(y)].
-%   The builtin surface function uses ordering produced by the function
-%   %%%matlabref[meshgrid](meshgrid), where size(Z) = [length(y) length(x)]. Also,
-%   `steno3d.surface` does not support additional property/value pairs; after
-%   creating the Surface, its properties may be directly modified. The below example shows a surface resource where a randomly created data ,`Increasing Numbers`, is added to the surface. Also, a titled image
-%   called "Space Image" added to the surface resource.
+%   %%%matlabref[surface](surface) function is data ordering. This function 
+%   uses ordering produced by the function %%%matlabref[ndgrid](ndgrid), where 
+%   size(Z) == [length(x) length(y)]. The builtin surface function uses ordering
+%   produced by the function %%%matlabref[meshgrid](meshgrid), where 
+%   size(Z) = [length(y) length(x)]. Also, `steno3d.surface` does not support
+%   additional property/value pairs; after creating the Surface, its properties 
+%   may be directly modified. The below example shows a surface resource where 
+%   a randomly created data ,`Increasing Numbers`, is added to the surface. 
+%   Also, a titled image called "Space Image" added to the surface resource.
 %
 %   Example:
 %   %%%codeblock

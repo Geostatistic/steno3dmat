@@ -30,12 +30,13 @@ function [proj, surf] = trisurf(varargin)
 %   Project, and `SURFACE`, the new Surface resource.
 %
 %   `steno3d.trisurf` is useful in conjunction with MATLAB triangulation
-%   functions like %%%matlabref[convhull](convhull). Unlike the MATLAB builtin %%%matlabref[trisurf](trisurf),
-%   `steno3d.trisurf` does not currently support triangulation objects, nor
-%   does it support any additional property/value pairs. After creating a
-%   Surface resource with `steno3d.trisurf`, properties of the Surface object
-%   can be directly modified. The below example shows a trisurf resource which is created from triangles where randomly created data called `Face Data`
-%   added to the trisurf resource. 
+%   functions like %%%matlabref[convhull](convhull). Unlike the MATLAB 
+%   builtin %%%matlabref[trisurf](trisurf),`steno3d.trisurf` does not currently 
+%   support triangulation objects, nor does it support any additional property/value 
+%   pairs. After creating a Surface resource with `steno3d.trisurf`, properties
+%   of the Surface object can be directly modified. The below example shows 
+%   a trisurf resource which is created from triangles where randomly created 
+%   data called `Face Data`added to the trisurf resource. 
 %
 %   Example:
 %   %%%codeblock

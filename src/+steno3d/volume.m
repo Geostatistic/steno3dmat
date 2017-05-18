@@ -14,8 +14,8 @@ function [proj, vol] = volume(varargin)
 %   resource as above. `X`, `Y`, and `Z` are vectors of cell boundaries (with
 %   sizes n x 1, m x 1, and p x 1, respectively) OR of cell widths (with
 %   sizes (n-1) x 1, (m-1) x 1, and (p-1) x 1, respectively). Since the
-%   volume dimensions are given by `X`, `Y`, and `Z` in this case, `data` may also
-%   be a m*n*p x 1 vector.
+%   volume dimensions are given by `X`, `Y`, and `Z` in this case, `data` may 
+%   also be a m*n*p x 1 vector.
 %
 %   `steno3d.volume(X, Y, Z, origin, data)` creates a Steno3D Project with a
 %   Volume resource as above, offset by 1 x 3 `origin` vector. This is
@@ -39,10 +39,11 @@ function [proj, vol] = volume(varargin)
 %
 %   `steno3d.volume` does not have a MATLAB builtin counterpart. When
 %   plotting a Steno3D Volume locally, its boundaries are displayed in a
-%   similar way as %%%matlabref[slice](slice), but when uploaded to steno3d.com, the entire
-%   volume is available for plotting, slicing, and isosurfacing. After
-%   creating a Volume resource with `steno3d.volume`, properties of the
-%   Volume object can be directly modified. The below example shows a volume resource with an offset of [-10 -10 -10] from origin where titled 
+%   similar way as %%%matlabref[slice](slice), but when uploaded to 
+%   steno3d.com, the entire volume is available for plotting, slicing, and 
+%   isosurfacing. After creating a Volume resource with `steno3d.volume`, properties
+%   of the Volume object can be directly modified. The below example shows 
+%   a volume resource with an offset of [-10 -10 -10] from origin where titled 
 %   datasets (X, Y and Z values) added to the volume resource.
 %
 %   Example:
