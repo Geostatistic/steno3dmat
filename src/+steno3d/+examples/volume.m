@@ -8,19 +8,22 @@
 %
 
 
-%   Example 1: Create Steno3D %%%ref[Project](steno3d.core.Project) with a %%%ref[Volume](steno3d.core.Volume) resource from 3D matrix
+%   Example 1: Create Steno3D %%%ref[Project](steno3d.core.Project) with a 
+%   %%%ref[Volume](steno3d.core.Volume) resource from 3D matrix
 V = flow;
 example1 = steno3d.volume(V);
 clear V;
 
 %%%image /images/volume-examples-images/volume-example-1.png
 
-%   Example 2: Create Volume resource with an offset of [-12.5 5 -12.5] from origin
+%   Example 2: Create Volume resource with an offset of [-12.5 5 -12.5] from 
+%   origin
 example2 = steno3d.volume([-12.5 5 -12.5], flow);
 
 %%%image /images/volume-examples-images/volume-example-2.png
 
-%   Example 3: Create Project with irregularly spaced Volume resource where "dist" data are added to the cell-centers inside the Volume resource
+%   Example 3: Create Project with irregularly spaced Volume resource where 
+%   "dist" data are added to the cell-centers inside the Volume resource
 xedge = [-20:2:-10 -9:9 10:2:20]; yedge = xedge; zedge = -10:10;
 xcent = (xedge(1:end-1) + xedge(2:end))/2;
 ycent = (yedge(1:end-1) + yedge(2:end))/2;
