@@ -1,7 +1,7 @@
 classdef Mesh2DGrid < steno3d.core.UserContent
 %MESH2DGRID Mesh for gridded Steno3D Surface resources
-%   This mesh provides the geometry for gridded %%%ref[Surface](steno3d.core.Surface) resources. The grid
-%   cell widths are given by two arrays H1 and H2. By default, these
+%   This mesh provides the geometry for gridded %%%ref[Surface](steno3d.core.Surface) resources. 
+%   The grid cell widths are given by two arrays H1 and H2. By default, these
 %   correspond to the x- and y-direction, respectively, and the surface
 %   exists as a horizontal plane. However, alternative U- and V-axis
 %   vectors can be defined to orient the plane in any direction.
@@ -9,12 +9,26 @@ classdef Mesh2DGrid < steno3d.core.UserContent
 %   In addition to setting the axes, the `Mesh2DGrid` can be given any origin
 %   point and can have node topography perpendicular to the surface (in the
 %   U-cross-V direction, z-direction by default). The ordering for node
-%   topography must be row-major, c-ordering. `Mesh2DGrid` has additional
-%   %%%ref[options](steno3d.core.opts.Mesh2DOptions) to customize the appearance of the surface.
+%   topography must be row-major, c-ordering.
+%   
+%   Figure1 shows a surface Mesh2DGrid which consists of x and y grid
+%   spacing with origin vector(O). h1 and h2 are arrays containing the width
+%   of each consecutive cell in the U and V directions, respectively. Z is an
+%   array of vertex topography, where values are perpendicular offset distances
+%   from the U-V plane. Z should be defined a flat array, with each entry 
+%   corresponding to the z-offset of a single vertex.
+%   This type of mesh is normally used for structured surfaces such as 
+%   mathematical surfaces which can be plotted as Z=f(X,Y). 
+%
+%   %%%image/images/mesh2dgrid.png 
+%
+%
+%   `Mesh2DGrid` has additional %%%ref[options](steno3d.core.opts.Mesh2DOptions) to 
+%    customize the appearance of the surface.
 %
 %   %%%properties
 %
-%   See the %ref[EXAMPLES](steno3d.examples.core.surface)
+%   See the %%%ref[EXAMPLES](steno3d.examples.core.surface)
 %
 %   %%%seealso steno3d.core.Surface, steno3d.core.opts.Mesh2DOptions
 %

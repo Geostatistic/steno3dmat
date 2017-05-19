@@ -1,8 +1,17 @@
 classdef Mesh3DGrid < steno3d.core.UserContent
 %MESH3DGRID Mesh for Steno3D Volume resources
-%   This mesh provides the geometry for %%%ref[Volume](steno3d.core.Volume) resources. It consists of x,
-%   y, and z grid cell widths and an origin point. `Mesh3DGrid` has
-%   additional %%%ref[options](steno3d.core.opts.Mesh3DOptions) to customize the appearance of the volume.
+%  This mesh provides the geometry for %%%ref[Volume](steno3d.core.Volume) resources. It consists of x,
+%  y, and z grid cell widths and an origin point. 
+
+% `Mesh3DGrid` has additional %%%ref[options](steno3d.core.opts.Mesh3DOptions) 
+%  to customize the appearance of the volume. A simple example of
+%  Mesh3DGrid is shown in Figure1.
+%
+%  %%%image/images/mesh2dgrid.png
+%
+%  As shown in this figure, h1, h2 and h3 are tensor arrays, flat arrays
+%  containing the width of each consecutive cell in X, Y and Z direction,
+%  respectively. 
 %
 %   %%%properties
 %

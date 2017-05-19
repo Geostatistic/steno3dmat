@@ -1,8 +1,22 @@
 classdef Mesh1D < steno3d.core.UserContent
 %MESH1D Mesh for Steno3D Line resources
-%   This mesh provides the geometry for %%%ref[Line](steno3d.core.Line) resources. It consists of an
-%   m x 3 array of spatial vertices and an n x 2 array of vertex indices to
-%   define the line segments. Segment values must be between 1 and m.
+%   This mesh provides the geometry for %%%ref[Line](steno3d.core.Line) resources. 
+%   It consists of an m x 3 array of spatial vertices and an n x 2 array of 
+%   vertex indices to define the line segments. Segment values must be between 1 and m. 
+%   The mesh defines the geometry of the line. So the first step to create
+%   lines is to make a 1D mesh. As discussed, 1D meshes are formed by vertives
+%   and segments which define how the vertices are connected. A simple
+%   example of a line mesh is depicted in Figure1.
+%  
+%   %%%image/images/mesh1D.png
+%   
+%   As shown in this figure, vertices are 3D (x,y,z) points and
+%   segments consists of two integers defining which vertices make up that
+%   segment. Note that there is no segment [2,3] which shows the end of
+%   line one and the start of line tewo are not connected. Vertices must
+%   always be a nx3 array of spatial coordinates while segments must be an 
+%   array of vertex indices with a dimension of nx2.
+%
 %   `Mesh1D` has additional %%%ref[options](steno3d.core.opts.Mesh1DOptions) to customize the appearance of the line.
 %
 %   %%%properties

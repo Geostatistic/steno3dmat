@@ -1,10 +1,33 @@
 classdef Mesh2D < steno3d.core.UserContent
 %MESH2D Mesh for triangulated Steno3D Surface resources
-%   This mesh provides the geometry for triangulated %%%ref[Surface](steno3d.core.Surface) resources. It
-%   consists of an m x 3 array of spatial vertices and an n x 3 array of
+%   This mesh provides the geometry for triangulated %%%ref[Surface](steno3d.core.Surface) resources. 
+%   It consists of an m x 3 array of spatial vertices and an n x 3 array of
 %   vertex indices to define the triangles. Triangle values must be between
-%   1 and m. `Mesh2D` has additional %%%ref[options](steno3d.core.opts.Mesh2DOptions) to customize the appearance of
-%   the surface.
+%   1 and m. 
+%   
+%   In Steno3D, the mesh defines the geometry of the surface. So the first
+%   step to create surfaces is to make a 2D mesh. In Steno3D, there are two
+%   types of meshes available for surfaces:
+%   
+%   - Surface Mesh2D (surfaces with triangulated structure)
+%   - Surface Mesh2DGrid (surfaces with gridded structure)
+%   
+%   We are using Mesh2D when we are dealing with unstructured surfaces.
+%   As discussed, Surface Mesh2D is formed by vertices and triangles which
+%   define how the vertices are connected. A simple exeample of a surface
+%   Mesh2D is depicted in Figure1.
+%   
+%   %%%image/images/mesh2D.png
+%
+%   As shown in this figure, vertices are 3D (x, y, z) points and triangles
+%   consists of three integers(indices) defining which vertices make up the
+%   the triangle. The two triangles in Figure2 meeting at two vertices B and 
+%   C. In Mesh2D, the vertices must always be a mx3 array of spatial
+%   coordinates while triangles must be an array of nx3 which holds vertex
+%   indices defining each triangle.
+%
+%   `Mesh2D` has additional %%%ref[options](steno3d.core.opts.Mesh2DOptions) 
+%   to customize the appearance of the surface.
 %
 %   %%%properties
 %
