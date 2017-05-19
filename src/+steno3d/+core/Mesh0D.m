@@ -1,8 +1,19 @@
 classdef Mesh0D < steno3d.core.UserContent
 %MESH0D Mesh for Steno3D Point resources
-%   This mesh provides the geometry for %%%ref[Point](steno3d.core.Point) resources, an n x 3 array of
-%   spatial coordinates where n is the number of points. There are
-%   currently no additional options available for this mesh.
+%   This mesh provides the geometry for %%%ref[Point](steno3d.core.Point) 
+%   resources, an n x 3 array of spatial coordinates where n is the number 
+%   of points. 
+%   
+%   The first step to create points is to make 
+%   a 0D mesh(in Steno3D, we refer to point mesh as 0D mesh). Point meshes 
+%   are formed by vertices. A simple example of a point mesh is depicted in Figure1.
+%   
+%   %%%image/images/mesh0D.png
+%
+%   As shown in this figure, vertices are 3D points represented by (x, y, z)
+%   coordinates.
+%   
+%   There are currently no additional options available for this mesh.
 %
 %   %%%properties
 %
